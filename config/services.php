@@ -35,4 +35,15 @@ return [
         ],
     ],
 
+    'fuseki' => [
+    'base_url' => env(
+        'FUSEKI_BASE_URL',
+        'http://localhost:3030'
+    ),
+
+    'dataset' => env('FUSEKI_DATASET', 'airports'),
+
+    'query_path' => env('FUSEKI_QUERY_PATH', '/query'),
+    ],
+
 ];
