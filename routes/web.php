@@ -7,7 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('home', 'home')->name('home');
+Route::view('home', 'welcome')->name('home');
+
+Route::view('chatbot', 'chatbot')->name('chatbot');
 
 Route::get('/test-fuseki', function (FusekiService $fuseki) {
     $query = <<<'SPARQL'

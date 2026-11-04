@@ -13,16 +13,7 @@
 <body class="bg-gradient-to-b from-[#FFF7D6] via-[#FFF2B2]/60 to-[#A8C6E7]/40 min-h-screen flex flex-col relative text-slate-800">
 
     <!-- Navbar -->
-    <nav class="w-full bg-[#7FA8D6]/90 backdrop-blur-md py-4 px-8 flex justify-between items-center shadow-md sticky top-0 z-40">
-        <div class="text-white font-bold text-2xl tracking-wide cursor-pointer hover:scale-105 transition-transform duration-300">
-            Aero<span class="text-[#FFE08A]">Search</span>
-        </div>
-        <div class="flex space-x-6 text-white font-semibold">
-            <a href="#" class="hover:text-[#FFE08A] hover:-translate-y-1 transition-all duration-300">Beranda</a>
-            <a href="#peta" class="hover:text-[#FFE08A] hover:-translate-y-1 transition-all duration-300">Peta Interaktif</a>
-            <a href="#" class="hover:text-[#FFE08A] hover:-translate-y-1 transition-all duration-300">Data Bandara</a>
-        </div>
-    </nav>
+    @include('layouts.navbar')
 
     <!-- Main Search Area -->
     <main class="w-full flex flex-col justify-center items-center px-4 py-20">
@@ -64,22 +55,63 @@
     </section>
 
     <!-- Floating Chatbot Button -->
-    <button class="fixed bottom-8 right-8 bg-[#FFE08A] hover:bg-[#FFF2B2] border-4 border-white text-slate-800 rounded-full w-16 h-16 flex justify-center items-center shadow-2xl transition-all duration-300 hover:scale-110 hover:-translate-y-2 active:scale-95 z-50">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+    <a href="{{ route('chatbot') }}" 
+   class="fixed bottom-8 right-8 group flex items-center gap-3 z-50 transition-all duration-300 hover:scale-105 active:scale-95">
+    
+    <!-- Teks Sapaan Kenalan -->
+    <div class="bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg border border-white text-slate-700 text-xs font-semibold opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 pointer-events-none flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Halo aku AeroBot</span>
+    </div>
+
+    <!-- Ikon Robot SVG Tanpa Lingkaran (Langsung Wujud Robot) -->
+    <div class="w-16 h-16 flex justify-center items-center drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1">
+        <svg viewBox="0 0 64 64" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Antena Atas -->
+            <path d="M32 12V6" stroke="#7FA8D6" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="32" cy="4" r="3" fill="#FFE08A" stroke="#7FA8D6" stroke-width="2"/>
+            
+            <!-- Telinga Kiri & Kanan -->
+            <rect x="8" y="26" width="6" height="12" rx="3" fill="#CBD5E1" stroke="#7FA8D6" stroke-width="2"/>
+            <rect x="50" y="26" width="6" height="12" rx="3" fill="#CBD5E1" stroke="#7FA8D6" stroke-width="2"/>
+            
+            <!-- Kepala Utama Robot -->
+            <rect x="12" y="14" width="40" height="30" rx="12" fill="#F8FAFC" stroke="#7FA8D6" stroke-width="3"/>
+            
+            <!-- Layar Muka (Warna Gelap) -->
+            <rect x="17" y="19" width="30" height="20" rx="8" fill="#1E293B"/>
+            
+            <!-- Mata Robot (Bercahaya & Bisa Kedip) -->
+            <g class="animate-blink">
+                <!-- Mata Kiri -->
+                <ellipse cx="26" cy="27" rx="4" ry="4" fill="#38BDF8"/>
+                <circle cx="25" cy="26" r="1.5" fill="#FFFFFF"/>
+                
+                <!-- Mata Kanan -->
+                <ellipse cx="38" cy="27" rx="4" ry="4" fill="#38BDF8"/>
+                <circle cx="37" cy="26" r="1.5" fill="#FFFFFF"/>
+            </g>
+            
+            <!-- Senyum Robot Kecil -->
+            <path d="M30 33C30 33 31.5 34.5 32 34.5C32.5 34.5 34 33 34 33" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
         </svg>
+    </div>
+</a>
+
+<style>
+    /* Animasi Kedip Mata Robot */
+    @keyframes blink {
+        0%, 85%, 100% { transform: scaleY(1); transform-origin: center; }
+        90% { transform: scaleY(0.1); transform-origin: center; }
+    }
+    .animate-blink {
+        animation: blink 3.5s infinite;
+    }
+</style>
     </button>
 
     <!-- Footer -->
-    <footer class="w-full bg-[#7FA8D6] py-8 text-center text-white mt-auto">
-        <div class="max-w-4xl mx-auto px-4">
-            <h3 class="text-xl font-bold mb-2 hover:text-[#FFE08A] transition-colors duration-300 cursor-pointer">AeroSearch - Web Semantik 2</h3>
-            <p class="text-sm text-white/80 mb-4">Proyek pencarian semantik untuk data bandara di Asia Tenggara.</p>
-            <div class="border-t border-white/30 pt-4 text-xs text-white/70">
-                &copy; 2026 Kelompok Web Semantik. Universitas Sumatera Utara.
-            </div>
-        </div>
-    </footer>
+    @include('layouts.footer')
 
 </body>
 </html>
