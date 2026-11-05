@@ -24,25 +24,67 @@
             Cari profil lengkap, alamat, kontak, hingga status operasional berbagai bandara di Asia Tenggara menggunakan bahasa alami.
         </p>
 
-        <!-- Search Bar -->
-        <div class="w-full max-w-3xl relative group">
+       <form action="{{ route('home') }}" method="GET" class="w-full max-w-3xl relative group">
             <input type="text" 
+                name="search"
+                value="{{ $search ?? '' }}"
                 class="w-full px-6 py-4 rounded-full border-2 border-white/60 bg-white/80 backdrop-blur-sm focus:outline-none focus:border-[#7FA8D6] focus:ring-4 focus:ring-[#A8C6E7]/50 text-lg shadow-xl transition-all duration-300 group-hover:shadow-2xl"
                 placeholder="Cari lokasi, status, atau kontak bandara ASEAN...">
             
-            <button class="absolute right-2 top-2 bottom-2 bg-[#FFE08A] hover:bg-[#FFF2B2] text-slate-700 font-bold px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">
+            <button type="submit" class="absolute right-2 top-2 bottom-2 bg-[#FFE08A] hover:bg-[#FFF2B2] text-slate-700 font-bold px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">
                 Cari
             </button>
-        </div>
+        </form>
 
-        <!-- Sugesti Pencarian -->
-        <div class="flex space-x-3 mt-6 text-sm items-center">
+        <!-- Sugesti / Kategori Pencarian yang Berfungsi -->
+        <div class="flex flex-wrap justify-center gap-3 mt-6 text-sm items-center">
             <span class="text-slate-500 font-medium py-1">Kategori Data:</span>
-            <a href="#" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">Lokasi & Alamat</a>
-            <a href="#" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">Nomor Telepon</a>
-            <a href="#" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">Status Operasional</a>
+            
+            <a href="{{ route('category.location') }}" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">
+   Lokasi & Alamat
+        </a>
+            
+           <a href="{{ route('category.phone') }}" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">
+   Nomor Telepon & Kontak
+        </a>
+            
+            <a href="{{ route('category.operational') }}" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">
+   Status Operasional
+</a>
         </div>
     </main>
+
+<!-- Bagian Hasil Pencarian (Akan muncul pas user ngetik & klik cari) -->
+    @if(isset($search))
+    <section class="w-full max-w-6xl mx-auto px-6 py-10">
+        <h2 class="text-2xl font-bold text-[#7FA8D6] mb-6">Hasil Pencarian untuk: "{{ $search }}"</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            @forelse($airports as $airport)
+                <div class="bg-white/80 backdrop-blur-md p-6 rounded-3xl border-2 border-white shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-[#A8C6E7]/30 text-[#7FA8D6] rounded-full mb-3 inline-block">
+                            {{ $airport['type'] ?? 'Airport' }}
+                        </span>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">{{ $airport['name'] }}</h3>
+                        <p class="text-sm text-slate-600 mb-1">📍 {{ $airport['municipality'] ?? '-' }}, {{ $airport['iso_country'] ?? '-' }}</p>
+                        <p class="text-sm text-slate-500 mb-4">✈️ ICAO / IATA: {{ $airport['ident'] }} / {{ $airport['iata_code'] ?? '-' }}</p>
+                    </div>
+                    
+                    <a href="{{ route('airports.show', $airport['airport_id']) }}" 
+                       class="inline-block text-center text-sm bg-[#7FA8D6] hover:bg-[#6893c7] text-white font-semibold px-4 py-2.5 rounded-xl transition shadow-sm">
+                        Lihat Detail Bandara &rarr;
+                    </a>
+                </div>
+            @empty
+                <div class="col-span-2 text-center py-12 bg-white/60 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg">
+                    <p class="text-slate-500 text-lg">Tidak ada data bandara yang ditemukan.</p>
+                </div>
+            @endforelse
+        </div>
+    </section>
+    @endif
+
 
     <!-- Google Maps Section -->
     <section id="peta" class="w-full py-16 px-8 flex-grow">

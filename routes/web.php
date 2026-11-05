@@ -2,15 +2,27 @@
 
 use App\Services\FusekiService;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AirportController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Rute Kategori Lokasi
+Route::get('/category/location', [AirportController::class, 'locationCategory'])->name('category.location');
 
-Route::view('home', 'welcome')->name('home');
+// Rute Kategori Telepon
+Route::get('/category/phone', [AirportController::class, 'phoneCategory'])->name('category.phone');
 
-Route::view('chatbot', 'chatbot')->name('chatbot');
+// Rute Kategori Operasional
+Route::get('/category/operational', [AirportController::class, 'operationalCategory'])->name('category.operational');
 
+// Rute Utama & Pencarian (Satu rute untuk halaman utama dan pencarian)
+Route::get('/', [AirportController::class, 'index'])->name('home');
+
+// Rute Halaman Detail Bandara
+Route::get('/airports/{id}', [AirportController::class, 'show'])->name('airports.show');
+
+// Rute Chatbot
+Route::view('/chatbot', 'chatbot')->name('chatbot');
+
+// Rute Tes Fuseki (Bawaan)
 Route::get('/test-fuseki', function (FusekiService $fuseki) {
     $query = <<<'SPARQL'
 PREFIX af: <https://aerofind.example/id/>
