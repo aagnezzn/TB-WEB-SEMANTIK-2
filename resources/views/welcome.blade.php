@@ -9,6 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 <body class="bg-gradient-to-b from-[#FFF7D6] via-[#FFF2B2]/60 to-[#A8C6E7]/40 min-h-screen flex flex-col relative text-slate-800">
 
@@ -87,14 +88,47 @@
 
 
     <!-- Google Maps Section -->
-    <section id="peta" class="w-full py-16 px-8 flex-grow">
-        <div class="max-w-6xl mx-auto flex flex-col items-center">
-            <h2 class="text-3xl font-bold text-[#7FA8D6] mb-6">Peta Lokasi Bandara</h2>
-            <div class="w-full h-[400px] bg-white/50 backdrop-blur-md rounded-3xl flex justify-center items-center border-4 border-white shadow-xl relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:bg-white/60 group">
-                <p class="text-[#7FA8D6] font-semibold text-xl z-10 group-hover:scale-110 transition-transform duration-500">Google Maps Terintegrasi Di Sini</p>
+    
+    <!-- Peta Persebaran Bandara -->
+    <section id="peta" class="w-full px-4 md:px-8 py-12">
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#7FA8D6] mb-3">
+                    Peta Persebaran Bandara
+                </h2>
+
+                <p class="text-slate-600">
+                    Jelajahi lokasi bandara di seluruh Asia Tenggara.
+                </p>
             </div>
+
+            <div class="bg-white/80 backdrop-blur-md p-3 md:p-5
+                        rounded-3xl border-2 border-white shadow-xl">
+
+                <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+                    <span class="font-semibold text-slate-700">
+                        Lokasi Bandara
+                    </span>
+
+                    <span id="airport-count"
+                          class="text-sm text-[#7FA8D6] font-semibold">
+                        Memuat data bandara...
+                    </span>
+                </div>
+
+                <div id="airport-map"
+                     class="w-full h-[450px] md:h-[550px] rounded-2xl z-0">
+                </div>
+
+                <p class="text-xs text-slate-500 mt-3">
+                    Peta menggunakan OpenStreetMap dan Leaflet.
+                </p>
+            </div>
+
         </div>
     </section>
+
 
     <!-- Floating Chatbot Button -->
     <a href="{{ route('chatbot') }}" 
@@ -154,6 +188,90 @@
 
     <!-- Footer -->
     @include('layouts.footer')
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const airports = @js($mapAirports ?? []);
+
+    const countElement = document.getElementById('airport-count');
+
+    // Periksa apakah Leaflet berhasil dimuat
+    if (typeof L === 'undefined') {
+        countElement.textContent = 'Leaflet gagal dimuat.';
+        return;
+    }
+
+    // Inisialisasi peta Asia Tenggara
+    const map = L.map('airport-map').setView([3, 115], 4);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const markers = [];
+
+    // Membuat marker dari dataset bandara
+    airports.forEach(function (airport) {
+
+        const latitude = Number(airport.latitude_deg);
+        const longitude = Number(airport.longitude_deg);
+
+        if (
+            !Number.isFinite(latitude) ||
+            !Number.isFinite(longitude) ||
+            latitude < -90 || latitude > 90 ||
+            longitude < -180 || longitude > 180
+        ) {
+            return;
+        }
+
+        const marker = L.marker([latitude, longitude])
+            .addTo(map);
+
+        // Membuat popup dengan aman
+        const popup = document.createElement('div');
+
+        const title = document.createElement('strong');
+        title.textContent = airport.name ?? 'Nama bandara tidak tersedia';
+
+        const iata = document.createElement('p');
+        iata.textContent = 'IATA: ' + (airport.iata_code ?? '-');
+
+        const icao = document.createElement('p');
+        icao.textContent = 'ICAO: ' + (airport.icao_code ?? '-');
+
+        const location = document.createElement('p');
+        location.textContent =
+            (airport.municipality ?? '-') + ', ' +
+            (airport.iso_country ?? '-');
+
+        popup.append(title, iata, icao, location);
+
+        marker.bindPopup(popup);
+
+        markers.push(marker);
+    });
+
+    // Tampilkan jumlah marker
+    countElement.textContent =
+        markers.length + ' bandara ditemukan';
+
+    // Atur zoom agar semua bandara terlihat
+    if (markers.length > 0) {
+        const group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.1));
+    } else {
+        countElement.textContent =
+            'Tidak ada data koordinat bandara.';
+    }
+
+});
+</script>
 
 </body>
 </html>

@@ -3,6 +3,9 @@
 use App\Services\FusekiService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\AirportMapController;
+use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\AirportRecommendationController;
 
 // Rute Kategori Lokasi
 Route::get('/category/location', [AirportController::class, 'locationCategory'])->name('category.location');
@@ -53,3 +56,28 @@ SPARQL;
         ], 500);
     }
 });
+
+// Rute untuk Peta Bandara
+Route::middleware('auth')->group(function () {
+    Route::get('/airports/map', [
+        AirportMapController::class,
+        'map'
+    ])->name('airports.map');
+
+    Route::get('/api/airports', [
+        AirportMapController::class,
+        'index'
+    ]);
+});
+
+// Rute untuk Rekomendasi Bandara Terdekat
+Route::get('/api/recommendations/nearest', [
+    RecommendationController::class,
+    'nearest'
+]);
+
+// Rute untuk Rekomendasi Bandara Terdekat (versi lengkap)
+Route::get('/api/regions', [
+    AirportMapController::class,
+    'regions'
+])->middleware('auth');

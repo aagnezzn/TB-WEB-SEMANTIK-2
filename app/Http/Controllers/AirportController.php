@@ -8,7 +8,7 @@ class AirportController extends Controller
 {
     private function getAirportsData()
     {
-        // Daftar kemungkinan nama file di storage/app/
+        // Daftar kemungkinan lokasi file dataset
         $possiblePaths = [
             storage_path('app/dataset_bandara_tubes'),
             storage_path('app/dataset_bandara_tubes.json'),
@@ -39,76 +39,101 @@ class AirportController extends Controller
         return is_array($data) ? $data : [];
     }
 
-   public function index(Request $request)
-{
-    $search = $request->input('search');
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
 
-    $jsonPath = storage_path('app/dataset_bandara_tubes.json');
+        $jsonPath = storage_path('app/dataset_bandara_tubes.json');
 
-    $airports = [];
-    if (file_exists($jsonPath)) {
-        $content = file_get_contents($jsonPath);
-        $decoded = json_decode($content, true);
-        if (is_array($decoded)) {
-            $airports = $decoded;
+        $airports = [];
+
+        if (file_exists($jsonPath)) {
+            $content = file_get_contents($jsonPath);
+
+            // Hapus BOM UTF-8 jika ada
+            $content = preg_replace('/^\xEF\xBB\xBF/', '', $content);
+
+            $decoded = json_decode($content, true);
+
+            if (is_array($decoded)) {
+                $airports = $decoded;
+            }
         }
+
+        // Ambil data bandara yang memiliki koordinat valid
+        // Diletakkan sebelum pencarian agar peta tetap menampilkan semua bandara
+        $mapAirports = array_values(array_filter($airports, function ($airport) {
+            return isset($airport['latitude_deg'], $airport['longitude_deg'])
+                && is_numeric($airport['latitude_deg'])
+                && is_numeric($airport['longitude_deg'])
+                && $airport['latitude_deg'] >= -90
+                && $airport['latitude_deg'] <= 90
+                && $airport['longitude_deg'] >= -180
+                && $airport['longitude_deg'] <= 180;
+        }));
+
+        // Fitur pencarian bandara
+        if ($search) {
+            $searchLower = strtolower(trim($search));
+
+            // Mapping nama negara ke kode ISO
+            $isoMapping = [
+                'indonesia' => 'id',
+                'malaysia' => 'my',
+                'singapura' => 'sg',
+                'singapore' => 'sg',
+                'thailand' => 'th',
+                'filipina' => 'ph',
+                'philippines' => 'ph',
+                'vietnam' => 'vn',
+                'kamboja' => 'kh',
+                'cambodia' => 'kh',
+                'laos' => 'la',
+                'myanmar' => 'mm',
+                'brunei' => 'bn',
+                'brunei darussalam' => 'bn',
+                'timor leste' => 'tl',
+            ];
+
+            $targetIso = $isoMapping[$searchLower] ?? $searchLower;
+
+            $airports = array_filter($airports, function ($airport) use ($searchLower, $targetIso) {
+                $name = strtolower($airport['name'] ?? '');
+                $municipality = strtolower($airport['municipality'] ?? '');
+                $isoCountry = strtolower($airport['iso_country'] ?? '');
+                $ident = strtolower($airport['ident'] ?? '');
+                $iata = strtolower($airport['iata_code'] ?? '');
+
+                return str_contains($name, $searchLower)
+                    || str_contains($municipality, $searchLower)
+                    || str_contains($ident, $searchLower)
+                    || str_contains($iata, $searchLower)
+                    || $isoCountry === $searchLower
+                    || $isoCountry === $targetIso;
+            });
+        }
+
+        return view('welcome', compact(
+            'airports',
+            'search',
+            'mapAirports'
+        ));
     }
-
-    if ($search) {
-        $searchLower = strtolower(trim($search));
-
-        // Mapping nama negara/wilayah ke kode ISO yang ada di dalam dataset
-        $isoMapping = [
-            'indonesia' => 'id',
-            'malaysia' => 'my',
-            'singapura' => 'sg',
-            'singapore' => 'sg',
-            'thailand' => 'th',
-            'filipina' => 'ph',
-            'philippines' => 'ph',
-            'vietnam' => 'vn',
-            'kamboja' => 'kh',
-            'cambodia' => 'kh',
-            'laos' => 'la',
-            'myanmar' => 'mm',
-            'brunei' => 'bn',
-            'brunei darussalam' => 'bn',
-            'timor leste' => 'tl',
-        ];
-
-        // Ambil kode ISO jika pencarian cocok dengan nama negara di atas
-        $targetIso = $isoMapping[$searchLower] ?? $searchLower;
-
-        $airports = array_filter($airports, function ($airport) use ($searchLower, $targetIso) {
-            $name = strtolower($airport['name'] ?? '');
-            $municipality = strtolower($airport['municipality'] ?? '');
-            $isoCountry = strtolower($airport['iso_country'] ?? '');
-            $ident = strtolower($airport['ident'] ?? '');
-            $iata = strtolower($airport['iata_code'] ?? '');
-
-            return str_contains($name, $searchLower) ||
-                   str_contains($municipality, $searchLower) ||
-                   str_contains($ident, $searchLower) ||
-                   str_contains($iata, $searchLower) ||
-                   $isoCountry === $searchLower ||
-                   $isoCountry === $targetIso;
-        });
-    }
-
-    return view('welcome', compact('airports', 'search'));
-}
-    
 
     public function show($id)
     {
         $allAirports = $this->getAirportsData();
-        
+
         $airport = null;
+
         foreach ($allAirports as $item) {
-            // Cek berbagai kemungkinan key ID di dalam dataset
-            $itemId = $item['airport_id'] ?? $item['id'] ?? $item['ident'] ?? $item['iata_code'] ?? null;
-            
-            if ($itemId == $id || (string)$itemId === (string)$id) {
+            $itemId = $item['airport_id']
+                ?? $item['id']
+                ?? $item['ident']
+                ?? $item['iata_code']
+                ?? null;
+
+            if ($itemId == $id || (string) $itemId === (string) $id) {
                 $airport = $item;
                 break;
             }
@@ -122,61 +147,71 @@ class AirportController extends Controller
     }
 
     public function locationCategory()
-{
-    // Daftar negara ASEAN yang didukung dalam dataset
-    $aseanCountries = [
-        ['code' => 'ID', 'name' => 'Indonesia', 'flag' => '🇮🇩'],
-        ['code' => 'MY', 'name' => 'Malaysia', 'flag' => '🇲🇾'],
-        ['code' => 'SG', 'name' => 'Singapura', 'flag' => '🇸🇬'],
-        ['code' => 'TH', 'name' => 'Thailand', 'flag' => '🇹🇭'],
-        ['code' => 'PH', 'name' => 'Filipina', 'flag' => '🇵🇭'],
-        ['code' => 'VN', 'name' => 'Vietnam', 'flag' => '🇻🇳'],
-        ['code' => 'KH', 'name' => 'Kamboja', 'flag' => '🇰🇭'],
-        ['code' => 'LA', 'name' => 'Laos', 'flag' => '🇱🇦'],
-        ['code' => 'MM', 'name' => 'Myanmar', 'flag' => '🇲🇲'],
-        ['code' => 'BN', 'name' => 'Brunei Darussalam', 'flag' => '🇧🇳'],
-        ['code' => 'TL', 'name' => 'Timor Leste', 'flag' => '🇹🇱'],
-    ];
+    {
+        // Daftar negara ASEAN
+        $aseanCountries = [
+            ['code' => 'ID', 'name' => 'Indonesia', 'flag' => '🇮🇩'],
+            ['code' => 'MY', 'name' => 'Malaysia', 'flag' => '🇲🇾'],
+            ['code' => 'SG', 'name' => 'Singapura', 'flag' => '🇸🇬'],
+            ['code' => 'TH', 'name' => 'Thailand', 'flag' => '🇹🇭'],
+            ['code' => 'PH', 'name' => 'Filipina', 'flag' => '🇵🇭'],
+            ['code' => 'VN', 'name' => 'Vietnam', 'flag' => '🇻🇳'],
+            ['code' => 'KH', 'name' => 'Kamboja', 'flag' => '🇰🇭'],
+            ['code' => 'LA', 'name' => 'Laos', 'flag' => '🇱🇦'],
+            ['code' => 'MM', 'name' => 'Myanmar', 'flag' => '🇲🇲'],
+            ['code' => 'BN', 'name' => 'Brunei Darussalam', 'flag' => '🇧🇳'],
+            ['code' => 'TL', 'name' => 'Timor Leste', 'flag' => '🇹🇱'],
+        ];
 
-    return view('airports.categories-location', compact('aseanCountries'));
-}
-
-public function phoneCategory()
-{
-    $jsonPath = storage_path('app/dataset_bandara_tubes.json');
-    $airports = [];
-
-    if (file_exists($jsonPath)) {
-        $content = file_get_contents($jsonPath);
-        $decoded = json_decode($content, true);
-        if (is_array($decoded)) {
-            // Menyaring bandara yang memiliki data kontak, website, atau wikipedia
-            $airports = array_filter($decoded, function ($airport) {
-                return !empty($airport['phone']) || !empty($airport['home_link']) || !empty($airport['wikipedia_link']);
-            });
-        }
+        return view('airports.categories-location', compact('aseanCountries'));
     }
 
-    return view('airports.categories-phone', compact('airports'));
-}
+    public function phoneCategory()
+    {
+        $jsonPath = storage_path('app/dataset_bandara_tubes.json');
 
-public function operationalCategory()
-{
-    $jsonPath = storage_path('app/dataset_bandara_tubes.json');
-    $airports = [];
+        $airports = [];
 
-    if (file_exists($jsonPath)) {
-        $content = file_get_contents($jsonPath);
-        $decoded = json_decode($content, true);
-        if (is_array($decoded)) {
-            // Menyaring bandara berdasarkan status operasional (misalnya scheduled_service bernilai yes/tersedia)
-            $airports = array_filter($decoded, function ($airport) {
-                return !empty($airport['scheduled_service']) || !empty($airport['type']);
-            });
+        if (file_exists($jsonPath)) {
+            $content = file_get_contents($jsonPath);
+            $content = preg_replace('/^\xEF\xBB\xBF/', '', $content);
+
+            $decoded = json_decode($content, true);
+
+            if (is_array($decoded)) {
+                // Bandara yang memiliki informasi kontak atau website
+                $airports = array_filter($decoded, function ($airport) {
+                    return !empty($airport['phone'])
+                        || !empty($airport['home_link'])
+                        || !empty($airport['wikipedia_link']);
+                });
+            }
         }
+
+        return view('airports.categories-phone', compact('airports'));
     }
 
-    return view('airports.categories-operational', compact('airports'));
-}
+    public function operationalCategory()
+    {
+        $jsonPath = storage_path('app/dataset_bandara_tubes.json');
 
+        $airports = [];
+
+        if (file_exists($jsonPath)) {
+            $content = file_get_contents($jsonPath);
+            $content = preg_replace('/^\xEF\xBB\xBF/', '', $content);
+
+            $decoded = json_decode($content, true);
+
+            if (is_array($decoded)) {
+                // Bandara berdasarkan informasi layanan atau tipe
+                $airports = array_filter($decoded, function ($airport) {
+                    return !empty($airport['scheduled_service'])
+                        || !empty($airport['type']);
+                });
+            }
+        }
+
+        return view('airports.categories-operational', compact('airports'));
+    }
 }
