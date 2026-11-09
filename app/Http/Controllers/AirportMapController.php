@@ -32,15 +32,15 @@ class AirportMapController extends Controller
         return view('airports.map');
     }
 
-    public function regions()
+   public function regions()
     {
-    return response()->json(
-        Region::orderBy('region_name')
-            ->get([
-                'id',
-                'region_name',
-                'country_code',
-            ])
-    );
+        return response()->json(
+            Region::orderBy('region_name')
+                ->get([
+                    'region_id', 
+                    'region_name',
+                    'country_code',
+                ])
+        );
     }
 }

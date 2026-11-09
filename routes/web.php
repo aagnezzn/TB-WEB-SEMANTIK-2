@@ -19,6 +19,9 @@ Route::get('/category/operational', [AirportController::class, 'operationalCateg
 // Rute Utama & Pencarian (Satu rute untuk halaman utama dan pencarian)
 Route::get('/', [AirportController::class, 'index'])->name('home');
 
+// Rute Pencarian Bandara
+Route::get('/airports/map', [AirportMapController::class, 'map'])->name('airports.map');
+
 // Rute Halaman Detail Bandara
 Route::get('/airports/{id}', [AirportController::class, 'show'])->name('airports.show');
 
@@ -57,27 +60,20 @@ SPARQL;
     }
 });
 
-// Rute untuk Peta Bandara
-Route::middleware('auth')->group(function () {
-    Route::get('/airports/map', [
-        AirportMapController::class,
-        'map'
-    ])->name('airports.map');
-
-    Route::get('/api/airports', [
-        AirportMapController::class,
-        'index'
-    ]);
-});
-
 // Rute untuk Rekomendasi Bandara Terdekat
 Route::get('/api/recommendations/nearest', [
     RecommendationController::class,
     'nearest'
 ]);
 
+// Rute untuk daftar bandara untuk peta
+Route::get('/api/airports', [
+    AirportMapController::class,
+    'index'
+]);
+
 // Rute untuk Rekomendasi Bandara Terdekat (versi lengkap)
 Route::get('/api/regions', [
     AirportMapController::class,
     'regions'
-])->middleware('auth');
+]);
