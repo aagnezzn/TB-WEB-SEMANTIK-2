@@ -31,9 +31,7 @@
         <option value="">Pilih Kota/Kabupaten</option>
     </select>
 
-    <button id="search-nearest">
-        Cari Bandara Terdekat
-    </button>
+    <button id="search-nearest">Cari Bandara Terdekat</button>
 
     <div id="recommendation-results"></div>
 
@@ -108,6 +106,11 @@
                 try {
                     const response = await fetch(`/api/recommendations/nearest?region_id=${regionId}`);
                     const result = await response.json();
+
+                    if (!response.ok || result.status === 'error') {
+                        alert(result.message || 'Gagal memuat data rekomendasi.');
+                        return;
+                    }
 
                     const container = document.getElementById('recommendation-results');
                     container.replaceChildren();

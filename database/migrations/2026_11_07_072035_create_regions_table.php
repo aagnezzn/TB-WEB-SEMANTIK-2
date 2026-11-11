@@ -12,15 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('regions', function (Blueprint $table) {
-        $table->id();
-        $table->string('region_name');
-        $table->string('region_type', 30)->nullable();
-        $table->string('country_code', 2);
-        $table->decimal('latitude', 10, 7);
-        $table->decimal('longitude', 10, 7);
-        $table->timestamps();
+            $table->string('region_id', 50)->primary();
+            $table->string('region_name');
+            $table->string('region_type', 20)->nullable();
+            $table->string('country_code', 5);
+            $table->string('country_name')->nullable();
+            $table->decimal('latitude', 10, 7);
+            $table->decimal('longitude', 10, 7);
+            $table->string('source')->nullable();
+            $table->integer('source_year')->nullable();
+            $table->text('license')->nullable();
 
-        $table->index(['country_code', 'region_name']);
+            $table->index(['country_code', 'region_name']);
         });
     }
 

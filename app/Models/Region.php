@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Region extends Model
 {
-    protected $table = 'region'; // Pastikan nama tabel sesuai di database
+    protected $table = 'regions'; 
 
-    protected $primaryKey = 'region_id'; // Kunci utamanya adalah region_id, bukan id
+    protected $primaryKey = 'region_id'; 
 
-    public $incrementing = false; // Set false jika region_id bukan auto-increment integer (sesuaikan jika bertipe angka auto-increment)
-    protected $keyType = 'string'; // Ubah ke 'int' jika region_id berupa angka
+    public $incrementing = false; 
+    protected $keyType = 'string';
+    public $timestamps = false; 
 
     protected $fillable = [
         'region_id',
