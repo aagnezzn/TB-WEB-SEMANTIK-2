@@ -6,20 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Region extends Model
 {
-    protected $table = 'regions'; 
+    protected $table = 'regions';
 
-    protected $primaryKey = 'region_id'; 
+    protected $primaryKey = 'id';
 
-    public $incrementing = false; 
-    protected $keyType = 'string';
-    public $timestamps = false; 
+    public $incrementing = true;
 
-    protected $fillable = [
-        'region_id',
-        'region_name',
-        'region_type',
-        'country_code',
-        'latitude',
-        'longitude',
-    ];
+    protected $keyType = 'int';
+
+    protected $guarded = [];
 }

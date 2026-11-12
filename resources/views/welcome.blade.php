@@ -230,29 +230,54 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const marker = L.marker([latitude, longitude])
-            .addTo(map);
+        const marker = L.marker([latitude, longitude]).addTo(map);
 
-        // Membuat popup dengan aman
-        const popup = document.createElement('div');
+const popup = document.createElement('div');
 
-        const title = document.createElement('strong');
-        title.textContent = airport.name ?? 'Nama bandara tidak tersedia';
+const title = document.createElement('strong');
+title.textContent = airport.name ?? 'Nama bandara tidak tersedia';
 
-        const iata = document.createElement('p');
-        iata.textContent = 'IATA: ' + (airport.iata_code ?? '-');
+const iata = document.createElement('p');
+iata.textContent = 'IATA: ' + (airport.iata_code ?? '-');
 
-        const icao = document.createElement('p');
-        icao.textContent = 'ICAO: ' + (airport.icao_code ?? '-');
+const icao = document.createElement('p');
+icao.textContent = 'ICAO: ' + (airport.icao_code ?? '-');
 
-        const location = document.createElement('p');
-        location.textContent =
-            (airport.municipality ?? '-') + ', ' +
-            (airport.iso_country ?? '-');
+const location = document.createElement('p');
+location.textContent =
+    (airport.municipality ?? '-') + ', ' +
+    (airport.iso_country ?? '-');
 
-        popup.append(title, iata, icao, location);
+// Mengambil ID bandara
+const airportId =
+    airport.airport_id ??
+    airport.id ??
+    airport.ident ??
+    airport.iata_code;
 
-        marker.bindPopup(popup);
+// Membuat tombol lihat profil
+if (airportId) {
+    const profileButton = document.createElement('a');
+
+    profileButton.href =
+        '/airports/' + encodeURIComponent(airportId);
+
+    profileButton.textContent = 'Lihat Profil Bandara';
+
+    profileButton.className =
+        'inline-block mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold';
+
+    popup.appendChild(profileButton);
+}
+
+popup.prepend(location);
+popup.prepend(icao);
+popup.prepend(iata);
+popup.prepend(title);
+
+marker.bindPopup(popup);
+
+markers.push(marker);
 
         markers.push(marker);
     });

@@ -16,48 +16,95 @@ class RegionSeeder extends Seeder
             return;
         }
 
+        // Pemetaan ISO alpha-3 ke ISO alpha-2
+        $countryCodes = [
+            'IDN' => 'ID',
+            'MYS' => 'MY',
+            'SGP' => 'SG',
+            'THA' => 'TH',
+            'VNM' => 'VN',
+            'PHL' => 'PH',
+            'BRN' => 'BN',
+            'KHM' => 'KH',
+            'LAO' => 'LA',
+            'MMR' => 'MM',
+            'TLS' => 'TL',
+        ];
+
         $handle = fopen($path, 'r');
 
+        if (!$handle) {
+            $this->command->error('File CSV gagal dibuka.');
+            return;
+        }
+
         $header = fgetcsv($handle, 0, ',', '"', '');
-        $header[0] = preg_replace('/^\xEF\xBB\xBF/', '', $header[0]); // hapus BOM
+
+        if (!$header) {
+            fclose($handle);
+            $this->command->error('Header CSV tidak ditemukan.');
+            return;
+        }
+
+        // Menghapus BOM
+        $header[0] = preg_replace('/^\xEF\xBB\xBF/', '', $header[0]);
 
         $rows = [];
         $total = 0;
+        $skipped = 0;
 
         while (($line = fgetcsv($handle, 0, ',', '"', '')) !== false) {
+
             if (count($line) !== count($header)) {
-                continue; // lewati baris rusak/kosong
+                $skipped++;
+                continue;
             }
 
             $r = array_combine($header, $line);
 
+            $alpha3 = strtoupper(trim($r['country_code'] ?? ''));
+
+            // Konversi kode negara
+            if (!isset($countryCodes[$alpha3])) {
+                $skipped++;
+                continue;
+            }
+
+            if (
+                empty($r['region_name']) ||
+                !is_numeric($r['latitude'] ?? null) ||
+                !is_numeric($r['longitude'] ?? null)
+            ) {
+                $skipped++;
+                continue;
+            }
+
             $rows[] = [
-                'region_id'    => $r['region_id'],
-                'region_name'  => $r['region_name'],
-                'region_type'  => $r['region_type'],
-                'country_code' => $r['country_code'],
-                'country_name' => $r['country_name'],
+                'region_name'  => trim($r['region_name']),
+                'region_type'  => $r['region_type'] ?? null,
+                'country_code' => $countryCodes[$alpha3],
                 'latitude'     => (float) $r['latitude'],
                 'longitude'    => (float) $r['longitude'],
-                'source'       => $r['source'],
-                'source_year'  => (int) $r['source_year'],
-                'license'      => $r['license'],
+                'created_at'   => now(),
+                'updated_at'   => now(),
             ];
 
-            if (count($rows) === 500) {
+            if (count($rows) >= 500) {
                 DB::table('regions')->insert($rows);
+
                 $total += count($rows);
                 $rows = [];
             }
         }
 
-        if ($rows) {
+        if (!empty($rows)) {
             DB::table('regions')->insert($rows);
             $total += count($rows);
         }
 
         fclose($handle);
 
-        $this->command->info("Selesai: $total wilayah dimasukkan.");
+        $this->command->info("Berhasil memasukkan {$total} wilayah.");
+        $this->command->info("Baris dilewati: {$skipped}.");
     }
 }

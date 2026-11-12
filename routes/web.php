@@ -6,6 +6,7 @@ use App\Http\Controllers\AirportController;
 use App\Http\Controllers\AirportMapController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\AirportRecommendationController;
+use App\Http\Controllers\ChatbotController;
 
 // Rute Kategori Lokasi
 Route::get('/category/location', [AirportController::class, 'locationCategory'])->name('category.location');
@@ -27,6 +28,12 @@ Route::get('/airports/{id}', [AirportController::class, 'show'])->name('airports
 
 // Rute Chatbot
 Route::view('/chatbot', 'chatbot')->name('chatbot');
+
+// API untuk komunikasi chatbot dengan Laravel dan Fuseki
+Route::post('/chatbot/send', [
+    ChatbotController::class,
+    'chat'
+])->name('chatbot.send');
 
 // Rute Tes Fuseki (Bawaan)
 Route::get('/test-fuseki', function (FusekiService $fuseki) {
