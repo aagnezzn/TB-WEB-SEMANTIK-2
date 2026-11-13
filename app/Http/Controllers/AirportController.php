@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class AirportController extends Controller
 {
@@ -169,46 +171,55 @@ class AirportController extends Controller
     {
         $jsonPath = database_path('data/dataset_bandara_tubes.json');
 
-        $airports = [];
+        $airports = collect($this->getAirportsData());
 
-        if (file_exists($jsonPath)) {
-            $content = file_get_contents($jsonPath);
-            $content = preg_replace('/^\xEF\xBB\xBF/', '', $content);
+        $perPage = 10;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
-            $decoded = json_decode($content, true);
+        $currentItems = $airports
+            ->slice(($currentPage - 1) * $perPage, $perPage)
+            ->values();
 
-            if (is_array($decoded)) {
-                $airports = array_filter($decoded, function ($airport) {
-                    return !empty($airport['phone'])
-                        || !empty($airport['home_link'])
-                        || !empty($airport['wikipedia_link']);
-                });
-            }
-        }
+        $paginatedAirports = new LengthAwarePaginator(
+            $currentItems,
+            $airports->count(),
+            $perPage,
+            $currentPage,
+            [
+                'path' => LengthAwarePaginator::resolveCurrentPath(),
+                'query' => request()->query(),
+            ]
+        );
 
-        return view('airports.categories-phone', compact('airports'));
+        return view('airports.categories-phone', [
+            'airports' => $paginatedAirports
+        ]);
     }
 
     public function operationalCategory()
     {
-        $jsonPath = database_path('data/dataset_bandara_tubes.json');
+        $airports = collect($this->getAirportsData());
 
-        $airports = [];
+        $perPage = 10;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
-        if (file_exists($jsonPath)) {
-            $content = file_get_contents($jsonPath);
-            $content = preg_replace('/^\xEF\xBB\xBF/', '', $content);
+        $currentItems = $airports
+            ->slice(($currentPage - 1) * $perPage, $perPage)
+            ->values();
 
-            $decoded = json_decode($content, true);
+        $paginatedAirports = new LengthAwarePaginator(
+            $currentItems,
+            $airports->count(),
+            $perPage,
+            $currentPage,
+            [
+                'path' => LengthAwarePaginator::resolveCurrentPath(),
+                'query' => request()->query(),
+            ]
+        );
 
-            if (is_array($decoded)) {
-                $airports = array_filter($decoded, function ($airport) {
-                    return !empty($airport['scheduled_service'])
-                        || !empty($airport['type']);
-                });
-            }
-        }
-
-        return view('airports.categories-operational', compact('airports'));
+        return view('airports.categories-operational', [
+            'airports' => $paginatedAirports
+        ]);
     }
 }

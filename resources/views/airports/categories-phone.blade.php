@@ -73,6 +73,67 @@
                 </div>
             @endforelse
         </div>
+        <!-- Pagination -->
+        @if ($airports->lastPage() > 1)
+            @php
+                $current = $airports->currentPage();
+                $last = $airports->lastPage();
+
+                // Kelompok nomor halaman per 10 halaman
+                $start = floor(($current - 1) / 10) * 10 + 1;
+                $end = min($start + 9, $last);
+            @endphp
+
+            <div class="mt-10 flex justify-center items-center gap-2 flex-wrap">
+
+                {{-- First --}}
+                @if ($current > 1)
+                    <a href="{{ $airports->url(1) }}"
+                       class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">
+                        First
+                    </a>
+                @endif
+
+                {{-- Previous --}}
+                @if ($current > 1)
+                    <a href="{{ $airports->previousPageUrl() }}"
+                       class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">
+                        &laquo; Prev
+                    </a>
+                @endif
+
+                {{-- Nomor halaman --}}
+                @for ($page = $start; $page <= $end; $page++)
+                    @if ($page == $current)
+                        <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-[#7FA8D6] text-white font-bold text-sm shadow-md">
+                            {{ $page }}
+                        </span>
+                    @else
+                        <a href="{{ $airports->url($page) }}"
+                           class="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-600 font-semibold text-sm hover:bg-[#7FA8D6] hover:text-white transition">
+                            {{ $page }}
+                        </a>
+                    @endif
+                @endfor
+
+                {{-- Next --}}
+                @if ($current < $last)
+                    <a href="{{ $airports->nextPageUrl() }}"
+                       class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">
+                        Next &raquo;
+                    </a>
+                @endif
+
+                {{-- Last --}}
+                @if ($current < $last)
+                    <a href="{{ $airports->url($last) }}"
+                       class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">
+                        Last
+                    </a>
+                @endif
+
+            </div>
+        @endif
     </main>
 
     <!-- Footer -->

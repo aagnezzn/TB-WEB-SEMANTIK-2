@@ -1,8 +1,17 @@
 <!-- Navbar -->
 <nav class="w-full bg-[#7FA8D6]/90 backdrop-blur-md py-4 px-8 flex justify-between items-center shadow-md sticky top-0 z-40">
+    <a href="{{ route('home') }}"
+   class="flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform duration-300">
+
+    <img src="{{ asset('images/icon.svg') }}"
+         alt="Logo AeroFind"
+         class="h-10 w-10 object-contain">
+
     <div class="text-white font-bold text-2xl tracking-wide cursor-pointer hover:scale-105 transition-transform duration-300">
         Aero<span class="text-[#FFE08A]">Search</span>
     </div>
+
+    </a>
 
     <div class="flex items-center space-x-6 text-white font-semibold">
         @if(request()->routeIs('chatbot'))
