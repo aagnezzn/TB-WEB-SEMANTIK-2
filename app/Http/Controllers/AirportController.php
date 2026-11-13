@@ -8,13 +8,12 @@ class AirportController extends Controller
 {
     private function getAirportsData()
     {
-        // Daftar kemungkinan lokasi file dataset
+        // Daftar kemungkinan lokasi file dataset (disesuaikan ke database/data/)
         $possiblePaths = [
-            storage_path('app/dataset_bandara_tubes'),
+            database_path('data/dataset_bandara_tubes.json'),
+            database_path('data/dataset_bandara_tubes'),
+            database_path('data/dataset_bandara_tubes.txt'),
             storage_path('app/dataset_bandara_tubes.json'),
-            storage_path('app/dataset_bandara_tubes.txt'),
-            storage_path('app/airports.json'),
-            public_path('dataset_bandara_tubes'),
             public_path('dataset_bandara_tubes.json'),
         ];
 
@@ -43,7 +42,8 @@ class AirportController extends Controller
     {
         $search = $request->input('search');
 
-        $jsonPath = storage_path('app/dataset_bandara_tubes.json');
+        // Menggunakan path baru di database/data/
+        $jsonPath = database_path('data/dataset_bandara_tubes.json');
 
         $airports = [];
 
@@ -61,7 +61,6 @@ class AirportController extends Controller
         }
 
         // Ambil data bandara yang memiliki koordinat valid
-        // Diletakkan sebelum pencarian agar peta tetap menampilkan semua bandara
         $mapAirports = array_values(array_filter($airports, function ($airport) {
             return isset($airport['latitude_deg'], $airport['longitude_deg'])
                 && is_numeric($airport['latitude_deg'])
@@ -168,7 +167,7 @@ class AirportController extends Controller
 
     public function phoneCategory()
     {
-        $jsonPath = storage_path('app/dataset_bandara_tubes.json');
+        $jsonPath = database_path('data/dataset_bandara_tubes.json');
 
         $airports = [];
 
@@ -179,7 +178,6 @@ class AirportController extends Controller
             $decoded = json_decode($content, true);
 
             if (is_array($decoded)) {
-                // Bandara yang memiliki informasi kontak atau website
                 $airports = array_filter($decoded, function ($airport) {
                     return !empty($airport['phone'])
                         || !empty($airport['home_link'])
@@ -193,7 +191,7 @@ class AirportController extends Controller
 
     public function operationalCategory()
     {
-        $jsonPath = storage_path('app/dataset_bandara_tubes.json');
+        $jsonPath = database_path('data/dataset_bandara_tubes.json');
 
         $airports = [];
 
@@ -204,7 +202,6 @@ class AirportController extends Controller
             $decoded = json_decode($content, true);
 
             if (is_array($decoded)) {
-                // Bandara berdasarkan informasi layanan atau tipe
                 $airports = array_filter($decoded, function ($airport) {
                     return !empty($airport['scheduled_service'])
                         || !empty($airport['type']);
