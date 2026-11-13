@@ -106,7 +106,8 @@ class ChatbotController extends Controller
                     'deskripsi bandara',
                     'spesifikasi bandara',
                     'berikan informasi mengenai',
-                    'apa itu bandara'
+                    'apa itu bandara',
+                    'berikan informasi tentang'
                 ])) {
                     return response()->json([
                         'reply' => $this->searchAirportProfile($message)
@@ -130,7 +131,7 @@ class ChatbotController extends Controller
                     ])
                 ) {
                     return response()->json([
-                        'reply' => $this->searchIndonesiaAirports()
+                        'reply' => $this->searchIndonesiaAirports($message)
                     ]);
                 }
 
@@ -445,6 +446,7 @@ if (
      */
     
     
+    
     private function searchAirportProfile(string $message): string
     {
         // Bersihkan kata-kata instruksi dari pertanyaan.
@@ -473,39 +475,201 @@ if (
             return 'Silakan sebutkan nama bandara yang ingin dicari.';
         }
 
-        // Cari berdasarkan nama dan kode bandara.
-        $airport = Airport::query()
-            ->where('name', 'LIKE', '%' . $searchName . '%')
-            ->orWhere('iata_code', strtoupper($searchName))
-            ->orWhere('icao_code', strtoupper($searchName))
-            ->first();
+        // Ubah teks pencarian menjadi literal SPARQL yang aman.
+        $searchLiteral = json_encode(
+            $searchName,
+            JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+        );
 
-        if (!$airport) {
-            return "Maaf, saya tidak menemukan bandara dengan nama {$searchName} di database AeroFind.";
+        $searchCode = strtoupper($searchName);
+
+        $codeLiteral = json_encode(
+            $searchCode,
+            JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+        );
+
+        $query = "
+            PREFIX af: <https://aerofind.example/id/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            SELECT DISTINCT
+                ?name
+                ?airportId
+                ?ident
+                ?airportType
+                ?countryCode
+                ?regionCode
+                ?municipality
+                ?scheduledService
+                ?icaoCode
+                ?iataCode
+                ?latitude
+                ?longitude
+                ?elevationFt
+
+            WHERE {
+                GRAPH <https://aerofind.example/graph/airports> {
+
+                    ?airport rdf:type af:Airport ;
+                            rdfs:label ?name .
+
+                    OPTIONAL { ?airport af:airportId ?airportId }
+                    OPTIONAL { ?airport af:ident ?ident }
+                    OPTIONAL { ?airport af:airportType ?airportType }
+                    OPTIONAL { ?airport af:countryCode ?countryCode }
+                    OPTIONAL { ?airport af:regionCode ?regionCode }
+                    OPTIONAL { ?airport af:municipality ?municipality }
+                    OPTIONAL { ?airport af:scheduledService ?scheduledService }
+                    OPTIONAL { ?airport af:icaoCode ?icaoCode }
+                    OPTIONAL { ?airport af:iataCode ?iataCode }
+                    OPTIONAL { ?airport af:latitude ?latitude }
+                    OPTIONAL { ?airport af:longitude ?longitude }
+                    OPTIONAL { ?airport af:elevationFt ?elevationFt }
+
+                    FILTER (
+                        CONTAINS(LCASE(STR(?name)), $searchLiteral)
+                        ||
+                        STR(?iataCode) = $codeLiteral
+                        ||
+                        STR(?icaoCode) = $codeLiteral
+                    )
+                }
+            }
+
+            LIMIT 5
+        ";
+
+        // Ambil hasil dari Fuseki.
+        $result = $this->fuseki->select($query);
+
+        $bindings = $result['results']['bindings'] ?? [];
+
+        if (empty($bindings)) {
+            return "Maaf, saya tidak menemukan bandara dengan kata kunci {$searchName} di dataset RDF AeroFind.";
         }
 
-        $format = fn ($value) =>
-            ($value !== null && $value !== '') ? $value : 'Tidak tersedia';
+        // Jika ada beberapa hasil, tampilkan daftar agar tidak salah memilih.
+        if (count($bindings) > 1) {
+            $reply = "Saya menemukan beberapa bandara yang cocok:\n\n";
+
+            foreach ($bindings as $index => $item) {
+                $name = $item['name']['value'] ?? '-';
+                $iata = $item['iataCode']['value'] ?? '-';
+
+                $reply .= ($index + 1) . ". {$name}\n";
+                $reply .= "   Kode IATA: {$iata}\n\n";
+            }
+
+            $reply .= 'Silakan gunakan nama bandara atau kode IATA yang lebih spesifik.';
+
+            return $reply;
+        }
+
+        $airport = $bindings[0];
+
+        // Mengambil nilai dari hasil SPARQL.
+        $getValue = function ($key) use ($airport) {
+            return $airport[$key]['value'] ?? 'Tidak tersedia';
+        };
 
         return
-            "Berikut adalah informasi tentang bandara {$format($airport->name)}:\n\n" .
-            "Nama: {$format($airport->name)}\n" .
-            "Kode IATA: {$format($airport->iata_code)}\n" .
-            "Kode ICAO: {$format($airport->icao_code)}\n" .
-            "Tipe: {$format($airport->type)}\n" .
-            "Kota/Kabupaten: {$format($airport->municipality)}\n" .
-            "Negara: {$format($airport->iso_country)}\n" .
-            "Latitude: {$format($airport->latitude_deg)}\n" .
-            "Longitude: {$format($airport->longitude_deg)}\n" .
-            "Layanan terjadwal: {$format($airport->scheduled_service)}\n\n" .
-            "Data diperoleh dari database AeroFind.";
+            "Berikut adalah informasi tentang bandara {$getValue('name')}:\n\n" .
+            "ID Bandara: {$getValue('airportId')}\n" .
+            "Nama: {$getValue('name')}\n" .
+            "Kode IATA: {$getValue('iataCode')}\n" .
+            "Kode ICAO: {$getValue('icaoCode')}\n" .
+            "Identifikasi: {$getValue('ident')}\n" .
+            "Tipe: {$getValue('airportType')}\n" .
+            "Kota/Kabupaten: {$getValue('municipality')}\n" .
+            "Negara: {$getValue('countryCode')}\n" .
+            "Kode Wilayah: {$getValue('regionCode')}\n" .
+            "Latitude: {$getValue('latitude')}\n" .
+            "Longitude: {$getValue('longitude')}\n" .
+            "Elevasi (ft): {$getValue('elevationFt')}\n" .
+            "Layanan terjadwal: {$getValue('scheduledService')}\n\n" .
+            "Sumber data: Dataset RDF AeroFind melalui Apache Jena Fuseki.";
     }
+
 
     /**
      * Placeholder pencarian bandara Indonesia.
      */
-    private function searchIndonesiaAirports(): string
+    
+    private function searchIndonesiaAirports(string $message): string
     {
-        return 'Pencarian daftar bandara Indonesia akan menggunakan query SPARQL pada dataset Fuseki.';
+        $isCountQuestion = str_contains(
+            mb_strtolower($message),
+            'berapa jumlah'
+        );
+
+        if ($isCountQuestion) {
+            $query = "
+                PREFIX af: <https://aerofind.example/id/>
+                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+                SELECT (COUNT(DISTINCT ?airport) AS ?total)
+
+                WHERE {
+                    GRAPH <https://aerofind.example/graph/airports> {
+                        ?airport rdf:type af:Airport ;
+                                af:countryCode \"ID\" .
+                    }
+                }
+            ";
+
+            $result = $this->fuseki->select($query);
+
+            $total = $result['results']['bindings'][0]['total']['value'] ?? '0';
+
+            return "Berdasarkan dataset RDF AeroFind, terdapat {$total} data bandara di Indonesia.";
+        }
+
+        $query = "
+            PREFIX af: <https://aerofind.example/id/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            SELECT DISTINCT ?name ?iataCode ?municipality
+
+            WHERE {
+                GRAPH <https://aerofind.example/graph/airports> {
+                    ?airport rdf:type af:Airport ;
+                            rdfs:label ?name ;
+                            af:countryCode \"ID\" .
+
+                    OPTIONAL { ?airport af:iataCode ?iataCode }
+                    OPTIONAL { ?airport af:municipality ?municipality }
+                }
+            }
+
+            ORDER BY ?name
+            LIMIT 10
+        ";
+
+        $result = $this->fuseki->select($query);
+
+        $bindings = $result['results']['bindings'] ?? [];
+
+        if (empty($bindings)) {
+            return 'Belum ditemukan data bandara Indonesia pada dataset RDF AeroFind.';
+        }
+
+        $reply = "Berikut beberapa bandara di Indonesia berdasarkan dataset RDF AeroFind:\n\n";
+
+        foreach ($bindings as $index => $airport) {
+            $name = $airport['name']['value'] ?? '-';
+            $iata = $airport['iataCode']['value'] ?? '-';
+            $municipality = $airport['municipality']['value'] ?? '-';
+
+            $reply .= ($index + 1) . ". {$name}\n";
+            $reply .= "   Kode IATA: {$iata}\n";
+            $reply .= "   Lokasi: {$municipality}\n\n";
+        }
+
+        $reply .= 'Menampilkan maksimal 10 bandara. Data diperoleh dari Apache Jena Fuseki.';
+
+        return $reply;
     }
+
 }
