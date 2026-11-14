@@ -89,11 +89,13 @@
 
 
     <!-- Google Maps Section -->
-    
-    <!-- Peta Persebaran Bandara -->
+
+    <!-- PETA PERSEBARAN BANDARA -->
     <section id="peta" class="w-full px-4 md:px-8 py-12">
+
         <div class="max-w-6xl mx-auto">
 
+            <!-- Judul Peta -->
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-[#7FA8D6] mb-3">
                     Peta Persebaran Bandara
@@ -104,30 +106,63 @@
                 </p>
             </div>
 
+            <!-- Container Peta -->
             <div class="bg-white/80 backdrop-blur-md p-3 md:p-5
                         rounded-3xl border-2 border-white shadow-xl">
 
                 <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+
                     <span class="font-semibold text-slate-700">
                         Lokasi Bandara
                     </span>
 
                     <span id="airport-count"
-                          class="text-sm text-[#7FA8D6] font-semibold">
+                        class="text-sm text-[#7FA8D6] font-semibold">
                         Memuat data bandara...
                     </span>
+
                 </div>
 
                 <div id="airport-map"
-                     class="w-full h-[450px] md:h-[550px] rounded-2xl z-0">
+                    class="w-full h-[450px] md:h-[550px] rounded-2xl z-0">
                 </div>
 
                 <p class="text-xs text-slate-500 mt-3">
                     Peta menggunakan OpenStreetMap dan Leaflet.
+                    Klik peta untuk menentukan lokasi pencarian.
                 </p>
+
+            </div>
+
+
+            <!-- REKOMENDASI BANDARA -->
+            <div class="bg-white/90 backdrop-blur-md
+                        rounded-3xl border-2 border-white
+                        shadow-xl p-5 md:p-6 mt-8">
+
+                <div class="mb-6">
+
+                    <h2 class="text-2xl font-bold text-[#7FA8D6] mb-2">
+                        5 Rekomendasi Bandara Terdekat
+                    </h2>
+
+                    <p id="recommendation-status"
+                    class="text-sm text-slate-500">
+                        Klik peta untuk mencari 5 bandara terdekat.
+                    </p>
+
+                </div>
+
+                <!-- GRID REKOMENDASI -->
+                <div id="recommendation-list"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+
+                </div>
+
             </div>
 
         </div>
+
     </section>
 
 
@@ -194,29 +229,100 @@
 
 
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
+
+    // ==========================================
+    // 1. DATA DAN ELEMEN HTML
+    // ==========================================
 
     const airports = @js($mapAirports ?? []);
 
-    const countElement = document.getElementById('airport-count');
+    const countElement =
+        document.getElementById('airport-count');
 
-    // Periksa apakah Leaflet berhasil dimuat
-    if (typeof L === 'undefined') {
-        countElement.textContent = 'Leaflet gagal dimuat.';
+    const statusElement =
+        document.getElementById('recommendation-status');
+
+    const recommendationList =
+        document.getElementById('recommendation-list');
+
+    // Periksa elemen peta
+    const mapElement = document.getElementById('airport-map');
+
+    if (!mapElement) {
+        console.error('Elemen airport-map tidak ditemukan.');
         return;
     }
 
-    // Inisialisasi peta Asia Tenggara
-    const map = L.map('airport-map').setView([3, 115], 4);
+    if (typeof L === 'undefined') {
+        if (countElement) {
+            countElement.textContent = 'Leaflet gagal dimuat.';
+        }
+        return;
+    }
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+
+    // ==========================================
+    // 2. BATAS PETA ASIA TENGGARA
+    // ==========================================
+
+    const southeastAsiaBounds = L.latLngBounds(
+        [-13, 90],
+        [28, 142]
+    );
+
+
+    // ==========================================
+    // 3. INISIALISASI PETA
+    // ==========================================
+
+    const map = L.map('airport-map', {
+        worldCopyJump: false,
+        maxBounds: southeastAsiaBounds,
+        maxBoundsViscosity: 1.0,
+        zoomSnap: 1,
+        zoomDelta: 1,
+        inertia: false
+    });
+
+    map.fitBounds(southeastAsiaBounds, {
+        padding: [20, 20],
+        animate: false
+    });
+
+    const minZoomAsia = map.getZoom();
+
+    map.setMinZoom(minZoomAsia);
+    map.setMaxZoom(19);
+
+    L.tileLayer(
+        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            minZoom: minZoomAsia,
+            maxZoom: 19,
+            noWrap: true,
+            attribution: '&copy; OpenStreetMap contributors'
+        }
+    ).addTo(map);
+
+
+    // ==========================================
+    // 4. PENAMPUNG MARKER
+    // ==========================================
 
     const markers = [];
 
-    // Membuat marker dari dataset bandara
+    const airportMarkers = new Map();
+
+    // Layer khusus penanda 5 rekomendasi
+    const recommendationLayer = L.layerGroup().addTo(map);
+
+
+    // ==========================================
+    // 5. MEMBUAT MARKER SELURUH BANDARA
+    // ==========================================
+
     airports.forEach(function (airport) {
 
         const latitude = Number(airport.latitude_deg);
@@ -231,70 +337,418 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const marker = L.marker([latitude, longitude]).addTo(map);
+        const marker = L.marker([
+            latitude,
+            longitude
+        ]).addTo(map);
 
-const popup = document.createElement('div');
 
-const title = document.createElement('strong');
-title.textContent = airport.name ?? 'Nama bandara tidak tersedia';
+        // Popup informasi bandara
+        const popup = document.createElement('div');
 
-const iata = document.createElement('p');
-iata.textContent = 'IATA: ' + (airport.iata_code ?? '-');
+        const title = document.createElement('strong');
+        title.textContent =
+            airport.name ?? 'Nama bandara tidak tersedia';
 
-const icao = document.createElement('p');
-icao.textContent = 'ICAO: ' + (airport.icao_code ?? '-');
+        const iata = document.createElement('p');
+        iata.textContent =
+            'IATA: ' + (airport.iata_code ?? '-');
 
-const location = document.createElement('p');
-location.textContent =
-    (airport.municipality ?? '-') + ', ' +
-    (airport.iso_country ?? '-');
+        const icao = document.createElement('p');
+        icao.textContent =
+            'ICAO: ' + (airport.icao_code ?? '-');
 
-// Mengambil ID bandara
-const airportId =
-    airport.airport_id ??
-    airport.id ??
-    airport.ident ??
-    airport.iata_code;
+        const location = document.createElement('p');
+        location.textContent =
+            (airport.municipality ?? '-') + ', ' +
+            (airport.iso_country ?? '-');
 
-// Membuat tombol lihat profil
-if (airportId) {
-    const profileButton = document.createElement('a');
+        const airportId =
+            airport.airport_id ??
+            airport.id ??
+            airport.ident ??
+            airport.iata_code;
 
-    profileButton.href =
-        '/airports/' + encodeURIComponent(airportId);
+        popup.appendChild(title);
+        popup.appendChild(iata);
+        popup.appendChild(icao);
+        popup.appendChild(location);
 
-    profileButton.textContent = 'Lihat Profil Bandara';
 
-    profileButton.className =
-        'inline-block mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold';
+        // Tombol lihat profil bandara
+        if (airportId) {
 
-    popup.appendChild(profileButton);
-}
+            const profileButton =
+                document.createElement('a');
 
-popup.prepend(location);
-popup.prepend(icao);
-popup.prepend(iata);
-popup.prepend(title);
+            profileButton.href =
+                '/airports/' + encodeURIComponent(airportId);
 
-marker.bindPopup(popup);
+            profileButton.textContent =
+                'Lihat Profil Bandara';
 
-markers.push(marker);
+            profileButton.className =
+                'inline-block mt-3 px-4 py-2 ' +
+                'bg-[#7FA8D6] hover:bg-[#6893C7] ' +
+                'text-white rounded-xl text-sm font-semibold ' +
+                'transition duration-300 shadow-sm hover:shadow-md';
+
+            popup.appendChild(profileButton);
+        }
+
+        marker.bindPopup(popup);
 
         markers.push(marker);
+
+        airportMarkers.set(String(airportId), marker);
+
     });
 
-    // Tampilkan jumlah marker
-    countElement.textContent =
-        markers.length + ' bandara ditemukan';
 
-    // Atur zoom agar semua bandara terlihat
-    if (markers.length > 0) {
-        const group = L.featureGroup(markers);
-        map.fitBounds(group.getBounds().pad(0.1));
-    } else {
+    // ==========================================
+    // 6. JUMLAH BANDARA
+    // ==========================================
+
+    if (countElement) {
+
         countElement.textContent =
-            'Tidak ada data koordinat bandara.';
+            markers.length + ' bandara ditemukan';
+
     }
+
+
+    // ==========================================
+    // 7. MARKER LOKASI PENGGUNA
+    // ==========================================
+
+    let userMarker = null;
+
+    function showUserLocation(latitude, longitude) {
+
+        const userPosition = [
+            latitude,
+            longitude
+        ];
+
+        // Marker lokasi pengguna
+        userMarker = L.circleMarker(userPosition, {
+            radius: 9,
+            color: '#ffffff',
+            weight: 3,
+            fillColor: '#2563eb',
+            fillOpacity: 1
+        }).addTo(map);
+
+        userMarker.bindPopup(
+            '<strong>Lokasi Anda</strong>'
+        );
+
+        // Pastikan lokasi berada di dalam batas peta
+        if (southeastAsiaBounds.contains(userPosition)) {
+
+            map.setView(
+                userPosition,
+                Math.max(minZoomAsia, 8)
+            );
+
+        } else {
+
+            if (statusElement) {
+                statusElement.textContent =
+                    'Lokasi Anda berada di luar cakupan peta Asia Tenggara.';
+            }
+
+        }
+
+    }
+
+
+    // ==========================================
+    // 8. MENAMPILKAN 5 REKOMENDASI
+    // ==========================================
+
+    function displayRecommendations(data, userLat, userLng) {
+
+        recommendationList.innerHTML = '';
+
+        recommendationLayer.clearLayers();
+
+        const recommendations = data.recommendations ?? [];
+
+        if (recommendations.length === 0) {
+
+            statusElement.textContent =
+                'Tidak ditemukan rekomendasi bandara.';
+
+            return;
+        }
+
+        statusElement.textContent =
+            'Ditemukan ' + recommendations.length +
+            ' rekomendasi bandara berdasarkan lokasi Anda.';
+
+
+        recommendations.forEach(function (airport, index) {
+
+            const latitude = Number(airport.latitude_deg);
+            const longitude = Number(airport.longitude_deg);
+
+            const airportId =
+                airport.airport_id ??
+                airport.id ??
+                airport.ident ??
+                airport.iata_code;
+
+            const distance =
+                Number(airport.distance_km);
+
+            // Penanda khusus bandara rekomendasi
+            if (
+                Number.isFinite(latitude) &&
+                Number.isFinite(longitude) &&
+                latitude >= -90 && latitude <= 90 &&
+                longitude >= -180 && longitude <= 180 &&
+                southeastAsiaBounds.contains([latitude, longitude])
+            ) {
+
+                const recommendationMarker =
+                    L.circleMarker(
+                        [latitude, longitude],
+                        {
+                            radius: 8,
+                            color: '#ffffff',
+                            weight: 2,
+                            fillColor: '#ef4444',
+                            fillOpacity: 1
+                        }
+                    );
+
+                recommendationMarker.bindPopup(
+                    '<strong>' +
+                    String(airport.name ?? 'Bandara') +
+                    '</strong><br>Rekomendasi #' +
+                    (index + 1)
+                );
+
+                recommendationMarker.addTo(
+                    recommendationLayer
+                );
+
+            }
+
+
+            // Membuat kartu rekomendasi
+            const card = document.createElement('div');
+
+            card.className =
+            'border border-slate-200 rounded-xl p-4 ' +
+            'hover:shadow-lg hover:border-[#7FA8D6] ' +
+            'transition duration-300 bg-white ' +
+            'h-full flex flex-col';
+
+
+            const heading = document.createElement('h3');
+
+            heading.className =
+                'font-semibold text-gray-800';
+
+            heading.textContent =
+                (index + 1) + '. ' +
+                (airport.name ?? 'Nama bandara tidak tersedia');
+
+
+            const details = document.createElement('p');
+
+            details.className =
+                'text-sm text-gray-500 mt-1';
+
+            details.textContent =
+                'IATA: ' + (airport.iata_code ?? '-') +
+                ' | ' +
+                (airport.municipality ?? '-') +
+                ' | ' +
+                (airport.type ?? '-');
+
+
+            const distanceText = document.createElement('p');
+
+            distanceText.className =
+                'text-sm font-semibold text-blue-600 mt-2';
+
+            distanceText.textContent =
+                Number.isFinite(distance)
+                    ? distance.toFixed(2) +
+                      ' km dari lokasi Anda'
+                    : 'Jarak tidak tersedia';
+
+
+            card.appendChild(heading);
+            card.appendChild(details);
+            card.appendChild(distanceText);
+
+
+            // Tombol lihat profil
+            if (airportId) {
+
+                const profileButton =
+                    document.createElement('a');
+
+                profileButton.href =
+                    '/airports/' +
+                    encodeURIComponent(airportId);
+
+                profileButton.textContent =
+                    'Lihat Profil';
+
+                profileButton.className =
+                    'inline-block mt-3 mr-2 px-3 py-2 ' +
+                    'bg-[#7FA8D6] hover:bg-[#6893C7] ' +
+                    'text-white rounded-xl text-sm font-semibold ' +
+                    'transition duration-300 shadow-sm hover:shadow-md';
+                card.appendChild(profileButton);
+
+            }
+
+
+            // Tombol navigasi Google Maps
+            if (
+                Number.isFinite(latitude) &&
+                Number.isFinite(longitude)
+            ) {
+
+                const navigationButton =
+                    document.createElement('a');
+
+                navigationButton.href =
+                    'https://www.google.com/maps/dir/?api=1' +
+                    '&origin=' + userLat + ',' + userLng +
+                    '&destination=' + latitude + ',' + longitude +
+                    '&travelmode=driving';
+
+                navigationButton.target = '_blank';
+
+                navigationButton.rel = 'noopener noreferrer';
+
+                navigationButton.textContent =
+                    'Navigasi ke Bandara';
+
+                navigationButton.className =
+                    'inline-block mt-3 px-3 py-2 ' +
+                    'bg-[#FFE08A] hover:bg-[#FFD66B] ' +
+                    'text-slate-700 rounded-xl text-sm font-semibold ' +
+                    'transition duration-300 shadow-sm hover:shadow-md';
+                    
+                card.appendChild(navigationButton);
+
+            }
+
+
+            recommendationList.appendChild(card);
+
+        });
+
+    }
+
+
+    // ==========================================
+    // 9. MENGAMBIL REKOMENDASI DARI LARAVEL
+    // ==========================================
+
+    async function getRecommendations(latitude, longitude) {
+
+        try {
+
+            statusElement.textContent =
+                'Mencari 5 bandara terdekat...';
+
+            const response = await fetch(
+                `/api/recommendations/nearest?latitude=${latitude}&longitude=${longitude}`,
+                {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }
+            );
+
+            if (!response.ok) {
+
+                throw new Error(
+                    'HTTP Error: ' + response.status
+                );
+
+            }
+
+            const data = await response.json();
+
+            if (!data.success) {
+
+                throw new Error(
+                    'Gagal mengambil rekomendasi bandara.'
+                );
+
+            }
+
+            displayRecommendations(
+                data,
+                latitude,
+                longitude
+            );
+
+        } catch (error) {
+
+            console.error(
+                'Kesalahan rekomendasi:',
+                error
+            );
+
+            statusElement.textContent =
+                'Gagal memuat rekomendasi bandara.';
+
+        }
+
+    }
+
+
+    
+    // ==========================================
+    // MEMILIH LOKASI MELALUI PETA LEAFLET
+    // ==========================================
+
+    statusElement.textContent =
+        'Klik peta untuk mencari 5 bandara terdekat.';
+
+    map.on('click', function (event) {
+
+        const latitude = event.latlng.lat;
+        const longitude = event.latlng.lng;
+
+        // Hapus marker sebelumnya
+        if (userMarker) {
+            map.removeLayer(userMarker);
+        }
+
+        // Marker lokasi pilihan
+        userMarker = L.circleMarker(
+            [latitude, longitude],
+            {
+                radius: 9,
+                color: '#ffffff',
+                weight: 3,
+                fillColor: '#2563eb',
+                fillOpacity: 1
+            }
+        ).addTo(map);
+
+        userMarker.bindPopup(
+            '<strong>Lokasi Pencarian Anda</strong><br>' +
+            'Latitude: ' + latitude.toFixed(6) + '<br>' +
+            'Longitude: ' + longitude.toFixed(6)
+        ).openPopup();
+
+        // Ambil rekomendasi bandara
+        getRecommendations(latitude, longitude);
+
+    });
 
 });
 </script>

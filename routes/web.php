@@ -68,10 +68,10 @@ SPARQL;
 });
 
 // Rute untuk Rekomendasi Bandara Terdekat
-Route::get('/api/recommendations/nearest', [
-    RecommendationController::class,
-    'nearest'
-]);
+Route::get(
+    '/recommendations/nearest',
+    [AirportRecommendationController::class, 'nearest']
+);
 
 // Rute untuk daftar bandara untuk peta
 Route::get('/api/airports', [

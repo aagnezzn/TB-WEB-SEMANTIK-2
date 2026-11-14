@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peta Bandara - AeroFind</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
 
     <!-- 1. Tambahkan CSS Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -13,10 +14,11 @@
     <style>
         /* Atur tinggi peta supaya muncul di layar */
         #airport-map {
-            height: 500px;
             width: 100%;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            height: 650px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #e5e7eb;
         }
     </style>
 </head>
@@ -44,16 +46,44 @@
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
 
-            // Inisialisasi Peta Leaflet
-            const map = L.map('airport-map').setView([1.5, 110], 4);
+           // Batas kawasan Asia Tenggara
+            const southeastAsiaBounds = L.latLngBounds(
+                [-13, 90],  // Barat daya
+                [28, 142]   // Timur laut
+            );
 
-            L.tileLayer(
-                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                {
-                    maxZoom: 19,
-                    attribution: '&copy; OpenStreetMap contributors'
-                }
-            ).addTo(map);
+            // Buat peta tanpa pengulangan dunia
+            const map = L.map('airport-map', {
+                worldCopyJump: false,
+                maxBounds: southeastAsiaBounds,
+                maxBoundsViscosity: 1.0,
+                zoomSnap: 1,
+                zoomDelta: 1,
+                inertia: false,
+                zoomAnimation: true
+            });
+
+            // Tampilkan kawasan Asia Tenggara
+            map.fitBounds(southeastAsiaBounds, {
+                padding: [20, 20],
+                animate: false
+            });
+
+            // Kunci zoom minimum berdasarkan tampilan awal
+            const southeastAsiaMinZoom = map.getZoom();
+
+            map.setMinZoom(southeastAsiaMinZoom);
+            map.setMaxZoom(19);
+
+            // Terapkan batas navigasi
+            map.setMaxBounds(southeastAsiaBounds);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            minZoom: southeastAsiaMinZoom,
+            maxZoom: 19,
+            noWrap: true,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
 
             // 1. Ambil data bandara dan pasang marker ke peta
             try {

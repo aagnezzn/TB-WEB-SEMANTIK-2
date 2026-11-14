@@ -2,60 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Airport;
-use App\Models\Region;
+use App\Services\AirportRecommendationService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AirportRecommendationController extends Controller
 {
+    protected $recommendationService;
+
+    public function __construct(
+        AirportRecommendationService $recommendationService
+    ) {
+        $this->recommendationService = $recommendationService;
+    }
+
     public function nearest(Request $request)
     {
         $validated = $request->validate([
-            'region_id' => ['required', 'exists:regions,id'],
+            'latitude' => ['required', 'numeric', 'between:-90,90'],
+            'longitude' => ['required', 'numeric', 'between:-180,180'],
         ]);
 
-        $region = Region::findOrFail($validated['region_id']);
+        $lat = (float) $validated['latitude'];
+        $lng = (float) $validated['longitude'];
 
-        $lat = (float) $region->latitude;
-        $lng = (float) $region->longitude;
-
-        $distanceFormula = '
-            6371 * 2 * ASIN(
-                SQRT(
-                    POWER(SIN(RADIANS(latitude_deg - ?) / 2), 2)
-                    +
-                    COS(RADIANS(?))
-                    * COS(RADIANS(latitude_deg))
-                    * POWER(SIN(RADIANS(longitude_deg - ?) / 2), 2)
-                )
-            )
-        ';
-
-        $airports = Airport::query()
-            ->whereNotNull('latitude_deg')
-            ->whereNotNull('longitude_deg')
-            ->where('scheduled_service', 'yes')
-            ->select([
-                'airport_id',
-                'name',
-                'iata_code',
-                'icao_code',
-                'municipality',
-                'latitude_deg',
-                'longitude_deg',
-            ])
-            ->selectRaw(
-                "($distanceFormula) AS distance_km",
-                [$lat, $lat, $lng]
-            )
-            ->orderBy('distance_km')
-            ->limit(5)
-            ->get();
+        $airports = $this->recommendationService
+            ->nearestFromCoordinates($lat, $lng, 5);
 
         return response()->json([
-            'region' => $region->region_name,
-            'country' => $region->country_code,
+            'success' => true,
+
+            'user_location' => [
+                'latitude' => $lat,
+                'longitude' => $lng,
+            ],
+
+            'total' => $airports->count(),
+
             'recommendations' => $airports,
         ]);
     }
