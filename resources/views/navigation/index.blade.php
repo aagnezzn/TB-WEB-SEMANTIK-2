@@ -93,13 +93,6 @@
 
                 </div>
 
-                <!-- TUJUAN -->
-                <div class="mb-5">
-
-                    <label for="airport-select"
-                           class="block text-sm font-semibold mb-2">
-                        Bandara Tujuan
-                    </label>
 
                     <!-- PENCARIAN BANDARA TUJUAN -->
                     <div class="mb-5 relative">
@@ -158,8 +151,6 @@
                         </div>
 
                     </div>
-
-                </div>
 
                 <!-- TOMBOL -->
                 <button id="find-route"
