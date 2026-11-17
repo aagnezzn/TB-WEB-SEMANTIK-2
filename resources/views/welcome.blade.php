@@ -238,6 +238,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const airports = @js($mapAirports ?? []);
 
+    const navigationPageUrl = @json(route('navigation.index'));
+
     const countElement =
         document.getElementById('airport-count');
 
@@ -619,11 +621,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 const navigationButton =
                     document.createElement('a');
 
-                navigationButton.href =
-                    'https://www.google.com/maps/dir/?api=1' +
-                    '&origin=' + userLat + ',' + userLng +
-                    '&destination=' + latitude + ',' + longitude +
-                    '&travelmode=driving';
+                const navigationUrl = new URL(navigationPageUrl);
+
+                navigationUrl.searchParams.set('origin_lat', userLat);
+                navigationUrl.searchParams.set('origin_lng', userLng);
+
+                navigationUrl.searchParams.set('destination_lat', latitude);
+                navigationUrl.searchParams.set('destination_lng', longitude);
+
+                navigationUrl.searchParams.set('airport_id', airportId);
+                navigationUrl.searchParams.set(
+                    'airport_name',
+                    airport.name ?? 'Bandara tujuan'
+                );
+
+                navigationButton.href = navigationUrl.toString();
 
                 navigationButton.target = '_blank';
 

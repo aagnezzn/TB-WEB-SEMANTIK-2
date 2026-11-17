@@ -26,7 +26,7 @@
         @else
             <!-- Menu standar kalau lagi di halaman Welcome / Beranda -->
             <a href="{{ route('home') }}" class="hover:text-[#FFE08A] hover:-translate-y-1 transition-all duration-300">Beranda</a>
-            <a href="#peta" class="hover:text-[#FFE08A] hover:-translate-y-1 transition-all duration-300">Peta Interaktif</a>
+            <a href="{{ route('navigation.index') }}" class="hover:text-[#FFE08A] hover:-translate-y-1 transition-all duration-300">Peta Interaktif</a>
             <a href="#" class="hover:text-[#FFE08A] hover:-translate-y-1 transition-all duration-300">Data Bandara</a>
         @endif
     </div>

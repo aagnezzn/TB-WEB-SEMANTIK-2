@@ -7,6 +7,7 @@ use App\Http\Controllers\AirportMapController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\AirportRecommendationController;
 use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\NavigationController;
 
 // Rute Kategori Lokasi
 Route::get('/category/location', [AirportController::class, 'locationCategory'])->name('category.location');
@@ -84,3 +85,7 @@ Route::get('/api/regions', [
     AirportMapController::class,
     'regions'
 ]);
+
+// Rute untuk Navigasi Bandara
+Route::get('/navigasi', [NavigationController::class, 'index'])
+    ->name('navigation.index');
