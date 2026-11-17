@@ -128,7 +128,8 @@ class AirportController extends Controller
         $airport = null;
 
         foreach ($allAirports as $item) {
-            $itemId = $item['ident'] ?? $item['iata_code'] ?? $item['id'] ?? null;
+            // Tambahkan 'airport_id' di urutan pertama pengecekan agar cocok dengan URL dari peta
+            $itemId = $item['airport_id'] ?? $item['ident'] ?? $item['iata_code'] ?? $item['id'] ?? null;
 
             if ($itemId == $id || (string) $itemId === (string) $id) {
                 $airport = $item;

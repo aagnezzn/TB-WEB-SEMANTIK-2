@@ -23,7 +23,7 @@
             Direktori Bandara ASEAN
         </h1>
         <p class="text-lg text-slate-600 mb-8 text-center max-w-2xl">
-            Cari profil lengkap, alamat, kontak, hingga status operasional berbagai bandara di Asia Tenggara menggunakan bahasa alami.
+            Cari profil lengkap, alamat, website, hingga status operasional berbagai bandara di Asia Tenggara menggunakan bahasa alami.
         </p>
 
        <form action="{{ route('home') }}" method="GET" class="w-full max-w-3xl relative group">
