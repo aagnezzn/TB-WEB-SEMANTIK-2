@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use App\Models\Airport;
 
 class AirportController extends Controller
 {
@@ -124,15 +125,10 @@ class AirportController extends Controller
     public function show($id)
     {
         $allAirports = $this->getAirportsData();
-
         $airport = null;
 
         foreach ($allAirports as $item) {
-            $itemId = $item['airport_id']
-                ?? $item['id']
-                ?? $item['ident']
-                ?? $item['iata_code']
-                ?? null;
+            $itemId = $item['ident'] ?? $item['iata_code'] ?? $item['id'] ?? null;
 
             if ($itemId == $id || (string) $itemId === (string) $id) {
                 $airport = $item;
