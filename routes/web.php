@@ -27,6 +27,8 @@ Route::get('/airports/map', [AirportMapController::class, 'map'])->name('airport
 // Rute Halaman Detail Bandara
 Route::get('/airports/{id}', [AirportController::class, 'show'])->name('airports.show');
 
+Route::get('/airports/{ident}', [AirportController::class, 'show'])->name('airports.show');
+
 // Rute Chatbot
 Route::view('/chatbot', 'chatbot')->name('chatbot');
 

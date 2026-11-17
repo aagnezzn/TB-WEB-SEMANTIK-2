@@ -47,7 +47,7 @@
         </a>
             
            <a href="{{ route('category.phone') }}" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">
-   Nomor Telepon & Kontak
+   Website Resmi
         </a>
             
             <a href="{{ route('category.operational') }}" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">
@@ -69,14 +69,27 @@
                             {{ $airport['type'] ?? 'Airport' }}
                         </span>
                         <h3 class="text-xl font-bold text-slate-800 mb-2">{{ $airport['name'] }}</h3>
-                        <p class="text-sm text-slate-600 mb-1">📍 {{ $airport['municipality'] ?? '-' }}, {{ $airport['iso_country'] ?? '-' }}</p>
-                        <p class="text-sm text-slate-500 mb-4">✈️ ICAO / IATA: {{ $airport['ident'] }} / {{ $airport['iata_code'] ?? '-' }}</p>
+                        <p class="text-sm text-slate-600 mb-1 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-rose-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0  1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>{{ $airport['municipality'] ?? '-' }}, {{ $airport['iso_country'] ?? '-' }}</span>
+                        </p>
+
+                        <p class="text-sm text-slate-500 mb-4 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-sky-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                            </svg>
+                            <span>ICAO / IATA: {{ $airport['ident'] }} / {{ $airport['iata_code'] ?? '-' }}</span>
+                        </p>
                     </div>
                     
-                    <a href="{{ route('airports.show', $airport['airport_id']) }}" 
-                       class="inline-block text-center text-sm bg-[#7FA8D6] hover:bg-[#6893c7] text-white font-semibold px-4 py-2.5 rounded-xl transition shadow-sm">
-                        Lihat Detail Bandara &rarr;
-                    </a>
+                    <a href="{{ route('airports.show', $airport['ident'] ?? $airport['id'] ?? $airport['airport_id'] ?? 0) }}" 
+                    class="px-4 py-3 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm inline-flex items-center gap-1.5">
+                        <span>Lihat Detail</span>
+                        <span>&rarr;</span>
+                        </a>
                 </div>
             @empty
                 <div class="col-span-2 text-center py-12 bg-white/60 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg">

@@ -46,18 +46,28 @@
                             </span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-800 mb-1">{{ $airport['name'] ?? 'Nama Bandara' }}</h3>
-                        <p class="text-sm text-slate-500 mb-4">📍 {{ $airport['municipality'] ?? 'Lokasi' }} (ISO: {{ $airport['iso_country'] ?? '-' }})</p>
+                        <p class="text-sm text-slate-500 mb-4 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-blue-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>{{ $airport['municipality'] ?? 'Lokasi' }} (ISO: {{ $airport['iso_country'] ?? '-' }})</span>
+                        </p>
                     </div>
 
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-slate-400 block">Tipe Bandara:</span>
-                            <span class="text-sm font-semibold text-slate-700 capitalize">
-                                {{ str_replace('_', ' ', $airport['type'] ?? 'Standard') }}
-                            </span>
-                        </div>
-                        <a href="{{ route('airports.show', $airport['ident'] ?? 0) }}" class="px-4 py-2 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm">
-                            Detail Lengkap ↗
+                    <div>
+                        <span class="text-xs text-slate-400 block">Tipe Bandara:</span>
+                        <span class="text-xs font-semibold px-3 py-1 bg-sky-100 text-sky-700 rounded-full uppercase tracking-wider">
+                            {{ ucwords(str_replace('_', ' ', $airport['type'] ?? 'Airport')) }}
+                        </span>
+                    </div>
+
+                    <!-- Tombol Lihat Detail dengan ukuran proporsional (tidak w-full) -->
+                    <a href="{{ route('airports.show', $airport['ident'] ?? $airport['id'] ?? $airport['airport_id'] ?? 0) }}" 
+                    class="px-4 py-2 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm inline-flex items-center gap-1.5">
+                        <span>Lihat Detail</span>
+                        <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
