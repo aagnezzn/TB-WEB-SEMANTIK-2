@@ -13,7 +13,7 @@ use App\Http\Controllers\NavigationController;
 Route::get('/category/location', [AirportController::class, 'locationCategory'])->name('category.location');
 
 // Rute Kategori Telepon
-Route::get('/category/phone', [AirportController::class, 'phoneCategory'])->name('category.phone');
+Route::get('/category/web', [AirportController::class, 'phoneCategory'])->name('category.phone');
 
 // Rute Kategori Operasional
 Route::get('/category/operational', [AirportController::class, 'operationalCategory'])->name('category.operational');
