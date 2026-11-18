@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // Panggil RegionSeeder agar CSV wilayah ikut di-seed ke database
         $this->call([
             RegionSeeder::class,
+            AirportSeeder::class,
         ]);
     }
 }

@@ -43,6 +43,23 @@
                 <!-- Pesan sambutan awal bot -->
             </div>
 
+            <!-- Sugesti Cepat Pertanyaan -->
+            <div class="flex flex-wrap gap-2 mt-3 pt-2 text-xs items-center">
+                <span class="text-slate-500 font-medium">Contoh pertanyaan:</span>
+                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Bandara yang dekat Medan apa saja?">
+                    Bandara Dekat Medan
+                </button>
+                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Profil bandara Kualanamu">
+                    Profil Kualanamu
+                </button>
+                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Bandara daerah Deli Serdang">
+                    Daerah Deli Serdang
+                </button>
+                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Berapa jumlah bandara di Indonesia?">
+                    Total Bandara Indonesia
+                </button>
+            </div>
+
             <!-- Form Input Pesan -->
             <form id="chat-form" class="mt-6 pt-4 border-t border-slate-200/60 flex gap-3">
                 @csrf
@@ -219,8 +236,19 @@
 
         // Pesan sambutan
         appendBotMessage(
-            'Halo! Aku AeroBot. Ada yang bisa saya bantu terkait direktori bandara di Asia Tenggara hari ini?'
+            'Halo! Saya AeroBot, asisten virtual AeroFind. Saya dapat membantu kamu mencari informasi bandara, profil lengkap, hingga rekomendasi bandara terdekat berdasarkan lokasi kota atau kabupaten. Ada yang ingin kamu tanyakan?'
         );
+
+        // Event listener tombol contoh pertanyaan
+        document.querySelectorAll('.suggestion-chip').forEach(button => {
+            button.addEventListener('click', function () {
+                const prompt = this.getAttribute('data-prompt');
+                if (prompt) {
+                    userInput.value = prompt;
+                    chatForm.dispatchEvent(new Event('submit'));
+                }
+            });
+        });
 
         // Mengirim pertanyaan ke Laravel
         chatForm.addEventListener('submit', async function (e) {

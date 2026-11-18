@@ -80,6 +80,7 @@ class RegionSeeder extends Seeder
             }
 
             $rows[] = [
+                'region_id'    => trim($r['region_id'] ?? ''),
                 'region_name'  => trim($r['region_name']),
                 'region_type'  => $r['region_type'] ?? null,
                 'country_code' => $countryCodes[$alpha3],

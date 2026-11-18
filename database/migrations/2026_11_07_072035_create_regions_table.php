@@ -24,6 +24,8 @@ return new class extends Migration
             $table->text('license')->nullable();
 
             $table->index(['country_code', 'region_name']);
+
+            $table->timestamps();
         });
     }
 
