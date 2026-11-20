@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use App\Models\Airport;
+use Illuminate\Support\Facades\DB;
 
 class AirportController extends Controller
 {
@@ -123,26 +124,41 @@ class AirportController extends Controller
     }
 
     public function show($id)
-    {
-        $allAirports = $this->getAirportsData();
-        $airport = null;
+{
+    $id = (string) $id;
+    $airport = null;
+    $data = $this->getAirportsData();
 
-        foreach ($allAirports as $item) {
-            // Tambahkan 'airport_id' di urutan pertama pengecekan agar cocok dengan URL dari peta
-            $itemId = $item['airport_id'] ?? $item['ident'] ?? $item['iata_code'] ?? $item['id'] ?? null;
-
-            if ($itemId == $id || (string) $itemId === (string) $id) {
+    // Kode dicek dulu, ID angka terakhir supaya tidak tertukar
+    foreach (['ident', 'icao_code', 'iata_code', 'airport_id', 'id'] as $key) {
+        foreach ($data as $item) {
+            if (isset($item[$key]) && (string) $item[$key] === $id) {
                 $airport = $item;
-                break;
+                break 2;
             }
         }
-
-        if (!$airport) {
-            abort(404, 'Bandara tidak ditemukan');
-        }
-
-        return view('airports.show', compact('airport'));
     }
+
+    // Fallback ke database
+    if (!$airport) {
+        $row = DB::table('airports')
+            ->where('icao_code', $id)
+            ->orWhere('iata_code', $id)
+            ->orWhere('airport_id', $id)
+            ->first();
+
+        if ($row) {
+            $airport = (array) $row;
+            $airport['ident'] = $airport['icao_code'] ?? null;
+        }
+    }
+
+    if (!$airport) {
+        abort(404, 'Bandara tidak ditemukan');
+    }
+
+    return view('airports.show', compact('airport'));
+}
 
     public function locationCategory()
     {

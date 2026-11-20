@@ -379,10 +379,11 @@ document.addEventListener('DOMContentLoaded', function () {
             (airport.iso_country ?? '-');
 
         const airportId =
-            airport.airport_id ??
-            airport.id ??
             airport.ident ??
-            airport.iata_code;
+            airport.icao_code ??
+            airport.iata_code ??
+            airport.airport_id ??
+            airport.id;
 
         popup.appendChild(title);
         popup.appendChild(iata);
@@ -509,10 +510,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const longitude = Number(airport.longitude_deg);
 
             const airportId =
-                airport.airport_id ??
-                airport.id ??
                 airport.ident ??
-                airport.iata_code;
+                airport.icao_code ??
+                airport.iata_code ??
+                airport.airport_id ??
+                airport.id;
 
             const distance =
                 Number(airport.distance_km);
