@@ -18,7 +18,6 @@
     "gps_code": "WBSB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Brunei_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -42,7 +41,6 @@
     "gps_code": "WATA",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Haliwen_Airport",
     "keywords": "WRKA",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -66,7 +64,6 @@
     "gps_code": "WARA",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Abdul_Rachman_Saleh_Airport",
     "keywords": "WIas, Malang, Singosari",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -90,7 +87,6 @@
     "gps_code": "WAHQ",
     "local_code": null,
     "home_link": "https://adisumarmo-airport.com/en",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Adisumarmo_Airport",
     "keywords": "WRSQ, WARQ, Adi Soemarmo, Adi Sumarmo",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -114,7 +110,6 @@
     "gps_code": "WAHH",
     "local_code": null,
     "home_link": "https://adisutjipto-airport.co.id/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Adisutjipto_Airport",
     "keywords": "WIIJ, WARJ, Adisucipto",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -138,7 +133,6 @@
     "gps_code": "WALS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Aji_Pangeran_Tumenggung_Pranoto_International_Airport",
     "keywords": "Sungai Siring Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -162,7 +156,6 @@
     "gps_code": "WIMU",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Alas_Leuser_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -186,7 +179,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -210,7 +202,6 @@
     "gps_code": "WATM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Alor_Island_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -234,7 +225,6 @@
     "gps_code": null,
     "local_code": "AWI",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "Awinbon",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -258,7 +248,6 @@
     "gps_code": "WADY",
     "local_code": "BWI",
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Banyuwangi_Airport",
     "keywords": "Banyuwangi International Airport, Blimbing Sari, Blimbingsari, Kabat, Rogojampi, Sukojati, WARB",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -282,7 +271,6 @@
     "gps_code": "WAOC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "http://id.wikipedia.org/wiki/Bandar_Udara_Bersujud",
     "keywords": "WRBC, Batulicin",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -306,7 +294,6 @@
     "gps_code": "WAYB",
     "local_code": "ZGP",
     "home_link": "https://flightaware.com/live/airport/WAYB",
-    "wikipedia_link": null,
     "keywords": "WABV, Zugapa, Bilogai-Sugapa",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -330,7 +317,6 @@
     "gps_code": "WIMB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Binaka_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -354,7 +340,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -378,7 +363,6 @@
     "gps_code": "WAVB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bokondini_Airport",
     "keywords": "WAJB",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -402,7 +386,6 @@
     "gps_code": "WAMI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Raja_Loloda_Mokoagow_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -426,7 +409,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -450,7 +432,6 @@
     "gps_code": "WAFD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bua_Airport",
     "keywords": "Palopo Lagaligo",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -474,7 +455,6 @@
     "gps_code": "WAFY",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pogogul_Airport",
     "keywords": "WAMY, Pangtiku Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -498,7 +478,6 @@
     "gps_code": "WITC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Cut_Nyak_Dhien_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -522,7 +501,6 @@
     "gps_code": "WALJ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Datadawai_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -546,7 +524,6 @@
     "gps_code": "WATR",
     "local_code": null,
     "home_link": "http://rti.otoritasbandara.info/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/David_Constantijn_Saudale_Airport",
     "keywords": "WRKR, Roti Airport, Lekunik Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -570,7 +547,6 @@
     "gps_code": "WADD",
     "local_code": null,
     "home_link": "http://www.angkasapura1.co.id/eng/location/bali.htm",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Ngurah_Rai_International_Airport",
     "keywords": "WRRR, Bali, Denpasar International Airport, Denpasar",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -594,7 +570,6 @@
     "gps_code": "WIJI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Depati_Parbo_Airport",
     "keywords": "WIPH, Kerinci",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -618,7 +593,6 @@
     "gps_code": "WIKK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pangkalpinang_Airport",
     "keywords": "WIPK",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -642,7 +616,6 @@
     "gps_code": "WAHU",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Dewadaru_Airport",
     "keywords": "Karimun Jawa, Karimun Java",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -666,7 +639,6 @@
     "gps_code": "WARD",
     "local_code": null,
     "home_link": "https://www.kediri-airport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Dhoho_International_Airport",
     "keywords": "Dhoho",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -690,7 +662,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WX43",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -714,7 +685,6 @@
     "gps_code": "WASS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Domine_Eduard_Osok_Airport",
     "keywords": "WAXX",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -738,7 +708,6 @@
     "gps_code": "WAJJ",
     "local_code": null,
     "home_link": "https://sentani-airport.co.id/en",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Dortheys_Hiyo_Eluay_International_Airport",
     "keywords": "Bandar Udara Internasional Dortheys Hiyo Eluay, Sentani International Airport, Hollandia, Jayapura",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -762,7 +731,6 @@
     "gps_code": "WIMS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Ferdinand_Lumban_Tobing_Airport",
     "keywords": "Pinangsori Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -786,7 +754,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -810,7 +777,6 @@
     "gps_code": "WATT",
     "local_code": null,
     "home_link": "http://www.kupang-airport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/El_Tari_Airport",
     "keywords": "WRKK, Kupang Airport, Penfui Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -834,7 +800,6 @@
     "gps_code": "WASF",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Fakfak_Airport",
     "keywords": "Iboru, Torea, Fak Fak",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -858,7 +823,6 @@
     "gps_code": "WIGG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Fatmawati_Soekarno_Airport",
     "keywords": "WIPL, Padang Kemiling Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -882,7 +846,6 @@
     "gps_code": "WABB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Frans_Kaisiepo_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -906,7 +869,6 @@
     "gps_code": "WATG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Frans_Sales_Lega_Airport",
     "keywords": "WRKG, Ruteng, Satar Tacik Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -930,7 +892,6 @@
     "gps_code": "WATC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Frans_Xavier_Seda_Airport",
     "keywords": "WRKC, Fransiskus Xavierius Seda, Maumere, Wai Oti",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -954,7 +915,6 @@
     "gps_code": "WAOK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Gusti_Syamsir_Alam_Airport",
     "keywords": "WRBK, Stagen Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -978,7 +938,6 @@
     "gps_code": "WIKT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/H.A.S._Hanandjoeddin_International_Airport",
     "keywords": "Buluh Tumbang Airport, WIKD, WIOD",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1002,7 +961,6 @@
     "gps_code": "WATE",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Ende_Airport",
     "keywords": "WRKE, Isi",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1026,7 +984,6 @@
     "gps_code": "WAGB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Haji_Muhammad_Sidik_Airport",
     "keywords": "Trinsing",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1050,7 +1007,6 @@
     "gps_code": "WIHH",
     "local_code": null,
     "home_link": "https://www.angkasapura2.co.id/cabang/hlp/content.php?menu=8&page_id=1",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Halim_Perdanakusuma_International_Airport",
     "keywords": "WIIH, WIIX, WIID",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1074,7 +1030,6 @@
     "gps_code": "WAWW",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kendari_Airport",
     "keywords": "WAAU, Wolter Monginsidi Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1098,7 +1053,6 @@
     "gps_code": "WIDD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Hang_Nadim_Airport",
     "keywords": "WIKB",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1122,7 +1076,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1146,7 +1099,6 @@
     "gps_code": "WICC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Husein_Sastranegara_International_Airport",
     "keywords": "WIIB",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1170,7 +1122,6 @@
     "gps_code": "WAGI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Iskandar_Airport",
     "keywords": "WRBI",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1194,7 +1145,6 @@
     "gps_code": "WAJV",
     "local_code": "IWR",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WZ17",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1218,7 +1168,6 @@
     "gps_code": "WAMG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Jalaluddin_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1242,7 +1191,6 @@
     "gps_code": "WAHS",
     "local_code": null,
     "home_link": "https://www.ahmadyani-airport.com/id",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Achmad_Yani_Airport",
     "keywords": "WIIS, WARS",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1266,7 +1214,6 @@
     "gps_code": "WAPM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://hubud.kemenhub.go.id/hubud/website/bandara/455",
     "keywords": "Moa Island, Leti Islands",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1290,7 +1237,6 @@
     "gps_code": "WARR",
     "local_code": null,
     "home_link": "http://www.juanda-airport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Juanda_International_Airport",
     "keywords": "WRSJ, Sedati, Sidoarjo",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1314,7 +1260,6 @@
     "gps_code": "WAQQ",
     "local_code": "TRK",
     "home_link": "http://www.tarakan-airport.com",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Juwata_Airport",
     "keywords": "WRLR, WALR, WAQQ, TRK, JUWATA, TARAKAN",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1338,7 +1283,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1362,7 +1306,6 @@
     "gps_code": "WAQT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kalimarau_Airport",
     "keywords": "Berau Airport, WALK, WRLK",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1386,7 +1329,6 @@
     "gps_code": "WAPF",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Karel_Sadsuitubun_Airport",
     "keywords": "Tual Baru",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1410,7 +1352,6 @@
     "gps_code": "WICA",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kertajati_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1434,7 +1375,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1458,7 +1398,6 @@
     "gps_code": "WRGK",
     "local_code": "KIW",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1482,7 +1421,6 @@
     "gps_code": "WAJK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1506,7 +1444,6 @@
     "gps_code": "WATO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Komodo_Airport",
     "keywords": "Komodo Labuan Bajo International Airport, Mutiara II Airport, WRKO",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1530,7 +1467,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1554,7 +1490,6 @@
     "gps_code": "WIMM",
     "local_code": null,
     "home_link": "http://www.kualanamu-airport.co.id/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kualanamu_International_Airport",
     "keywords": "Medan",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1578,7 +1513,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "Kubipkop",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1602,7 +1536,6 @@
     "gps_code": "WALC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/PT_Badak_Bontang_Airport",
     "keywords": "WRLC",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1626,7 +1559,6 @@
     "gps_code": "WATL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Gewayantana_Airport",
     "keywords": "WATL",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1650,7 +1582,6 @@
     "gps_code": "WIML",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WITG",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1674,7 +1605,6 @@
     "gps_code": "WIMO",
     "local_code": "LSE",
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Lasondre_Airport",
     "keywords": "Bandar Udara Lasondre",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1698,7 +1628,6 @@
     "gps_code": "WADE",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Lt.Col._Wisnu_Airfield",
     "keywords": "Bali International Flying Academy, BIFA, Buleleng Airport, Grokgak Airport, Letkol Wisnu",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1722,7 +1651,6 @@
     "gps_code": "WADL",
     "local_code": null,
     "home_link": "http://www.lombok-airport.co.id/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Lombok_International_Airport",
     "keywords": "Zainuddin Abdul Madjid, Praya",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1746,7 +1674,6 @@
     "gps_code": "WAQL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Long_Apung_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1770,7 +1697,6 @@
     "gps_code": "WAQH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WZ86, Long Rongan",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1794,7 +1720,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1818,7 +1743,6 @@
     "gps_code": "WAFO",
     "local_code": "MOH",
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Maleo_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1842,7 +1766,6 @@
     "gps_code": "WIMA",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Malikus_Saleh_Airport",
     "keywords": "WITM",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1866,7 +1789,6 @@
     "gps_code": "WASN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Marinda_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1890,7 +1812,6 @@
     "gps_code": "WAWD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Matahora_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1914,7 +1835,6 @@
     "gps_code": "WAPS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mathilda_Batlayeri_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1938,7 +1858,6 @@
     "gps_code": "WIEB",
     "local_code": "RKO",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WIBR, Rokot Sipora",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1962,7 +1881,6 @@
     "gps_code": "WIEE",
     "local_code": null,
     "home_link": "https://minangkabau-airport.co.id/en/general/about-us",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Minangkabau_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -1986,7 +1904,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2010,7 +1927,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "Peper",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2034,7 +1950,6 @@
     "gps_code": "WAKK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mopah_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2058,7 +1973,6 @@
     "gps_code": "WAYY",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mozes_Kilangin_Airport",
     "keywords": "WABP, Tembagapura",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2082,7 +1996,6 @@
     "gps_code": "WIJB",
     "local_code": null,
     "home_link": "https://web.archive.org/web/20171021003712/http://www.infobungo.com:80/2012/12/jadwal-penerbangan-dari-bandara-muara.html",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Muara_Bungo_Airport",
     "keywords": "Pasir Mayang",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2106,7 +2019,6 @@
     "gps_code": "WIGM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://id.wikipedia.org/wiki/Bandar_Udara_Mukomuko",
     "keywords": "WIPU, Mukomuko, Muko-Muko",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2130,7 +2042,6 @@
     "gps_code": "WAFF",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mutiara_Airport",
     "keywords": "WAML",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2154,7 +2065,6 @@
     "gps_code": "WAMH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Naha_Airport_(Indonesia)",
     "keywords": "Tahuna",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2178,7 +2088,6 @@
     "gps_code": "WAPN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2202,7 +2111,6 @@
     "gps_code": "WIOG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Nanga_Pinoh_Airport",
     "keywords": "Nangapinoh",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2226,7 +2134,6 @@
     "gps_code": "WAVD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Nop_Goliat_Dekai_Airport",
     "keywords": "Nop Goliath",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2250,7 +2157,6 @@
     "gps_code": "WARE",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Notohadinegoro_Airport",
     "keywords": "Jember, Jenggawah",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2274,7 +2180,6 @@
     "gps_code": "WICN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Cijulang_Nusawiru_Airport",
     "keywords": "WI1A",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2298,7 +2203,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2322,7 +2226,6 @@
     "gps_code": null,
     "local_code": "OKL",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WW43",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2346,7 +2249,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2370,7 +2272,6 @@
     "gps_code": "WAJO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://id.wikipedia.org/wiki/Bandar_Udara_Oksibil",
     "keywords": "Gunung Bintang",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2394,7 +2295,6 @@
     "gps_code": "WAJW",
     "local_code": "OKY",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WW44, Okyop",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2418,7 +2318,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "NBX, WABI, Douw Aturure",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2442,7 +2341,6 @@
     "gps_code": "WIOP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pangsuma_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2466,7 +2364,6 @@
     "gps_code": "WAPP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pattimura_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2490,7 +2387,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2514,7 +2410,6 @@
     "gps_code": "WIPQ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2538,7 +2433,6 @@
     "gps_code": "WIBD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pinang_Kampai_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2562,7 +2456,6 @@
     "gps_code": "WILL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Radin_Inten_II_International_Airport",
     "keywords": "WIIT, WICT",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2586,7 +2479,6 @@
     "gps_code": "WIOK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Rahadi_Osman_Airport",
     "keywords": "Rahadi Usman",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2610,7 +2502,6 @@
     "gps_code": "WIDN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Raja_Haji_Fisabilillah_Airport",
     "keywords": "WIKN",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2634,7 +2525,6 @@
     "gps_code": "WIDO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Ranai_Airport",
     "keywords": "WION, Natuna, Natuna-Ranai, Raden Sadjad",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2658,7 +2548,6 @@
     "gps_code": "WITK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Rembele_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2682,7 +2571,6 @@
     "gps_code": "WAUU",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Rendani_Airport",
     "keywords": "WASR",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2706,7 +2594,6 @@
     "gps_code": "WAQM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Robert_Atty_Bessing_Airport",
     "keywords": "WRLM, WALM",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2730,7 +2617,6 @@
     "gps_code": "WAMM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sam_Ratulangi_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2754,7 +2640,6 @@
     "gps_code": "WAGS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/H._asan_Airport",
     "keywords": "WRBS, WAOS",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2778,7 +2663,6 @@
     "gps_code": "WAWP",
     "local_code": null,
     "home_link": "https://www.otban5.com/Kolaka",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sangia_Nibandera_Airport",
     "keywords": "Kolaka, Pomala",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2802,7 +2686,6 @@
     "gps_code": null,
     "local_code": "SAP",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WW89",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2826,7 +2709,6 @@
     "gps_code": "WAWH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/H._Aroeppala_Airport",
     "keywords": "Lagaligo Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2850,7 +2732,6 @@
     "gps_code": "WAGF",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Seruyan_Kuala_Pembuang_Airport",
     "keywords": "Kota Waringin Timur",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2874,7 +2755,6 @@
     "gps_code": "WIMN",
     "local_code": null,
     "home_link": "http://silangit-airport.co.id/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Silangit_Airport",
     "keywords": "Lake Toba, North Tapanuli",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2898,7 +2778,6 @@
     "gps_code": "WIII",
     "local_code": null,
     "home_link": "http://www.jakartasoekarnohattaairport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Soekarno-Hatta_International_Airport",
     "keywords": "JKT, Cengkareng, Java",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2922,7 +2801,6 @@
     "gps_code": "WALL",
     "local_code": null,
     "home_link": "http://sepinggan-airport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Aji_Muhamad_Sulaiman_Airport",
     "keywords": "WRLL, Balikpapan Airport, Sepinggan Airport, Sepinggang Airfield",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2946,7 +2824,6 @@
     "gps_code": "WAEE",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Babullah_Airport",
     "keywords": "Sango, Tafure",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2970,7 +2847,6 @@
     "gps_code": "WAFL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Bantilan_Airport",
     "keywords": "WAMI, Toli-Toli, Tolitoli, Lalos Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -2994,7 +2870,6 @@
     "gps_code": "WAAA",
     "local_code": null,
     "home_link": "http://www.hasanuddin-airport.co.id/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Hasanuddin_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3018,7 +2893,6 @@
     "gps_code": "WITT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Iskandar_Muda_International_Airport",
     "keywords": "WIAB",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3042,7 +2916,6 @@
     "gps_code": "WIPP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Mahmud_Badaruddin_II_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3066,7 +2939,6 @@
     "gps_code": "WADS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Muhammad_Kaharuddin_III_Airport",
     "keywords": "WRRS, Brang Bidji, Sumbawa",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3090,7 +2962,6 @@
     "gps_code": "WADB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bima_Airport",
     "keywords": "WRRB, PBW, Palibelo Airport, Bima, Raba Airfield",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3114,7 +2985,6 @@
     "gps_code": "WIBB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Syarif_Qasim_II_International_Airport",
     "keywords": "Simpang Tiga",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3138,7 +3008,6 @@
     "gps_code": "WIJJ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Thaha_Airport",
     "keywords": "WIPA, Palmerah",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3162,7 +3031,6 @@
     "gps_code": null,
     "local_code": "SMT",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "Sumtamon, WT23",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3186,7 +3054,6 @@
     "gps_code": "WIOO",
     "local_code": null,
     "home_link": "http://www.supadio-airport.co.id/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Supadio_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3210,7 +3077,6 @@
     "gps_code": "WAOO",
     "local_code": null,
     "home_link": "https://syamsudinnoor-airport.co.id/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Syamsudin_Noor_Airport",
     "keywords": "WRBB, Banjarmasin, Banjarbaru",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3234,7 +3100,6 @@
     "gps_code": "WIMI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Syekh_Hamzah_Fansyuri_Airport",
     "keywords": "WT13",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3258,7 +3123,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tabing_Airport",
     "keywords": "WIMG",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3282,7 +3146,6 @@
     "gps_code": "WATK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tambolaka_Airport",
     "keywords": "WRRT, WADT",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3306,7 +3169,6 @@
     "gps_code": "WAKT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tanah_Merah_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3330,7 +3192,6 @@
     "gps_code": "WAFU",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tanjung_Api_Airport",
     "keywords": "Ampana",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3354,7 +3215,6 @@
     "gps_code": "WAQD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tanjung_Harapan_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3378,7 +3238,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3402,7 +3261,6 @@
     "gps_code": "WIOS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tebelian_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3426,7 +3284,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "Tin",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3450,7 +3307,6 @@
     "gps_code": "WAGG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tjilik_Riwut_Airport",
     "keywords": "WRBP, WAOP",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3474,7 +3330,6 @@
     "gps_code": "WAFB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Toraja_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3498,7 +3353,6 @@
     "gps_code": "WAGT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "http://id.wikipedia.org/wiki/Bandar_Udara_Tumbang_Samba",
     "keywords": "WRBW, WAOW",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3522,7 +3376,6 @@
     "gps_code": "WAHL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tunggul_Wulung_Airport",
     "keywords": "WIIL, WIHL",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3546,7 +3399,6 @@
     "gps_code": "WATU",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mau_Hau_Airport",
     "keywords": "WRRW, WADW, Mau Hau Airport, Waingapu Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3570,7 +3422,6 @@
     "gps_code": "WASK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kaimana_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3594,7 +3445,6 @@
     "gps_code": "WAVV",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Wamena_Airport",
     "keywords": "WAJW",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3618,7 +3468,6 @@
     "gps_code": "WAON",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "http://id.wikipedia.org/wiki/Bandar_Udara_Warukin",
     "keywords": "WRBN",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3642,7 +3491,6 @@
     "gps_code": "WRJU",
     "local_code": "YAP",
     "home_link": null,
-    "wikipedia_link": null,
     "keywords": "WT73",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3666,7 +3514,6 @@
     "gps_code": "WAHI",
     "local_code": null,
     "home_link": "https://www.yogyakarta-airport.co.id/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Yogyakarta_International_Airport",
     "keywords": "Kulon Progo",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3690,7 +3537,6 @@
     "gps_code": "WAQJ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Juvai_Semaring_Airport",
     "keywords": "WRLB, Juvai Semaring Airport, Yuvai Semaring, Long Bawang",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3714,7 +3560,6 @@
     "gps_code": "VDBG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Battambang_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3738,7 +3583,6 @@
     "gps_code": "VDDS",
     "local_code": null,
     "home_link": "https://darasakor-airport.com/en/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Dara_Sakor_International_Airport",
     "keywords": "Krong Khemara Phoumin, អាកាសយានដ្ឋានអន្តរជាតិតារាសាគរ",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3762,7 +3606,6 @@
     "gps_code": "VDSA",
     "local_code": null,
     "home_link": "http://english.sai-airport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Siem_Reap–Angkor_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3786,7 +3629,6 @@
     "gps_code": "VDSV",
     "local_code": null,
     "home_link": "http://kos.cambodia-airports.aero/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sihanoukville_International_Airport",
     "keywords": "Kompong Som, Sihanoukville International Airport, Kang Keng Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3810,7 +3652,6 @@
     "gps_code": "VDTI",
     "local_code": null,
     "home_link": "https://www.techoairport.com.kh/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Techo_International_Airport_(Cambodia)",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3834,7 +3675,6 @@
     "gps_code": "VLBK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bokeo_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3858,7 +3698,6 @@
     "gps_code": "VLLN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Louang_Namtha_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3882,7 +3721,6 @@
     "gps_code": "VLLB",
     "local_code": null,
     "home_link": "https://www.luangprabangairport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Luang_Prabang_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3906,7 +3744,6 @@
     "gps_code": "VLOS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Oudomsay_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3930,7 +3767,6 @@
     "gps_code": "VLPS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pakse_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3954,7 +3790,6 @@
     "gps_code": "VLVT",
     "local_code": null,
     "home_link": "http://www.vientianeairport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Wattay_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -3978,7 +3813,6 @@
     "gps_code": "VLXK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Xieng_Khouang_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4002,7 +3836,6 @@
     "gps_code": "VYBG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Nyaung_U_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4026,7 +3859,6 @@
     "gps_code": "VYBM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Banmaw_Airport",
     "keywords": "Banmaws, Bhamo",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4050,7 +3882,6 @@
     "gps_code": "VYDW",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Dawei_Airport",
     "keywords": "Tavoy, Tavoy Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4074,7 +3905,6 @@
     "gps_code": "VYHH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Heho_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4098,7 +3928,6 @@
     "gps_code": "VYKI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Khamti_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4122,7 +3951,6 @@
     "gps_code": "VYKT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kawthaung_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4146,7 +3974,6 @@
     "gps_code": "VYKG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kengtung_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4170,7 +3997,6 @@
     "gps_code": "VYKP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kyaukpyu_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4194,7 +4020,6 @@
     "gps_code": "VYLS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Lashio_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4218,7 +4043,6 @@
     "gps_code": "VYLK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Loikaw_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4242,7 +4066,6 @@
     "gps_code": "VYMW",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Magway_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4266,7 +4089,6 @@
     "gps_code": "VYMD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mandalay_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4290,7 +4112,6 @@
     "gps_code": "VYMM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mawlamyaing_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4314,7 +4135,6 @@
     "gps_code": "VYMS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Monghsat_Airport",
     "keywords": "Monghsat Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4338,7 +4158,6 @@
     "gps_code": "VYME",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Myeik_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4362,7 +4181,6 @@
     "gps_code": "VYMK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Myitkyina_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4386,7 +4204,6 @@
     "gps_code": "VYNT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Nay_Pyi_Taw_International_Airport",
     "keywords": "VYEL, Ela, Nay Pyi Taw International",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4410,7 +4227,6 @@
     "gps_code": "VYPN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pathein_Airport",
     "keywords": "Bassein",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4434,7 +4250,6 @@
     "gps_code": "VYPT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Putao_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4458,7 +4273,6 @@
     "gps_code": "VYSW",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sittwe_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4482,7 +4296,6 @@
     "gps_code": "VYTL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tachilek_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4506,7 +4319,6 @@
     "gps_code": "VYTD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Thandwe_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4530,7 +4342,6 @@
     "gps_code": "VYYY",
     "local_code": null,
     "home_link": "http://www.yangonairportonline.com",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Yangon_International_Airport",
     "keywords": "Rangoon",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4554,7 +4365,6 @@
     "gps_code": "WBGQ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Ba%27kelalan_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4578,7 +4388,6 @@
     "gps_code": "WBGZ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bario_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4602,7 +4411,6 @@
     "gps_code": "WBGB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bintulu_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4626,7 +4434,6 @@
     "gps_code": "WBKK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kota_Kinabalu_International_Airport",
     "keywords": "Lapangan Terbang Antarabangsa Kota Kinabalu, Jesselton Airfield",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4650,7 +4457,6 @@
     "gps_code": "WMKK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kuala_Lumpur_International_Airport",
     "keywords": "KLIA",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4674,7 +4480,6 @@
     "gps_code": "WMKD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Haji_Ahmad_Shah_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4698,7 +4503,6 @@
     "gps_code": "WBGG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kuching_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4722,7 +4526,6 @@
     "gps_code": "WBKT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kudat_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4746,7 +4549,6 @@
     "gps_code": "WBKL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Labuan_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4770,7 +4572,6 @@
     "gps_code": "WBKD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Lahad_Datu_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4794,7 +4595,6 @@
     "gps_code": "WMKL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Langkawi_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4818,7 +4618,6 @@
     "gps_code": "WBGW",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/LaWIAS_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4842,7 +4641,6 @@
     "gps_code": "WBGJ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Limbang_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4866,7 +4664,6 @@
     "gps_code": null,
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Long_Banga_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4890,7 +4687,6 @@
     "gps_code": "WBGF",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Long_Lellang_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4914,7 +4710,6 @@
     "gps_code": "WBGI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Long_Seridan_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4938,7 +4733,6 @@
     "gps_code": "WMKM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Malacca_International_Airport",
     "keywords": "Batu Berendam",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4962,7 +4756,6 @@
     "gps_code": "WBGM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Marudi_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -4986,7 +4779,6 @@
     "gps_code": "WBGR",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Miri_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5010,7 +4802,6 @@
     "gps_code": "WBGK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mukah_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5034,7 +4825,6 @@
     "gps_code": "WBMU",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mulu_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5058,7 +4848,6 @@
     "gps_code": "WMKP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Penang_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5082,7 +4871,6 @@
     "gps_code": "WMPA",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pangkor_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5106,7 +4894,6 @@
     "gps_code": "WBKS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sandakan_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5130,7 +4917,6 @@
     "gps_code": "WMKJ",
     "local_code": null,
     "home_link": "https://senaiairport.com",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Senai_International_Airport",
     "keywords": "Sultan Ismail International Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5154,7 +4940,6 @@
     "gps_code": "WBGS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sibu_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5178,7 +4963,6 @@
     "gps_code": "WMSA",
     "local_code": null,
     "home_link": "https://subangskypark.com",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Abdul_Aziz_Shah_Airport",
     "keywords": "Subang SkyPark, Subang Airport, Subang International Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5202,7 +4986,6 @@
     "gps_code": "WMKA",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Abdul_Halim_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5226,7 +5009,6 @@
     "gps_code": "WMKI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Azlan_Shah_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5250,7 +5032,6 @@
     "gps_code": "WMKC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Ismail_Petra_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5274,7 +5055,6 @@
     "gps_code": "WMKN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sultan_Mahmud_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5298,7 +5078,6 @@
     "gps_code": "WBKW",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tawau_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5322,7 +5101,6 @@
     "gps_code": "WMBT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tioman_Airport",
     "keywords": "Kampung Tekek, Sultan Ahmad Shah",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5346,7 +5124,6 @@
     "gps_code": "WBKM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tommanggong_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5370,7 +5147,6 @@
     "gps_code": "RPVB",
     "local_code": null,
     "home_link": "https://www.bacolod-silayairport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bacolod%E2%80%93Silay_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5394,7 +5170,6 @@
     "gps_code": "RPME",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bancasi_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5418,7 +5193,6 @@
     "gps_code": "RPUO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Basco_Airport",
     "keywords": "Irport nu Basco, Paliparang Basco, Pagtayaban ti Basco",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5442,7 +5216,6 @@
     "gps_code": "RPLK",
     "local_code": null,
     "home_link": "https://caap.gov.ph/bicol-international-airport/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bicol_International_Airport",
     "keywords": "Daraga, Southern Luzon International Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5466,7 +5239,6 @@
     "gps_code": "RPSP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Bohol%E2%80%93Panglao_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5490,7 +5262,6 @@
     "gps_code": "RPVC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Calbayog_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5514,7 +5285,6 @@
     "gps_code": "RPMH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Camiguin_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5538,7 +5308,6 @@
     "gps_code": "RPVF",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Catarman_National_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5562,7 +5331,6 @@
     "gps_code": "RPUY",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Cauayan_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5586,7 +5354,6 @@
     "gps_code": "RPLC",
     "local_code": null,
     "home_link": "http://www.clarkairport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Clark_International_Airport",
     "keywords": "Diosdado Macapagal International Airport, Paliparang Pandaigdig ng Diosdado Macapagal, Pangyatung Sulapawan ning Clark, Paliparang Pandaigdig ng Clark",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5610,7 +5377,6 @@
     "gps_code": "RPMC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Cotabato_Airport",
     "keywords": "Awang, Kutawatu",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5634,7 +5400,6 @@
     "gps_code": "RPLO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Cuyo_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5658,7 +5423,6 @@
     "gps_code": "RPVA",
     "local_code": "DZR",
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Daniel_Z._Romualdez_Airport",
     "keywords": "Tacloban, Daniel Z. Romualdez, Naval Station Dioscoro Papa",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5682,7 +5446,6 @@
     "gps_code": "RPMG",
     "local_code": null,
     "home_link": "http://www.dipologcity.com/AccommodationsDipolog%20Airport.htm",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Dipolog_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5706,7 +5469,6 @@
     "gps_code": "RPEN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/El_Nido_Airport",
     "keywords": "El Nido",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5730,7 +5492,6 @@
     "gps_code": "RPVV",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Busuanga_Airport",
     "keywords": "Busuanga Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5754,7 +5515,6 @@
     "gps_code": "RPMD",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Francisco_Bangoy_International_Airport",
     "keywords": "Davao International Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5778,7 +5538,6 @@
     "gps_code": "RPMR",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/General_Santos_International_Airport",
     "keywords": "Tambler Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5802,7 +5561,6 @@
     "gps_code": "RPVE",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Godofredo_P._Ramos_Airport",
     "keywords": "Godofredo P. Ramos Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5826,7 +5584,6 @@
     "gps_code": "RPVI",
     "local_code": null,
     "home_link": "https://www.iloilo.gov.ph/en/taxonomy/term/728",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Iloilo_International_Airport",
     "keywords": "Iloilo City",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5850,7 +5607,6 @@
     "gps_code": "RPLT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Jorge_Abad_Airport",
     "keywords": "Irport nu Jorge Abad, Paliparang Jorge Abad, Pagtayaban ti Jorge Abad",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5874,7 +5630,6 @@
     "gps_code": "RPMJ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Jolo_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5898,7 +5653,6 @@
     "gps_code": "RPVK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Kalibo_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5922,7 +5676,6 @@
     "gps_code": "RPMO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Labo_Airport",
     "keywords": "Barangay Labo, Ozamiz, Misamis Airfield",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5946,7 +5699,6 @@
     "gps_code": "RPMY",
     "local_code": null,
     "home_link": "https://www.universalaviation.aero/locations/philippines/laguindingan-rpmy/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Laguindingan_International_Airport",
     "keywords": "IGN, RPML, Cagayan de Oro",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5970,7 +5722,6 @@
     "gps_code": "RPLI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Laoag_International_Airport",
     "keywords": "Gabu Airfield, Laoag Airfield",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -5994,7 +5745,6 @@
     "gps_code": "RPVM",
     "local_code": null,
     "home_link": "http://www.mactan-cebuairport.com.ph/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mactan-Cebu_International_Airport",
     "keywords": "Mactan Air Base, Opon Airfield",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6018,7 +5768,6 @@
     "gps_code": "RPVJ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Masbate_Airport",
     "keywords": "Masbate, Moises R. Espinoza",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6042,7 +5791,6 @@
     "gps_code": "RPUN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Naga_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6066,7 +5814,6 @@
     "gps_code": "RPLL",
     "local_code": null,
     "home_link": "https://newnaia.com.ph/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Ninoy_Aquino_International_Airport",
     "keywords": "Manila International Airport, Jesus Villamor Air Base",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6090,7 +5837,6 @@
     "gps_code": "RPMP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pagadian_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6114,7 +5860,6 @@
     "gps_code": "RPLN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Palanan_Airport",
     "keywords": "RPPA, Palanan",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6138,7 +5883,6 @@
     "gps_code": "RPVP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Puerto_Princesa_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6162,7 +5906,6 @@
     "gps_code": "RPVR",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Roxas_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6186,7 +5929,6 @@
     "gps_code": "RPUH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/McGuire_Field",
     "keywords": "McGuire Field",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6210,7 +5952,6 @@
     "gps_code": "RPSV",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/San_Vicente_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6234,7 +5975,6 @@
     "gps_code": "RPMN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sanga-Sanga_Airport",
     "keywords": "SGS",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6258,7 +5998,6 @@
     "gps_code": "RPNS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Siargao_Airport",
     "keywords": "Sayak Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6282,7 +6021,6 @@
     "gps_code": "RPVD",
     "local_code": null,
     "home_link": "https://dumaguete.com/dumaguete-airport-sibulan/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sibulan_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6306,7 +6044,6 @@
     "gps_code": "RPLB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Subic_Bay_International_Airport",
     "keywords": "Paliparang Pandaigdig ng Look ng Subic, Naval Air Station Cubi Point",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6330,7 +6067,6 @@
     "gps_code": "RPMS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Surigao_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6354,7 +6090,6 @@
     "gps_code": "RPVU",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tugdan_Airport",
     "keywords": "Romblon Airport, Alcantara, Barangay Tugdan, Tablas Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6378,7 +6113,6 @@
     "gps_code": "RPUT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tuguegarao_Airport",
     "keywords": "Tugegarao",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6402,7 +6136,6 @@
     "gps_code": "RPUV",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Virac_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6426,7 +6159,6 @@
     "gps_code": "RPMZ",
     "local_code": null,
     "home_link": "https://www.zamboanga.net/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Zamboanga_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6450,7 +6182,6 @@
     "gps_code": "WSSL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Seletar_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6474,7 +6205,6 @@
     "gps_code": "WSSS",
     "local_code": null,
     "home_link": "http://www.changiairport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Singapore_Changi_Airport",
     "keywords": "RAF Changi",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6498,7 +6228,6 @@
     "gps_code": "VTUO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Buriram_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6522,7 +6251,6 @@
     "gps_code": "VTCC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Chiang_Mai_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6546,7 +6274,6 @@
     "gps_code": "VTSE",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Chumphon_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6570,7 +6297,6 @@
     "gps_code": "VTBD",
     "local_code": null,
     "home_link": "http://www.airportthai.co.th/airportnew/bangkok/index.asp?lang=en",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Don_Mueang_International_Airport",
     "keywords": "Old Bangkok International Airport, Don Muang Royal Thai Air Force Base",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6594,7 +6320,6 @@
     "gps_code": "VTSS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Hat_Yai_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6618,7 +6343,6 @@
     "gps_code": "VTPH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Hua_Hin_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6642,7 +6366,6 @@
     "gps_code": "VTUK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Khon_Kaen_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6666,7 +6389,6 @@
     "gps_code": "VTSG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Krabi_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6690,7 +6412,6 @@
     "gps_code": "VTCL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Lampang_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6714,7 +6435,6 @@
     "gps_code": "VTCO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Lamphun_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6738,7 +6458,6 @@
     "gps_code": "VTUL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Loei_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6762,7 +6481,6 @@
     "gps_code": "VTCT",
     "local_code": null,
     "home_link": "https://chiangrai.airportthai.co.th/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Chiang_Rai_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6786,7 +6504,6 @@
     "gps_code": "VTCH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mae_Hong_Son_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6810,7 +6527,6 @@
     "gps_code": "VTPM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Mae_Sot_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6834,7 +6550,6 @@
     "gps_code": "VTUW",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Nakhon_Phanom_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6858,7 +6573,6 @@
     "gps_code": "VTSF",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Nakhon_Si_Thammarat_Airport",
     "keywords": "ท่าอากาศยานนครศรีธรรมราช",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6882,7 +6596,6 @@
     "gps_code": "VTCN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Nan_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6906,7 +6619,6 @@
     "gps_code": "VTSC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Narathiwat_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6930,7 +6642,6 @@
     "gps_code": "VTPB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Phetchabun_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6954,7 +6665,6 @@
     "gps_code": "VTPP",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Phitsanulok_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -6978,7 +6688,6 @@
     "gps_code": "VTSP",
     "local_code": null,
     "home_link": "https://phuket.airportthai.co.th/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Phuket_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7002,7 +6711,6 @@
     "gps_code": "VTSR",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Ranong_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7026,7 +6734,6 @@
     "gps_code": "VTUV",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Roi_Et_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7050,7 +6757,6 @@
     "gps_code": "VTUI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sakon_Nakhon_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7074,7 +6780,6 @@
     "gps_code": "VTSM",
     "local_code": null,
     "home_link": "http://www.samuiairportonline.com",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Samui_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7098,7 +6803,6 @@
     "gps_code": "VTPO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Sukhothai_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7122,7 +6826,6 @@
     "gps_code": "VTSB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Surat_Thani_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7146,7 +6849,6 @@
     "gps_code": "VTUJ",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Surin_Airport",
     "keywords": "Surin Bhakdi Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7170,7 +6872,6 @@
     "gps_code": "VTBS",
     "local_code": null,
     "home_link": "https://suvarnabhumi.airportthai.co.th/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Suvarnabhumi_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7194,7 +6895,6 @@
     "gps_code": "VTST",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Trang_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7218,7 +6918,6 @@
     "gps_code": "VTBO",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Trat_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7242,7 +6941,6 @@
     "gps_code": "VTBU",
     "local_code": null,
     "home_link": "http://www.utapao.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/U-Tapao_International_Airport",
     "keywords": "Utapao, U-Taphao, U-Tapao Royal Thai Navy Airfield, ท่าอากาศยานอู่ตะเภา ระยอง–พัทยา",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7266,7 +6964,6 @@
     "gps_code": "VTUU",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Ubon_Ratchathani_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7290,7 +6987,6 @@
     "gps_code": "VTUD",
     "local_code": null,
     "home_link": "http://www.udonthaniairport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Udon_Thani_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7314,7 +7010,6 @@
     "gps_code": "WPEC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Cakung_Airport",
     "keywords": "English Madeira airport, Cakung Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7338,7 +7033,6 @@
     "gps_code": "WPDB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Suai_Airport",
     "keywords": "Covalima Airport, Suai Airport, Xanana Gusmao International Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7362,7 +7056,6 @@
     "gps_code": "WPOC",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Oecussi_Airport",
     "keywords": "Oe-Kusi Ambenu, Ocussi, Oekussi, Oekusi, Okusi, Oé-Cusse",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7386,7 +7079,6 @@
     "gps_code": "WPDL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Presidente_Nicolau_Lobato_International_Airport",
     "keywords": "Komoro, Comoro Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7410,7 +7102,6 @@
     "gps_code": "VVBM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Buon_Ma_Thuot_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7434,7 +7125,6 @@
     "gps_code": "VVCR",
     "local_code": null,
     "home_link": "https://camranh.aero",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Cam_Ranh_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7458,7 +7148,6 @@
     "gps_code": "VVCT",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Can_Tho_International_Airport",
     "keywords": "Binh Thuy Air Base, Trà Nóc Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7482,7 +7171,6 @@
     "gps_code": "VVCI",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Cat_Bi_Airport",
     "keywords": "Catbi Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7506,7 +7194,6 @@
     "gps_code": "VVCA",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Chu_Lai_Airport",
     "keywords": "chu lai air base",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7530,7 +7217,6 @@
     "gps_code": "VVCS",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Con_Dao_Airport",
     "keywords": "Conson Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7554,7 +7240,6 @@
     "gps_code": "VVCM",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/C%C3%A0_Mau_Airport",
     "keywords": "Moranc Airfield, Quan Long Airport",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7578,7 +7263,6 @@
     "gps_code": "VVDN",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Da_Nang_International_Airport",
     "keywords": "Danang, Cảng Hàng không Quốc tế Đà Nẵng",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7602,7 +7286,6 @@
     "gps_code": "VVDB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Dien_Bien_Phu_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7626,7 +7309,6 @@
     "gps_code": "VVDH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Dong_Hoi_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7650,7 +7332,6 @@
     "gps_code": "VVTH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/%C4%90%C3%B4ng_T%C3%A1c_(Tuy_Hoa)_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7674,7 +7355,6 @@
     "gps_code": "VVDL",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Lien_Khuong_Airport",
     "keywords": "Lienkhang",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7698,7 +7378,6 @@
     "gps_code": "VVNB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Noi_Bai_International_Airport",
     "keywords": "Noibai Airport, Sân bay Quốc tế Nội Bài",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7722,7 +7401,6 @@
     "gps_code": "VVPB",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Phu_Bai_International_Airport",
     "keywords": "Phubai",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7746,7 +7424,6 @@
     "gps_code": "VVPC",
     "local_code": null,
     "home_link": "https://vietnamairport.vn/phucatairport/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Phu_Cat_Airport",
     "keywords": "Phucat",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7770,7 +7447,6 @@
     "gps_code": "VVPQ",
     "local_code": null,
     "home_link": "https://sunwairport.vn",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Phu_Quoc_International_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7794,7 +7470,6 @@
     "gps_code": "VVPK",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Pleiku_Air_Base",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7818,7 +7493,6 @@
     "gps_code": "VVRG",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Rach_Gia_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7842,7 +7516,6 @@
     "gps_code": "VVTS",
     "local_code": null,
     "home_link": "http://www.tsnairport.hochiminhcity.gov.vn/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tan_Son_Nhat_International_Airport",
     "keywords": "Tansonnhat, Sài Gòn, Saigon, Sân bay Quốc tế Tân Sơn Nhất, Tan Son Nhut Air Base, Tan Son Nhut Airfield",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7866,7 +7539,6 @@
     "gps_code": "VVTX",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Tho_Xuan_Airport",
     "keywords": "Bai Thuong",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7890,7 +7562,6 @@
     "gps_code": "VVVD",
     "local_code": null,
     "home_link": "http://www.vandon-airport.com/",
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Van_Don_International_Airport",
     "keywords": "Cẩm Phả, Sân bay Quốc tế Vân Đồn",
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
@@ -7914,7 +7585,6 @@
     "gps_code": "VVVH",
     "local_code": null,
     "home_link": null,
-    "wikipedia_link": "https://en.wikipedia.org/wiki/Vinh_Airport",
     "keywords": null,
     "data_source": "airports_southeast_asia.csv (source dataset)",
     "last_verified": null
