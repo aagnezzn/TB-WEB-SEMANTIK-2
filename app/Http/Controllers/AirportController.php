@@ -93,6 +93,18 @@ class AirportController extends Controller
     {
         $search   = $request->input('search');
         $airports = $this->getAirportsData();
+        $all = collect($airports);
+
+        $stats = [
+            'total'     => $all->count(),
+            'countries' => $all->pluck('iso_country')->filter()->unique()->count(),
+            'large'     => $all->where('type', 'large_airport')->count(),
+            'website'   => $all->filter(fn ($a) => !empty($a['home_link']))->count(),
+        ];
+
+        // Bandara unggulan: pilih berdasarkan kode ICAO
+        $featuredCodes = ['WIII', 'WSSS', 'VTBS', 'WMKK', 'RPLL', 'VVTS'];
+        $featured = $all->whereIn('icao_code', $featuredCodes)->values();
 
         // Bandara dengan koordinat valid untuk marker peta
         $mapAirports = array_values(array_filter($airports, function ($airport) {
@@ -125,7 +137,7 @@ class AirportController extends Controller
             });
         }
 
-        return view('welcome', compact('airports', 'search', 'mapAirports'));
+        return view('welcome', compact('airports', 'search', 'mapAirports', 'stats', 'featured'));
     }
 
     // ------------------------------------------------------------------
@@ -211,4 +223,42 @@ class AirportController extends Controller
 
         return view('airports.categories-operational', compact('airports'));
     }
+
+    public function directory(Request $request)
+{
+    $type    = $request->query('type');
+    $country = $request->query('country');
+    $q       = mb_strtolower(trim((string) $request->query('q')));
+    $sort    = $request->query('sort', 'name');
+
+    $all       = collect($this->getAirportsData());
+    $countries = $all->pluck('iso_country')->filter()->unique()->sort()->values();
+
+    // Negara & pencarian diterapkan dulu, supaya angka di kartu jenis ikut berubah
+    $base = $all
+        ->when($country, fn ($c) => $c->where('iso_country', $country))
+        ->when($q, fn ($c) => $c->filter(function ($a) use ($q) {
+            $text = implode(' ', [
+                $a['name'] ?? '', $a['municipality'] ?? '', $a['icao_code'] ?? '',
+                $a['iata_code'] ?? '', $a['ident'] ?? '', $a['keywords'] ?? '',
+            ]);
+            return str_contains(mb_strtolower($text), $q);
+        }));
+
+    $typeCounts = $base->countBy(fn ($a) => $a['type'] ?? 'unknown');
+
+    $filtered = $base->when($type, fn ($c) => $c->where('type', $type));
+
+    $sorted = match ($sort) {
+        'elevation' => $filtered->sortByDesc(fn ($a) => $a['elevation_ft'] ?? -1),
+        default     => $filtered->sortBy(fn ($a) => mb_strtolower($a['name'] ?? '')),
+    };
+
+    $airports = $this->paginate($sorted->values(), 12);
+
+    return view('airports.directory', compact(
+        'airports', 'typeCounts', 'countries', 'type', 'country', 'q', 'sort'
+    ));
+}
+
 }

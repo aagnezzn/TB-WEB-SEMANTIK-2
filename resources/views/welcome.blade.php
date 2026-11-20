@@ -9,6 +9,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
+        /* Lapisan motif batik kawung, tetap di belakang semua konten */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%237FA8D6' stroke-width='1.4'%3E%3Cellipse cx='40' cy='20' rx='9' ry='18'/%3E%3Cellipse cx='40' cy='60' rx='9' ry='18'/%3E%3Cellipse cx='20' cy='40' rx='18' ry='9'/%3E%3Cellipse cx='60' cy='40' rx='18' ry='9'/%3E%3C/g%3E%3Cg fill='%23E0A93B'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='80' cy='0' r='2'/%3E%3Ccircle cx='0' cy='80' r='2'/%3E%3Ccircle cx='80' cy='80' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 80px 80px;
+    opacity: 0.35;
+    /* pola jelas di atas, memudar ke bawah supaya teks tetap nyaman dibaca */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.25) 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.25) 100%);
+}
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
@@ -99,6 +113,100 @@
         </div>
     </section>
     @endif
+
+    @if(!$search)
+
+    <!-- STATISTIK -->
+    <section class="w-full max-w-6xl mx-auto px-4 md:px-8 -mt-6 mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            @foreach([
+                ['value' => $stats['total'],     'label' => 'Total Bandara'],
+                ['value' => $stats['countries'], 'label' => 'Negara ASEAN'],
+                ['value' => $stats['large'],     'label' => 'Bandara Besar'],
+                ['value' => $stats['website'],   'label' => 'Punya Website Resmi'],
+            ] as $s)
+                <div class="bg-white/80 backdrop-blur-md rounded-2xl border-2 border-white shadow-lg p-5 text-center hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                    <p class="text-3xl font-bold text-[#7FA8D6]">{{ number_format($s['value']) }}</p>
+                    <p class="text-sm text-slate-500 mt-1">{{ $s['label'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    <!-- FITUR UTAMA -->
+    <section class="w-full max-w-6xl mx-auto px-4 md:px-8 py-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-[#7FA8D6] mb-2">Apa yang Bisa Kamu Lakukan?</h2>
+            <p class="text-slate-600">Semua kebutuhan informasi bandara ASEAN dalam satu tempat.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <a href="{{ route('airports.directory') }}" class="group bg-white/80 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                <div class="w-12 h-12 rounded-2xl bg-[#A8C6E7]/30 text-[#7FA8D6] flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-800 mb-1">Data Bandara</h3>
+                <p class="text-sm text-slate-500">Jelajahi katalog lengkap berdasarkan jenis, negara, dan elevasi.</p>
+            </a>
+
+            <a href="#peta" class="group bg-white/80 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                <div class="w-12 h-12 rounded-2xl bg-[#A8C6E7]/30 text-[#7FA8D6] flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-800 mb-1">Bandara Terdekat</h3>
+                <p class="text-sm text-slate-500">Klik titik di peta dan dapatkan 5 bandara terdekat dari lokasimu.</p>
+            </a>
+
+            <a href="{{ route('navigation.index') }}" class="group bg-white/80 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                <div class="w-12 h-12 rounded-2xl bg-[#FFE08A]/50 text-amber-600 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-800 mb-1">Navigasi Rute</h3>
+                <p class="text-sm text-slate-500">Bandingkan waktu tempuh mobil, motor, sepeda, dan jalan kaki.</p>
+            </a>
+
+            <a href="{{ route('chatbot') }}" class="group bg-white/80 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                <div class="w-12 h-12 rounded-2xl bg-[#FFE08A]/50 text-amber-600 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-800 mb-1">Tanya AeroBot</h3>
+                <p class="text-sm text-slate-500">Cari informasi bandara dengan bahasa sehari-hari lewat chatbot.</p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- BANDARA UNGGULAN -->
+    @if($featured->isNotEmpty())
+    <section class="w-full max-w-6xl mx-auto px-4 md:px-8 py-8">
+        <div class="flex items-end justify-between mb-6">
+            <div>
+                <h2 class="text-3xl font-bold text-[#7FA8D6] mb-1">Bandara Unggulan</h2>
+                <p class="text-slate-600">Hub penerbangan tersibuk di Asia Tenggara.</p>
+            </div>
+            <a href="{{ route('airports.directory', ['type' => 'large_airport']) }}" class="text-sm font-semibold text-[#7FA8D6] hover:underline hidden sm:inline">
+                Lihat semua &rarr;
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            @foreach($featured as $f)
+                <a href="{{ route('airports.show', $f['airport_id']) }}"
+                   class="bg-white/80 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg p-5 hover:-translate-y-1 hover:shadow-xl transition duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-700">{{ $f['iata_code'] ?? '-' }}</span>
+                        <span class="text-xs text-slate-400">{{ $f['icao_code'] ?? '-' }}</span>
+                    </div>
+                    <h3 class="font-bold text-slate-800 leading-snug mb-1">{{ $f['name'] }}</h3>
+                    <p class="text-sm text-slate-500">{{ $f['municipality'] ?? '-' }}, {{ $f['iso_country'] ?? '-' }}</p>
+                </a>
+            @endforeach
+        </div>
+    </section>
+    @endif
+
+@endif
 
 
     <!-- Google Maps Section -->
@@ -191,46 +299,69 @@
 
     <!-- Ikon Robot SVG Tanpa Lingkaran (Langsung Wujud Robot) -->
     <div class="w-16 h-16 flex justify-center items-center drop-shadow-xl transition-transform duration-300 group-hover:-translate-y-1">
-        <svg viewBox="0 0 64 64" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Antena Atas -->
-            <path d="M32 12V6" stroke="#7FA8D6" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="32" cy="4" r="3" fill="#FFE08A" stroke="#7FA8D6" stroke-width="2"/>
-            
-            <!-- Telinga Kiri & Kanan -->
-            <rect x="8" y="26" width="6" height="12" rx="3" fill="#CBD5E1" stroke="#7FA8D6" stroke-width="2"/>
-            <rect x="50" y="26" width="6" height="12" rx="3" fill="#CBD5E1" stroke="#7FA8D6" stroke-width="2"/>
-            
-            <!-- Kepala Utama Robot -->
-            <rect x="12" y="14" width="40" height="30" rx="12" fill="#F8FAFC" stroke="#7FA8D6" stroke-width="3"/>
-            
-            <!-- Layar Muka (Warna Gelap) -->
-            <rect x="17" y="19" width="30" height="20" rx="8" fill="#1E293B"/>
-            
-            <!-- Mata Robot (Bercahaya & Bisa Kedip) -->
-            <g class="animate-blink">
-                <!-- Mata Kiri -->
-                <ellipse cx="26" cy="27" rx="4" ry="4" fill="#38BDF8"/>
-                <circle cx="25" cy="26" r="1.5" fill="#FFFFFF"/>
-                
-                <!-- Mata Kanan -->
-                <ellipse cx="38" cy="27" rx="4" ry="4" fill="#38BDF8"/>
-                <circle cx="37" cy="26" r="1.5" fill="#FFFFFF"/>
-            </g>
-            
-            <!-- Senyum Robot Kecil -->
-            <path d="M30 33C30 33 31.5 34.5 32 34.5C32.5 34.5 34 33 34 33" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <svg viewBox="0 0 64 64" class="w-full h-full animate-float" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Antena -->
+    <path d="M32 12V7" stroke="#7FA8D6" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="5" r="3.5" fill="#FDA4AF" stroke="#7FA8D6" stroke-width="2"/>
+
+    <!-- Telinga -->
+    <circle cx="8" cy="30" r="5" fill="#FFE08A" stroke="#7FA8D6" stroke-width="2"/>
+    <circle cx="56" cy="30" r="5" fill="#FFE08A" stroke="#7FA8D6" stroke-width="2"/>
+
+    <!-- Badan mungil -->
+    <rect x="22" y="48" width="20" height="11" rx="5.5" fill="#FFFFFF" stroke="#7FA8D6" stroke-width="2.5"/>
+    <path d="M32 56.5c-2.2-1.6-3.2-2.7-3.2-4a1.8 1.8 0 0 1 3.2-1.1 1.8 1.8 0 0 1 3.2 1.1c0 1.3-1 2.4-3.2 4z" fill="#FDA4AF"/>
+
+    <!-- Tangan -->
+    <circle cx="18" cy="53" r="3.5" fill="#FFE08A" stroke="#7FA8D6" stroke-width="2"/>
+    <circle cx="46" cy="53" r="3.5" fill="#FFE08A" stroke="#7FA8D6" stroke-width="2"/>
+
+    <!-- Kepala bulat -->
+    <rect x="9" y="12" width="46" height="37" rx="18.5" fill="#FFFFFF" stroke="#7FA8D6" stroke-width="3"/>
+
+    <!-- Layar wajah -->
+    <rect x="14" y="17" width="36" height="27" rx="13" fill="#1E293B"/>
+
+    <!-- Mata besar (berkedip) -->
+    <g class="animate-blink">
+        <ellipse cx="24.5" cy="29" rx="5.5" ry="6" fill="#7DD3FC"/>
+        <circle cx="22.8" cy="26.8" r="2.2" fill="#FFFFFF"/>
+        <circle cx="26.5" cy="31.5" r="1.1" fill="#FFFFFF"/>
+
+        <ellipse cx="39.5" cy="29" rx="5.5" ry="6" fill="#7DD3FC"/>
+        <circle cx="37.8" cy="26.8" r="2.2" fill="#FFFFFF"/>
+        <circle cx="41.5" cy="31.5" r="1.1" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Pipi merah muda -->
+    <ellipse cx="18.5" cy="37" rx="3.2" ry="2" fill="#FDA4AF" opacity="0.85"/>
+    <ellipse cx="45.5" cy="37" rx="3.2" ry="2" fill="#FDA4AF" opacity="0.85"/>
+
+    <!-- Mulut kecil -->
+    <path d="M28.5 36.5c1.2 2.2 2.5 2.2 3.5 0 1 2.2 2.3 2.2 3.5 0" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
     </div>
 </a>
 
 <style>
-    /* Animasi Kedip Mata Robot */
+    /* Kedip mata */
     @keyframes blink {
         0%, 85%, 100% { transform: scaleY(1); transform-origin: center; }
         90% { transform: scaleY(0.1); transform-origin: center; }
     }
     .animate-blink {
         animation: blink 3.5s infinite;
+        transform-box: fill-box;
+        transform-origin: center;
+    }
+
+    /* Melayang naik-turun */
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+    }
+    .animate-float {
+        animation: float 2.8s ease-in-out infinite;
     }
 </style>
     </button>

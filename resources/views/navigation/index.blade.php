@@ -42,6 +42,19 @@
         @media (max-width: 768px) {
             #navigation-map { height: 60vh; min-height: 400px; }
         }
+        body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%237FA8D6' stroke-width='1.4'%3E%3Cellipse cx='40' cy='20' rx='9' ry='18'/%3E%3Cellipse cx='40' cy='60' rx='9' ry='18'/%3E%3Cellipse cx='20' cy='40' rx='18' ry='9'/%3E%3Cellipse cx='60' cy='40' rx='18' ry='9'/%3E%3C/g%3E%3Cg fill='%23E0A93B'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='80' cy='0' r='2'/%3E%3Ccircle cx='0' cy='80' r='2'/%3E%3Ccircle cx='80' cy='80' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 80px 80px;
+    opacity: 0.35;
+    /* pola jelas di atas, memudar ke bawah supaya teks tetap nyaman dibaca */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.25) 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.25) 100%);
+}
     </style>
 </head>
 
@@ -84,7 +97,11 @@
                         <input type="text" id="airport-search" autocomplete="off"
                             placeholder="Cari nama bandara atau kode IATA..."
                             class="w-full p-3 pr-10 rounded-xl border border-[#A8C6E7] bg-white focus:outline-none focus:ring-2 focus:ring-[#7FA8D6]">
-                        <span class="absolute right-4 top-3.5 text-[#7FA8D6]">🔍</span>
+                        <span class="absolute right-4 top-3.5 text-[#7FA8D6]">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                            </svg>
+                        </span>
                     </div>
 
                     <div id="airport-results"
@@ -139,9 +156,12 @@
                 </p>
 
                 <a id="transit-link" href="#" target="_blank" rel="noopener"
-                   class="hidden mt-3 text-sm font-semibold text-[#7FA8D6] hover:underline">
-                    Lihat jadwal transportasi umum di Google Maps ↗
-                </a>
+                class="hidden mt-3 text-sm font-semibold text-[#7FA8D6] hover:underline items-center gap-1">
+                    <span>Lihat jadwal transportasi umum di Google Maps</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+                    </svg>
+                    </a>
 
                 <p class="text-xs text-slate-400 mt-5">
                     Rute disediakan oleh OpenStreetMap dan OSRM (FOSSGIS). Waktu
@@ -237,11 +257,11 @@
         const ROUTING_BASE = 'https://routing.openstreetmap.de/routed-';
 
         const MODES = [
-            { key: 'driving', label: 'Mengemudi',         icon: '🚗', profile: 'car',  color: '#4285F4' },
-            { key: 'motor',   label: 'Motor',             icon: '🏍️', derived: true,   color: '#F59E0B' },
-            { key: 'transit', label: 'Transportasi umum', icon: '🚌', derived: true,   color: '#0F9D58' },
-            { key: 'walking', label: 'Jalan kaki',        icon: '🚶', profile: 'foot', color: '#7C3AED', dashed: true },
-            { key: 'cycling', label: 'Bersepeda',         icon: '🚲', profile: 'bike', color: '#E11D48' }
+            { key: 'driving', label: 'Mobil',         icon: 'car',   profile: 'car',  color: '#4285F4' },
+            { key: 'motor',   label: 'Motor',             icon: 'motor', derived: true,   color: '#F59E0B' },
+            { key: 'transit', label: 'Transportasi umum', icon: 'bus',   derived: true,   color: '#0F9D58' },
+            { key: 'walking', label: 'Jalan kaki',        icon: 'walk',  profile: 'foot', color: '#7C3AED', dashed: true },
+            { key: 'cycling', label: 'Bersepeda',         icon: 'bike',  profile: 'bike', color: '#E11D48' }
         ];
 
         // Parameter perkiraan (silakan disesuaikan)
@@ -249,7 +269,22 @@
         const TRANSIT_AVG_SPEED_KMH = 25;   // kecepatan rata-rata angkutan umum
         const TRANSIT_OVERHEAD_MIN = 15;    // waktu tunggu + berjalan ke halte
 
-        const BEST_MODE = { key: 'best', label: 'Moda transportasi terbaik', icon: '⭐' };
+        const BEST_MODE = { key: 'best', label: 'Moda transportasi terbaik', icon: 'star', color: '#F59E0B' };
+
+        const ICONS = {
+        car:   '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',
+        motor: '<circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M9 17.5h5l2-6h-4L10.5 8.5H7"/><path d="M15 8h3l.5 3"/>',
+        bus:   '<path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/>',
+        walk:  '<path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/>',
+        bike:  '<circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/>',
+        star:  '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'
+        };
+
+function svgIcon(name, sizeClass) {
+    return '<svg class="' + sizeClass + '" fill="none" stroke="currentColor" stroke-width="1.8" ' +
+           'stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">' +
+           ICONS[name] + '</svg>';
+}
 
 
         // =====================================
@@ -375,8 +410,10 @@
             }
 
             const icon = document.createElement('span');
-            icon.className = 'text-2xl w-8 text-center';
-            icon.textContent = mode.icon;
+            icon.className = 'w-10 h-10 shrink-0 flex items-center justify-center rounded-lg';
+            icon.style.color = mode.color;
+            icon.style.backgroundColor = mode.color + '1A'; // latar tipis, warna sama dengan garis rute
+            icon.innerHTML = svgIcon(mode.icon, 'w-5 h-5');
 
             const info = document.createElement('div');
             info.className = 'flex-1 min-w-0';
@@ -488,7 +525,7 @@
                 });
 
                 line.on('click', function () { selectMode(mode.key); });
-                line.bindTooltip(mode.icon + ' ' + mode.label + ' • ' + formatDuration(data.duration), { sticky: true });
+                line.bindTooltip(mode.label + ' • ' + formatDuration(data.duration), { sticky: true });
                 line.addTo(routeLayer);
             });
 

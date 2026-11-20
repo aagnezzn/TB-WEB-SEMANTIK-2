@@ -21,6 +21,8 @@ Route::get('/category/operational', [AirportController::class, 'operationalCateg
 // Rute Utama & Pencarian (Satu rute untuk halaman utama dan pencarian)
 Route::get('/', [AirportController::class, 'index'])->name('home');
 
+Route::get('/data-bandara', [AirportController::class, 'directory'])->name('airports.directory');
+
 // Rute Pencarian Bandara
 Route::get('/airports/map', [AirportMapController::class, 'map'])->name('airports.map');
 
