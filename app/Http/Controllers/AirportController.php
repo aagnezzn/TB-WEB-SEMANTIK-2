@@ -2,16 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Airport;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use App\Models\Airport;
+use Illuminate\Support\Facades\DB;
 
 class AirportController extends Controller
 {
+    /** Cache data JSON supaya file tidak dibaca berulang dalam satu request. */
+    private ?array $airportsCache = null;
+
+    /** Pemetaan nama negara ke kode ISO untuk fitur pencarian. */
+    private const ISO_MAPPING = [
+        'indonesia'         => 'id',
+        'malaysia'          => 'my',
+        'singapura'         => 'sg',
+        'singapore'         => 'sg',
+        'thailand'          => 'th',
+        'filipina'          => 'ph',
+        'philippines'       => 'ph',
+        'vietnam'           => 'vn',
+        'kamboja'           => 'kh',
+        'cambodia'          => 'kh',
+        'laos'              => 'la',
+        'myanmar'           => 'mm',
+        'brunei'            => 'bn',
+        'brunei darussalam' => 'bn',
+        'timor leste'       => 'tl',
+    ];
+
+    // ------------------------------------------------------------------
+    // Helper
+    // ------------------------------------------------------------------
+
     private function getAirportsData(): array
     {
+        if ($this->airportsCache !== null) {
+            return $this->airportsCache;
+        }
+
         $possiblePaths = [
             database_path('data/dataset_bandara_tubes.json'),
             database_path('data/dataset_bandara_tubes'),
@@ -30,20 +59,42 @@ class AirportController extends Controller
         }
 
         if (!$json) {
-            return [];
+            return $this->airportsCache = [];
         }
 
+        // Hapus BOM UTF-8 jika ada
         $json = preg_replace('/^\xEF\xBB\xBF/', '', $json);
         $data = json_decode($json, true);
 
-        return is_array($data) ? $data : [];
+        return $this->airportsCache = (is_array($data) ? $data : []);
     }
+
+    private function paginate(Collection $items, int $perPage = 10): LengthAwarePaginator
+    {
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+        return new LengthAwarePaginator(
+            $items->slice(($currentPage - 1) * $perPage, $perPage)->values(),
+            $items->count(),
+            $perPage,
+            $currentPage,
+            [
+                'path'  => LengthAwarePaginator::resolveCurrentPath(),
+                'query' => request()->query(),
+            ]
+        );
+    }
+
+    // ------------------------------------------------------------------
+    // Halaman utama + pencarian
+    // ------------------------------------------------------------------
 
     public function index(Request $request)
     {
-        $search = $request->input('search');
+        $search   = $request->input('search');
         $airports = $this->getAirportsData();
 
+        // Bandara dengan koordinat valid untuk marker peta
         $mapAirports = array_values(array_filter($airports, function ($airport) {
             return isset($airport['latitude_deg'], $airport['longitude_deg'])
                 && is_numeric($airport['latitude_deg'])
@@ -56,33 +107,14 @@ class AirportController extends Controller
 
         if ($search) {
             $searchLower = strtolower(trim($search));
-
-            $isoMapping = [
-                'indonesia' => 'id',
-                'malaysia' => 'my',
-                'singapura' => 'sg',
-                'singapore' => 'sg',
-                'thailand' => 'th',
-                'filipina' => 'ph',
-                'philippines' => 'ph',
-                'vietnam' => 'vn',
-                'kamboja' => 'kh',
-                'cambodia' => 'kh',
-                'laos' => 'la',
-                'myanmar' => 'mm',
-                'brunei' => 'bn',
-                'brunei darussalam' => 'bn',
-                'timor leste' => 'tl',
-            ];
-
-            $targetIso = $isoMapping[$searchLower] ?? $searchLower;
+            $targetIso   = self::ISO_MAPPING[$searchLower] ?? $searchLower;
 
             $airports = array_filter($airports, function ($airport) use ($searchLower, $targetIso) {
-                $name = strtolower($airport['name'] ?? '');
+                $name         = strtolower($airport['name'] ?? '');
                 $municipality = strtolower($airport['municipality'] ?? '');
-                $isoCountry = strtolower($airport['iso_country'] ?? '');
-                $ident = strtolower($airport['ident'] ?? '');
-                $iata = strtolower($airport['iata_code'] ?? '');
+                $isoCountry   = strtolower($airport['iso_country'] ?? '');
+                $ident        = strtolower($airport['ident'] ?? '');
+                $iata         = strtolower($airport['iata_code'] ?? '');
 
                 return str_contains($name, $searchLower)
                     || str_contains($municipality, $searchLower)
@@ -93,49 +125,74 @@ class AirportController extends Controller
             });
         }
 
-        return view('welcome', compact(
-            'airports',
-            'search',
-            'mapAirports'
-        ));
+        return view('welcome', compact('airports', 'search', 'mapAirports'));
     }
+
+    // ------------------------------------------------------------------
+    // Detail bandara
+    // ------------------------------------------------------------------
 
     public function show($id)
     {
-        $allAirports = $this->getAirportsData();
+        $id      = (string) $id;
         $airport = null;
+        $data    = $this->getAirportsData();
 
-        foreach ($allAirports as $item) {
-            // Tambahkan 'airport_id' di urutan pertama pengecekan agar cocok dengan URL dari peta
-            $itemId = $item['airport_id'] ?? $item['ident'] ?? $item['iata_code'] ?? $item['id'] ?? null;
-
-            if ($itemId == $id || (string) $itemId === (string) $id) {
-                $airport = $item;
-                break;
+        // 1) Cari di JSON. Kode (ICAO/IATA) dicek duluan, ID angka terakhir
+        //    supaya tidak tertukar antar bandara.
+        foreach (['ident', 'icao_code', 'iata_code', 'airport_id', 'id'] as $key) {
+            foreach ($data as $item) {
+                if (isset($item[$key]) && (string) $item[$key] === $id) {
+                    $airport = $item;
+                    break 2;
+                }
             }
         }
 
-    if (!$airport) {
-        abort(404, 'Bandara tidak ditemukan');
-    }
+        // 2) Fallback ke database (untuk hasil rekomendasi terdekat)
+        if (!$airport) {
+            $query = DB::table('airports')
+                ->where('icao_code', $id)
+                ->orWhere('iata_code', $id);
+
+            if (ctype_digit($id)) {
+                $query->orWhere('airport_id', (int) $id);
+            }
+
+            $row = $query->first();
+
+            if ($row) {
+                $airport = (array) $row;
+                // show.blade.php membaca kode ICAO dari field 'ident'
+                $airport['ident'] = $airport['icao_code'] ?? null;
+            }
+        }
+
+        if (!$airport) {
+            abort(404, 'Bandara tidak ditemukan');
+        }
 
         return view('airports.show', compact('airport'));
     }
 
+    // ------------------------------------------------------------------
+    // Halaman kategori
+    // ------------------------------------------------------------------
+
     public function locationCategory()
     {
         $aseanCountries = [
-            ['code' => 'ID', 'name' => 'Indonesia', 'flag' => '🇮🇩'],
-            ['code' => 'MY', 'name' => 'Malaysia', 'flag' => '🇲🇾'],
-            ['code' => 'SG', 'name' => 'Singapura', 'flag' => '🇸🇬'],
-            ['code' => 'TH', 'name' => 'Thailand', 'flag' => '🇹🇭'],
-            ['code' => 'PH', 'name' => 'Filipina', 'flag' => '🇵🇭'],
-            ['code' => 'VN', 'name' => 'Vietnam', 'flag' => '🇻🇳'],
-            ['code' => 'KH', 'name' => 'Kamboja', 'flag' => '🇰🇭'],
-            ['code' => 'LA', 'name' => 'Laos', 'flag' => '🇱🇦'],
-            ['code' => 'MM', 'name' => 'Myanmar', 'flag' => '🇲🇲'],
+            ['code' => 'ID', 'name' => 'Indonesia',         'flag' => '🇮🇩'],
+            ['code' => 'MY', 'name' => 'Malaysia',          'flag' => '🇲🇾'],
+            ['code' => 'SG', 'name' => 'Singapura',         'flag' => '🇸🇬'],
+            ['code' => 'TH', 'name' => 'Thailand',          'flag' => '🇹🇭'],
+            ['code' => 'PH', 'name' => 'Filipina',          'flag' => '🇵🇭'],
+            ['code' => 'VN', 'name' => 'Vietnam',           'flag' => '🇻🇳'],
+            ['code' => 'KH', 'name' => 'Kamboja',           'flag' => '🇰🇭'],
+            ['code' => 'LA', 'name' => 'Laos',              'flag' => '🇱🇦'],
+            ['code' => 'MM', 'name' => 'Myanmar',           'flag' => '🇲🇲'],
             ['code' => 'BN', 'name' => 'Brunei Darussalam', 'flag' => '🇧🇳'],
-            ['code' => 'TL', 'name' => 'Timor Leste', 'flag' => '🇹🇱'],
+            ['code' => 'TL', 'name' => 'Timor Leste',       'flag' => '🇹🇱'],
         ];
 
         return view('airports.categories-location', compact('aseanCountries'));
@@ -143,55 +200,15 @@ class AirportController extends Controller
 
     public function phoneCategory()
     {
-        $airports = collect($this->getAirportsData());
+        $airports = $this->paginate(collect($this->getAirportsData()));
 
-        $perPage = 10;
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
-
-        $currentItems = $airports
-            ->slice(($currentPage - 1) * $perPage, $perPage)
-            ->values();
-
-        $paginatedAirports = new LengthAwarePaginator(
-            $currentItems,
-            $airports->count(),
-            $perPage,
-            $currentPage,
-            [
-                'path' => LengthAwarePaginator::resolveCurrentPath(),
-                'query' => request()->query(),
-            ]
-        );
-
-        return view('airports.categories-phone', [
-            'airports' => $paginatedAirports,
-        ]);
+        return view('airports.categories-phone', compact('airports'));
     }
 
     public function operationalCategory()
     {
-        $airports = collect($this->getAirportsData());
+        $airports = $this->paginate(collect($this->getAirportsData()));
 
-        $perPage = 10;
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
-
-        $currentItems = $airports
-            ->slice(($currentPage - 1) * $perPage, $perPage)
-            ->values();
-
-        $paginatedAirports = new LengthAwarePaginator(
-            $currentItems,
-            $airports->count(),
-            $perPage,
-            $currentPage,
-            [
-                'path' => LengthAwarePaginator::resolveCurrentPath(),
-                'query' => request()->query(),
-            ]
-        );
-
-        return view('airports.categories-operational', [
-            'airports' => $paginatedAirports,
-        ]);
+        return view('airports.categories-operational', compact('airports'));
     }
 }
