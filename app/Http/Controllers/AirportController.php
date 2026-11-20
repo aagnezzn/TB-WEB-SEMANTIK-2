@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Airport;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use App\Models\Airport;
-use Illuminate\Support\Facades\DB;
 
 class AirportController extends Controller
 {
-    private function getAirportsData()
+    private function getAirportsData(): array
     {
-        // Daftar kemungkinan lokasi file dataset (disesuaikan ke database/data/)
         $possiblePaths = [
             database_path('data/dataset_bandara_tubes.json'),
             database_path('data/dataset_bandara_tubes'),
@@ -34,9 +33,7 @@ class AirportController extends Controller
             return [];
         }
 
-        // Hapus BOM UTF-8 jika ada
         $json = preg_replace('/^\xEF\xBB\xBF/', '', $json);
-
         $data = json_decode($json, true);
 
         return is_array($data) ? $data : [];
@@ -45,26 +42,8 @@ class AirportController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $airports = $this->getAirportsData();
 
-        // Menggunakan path baru di database/data/
-        $jsonPath = database_path('data/dataset_bandara_tubes.json');
-
-        $airports = [];
-
-        if (file_exists($jsonPath)) {
-            $content = file_get_contents($jsonPath);
-
-            // Hapus BOM UTF-8 jika ada
-            $content = preg_replace('/^\xEF\xBB\xBF/', '', $content);
-
-            $decoded = json_decode($content, true);
-
-            if (is_array($decoded)) {
-                $airports = $decoded;
-            }
-        }
-
-        // Ambil data bandara yang memiliki koordinat valid
         $mapAirports = array_values(array_filter($airports, function ($airport) {
             return isset($airport['latitude_deg'], $airport['longitude_deg'])
                 && is_numeric($airport['latitude_deg'])
@@ -75,11 +54,9 @@ class AirportController extends Controller
                 && $airport['longitude_deg'] <= 180;
         }));
 
-        // Fitur pencarian bandara
         if ($search) {
             $searchLower = strtolower(trim($search));
 
-            // Mapping nama negara ke kode ISO
             $isoMapping = [
                 'indonesia' => 'id',
                 'malaysia' => 'my',
@@ -124,45 +101,29 @@ class AirportController extends Controller
     }
 
     public function show($id)
-{
-    $id = (string) $id;
-    $airport = null;
-    $data = $this->getAirportsData();
+    {
+        $allAirports = $this->getAirportsData();
+        $airport = null;
 
-    // Kode dicek dulu, ID angka terakhir supaya tidak tertukar
-    foreach (['ident', 'icao_code', 'iata_code', 'airport_id', 'id'] as $key) {
-        foreach ($data as $item) {
-            if (isset($item[$key]) && (string) $item[$key] === $id) {
+        foreach ($allAirports as $item) {
+            // Tambahkan 'airport_id' di urutan pertama pengecekan agar cocok dengan URL dari peta
+            $itemId = $item['airport_id'] ?? $item['ident'] ?? $item['iata_code'] ?? $item['id'] ?? null;
+
+            if ($itemId == $id || (string) $itemId === (string) $id) {
                 $airport = $item;
-                break 2;
+                break;
             }
         }
-    }
-
-    // Fallback ke database
-    if (!$airport) {
-        $row = DB::table('airports')
-            ->where('icao_code', $id)
-            ->orWhere('iata_code', $id)
-            ->orWhere('airport_id', $id)
-            ->first();
-
-        if ($row) {
-            $airport = (array) $row;
-            $airport['ident'] = $airport['icao_code'] ?? null;
-        }
-    }
 
     if (!$airport) {
         abort(404, 'Bandara tidak ditemukan');
     }
 
-    return view('airports.show', compact('airport'));
-}
+        return view('airports.show', compact('airport'));
+    }
 
     public function locationCategory()
     {
-        // Daftar negara ASEAN
         $aseanCountries = [
             ['code' => 'ID', 'name' => 'Indonesia', 'flag' => '🇮🇩'],
             ['code' => 'MY', 'name' => 'Malaysia', 'flag' => '🇲🇾'],
@@ -182,8 +143,6 @@ class AirportController extends Controller
 
     public function phoneCategory()
     {
-        $jsonPath = database_path('data/dataset_bandara_tubes.json');
-
         $airports = collect($this->getAirportsData());
 
         $perPage = 10;
@@ -205,7 +164,7 @@ class AirportController extends Controller
         );
 
         return view('airports.categories-phone', [
-            'airports' => $paginatedAirports
+            'airports' => $paginatedAirports,
         ]);
     }
 
@@ -232,7 +191,7 @@ class AirportController extends Controller
         );
 
         return view('airports.categories-operational', [
-            'airports' => $paginatedAirports
+            'airports' => $paginatedAirports,
         ]);
     }
 }
