@@ -48,7 +48,9 @@
             @foreach($aseanCountries as $country)
                 <a href="{{ route('home', ['search' => $country['name']]) }}" 
                    class="bg-white/80 backdrop-blur-md p-6 rounded-3xl border-2 border-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-4 group">
-                    <span class="text-4xl shadow-sm">{{ $country['flag'] }}</span>
+                    <span class="w-12 h-12 rounded-2xl bg-[#A8C6E7]/30 text-[#7FA8D6] font-bold text-base flex items-center justify-center shrink-0">
+                        {{ $country['code'] }}
+                    </span>
                     <div>
                         <h3 class="text-xl font-bold text-slate-800 group-hover:text-[#7FA8D6] transition-colors">{{ $country['name'] }}</h3>
                         <p class="text-xs text-slate-500">Kode ISO: {{ $country['code'] }}</p>

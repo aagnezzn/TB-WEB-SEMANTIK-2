@@ -71,9 +71,18 @@ body::before {
     </main>
 
 <!-- Bagian Hasil Pencarian (Akan muncul pas user ngetik & klik cari) -->
-    @if(isset($search))
+    @if(isset($search) && trim($search) !== '')
     <section class="w-full max-w-6xl mx-auto px-6 py-10">
-        <h2 class="text-2xl font-bold text-[#7FA8D6] mb-6">Hasil Pencarian untuk: "{{ $search }}"</h2>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+                <h2 class="text-2xl font-bold text-[#7FA8D6]">Hasil Pencarian untuk: "{{ $search }}"</h2>
+                <p class="text-sm text-slate-500 mt-1">Ditemukan {{ count($airports) }} bandara</p>
+            </div>
+            <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/80 hover:bg-white text-slate-600 rounded-xl text-sm font-semibold border border-slate-200 transition shadow-sm hover:shadow self-start sm:self-auto">
+                <span>&larr;</span>
+                <span>Hapus Pencarian</span>
+            </a>
+        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @forelse($airports as $airport)
@@ -95,12 +104,12 @@ body::before {
                             <svg class="w-4 h-4 text-sky-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                             </svg>
-                            <span>ICAO / IATA: {{ $airport['ident'] }} / {{ $airport['iata_code'] ?? '-' }}</span>
+                            <span>ICAO / IATA: {{ $airport['ident'] ?? $airport['icao_code'] ?? '-' }} / {{ $airport['iata_code'] ?? '-' }}</span>
                         </p>
                     </div>
                     
-                    <a href="{{ route('airports.show', $airport['ident'] ?? $airport['id'] ?? $airport['airport_id'] ?? 0) }}" 
-                    class="px-4 py-3 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm inline-flex items-center gap-1.5">
+                    <a href="{{ route('airports.show', $airport['ident'] ?? $airport['icao_code'] ?? $airport['iata_code'] ?? $airport['airport_id'] ?? $airport['id'] ?? 0) }}" 
+                    class="px-4 py-3 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm inline-flex items-center gap-1.5 self-start">
                         <span>Lihat Detail</span>
                         <span>&rarr;</span>
                         </a>
