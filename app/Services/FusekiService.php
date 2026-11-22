@@ -89,6 +89,57 @@ class FusekiService
     }
 
     /**
+     * Pengayaan lokal: mengikuti tautan owl:sameAs dari bandara AeroFind ke entitas
+     * DBpedia yang sudah dimuat di Fuseki (links.ttl dan dbpedia-all.ttl).
+     * Mengambil operator, thumbnail, dan tautan DBpedia. Abstrak dan tanggal
+     * pembukaan tidak ada pada data lokal, jadi tidak diambil di sini.
+     *
+     * @return array{dbpedia: ?string, operator: ?string, thumbnail: ?string}|null
+     */
+    public function localEnrichment(string $airportId): ?array
+    {
+        if (! preg_match('/^APT-\d+$/', $airportId) || Cache::has('fuseki.down')) {
+            return null;
+        }
+
+        $query = <<<SPARQL
+PREFIX af:  <https://aerofind.example/id/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+SELECT ?dbpedia ?operatorIri ?thumbnail WHERE {
+    af:{$airportId} owl:sameAs ?dbpedia .
+    OPTIONAL { ?dbpedia dbo:operator ?operatorIri }
+    OPTIONAL { ?dbpedia dbo:thumbnail ?thumbnail }
+} LIMIT 1
+SPARQL;
+
+        try {
+            $row = $this->select($query)['results']['bindings'][0] ?? null;
+        } catch (Throwable $e) {
+            return null;
+        }
+
+        if ($row === null) {
+            return null;
+        }
+
+        // Operator di data lokal berupa IRI (mis. dbr:Angkasa_Pura); ambil namanya.
+        $operator = null;
+        if (! empty($row['operatorIri']['value'])) {
+            $path = parse_url($row['operatorIri']['value'], PHP_URL_PATH) ?: '';
+            $operator = str_replace('_', ' ', urldecode(basename($path)));
+        }
+
+        $thumbnail = $row['thumbnail']['value'] ?? null;
+
+        return [
+            'dbpedia' => $row['dbpedia']['value'] ?? null,
+            'operator' => $operator,
+            'thumbnail' => $thumbnail ? preg_replace('#^http://#', 'https://', $thumbnail) : null,
+        ];
+    }
+
+    /**
      * Kueri federasi: Fuseki mengambil bandara lokal lalu memanggil DBpedia
      * lewat SERVICE untuk data tambahan, dalam satu kueri SPARQL.
      *

@@ -445,8 +445,10 @@ class AirportController extends Controller
     }
 
     /**
-     * Data tambahan dari DBpedia. Lebih dulu lewat kueri federasi Fuseki (SERVICE),
-     * lalu langsung ke endpoint DBpedia bila federasi tidak tersedia.
+     * Data tambahan dari DBpedia.
+     * 1) Lokal: tautan owl:sameAs di Fuseki (operator, thumbnail, tautan DBpedia).
+     * 2) Live: kueri federasi Fuseki (SERVICE) ke DBpedia, lalu langsung ke endpoint
+     *    DBpedia bila federasi tidak tersedia (abstrak dan tanggal pembukaan).
      *
      * @param  array<string, mixed>  $airport
      * @return array<string, mixed>|null
@@ -465,19 +467,39 @@ class AirportController extends Controller
             }
         }
 
-        if ($wikipedia === null) {
+        // 1) Lokal: owl:sameAs di Fuseki
+        $airportId = (string) ($airport['airport_id'] ?? '');
+        $local = $airportId !== '' ? $this->fuseki->localEnrichment($airportId) : null;
+
+        // 2) Live: abstrak dan tanggal pembukaan (tidak ada di TTL lokal)
+        $live = null;
+        $liveSource = null;
+
+        if ($wikipedia !== null) {
+            $live = $icao !== '' ? $this->fuseki->federatedEnrichment($icao) : null;
+            $liveSource = 'Fuseki SERVICE → DBpedia';
+
+            if ($live === null) {
+                $live = $this->external->enrichmentForWikipediaLink($wikipedia, $icao !== '' ? $icao : null);
+                $liveSource = 'DBpedia';
+            }
+        }
+
+        if ($local === null && $live === null) {
             return null;
         }
 
-        $result = $icao !== '' ? $this->fuseki->federatedEnrichment($icao) : null;
-        $source = 'Fuseki SERVICE → DBpedia';
-
-        if ($result === null) {
-            $result = $this->external->enrichmentForWikipediaLink($wikipedia, $icao !== '' ? $icao : null);
-            $source = 'DBpedia';
-        }
-
-        return $result === null ? null : $result + ['source' => $source, 'wikipedia' => $wikipedia];
+        return [
+            'dbpedia' => $local['dbpedia'] ?? $live['dbpedia'] ?? null,
+            'operator' => $local['operator'] ?? $live['operator'] ?? null,
+            'thumbnail' => $local['thumbnail'] ?? $live['thumbnail'] ?? null,
+            'abstract' => $live['abstract'] ?? null,
+            'opened' => $live['opened'] ?? null,
+            'source' => $local !== null
+                ? 'Fuseki (owl:sameAs)'.($live !== null ? ' + '.$liveSource : '')
+                : $liveSource,
+            'wikipedia' => $wikipedia,
+        ];
     }
 
     // ------------------------------------------------------------------

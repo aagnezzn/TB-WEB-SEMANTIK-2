@@ -173,9 +173,9 @@
                 @endif
 
                 <!-- Data tambahan dari DBpedia (SPARQL endpoint eksternal) -->
-                @if(!empty($semantic) && (!empty($semantic['abstract']) || !empty($semantic['operator']) || !empty($semantic['opened'])))
+                @if(!empty($semantic) && (!empty($semantic['abstract']) || !empty($semantic['operator']) || !empty($semantic['opened']) || !empty($semantic['thumbnail'])))
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/80 md:col-span-2">
-                    <p class="text-xs font-medium text-slate-500 mb-2">DBpedia &middot; {{ $semantic['source'] }}</p>
+                    <p class="text-xs font-medium text-slate-500 mb-2">DBpedia</p>
                     @if(!empty($semantic['thumbnail']))
                         <img src="{{ $semantic['thumbnail'] }}" alt="{{ $airport['name'] ?? '' }}" class="rounded-xl mb-3 max-h-48 object-cover" loading="lazy">
                     @endif
