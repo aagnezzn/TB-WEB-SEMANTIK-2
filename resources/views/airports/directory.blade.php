@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Bandara - AeroSearch</title>
+    <title>{{ __('messages.directory_page_title') }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -30,9 +30,9 @@
 
 @php
     $types = [
-        'large_airport'  => ['label' => 'Bandara Besar',    'desc' => 'Hub utama & internasional',      'badge' => 'bg-amber-100 text-amber-700'],
-        'medium_airport' => ['label' => 'Bandara Menengah', 'desc' => 'Bandara regional',               'badge' => 'bg-sky-100 text-sky-700'],
-        'small_airport'  => ['label' => 'Bandara Kecil',    'desc' => 'Lokal & lapangan terbang perintis', 'badge' => 'bg-slate-100 text-slate-600'],
+        'large_airport'  => ['label' => __('messages.directory_type_large'),  'desc' => __('messages.directory_type_large_desc'),  'badge' => 'bg-amber-100 text-amber-700'],
+        'medium_airport' => ['label' => __('messages.directory_type_medium'), 'desc' => __('messages.directory_type_medium_desc'), 'badge' => 'bg-sky-100 text-sky-700'],
+        'small_airport'  => ['label' => __('messages.directory_type_small'),  'desc' => __('messages.directory_type_small_desc'),  'badge' => 'bg-slate-100 text-slate-600'],
     ];
     $total = $typeCounts->sum();
     // Parameter yang dipertahankan saat berpindah filter jenis
@@ -42,8 +42,8 @@
 <main class="w-full max-w-6xl mx-auto px-4 py-12 flex-grow">
 
     <div class="mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-[#7FA8D6]">Data Bandara</h1>
-        <p class="text-slate-600 mt-2">Jelajahi seluruh bandara ASEAN berdasarkan jenis dan ukurannya.</p>
+        <h1 class="text-3xl md:text-4xl font-bold text-[#7FA8D6]">{{ __('messages.directory_heading') }}</h1>
+        <p class="text-slate-600 mt-2">{{ __('messages.directory_subtitle') }}</p>
     </div>
 
     <!-- Kartu jenis bandara (sekaligus filter) -->
@@ -51,8 +51,8 @@
         <a href="{{ route('airports.directory', $keep) }}"
            class="rounded-2xl border-2 p-4 transition hover:shadow-lg {{ !$type ? 'bg-[#7FA8D6] text-white border-[#7FA8D6]' : 'bg-white/80 border-white' }}">
             <p class="text-2xl font-bold">{{ number_format($total) }}</p>
-            <p class="text-sm font-semibold">Semua Jenis</p>
-            <p class="text-xs mt-1 {{ !$type ? 'text-white/80' : 'text-slate-500' }}">Seluruh bandara</p>
+            <p class="text-sm font-semibold">{{ __('messages.directory_type_all') }}</p>
+            <p class="text-xs mt-1 {{ !$type ? 'text-white/80' : 'text-slate-500' }}">{{ __('messages.directory_type_all_desc') }}</p>
         </a>
 
         @foreach($types as $key => $meta)
@@ -80,45 +80,45 @@
             <svg class="w-5 h-5 text-[#7FA8D6] absolute left-3 top-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
             </svg>
-            <input type="text" name="q" value="{{ $q }}" placeholder="Cari nama, kota, kode ICAO/IATA, atau kata kunci..."
+            <input type="text" name="q" value="{{ $q }}" placeholder="{{ __('messages.directory_search_placeholder') }}"
                    class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-[#A8C6E7] bg-white focus:outline-none focus:ring-2 focus:ring-[#7FA8D6]">
         </div>
 
         <select name="country" class="lg:w-52 px-3 py-2.5 rounded-xl border border-[#A8C6E7] bg-white focus:outline-none focus:ring-2 focus:ring-[#7FA8D6]">
-            <option value="">Semua Negara</option>
+            <option value="">{{ __('messages.directory_all_countries') }}</option>
             @foreach($countries as $c)
                 <option value="{{ $c }}" @selected($country === $c)>{{ $c }}</option>
             @endforeach
         </select>
 
         <select name="sort" class="lg:w-48 px-3 py-2.5 rounded-xl border border-[#A8C6E7] bg-white focus:outline-none focus:ring-2 focus:ring-[#7FA8D6]">
-            <option value="name" @selected($sort === 'name')>Urut: Nama (A-Z)</option>
-            <option value="elevation" @selected($sort === 'elevation')>Urut: Elevasi tertinggi</option>
+            <option value="name" @selected($sort === 'name')>{{ __('messages.directory_sort_name') }}</option>
+            <option value="elevation" @selected($sort === 'elevation')>{{ __('messages.directory_sort_elevation') }}</option>
         </select>
 
         <button type="submit" class="px-6 py-2.5 bg-[#7FA8D6] hover:bg-[#6893C7] text-white font-semibold rounded-xl transition shadow-sm">
-            Terapkan
+            {{ __('messages.directory_btn_apply') }}
         </button>
 
         @if($type || $country || $q || $sort !== 'name')
             <a href="{{ route('airports.directory') }}"
                class="px-5 py-2.5 bg-[#FFE08A] hover:bg-[#FFD66B] text-slate-700 font-semibold rounded-xl transition text-center">
-                Reset
+                {{ __('messages.directory_btn_reset') }}
             </a>
         @endif
     </form>
 
     <p class="text-sm text-slate-500 mb-4">
-        Menampilkan {{ number_format($airports->total()) }} bandara
-        @if($type) · jenis: <b>{{ $types[$type]['label'] ?? $type }}</b> @endif
-        @if($country) · negara: <b>{{ $country }}</b> @endif
+        {{ __('messages.directory_showing_count', ['count' => number_format($airports->total())]) }}
+        @if($type) · {{ __('messages.directory_filter_type') }}: <b>{{ $types[$type]['label'] ?? $type }}</b> @endif
+        @if($country) · {{ __('messages.directory_filter_country') }}: <b>{{ $country }}</b> @endif
     </p>
 
     <!-- Daftar bandara -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         @forelse($airports as $airport)
             @php
-                $meta = $types[$airport['type'] ?? ''] ?? ['label' => 'Lainnya', 'badge' => 'bg-slate-100 text-slate-600'];
+                $meta = $types[$airport['type'] ?? ''] ?? ['label' => 'Other', 'badge' => 'bg-slate-100 text-slate-600'];
                 $elev = isset($airport['elevation_ft']) ? round($airport['elevation_ft'] * 0.3048) : null;
             @endphp
 
@@ -131,7 +131,7 @@
 
                         <div class="flex items-center gap-2 text-slate-400">
                             @if(!empty($airport['home_link']))
-                                <a href="{{ $airport['home_link'] }}" target="_blank" rel="noopener noreferrer" title="Website resmi" class="hover:text-[#7FA8D6] transition">
+                                <a href="{{ $airport['home_link'] }}" target="_blank" rel="noopener noreferrer" title="Official website" class="hover:text-[#7FA8D6] transition">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                                 </a>
                             @endif
@@ -162,7 +162,7 @@
                         </span>
                         @if($elev !== null)
                             <span class="px-2.5 py-1 rounded-lg bg-[#FFE08A]/40 text-slate-600">
-                                <b>{{ number_format($elev) }}</b> mdpl
+                                <b>{{ number_format($elev) }}</b> {{ __('messages.directory_elevation_unit') }}
                             </span>
                         @endif
                     </div>
@@ -170,13 +170,13 @@
 
                 <a href="{{ route('airports.show', $airport['airport_id']) }}"
                    class="mt-5 self-start inline-flex items-center gap-1.5 px-4 py-2 bg-[#7FA8D6] hover:bg-[#6893C7] text-white text-xs font-semibold rounded-xl transition shadow-sm">
-                    Lihat Detail
+                 View Details
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
             </div>
         @empty
             <div class="col-span-full text-center py-12 bg-white/60 rounded-3xl border-2 border-white">
-                <p class="text-slate-500 text-lg">Tidak ada bandara yang cocok dengan filter.</p>
+                <p class="text-slate-500 text-lg">{{ __('messages.directory_no_results') }}</p>
             </div>
         @endforelse
     </div>

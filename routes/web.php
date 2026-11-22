@@ -57,7 +57,7 @@ SPARQL;
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Laravel berhasil terhubung ke Fuseki.',
+            'message' => 'Laravel successfully connected to Fuseki.',
             'data' => $result['results']['bindings'] ?? [],
         ]);
     } catch (\Throwable $e) {
@@ -65,7 +65,7 @@ SPARQL;
 
         return response()->json([
             'status' => 'error',
-            'message' => 'Query ke Fuseki gagal.',
+            'message' => 'Query to Fuseki failed.',
         ], 500);
     }
 });
@@ -91,3 +91,12 @@ Route::get('/api/regions', [
 // Rute untuk Navigasi Bandara
 Route::get('/navigasi', [NavigationController::class, 'index'])
     ->name('navigation.index');
+
+// Rute Pergantian Bahasa
+Route::get('/lang/{locale}', function (string $locale) {
+    if (!in_array($locale, ['id', 'en'], true)) {
+        abort(400);
+    }
+    session(['locale' => $locale]);
+    return redirect()->back(fallback: '/');
+})->name('lang.switch');

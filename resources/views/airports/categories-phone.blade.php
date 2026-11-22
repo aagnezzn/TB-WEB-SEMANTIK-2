@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direktori Kontak & Website Bandara - AeroSearch</title>
+    <title>{{ __('messages.cat_phone_title') }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -34,13 +34,13 @@
         <!-- Tombol Kembali -->
         <div class="mb-6">
             <a href="{{ route('home') }}" class="inline-flex items-center text-sm font-semibold text-[#7FA8D6] hover:underline">
-                &larr; Kembali ke Beranda
+                &larr; {{ __('messages.navbar_home') }}
             </a>
         </div>
 
         <div class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-[#7FA8D6] mb-3">Direktori Kontak & Website Bandara</h1>
-            <p class="text-slate-600 text-base">Informasi situs resmi, referensi, dan saluran komunikasi bandara di kawasan regional.</p>
+            <h1 class="text-4xl font-bold text-[#7FA8D6] mb-3">{{ __('messages.cat_phone_heading') }}</h1>
+            <p class="text-slate-600 text-base">{{ __('messages.cat_phone_sub') }}</p>
         </div>
 
         <!-- Daftar Bandara Kontak -->
@@ -56,7 +56,7 @@
                                 ICAO: {{ $airport['ident'] ?? '-' }} | IATA: {{ $airport['iata_code'] ?? '-' }}
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-1">{{ $airport['name'] ?? 'Nama Bandara' }}</h3>
+                        <h3 class="text-xl font-bold text-slate-800 mb-1">{{ $airport['name'] ?? 'Airport Name' }}</h3>
                         
                         <!-- Lokasi menggunakan SVG Icon yang natural (Tanpa Emoji) -->
                         <p class="text-sm text-slate-500 mb-4 flex items-center gap-1.5">
@@ -64,7 +64,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
-                            <span>{{ $airport['municipality'] ?? 'Lokasi tidak tersedia' }},{{ $airport['iso_country'] ?? '-' }}</span>
+                            <span>{{ $airport['municipality'] ?? 'Location not available' }}, {{ $airport['iso_country'] ?? '-' }}</span>
                         </p>
                     </div>
 
@@ -73,13 +73,13 @@
                         <div class="flex gap-2">
                             @if(!empty($airport['home_link']))
                                 <a href="{{ $airport['home_link'] }}" target="_blank" class="px-3 py-1.5 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm">
-                                    Situs Resmi ↗
+                                    {{ __('messages.cat_btn_official_web') }}
                                 </a>
                             @endif
                             
                             @if(!empty($airport['wikipedia_link']))
                                 <a href="{{ $airport['wikipedia_link'] }}" target="_blank" class="px-3 py-1.5 bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl hover:bg-slate-300 transition-colors shadow-sm">
-                                    Wikipedia ↗
+                                    {{ __('messages.cat_btn_wikipedia') }}
                                 </a>
                             @endif
                         </div>
@@ -87,7 +87,7 @@
                 </div>
             @empty
                 <div class="col-span-full text-center py-12 bg-white/50 rounded-3xl border border-white">
-                    <p class="text-slate-500">Tidak ada data kontak bandara yang ditemukan.</p>
+                    <p class="text-slate-500">{{ __('messages.cat_phone_empty') }}</p>
                 </div>
             @endforelse
         </div>
@@ -104,8 +104,8 @@
 
             <div class="mt-10 flex justify-center items-center gap-2 flex-wrap">
                 @if ($current > 1)
-                    <a href="{{ $airports->url(1) }}" class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">First</a>
-                    <a href="{{ $airports->previousPageUrl() }}" class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">&laquo; Prev</a>
+                    <a href="{{ $airports->url(1) }}" class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">{{ __('messages.pagination_first') }}</a>
+                    <a href="{{ $airports->previousPageUrl() }}" class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">&laquo; {{ __('messages.pagination_prev') }}</a>
                 @endif
 
                 @for ($page = $start; $page <= $end; $page++)
@@ -117,8 +117,8 @@
                 @endfor
 
                 @if ($current < $last)
-                    <a href="{{ $airports->nextPageUrl() }}" class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">Next &raquo;</a>
-                    <a href="{{ $airports->url($last) }}" class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">Last</a>
+                    <a href="{{ $airports->nextPageUrl() }}" class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">{{ __('messages.pagination_next') }} &raquo;</a>
+                    <a href="{{ $airports->url($last) }}" class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">{{ __('messages.pagination_last') }}</a>
                 @endif
             </div>
         @endif

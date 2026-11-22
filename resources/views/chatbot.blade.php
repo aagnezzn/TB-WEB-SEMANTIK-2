@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Asisten — AeroSearch</title>
+    <title>{{ __('messages.chatbot_page_title') }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -41,10 +41,10 @@
     <main class="w-full max-w-4xl mx-auto px-4 py-12 flex-grow flex flex-col">
         <div class="text-center mb-8">
             <h1 class="text-4xl md:text-5xl font-bold text-[#7FA8D6] mb-2 drop-shadow-sm">
-                Asisten AI Bandara ASEAN
+                {{ __('messages.chatbot_heading') }}
             </h1>
             <p class="text-slate-600 text-sm md:text-base">
-                Tanyakan informasi seputar profil, lokasi, kontak, atau data semantik bandara menggunakan bahasa alami.
+                {{ __('messages.chatbot_sub') }}
             </p>
         </div>
 
@@ -58,18 +58,18 @@
 
             <!-- Sugesti Cepat Pertanyaan -->
             <div class="flex flex-wrap gap-2 mt-3 pt-2 text-xs items-center">
-                <span class="text-slate-500 font-medium">Contoh pertanyaan:</span>
+                <span class="text-slate-500 font-medium">{{ __('messages.chatbot_example_label') }}</span>
                 <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Bandara yang dekat Medan apa saja?">
-                    Bandara Dekat Medan
+                    {{ __('messages.chatbot_chip_medan') }}
                 </button>
                 <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Profil bandara Kualanamu">
-                    Profil Kualanamu
+                    {{ __('messages.chatbot_chip_kno') }}
                 </button>
                 <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Bandara daerah Deli Serdang">
-                    Daerah Deli Serdang
+                    {{ __('messages.chatbot_chip_deli') }}
                 </button>
                 <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Berapa jumlah bandara di Indonesia?">
-                    Total Bandara Indonesia
+                    {{ __('messages.chatbot_chip_total') }}
                 </button>
             </div>
 
@@ -80,14 +80,14 @@
                     type="text" 
                     id="user-input"
                     name="message" 
-                    placeholder="Ketik pertanyaan atau pencarian bandara di sini..." 
+                    placeholder="{{ __('messages.chatbot_input_placeholder') }}" 
                     class="flex-1 px-6 py-3.5 rounded-full border-2 border-white/80 bg-white/90 backdrop-blur-sm focus:outline-none focus:border-[#7FA8D6] focus:ring-4 focus:ring-[#A8C6E7]/50 text-sm shadow-inner transition-all duration-300"
                     autocomplete="off"
                     required
                 >
                 <button type="submit" 
                         class="bg-[#FFE08A] hover:bg-[#FFF2B2] text-slate-700 font-bold px-8 py-3.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 flex items-center gap-2">
-                    <span>Kirim</span>
+                    <span>{{ __('messages.chatbot_btn_send') }}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -109,7 +109,7 @@
         const userInput = document.getElementById('user-input');
 
         if (!chatContainer || !chatForm || !userInput) {
-            console.error('Elemen chatbot tidak ditemukan!');
+            console.error('Chatbot elements not found!');
             return;
         }
 
@@ -124,7 +124,7 @@
         );
 
         if (!csrfToken || !submitButton) {
-            console.error('CSRF token atau tombol kirim tidak ditemukan!');
+            console.error('CSRF token or submit button not found!');
             return;
         }
 
@@ -249,7 +249,7 @@
 
         // Pesan sambutan
         appendBotMessage(
-            'Halo! Saya AeroBot, asisten virtual AeroFind. Saya dapat membantu kamu mencari informasi bandara, profil lengkap, hingga rekomendasi bandara terdekat berdasarkan lokasi kota atau kabupaten. Ada yang ingin kamu tanyakan?'
+            @json(__('messages.chatbot_welcome_msg'))
         );
 
         // Event listener tombol contoh pertanyaan
@@ -284,12 +284,12 @@
             );
 
             const loadingMessage = appendBotMessage(
-                'Sebentar ya, saya sedang mencari informasi bandara...'
+                'Please wait a moment, I am searching for airport information...'
             );
 
             try {
 
-                console.log('Mengirim pertanyaan:', text);
+                console.log('Sending question:', text);
 
                 const response = await fetch(chatbotUrl, {
 
@@ -309,20 +309,20 @@
 
                 const data = await response.json();
 
-                console.log('Respons Laravel:', response.status, data);
+                console.log('Laravel response:', response.status, data);
 
                 if (!response.ok) {
 
                     const errorMessage =
                         data.message ||
                         Object.values(data.errors || {}).flat().join(' ') ||
-                        'Terjadi kesalahan pada server.';
+                        'An error occurred on the server.';
 
                     throw new Error(errorMessage);
                 }
 
                 if (!data.reply) {
-                    throw new Error('Server tidak mengirimkan jawaban chatbot.');
+                    throw new Error('Server did not return a response.');
                 }
 
                 loadingMessage.remove();
@@ -336,7 +336,7 @@
                 loadingMessage.remove();
 
                 appendBotMessage(
-                    'Maaf, terjadi kesalahan: ' + error.message
+                    'Sorry, an error occurred: ' + error.message
                 );
 
             } finally {

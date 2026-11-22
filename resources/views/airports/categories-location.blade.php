@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pilih Negara ASEAN - AeroSearch</title>
+    <title>{{ __('messages.cat_location_title') }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -34,13 +34,13 @@
         <!-- Tombol Kembali -->
         <div class="mb-6">
             <a href="{{ route('home') }}" class="inline-flex items-center text-sm font-semibold text-[#7FA8D6] hover:underline">
-                &larr; Kembali ke Beranda
+                &larr; {{ __('messages.navbar_home') }}
             </a>
         </div>
 
         <div class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-[#7FA8D6] mb-3">Direktori Negara ASEAN</h1>
-            <p class="text-slate-600 text-base">Pilih salah satu negara di bawah ini untuk melihat daftar lengkap bandara yang tersedia.</p>
+            <h1 class="text-4xl font-bold text-[#7FA8D6] mb-3">{{ __('messages.cat_location_heading') }}</h1>
+            <p class="text-slate-600 text-base">{{ __('messages.cat_location_sub') }}</p>
         </div>
 
         <!-- Grid Pilihan Negara -->
@@ -53,7 +53,7 @@
                     </span>
                     <div>
                         <h3 class="text-xl font-bold text-slate-800 group-hover:text-[#7FA8D6] transition-colors">{{ $country['name'] }}</h3>
-                        <p class="text-xs text-slate-500">Kode ISO: {{ $country['code'] }}</p>
+                        <p class="text-xs text-slate-500">{{ __('messages.cat_iso_code') }} {{ $country['code'] }}</p>
                     </div>
                 </a>
             @endforeach

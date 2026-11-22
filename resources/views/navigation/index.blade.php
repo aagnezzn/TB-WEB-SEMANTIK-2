@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Navigasi Bandara - AeroSearch</title>
+    <title>{{ __('messages.nav_page_title') }}</title>
 
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
 
@@ -66,8 +66,8 @@
 
         <!-- HEADER -->
         <div class="mb-6">
-            <h1 class="text-3xl md:text-4xl font-bold text-[#7FA8D6]">Navigasi Bandara</h1>
-            <p class="text-slate-600 mt-2">Temukan rute perjalanan menuju bandara tujuan Anda.</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-[#7FA8D6]">{{ __('messages.nav_heading') }}</h1>
+            <p class="text-slate-600 mt-2">{{ __('messages.nav_sub') }}</p>
         </div>
 
         <!-- LAYOUT UTAMA -->
@@ -76,26 +76,26 @@
             <!-- PANEL KIRI -->
             <aside class="bg-white/90 backdrop-blur-md rounded-3xl border-2 border-white shadow-xl p-5 h-fit">
 
-                <h2 class="text-xl font-bold text-[#7FA8D6] mb-5">Pengaturan Rute</h2>
+                <h2 class="text-xl font-bold text-[#7FA8D6] mb-5">{{ __('messages.nav_route_settings') }}</h2>
 
                 <!-- LOKASI AWAL -->
                 <div class="mb-5">
-                    <label class="block text-sm font-semibold mb-2">Lokasi Awal</label>
+                    <label class="block text-sm font-semibold mb-2">{{ __('messages.nav_origin_location') }}</label>
                     <div class="bg-[#A8C6E7]/20 border border-[#A8C6E7] rounded-xl p-3">
-                        <p id="origin-label" class="text-sm text-slate-600">Belum ditentukan</p>
+                        <p id="origin-label" class="text-sm text-slate-600">{{ __('messages.nav_not_specified') }}</p>
                         <p id="origin-coordinates" class="text-xs text-slate-400 mt-1">
-                            Klik peta untuk memilih lokasi awal.
+                            {{ __('messages.nav_click_map_origin') }}
                         </p>
                     </div>
                 </div>
 
                 <!-- PENCARIAN BANDARA TUJUAN -->
                 <div class="mb-5 relative">
-                    <label for="airport-search" class="block text-sm font-semibold mb-2">Bandara Tujuan</label>
+                    <label for="airport-search" class="block text-sm font-semibold mb-2">{{ __('messages.nav_destination_airport') }}</label>
 
                     <div class="relative">
                         <input type="text" id="airport-search" autocomplete="off"
-                            placeholder="Cari nama bandara atau kode IATA..."
+                            placeholder="{{ __('messages.nav_search_placeholder') }}"
                             class="w-full p-3 pr-10 rounded-xl border border-[#A8C6E7] bg-white focus:outline-none focus:ring-2 focus:ring-[#7FA8D6]">
                         <span class="absolute right-4 top-3.5 text-[#7FA8D6]">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -109,10 +109,10 @@
                     </div>
 
                     <div id="airport-selected" class="hidden mt-3 p-3 rounded-xl bg-[#A8C6E7]/20 border border-[#A8C6E7]">
-                        <p class="text-xs text-slate-500 mb-1">Bandara tujuan terpilih</p>
+                        <p class="text-xs text-slate-500 mb-1">{{ __('messages.nav_selected_airport') }}</p>
                         <p id="selected-airport-name" class="font-semibold text-[#7FA8D6] text-sm"></p>
                         <button type="button" id="clear-airport" class="text-xs text-red-500 hover:text-red-700 mt-2">
-                            Ganti bandara
+                            {{ __('messages.nav_change_airport') }}
                         </button>
                     </div>
                 </div>
@@ -120,54 +120,51 @@
                 <!-- TOMBOL -->
                 <button id="find-route"
                     class="w-full bg-[#7FA8D6] hover:bg-[#6893C7] text-white font-bold py-3 rounded-xl shadow-md transition">
-                    Cari Rute Navigasi
+                    {{ __('messages.nav_btn_find_route') }}
                 </button>
 
                 <button id="reset-route"
                     class="w-full mt-3 bg-[#FFE08A] hover:bg-[#FFD66B] text-slate-700 font-semibold py-3 rounded-xl transition">
-                    Atur Ulang
+                    {{ __('messages.nav_btn_reset_route') }}
                 </button>
 
                 <div class="border-t border-slate-200 my-6"></div>
 
                 <!-- PERBANDINGAN MODA TRANSPORTASI -->
-                <h3 class="font-bold text-slate-700 mb-3">Perbandingan Moda Transportasi</h3>
+                <h3 class="font-bold text-slate-700 mb-3">{{ __('messages.nav_mode_comparison') }}</h3>
 
                 <div id="mode-list" class="space-y-2">
                     <p class="text-sm text-slate-400">
-                        Perbandingan waktu akan muncul setelah rute dicari.
+                        {{ __('messages.nav_mode_comparison_empty') }}
                     </p>
                 </div>
 
                 <!-- RINGKASAN MODA TERPILIH -->
                 <div class="grid grid-cols-2 gap-3 mt-4">
                     <div class="bg-[#A8C6E7]/20 rounded-xl p-3">
-                        <p class="text-xs text-slate-500">Jarak</p>
+                        <p class="text-xs text-slate-500">{{ __('messages.nav_label_distance') }}</p>
                         <p id="route-distance" class="text-lg font-bold text-[#7FA8D6]">- km</p>
                     </div>
                     <div class="bg-[#FFE08A]/40 rounded-xl p-3">
-                        <p class="text-xs text-slate-500">Estimasi Waktu</p>
+                        <p class="text-xs text-slate-500">{{ __('messages.nav_label_duration') }}</p>
                         <p id="route-duration" class="text-lg font-bold text-slate-700">-</p>
                     </div>
                 </div>
 
                 <p id="route-status" class="text-sm text-slate-500 mt-4">
-                    Tentukan lokasi awal dan bandara tujuan untuk melihat rute.
+                    {{ __('messages.nav_prompt_set_locations') }}
                 </p>
 
                 <a id="transit-link" href="#" target="_blank" rel="noopener"
                 class="hidden mt-3 text-sm font-semibold text-[#7FA8D6] hover:underline items-center gap-1">
-                    <span>Lihat jadwal transportasi umum di Google Maps</span>
+                    <span>{{ __('messages.nav_transit_google_maps') }}</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                         <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
                     </svg>
                     </a>
 
                 <p class="text-xs text-slate-400 mt-5">
-                    Rute disediakan oleh OpenStreetMap dan OSRM (FOSSGIS). Waktu
-                    <b>Motor</b> dan <b>Transportasi umum</b> adalah perkiraan
-                    berdasarkan rute jalan raya, bukan data jadwal real-time.
-                    Estimasi dapat berbeda dari kondisi perjalanan sebenarnya.
+                    {!! __('messages.nav_disclaimer') !!}
                 </p>
 
             </aside>
@@ -177,8 +174,8 @@
 
                 <div class="flex justify-between items-center px-2 py-3">
                     <div>
-                        <h2 class="font-bold text-[#7FA8D6]">Peta Navigasi</h2>
-                        <p class="text-xs text-slate-500">Klik peta untuk menentukan lokasi awal.</p>
+                        <h2 class="font-bold text-[#7FA8D6]">{{ __('messages.nav_map_heading') }}</h2>
+                        <p class="text-xs text-slate-500">{{ __('messages.nav_map_sub') }}</p>
                     </div>
                     <span class="text-xs bg-[#FFE08A] px-3 py-1 rounded-full font-semibold">AeroSearch Map</span>
                 </div>
@@ -249,6 +246,35 @@
         const transitLink = document.getElementById('transit-link');
 
 
+        const navI18n = {
+            min: @json(__('messages.nav_unit_min')),
+            hr: @json(__('messages.nav_unit_hr')),
+            d: @json(__('messages.nav_unit_d')),
+            estimated: @json(__('messages.nav_estimated')),
+            notAvailable: @json(__('messages.nav_not_available')),
+            fastest: @json(__('messages.nav_fastest')),
+            bestModePrefix: @json(__('messages.nav_best_mode_prefix')),
+            modePrefix: @json(__('messages.nav_mode_prefix')),
+            safeTrip: @json(__('messages.nav_safe_trip')),
+            emptyComparison: @json(__('messages.nav_mode_comparison_empty')),
+            originPopup: @json(__('messages.nav_origin_location')),
+            originSelected: @json(__('messages.nav_origin_selected')),
+            originUpdated: @json(__('messages.nav_origin_updated')),
+            originSet: @json(__('messages.nav_origin_set')),
+            noAirports: @json(__('messages.nav_no_airports')),
+            invalidCoords: @json(__('messages.nav_invalid_coords')),
+            destinationSelected: @json(__('messages.nav_destination_selected')),
+            searchNewDestination: @json(__('messages.nav_search_new_destination')),
+            clickMapPrompt: @json(__('messages.nav_click_map_prompt')),
+            selectDestinationPrompt: @json(__('messages.nav_select_destination_prompt')),
+            calculating: @json(__('messages.nav_calculating')),
+            routeFailed: @json(__('messages.nav_route_failed')),
+            notSpecified: @json(__('messages.nav_not_specified')),
+            clickMapOrigin: @json(__('messages.nav_click_map_origin')),
+            promptSetLocations: @json(__('messages.nav_prompt_set_locations')),
+            destinationFallback: @json(__('messages.nav_destination_fallback'))
+        };
+
         // =====================================
         // 3. KONFIGURASI MODA TRANSPORTASI
         // =====================================
@@ -257,11 +283,11 @@
         const ROUTING_BASE = 'https://routing.openstreetmap.de/routed-';
 
         const MODES = [
-            { key: 'driving', label: 'Mobil',         icon: 'car',   profile: 'car',  color: '#4285F4' },
-            { key: 'motor',   label: 'Motor',             icon: 'motor', derived: true,   color: '#F59E0B' },
-            { key: 'transit', label: 'Transportasi umum', icon: 'bus',   derived: true,   color: '#0F9D58' },
-            { key: 'walking', label: 'Jalan kaki',        icon: 'walk',  profile: 'foot', color: '#7C3AED', dashed: true },
-            { key: 'cycling', label: 'Bersepeda',         icon: 'bike',  profile: 'bike', color: '#E11D48' }
+            { key: 'driving', label: @json(__('messages.nav_mode_driving')), icon: 'car', profile: 'car', color: '#4285F4' },
+            { key: 'motor',   label: @json(__('messages.nav_mode_motor')),   icon: 'motor', derived: true, color: '#F59E0B' },
+            { key: 'transit', label: @json(__('messages.nav_mode_transit')), icon: 'bus',   derived: true, color: '#0F9D58' },
+            { key: 'walking', label: @json(__('messages.nav_mode_walking')), icon: 'walk',  profile: 'foot', color: '#7C3AED', dashed: true },
+            { key: 'cycling', label: @json(__('messages.nav_mode_cycling')), icon: 'bike',  profile: 'bike', color: '#E11D48' }
         ];
 
         // Parameter perkiraan (silakan disesuaikan)
@@ -269,7 +295,7 @@
         const TRANSIT_AVG_SPEED_KMH = 25;   // kecepatan rata-rata angkutan umum
         const TRANSIT_OVERHEAD_MIN = 15;    // waktu tunggu + berjalan ke halte
 
-        const BEST_MODE = { key: 'best', label: 'Moda transportasi terbaik', icon: 'star', color: '#F59E0B' };
+        const BEST_MODE = { key: 'best', label: @json(__('messages.nav_mode_best')), icon: 'star', color: '#F59E0B' };
 
         const ICONS = {
         car:   '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',
@@ -312,7 +338,7 @@ function svgIcon(name, sizeClass) {
             const totalMinutes = Math.max(1, Math.round(seconds / 60));
 
             if (totalMinutes < 60) {
-                return totalMinutes + ' mnt';
+                return totalMinutes + ' ' + navI18n.min;
             }
 
             const days = Math.floor(totalMinutes / 1440);
@@ -320,10 +346,10 @@ function svgIcon(name, sizeClass) {
             const minutes = totalMinutes % 60;
 
             if (days > 0) {
-                return days + ' hr ' + hours + ' jam';
+                return days + ' ' + navI18n.d + ' ' + hours + ' ' + navI18n.hr;
             }
 
-            return hours + ' jam' + (minutes ? ' ' + minutes + ' mnt' : '');
+            return hours + ' ' + navI18n.hr + (minutes ? ' ' + minutes + ' ' + navI18n.min : '');
         }
 
         function formatDistance(meters) {
@@ -428,9 +454,9 @@ function svgIcon(name, sizeClass) {
             if (options.subtitle) {
                 sub.textContent = options.subtitle;
             } else if (data) {
-                sub.textContent = formatDistance(data.distance) + (data.estimated ? ' • perkiraan' : '');
+                sub.textContent = formatDistance(data.distance) + (data.estimated ? ' • ' + navI18n.estimated : '');
             } else {
-                sub.textContent = options.loading ? '' : 'Tidak tersedia';
+                sub.textContent = options.loading ? '' : navI18n.notAvailable;
             }
 
             info.appendChild(title);
@@ -479,8 +505,8 @@ function svgIcon(name, sizeClass) {
                     loading: isLoading,
                     active: selectedMode === 'best',
                     subtitle: bestKey
-                        ? 'Tercepat: ' + getMode(bestKey).label + ' • ' + formatDistance(bestData.distance)
-                        : (isLoading ? '' : 'Tidak tersedia')
+                        ? navI18n.fastest + ' ' + getMode(bestKey).label + ' • ' + formatDistance(bestData.distance)
+                        : (isLoading ? '' : navI18n.notAvailable)
                 }
             );
 
@@ -576,9 +602,9 @@ function svgIcon(name, sizeClass) {
             const mode = getMode(activeKey);
 
             statusElement.textContent =
-                (selectedMode === 'best' ? 'Moda terbaik: ' : 'Moda: ') + mode.label +
-                (data.estimated ? ' (perkiraan). ' : '. ') +
-                'Selamat perjalanan!';
+                (selectedMode === 'best' ? navI18n.bestModePrefix : navI18n.modePrefix) + mode.label +
+                (data.estimated ? ' (' + navI18n.estimated + '). ' : '. ') +
+                navI18n.safeTrip;
         }
 
         function selectMode(key) {
@@ -597,7 +623,7 @@ function svgIcon(name, sizeClass) {
             durationElement.textContent = '-';
             transitLink.classList.add('hidden');
             modeListElement.innerHTML =
-                '<p class="text-sm text-slate-400">Perbandingan waktu akan muncul setelah rute dicari.</p>';
+                '<p class="text-sm text-slate-400">' + navI18n.emptyComparison + '</p>';
         }
 
 
@@ -613,16 +639,16 @@ function svgIcon(name, sizeClass) {
                 map.removeLayer(originMarker);
             }
 
-            originMarker = L.marker(origin).addTo(map).bindPopup('Lokasi Awal').openPopup();
+            originMarker = L.marker(origin).addTo(map).bindPopup(navI18n.originPopup).openPopup();
 
-            originLabel.textContent = 'Lokasi yang dipilih pada peta';
+            originLabel.textContent = navI18n.originSelected;
             originCoordinates.textContent = lat.toFixed(6) + ', ' + lng.toFixed(6);
 
             resetResults();
 
             statusElement.textContent = destination
-                ? 'Lokasi awal diperbarui. Klik "Cari Rute Navigasi".'
-                : 'Lokasi awal berhasil ditentukan. Pilih bandara tujuan.';
+                ? navI18n.originUpdated
+                : navI18n.originSet;
         }
 
         map.on('click', function (event) {
@@ -656,7 +682,7 @@ function svgIcon(name, sizeClass) {
 
             if (results.length === 0) {
                 airportResults.innerHTML =
-                    '<div class="p-4 text-sm text-slate-500 text-center">Bandara tidak ditemukan.</div>';
+                    '<div class="p-4 text-sm text-slate-500 text-center">' + navI18n.noAirports + '</div>';
                 airportResults.classList.remove('hidden');
                 return;
             }
@@ -698,7 +724,7 @@ function svgIcon(name, sizeClass) {
 
             if (!Number.isFinite(lat) || !Number.isFinite(lng) ||
                 Math.abs(lat) > 90 || Math.abs(lng) > 180) {
-                statusElement.textContent = 'Koordinat bandara tidak valid.';
+                statusElement.textContent = navI18n.invalidCoords;
                 return;
             }
 
@@ -721,7 +747,7 @@ function svgIcon(name, sizeClass) {
             map.setView(destination, 10);
 
             statusElement.textContent =
-                'Bandara tujuan berhasil dipilih. Silakan cari rute navigasi.';
+                navI18n.destinationSelected;
         }
 
         airportSearch.addEventListener('input', function () {
@@ -758,7 +784,7 @@ function svgIcon(name, sizeClass) {
             resetResults();
             airportSearch.focus();
 
-            statusElement.textContent = 'Silakan cari bandara tujuan yang baru.';
+            statusElement.textContent = navI18n.searchNewDestination;
         });
 
 
@@ -769,12 +795,12 @@ function svgIcon(name, sizeClass) {
         async function findRoute() {
 
             if (!origin) {
-                statusElement.textContent = 'Silakan klik peta untuk menentukan lokasi awal.';
+                statusElement.textContent = navI18n.clickMapPrompt;
                 return;
             }
 
             if (!destination) {
-                statusElement.textContent = 'Silakan pilih bandara tujuan terlebih dahulu.';
+                statusElement.textContent = navI18n.selectDestinationPrompt;
                 return;
             }
 
@@ -788,7 +814,7 @@ function svgIcon(name, sizeClass) {
             durationElement.textContent = '-';
             transitLink.classList.add('hidden');
 
-            statusElement.textContent = 'Sedang menghitung rute untuk semua moda transportasi...';
+            statusElement.textContent = navI18n.calculating;
             renderModeList(true);
 
             // Ambil rute asli (mobil, jalan kaki, sepeda) secara paralel
@@ -835,7 +861,7 @@ function svgIcon(name, sizeClass) {
             if (!getBestKey()) {
                 renderModeList(false);
                 statusElement.textContent =
-                    'Rute gagal ditemukan. Lokasi mungkin tidak terhubung lewat jalan darat, atau periksa koneksi Anda.';
+                    navI18n.routeFailed;
                 return;
             }
 
@@ -870,11 +896,11 @@ function svgIcon(name, sizeClass) {
 
             resetResults();
 
-            originLabel.textContent = 'Belum ditentukan';
-            originCoordinates.textContent = 'Klik peta untuk memilih lokasi awal.';
+            originLabel.textContent = navI18n.notSpecified;
+            originCoordinates.textContent = navI18n.clickMapOrigin;
 
             statusElement.textContent =
-                'Tentukan lokasi awal dan bandara tujuan untuk melihat rute.';
+                navI18n.promptSetLocations;
 
             map.setView([3, 115], 5);
         });
@@ -914,7 +940,7 @@ function svgIcon(name, sizeClass) {
                 selectAirport(selectedAirport);
             } else {
                 // Fallback: pakai koordinat & nama dari URL
-                const airportName = params.get('airport_name') || 'Bandara tujuan';
+                const airportName = params.get('airport_name') || navI18n.destinationFallback;
 
                 destination = L.latLng(destinationLat, destinationLng);
 

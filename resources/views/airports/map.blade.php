@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peta Bandara - AeroFind</title>
+    <title>Airport Map - AeroFind</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
 
     <!-- 1. Tambahkan CSS Leaflet -->
@@ -24,16 +24,16 @@
 </head>
 <body>
 
-    <h1>Peta Bandara AeroFind</h1>
-    <p>Temukan lokasi bandara di Asia Tenggara.</p>
+    <h1>AeroFind Airport Map</h1>
+    <p>Discover airport locations across Southeast Asia.</p>
 
-    <h2>Rekomendasi Bandara Terdekat</h2>
+    <h2>Nearest Airport Recommendations</h2>
 
     <select id="region-select">
-        <option value="">Pilih Kota/Kabupaten</option>
+        <option value="">Select City/Municipality</option>
     </select>
 
-    <button id="search-nearest">Cari Bandara Terdekat</button>
+    <button id="search-nearest">Find Nearest Airports</button>
 
     <div id="recommendation-results"></div>
 
@@ -100,12 +100,12 @@
                         <strong>${escapeHtml(airport.name)}</strong><br>
                         IATA: ${escapeHtml(airport.iata_code ?? '-')}<br>
                         ICAO: ${escapeHtml(airport.icao_code ?? '-')}<br>
-                        Kota: ${escapeHtml(airport.municipality ?? '-')}<br>
-                        Tipe: ${escapeHtml(airport.type)}
+                        City: ${escapeHtml(airport.municipality ?? '-')}<br>
+                        Type: ${escapeHtml(airport.type)}
                     `);
                 });
             } catch (error) {
-                console.error("Gagal memuat data bandara:", error);
+                console.error("Failed to load airport data:", error);
             }
 
             // 2. Ambil daftar kota/kabupaten untuk dropdown region
@@ -121,7 +121,7 @@
                     regionSelect.appendChild(option);
                 });
             } catch (error) {
-                console.error("Gagal memuat data region:", error);
+                console.error("Failed to load region data:", error);
             }
 
             // 3. Event listener untuk tombol cari bandara terdekat
@@ -129,7 +129,7 @@
                 const regionId = regionSelect.value;
 
                 if (!regionId) {
-                    alert('Pilih kota/kabupaten terlebih dahulu.');
+                    alert('Please select a city/municipality first.');
                     return;
                 }
 
@@ -138,7 +138,7 @@
                     const result = await response.json();
 
                     if (!response.ok || result.status === 'error') {
-                        alert(result.message || 'Gagal memuat data rekomendasi.');
+                        alert(result.message || 'Failed to load recommendation data.');
                         return;
                     }
 
@@ -146,7 +146,7 @@
                     container.replaceChildren();
 
                     const heading = document.createElement('h3');
-                    heading.textContent = `Bandara terdekat dari ${result.region}`;
+                    heading.textContent = `Nearest airports from ${result.region}`;
                     container.appendChild(heading);
 
                     result.recommendations.forEach((airport, index) => {
@@ -155,7 +155,7 @@
                         container.appendChild(item);
                     });
                 } catch (error) {
-                    console.error("Gagal mengambil rekomendasi:", error);
+                    console.error("Failed to fetch recommendations:", error);
                 }
             });
 

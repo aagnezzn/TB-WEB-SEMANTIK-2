@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status Operasional Bandara - AeroSearch</title>
+    <title>{{ __('messages.cat_operational_title') }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -34,13 +34,13 @@
         <!-- Tombol Kembali -->
         <div class="mb-6">
             <a href="{{ route('home') }}" class="inline-flex items-center text-sm font-semibold text-[#7FA8D6] hover:underline">
-                &larr; Kembali ke Beranda
+                &larr; {{ __('messages.navbar_home') }}
             </a>
         </div>
 
         <div class="text-center mb-10">
-            <h1 class="text-4xl font-bold text-[#7FA8D6] mb-3">Status Operasional Bandara</h1>
-            <p class="text-slate-600 text-base">Informasi status layanan terjadwal, jenis fasilitas, dan keaktifan operasional bandara.</p>
+            <h1 class="text-4xl font-bold text-[#7FA8D6] mb-3">{{ __('messages.cat_operational_heading') }}</h1>
+            <p class="text-slate-600 text-base">{{ __('messages.cat_operational_sub') }}</p>
         </div>
 
         <!-- Daftar Bandara Status Operasional -->
@@ -52,25 +52,25 @@
                             <span class="text-xs font-semibold px-3 py-1 
                                 @if(isset($airport['scheduled_service']) && strtolower($airport['scheduled_service']) == 'yes') bg-emerald-100 text-emerald-700 
                                 @else bg-amber-100 text-amber-700 @endif rounded-full uppercase tracking-wider">
-                                Layanan Terjadwal: {{ $airport['scheduled_service'] ?? 'Tidak Diketahui' }}
+                                Scheduled Service: {{ strtolower($airport['scheduled_service'] ?? '') === 'yes' ? __('messages.cat_scheduled_yes') : (strtolower($airport['scheduled_service'] ?? '') === 'no' ? __('messages.cat_scheduled_no') : ($airport['scheduled_service'] ?? __('messages.cat_scheduled_unknown'))) }}
                             </span>
                             <span class="text-xs font-mono font-bold text-slate-500">
                                 {{ $airport['ident'] ?? '-' }}
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-1">{{ $airport['name'] ?? 'Nama Bandara' }}</h3>
+                        <h3 class="text-xl font-bold text-slate-800 mb-1">{{ $airport['name'] ?? 'Airport Name' }}</h3>
                         <p class="text-sm text-slate-500 mb-4 flex items-center gap-2">
                             <svg class="w-4 h-4 text-blue-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
-                            <span>{{ $airport['municipality'] ?? 'Lokasi' }} (ISO: {{ $airport['iso_country'] ?? '-' }})</span>
+                            <span>{{ $airport['municipality'] ?? 'Location' }} (ISO: {{ $airport['iso_country'] ?? '-' }})</span>
                         </p>
                     </div>
 
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                        <span class="text-xs text-slate-400 block">Tipe Bandara:</span>
+                        <span class="text-xs text-slate-400 block">{{ __('messages.cat_airport_type') }}</span>
                         <span class="text-xs font-semibold px-3 py-1 bg-sky-100 text-sky-700 rounded-full uppercase tracking-wider">
                             {{ ucwords(str_replace('_', ' ', $airport['type'] ?? 'Airport')) }}
                         </span>
@@ -79,14 +79,14 @@
                     <!-- Tombol Lihat Detail dengan ukuran proporsional (tidak w-full) -->
                     <a href="{{ route('airports.show', $airport['ident'] ?? $airport['id'] ?? $airport['airport_id'] ?? 0) }}" 
                     class="px-4 py-2 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm inline-flex items-center gap-1.5">
-                        <span>Lihat Detail</span>
+                        <span>{{ __('messages.welcome_view_details') }}</span>
                         <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
             @empty
                 <div class="col-span-full text-center py-12 bg-white/50 rounded-3xl border border-white">
-                    <p class="text-slate-500">Tidak ada data status operasional yang ditemukan.</p>
+                    <p class="text-slate-500">{{ __('messages.cat_operational_empty') }}</p>
                 </div>
             @endforelse
         </div>
@@ -107,7 +107,7 @@
                 @if ($current > 1)
                     <a href="{{ $airports->url(1) }}"
                     class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">
-                        First
+                        {{ __('messages.pagination_first') }}
                     </a>
                 @endif
 
@@ -115,7 +115,7 @@
                 @if ($current > 1)
                     <a href="{{ $airports->previousPageUrl() }}"
                     class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">
-                        &laquo; Prev
+                        &laquo; {{ __('messages.pagination_prev') }}
                     </a>
                 @endif
 
@@ -137,7 +137,7 @@
                 @if ($current < $last)
                     <a href="{{ $airports->nextPageUrl() }}"
                     class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">
-                        Next &raquo;
+                        {{ __('messages.pagination_next') }} &raquo;
                     </a>
                 @endif
 
@@ -145,7 +145,7 @@
                 @if ($current < $last)
                     <a href="{{ $airports->url($last) }}"
                     class="px-3 py-2 rounded-xl bg-white border border-[#7FA8D6] text-[#7FA8D6] text-sm font-semibold hover:bg-[#7FA8D6] hover:text-white transition">
-                        Last
+                        {{ __('messages.pagination_last') }}
                     </a>
                 @endif
 

@@ -226,7 +226,7 @@ class AirportController extends Controller
         }
 
         if (!$airport) {
-            abort(404, 'Bandara tidak ditemukan');
+            abort(404, 'Airport not found');
         }
 
         return view('airports.show', compact('airport'));
@@ -239,17 +239,17 @@ class AirportController extends Controller
     public function locationCategory()
     {
         $aseanCountries = [
-            ['code' => 'ID', 'name' => 'Indonesia'],
-            ['code' => 'MY', 'name' => 'Malaysia'],
-            ['code' => 'SG', 'name' => 'Singapura'],
-            ['code' => 'TH', 'name' => 'Thailand'],
-            ['code' => 'PH', 'name' => 'Filipina'],
-            ['code' => 'VN', 'name' => 'Vietnam'],
-            ['code' => 'KH', 'name' => 'Kamboja'],
-            ['code' => 'LA', 'name' => 'Laos'],
-            ['code' => 'MM', 'name' => 'Myanmar'],
-            ['code' => 'BN', 'name' => 'Brunei Darussalam'],
-            ['code' => 'TL', 'name' => 'Timor Leste'],
+            ['code' => 'ID', 'name' => __('messages.country_id')],
+            ['code' => 'MY', 'name' => __('messages.country_my')],
+            ['code' => 'SG', 'name' => __('messages.country_sg')],
+            ['code' => 'TH', 'name' => __('messages.country_th')],
+            ['code' => 'PH', 'name' => __('messages.country_ph')],
+            ['code' => 'VN', 'name' => __('messages.country_vn')],
+            ['code' => 'KH', 'name' => __('messages.country_kh')],
+            ['code' => 'LA', 'name' => __('messages.country_la')],
+            ['code' => 'MM', 'name' => __('messages.country_mm')],
+            ['code' => 'BN', 'name' => __('messages.country_bn')],
+            ['code' => 'TL', 'name' => __('messages.country_tl')],
         ];
 
         return view('airports.categories-location', compact('aseanCountries'));

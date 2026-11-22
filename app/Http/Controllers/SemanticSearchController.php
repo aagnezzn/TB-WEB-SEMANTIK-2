@@ -46,7 +46,7 @@ class SemanticSearchController extends Controller
             return view('map', compact('airports', 'keyword'));
             
         } catch (\Exception $e) {
-            return back()->with('error', 'Koneksi ke Jena Fuseki gagal: ' . $e->getMessage());
+            return back()->with('error', 'Connection to Jena Fuseki failed: ' . $e->getMessage());
         }
     }
 }

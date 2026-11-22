@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroSearch - Direktori Bandara ASEAN</title>
+    <title>{{ __('messages.welcome_page_title') }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -34,10 +34,10 @@ body::before {
     <!-- Main Search Area -->
     <main class="w-full flex flex-col justify-center items-center px-4 py-20">
         <h1 class="text-5xl md:text-6xl font-bold text-[#7FA8D6] mb-4 text-center drop-shadow-sm hover:scale-105 transition-transform duration-500">
-            Direktori Bandara ASEAN
+            {{ __('messages.welcome_hero_title') }}
         </h1>
         <p class="text-lg text-slate-600 mb-8 text-center max-w-2xl">
-            Cari profil lengkap, alamat, website, hingga status operasional berbagai bandara di Asia Tenggara menggunakan bahasa alami.
+            {{ __('messages.welcome_hero_subtitle') }}
         </p>
 
        <form action="{{ route('home') }}" method="GET" class="w-full max-w-3xl relative group">
@@ -45,28 +45,28 @@ body::before {
                 name="search"
                 value="{{ $search ?? '' }}"
                 class="w-full px-6 py-4 rounded-full border-2 border-white/60 bg-white/80 backdrop-blur-sm focus:outline-none focus:border-[#7FA8D6] focus:ring-4 focus:ring-[#A8C6E7]/50 text-lg shadow-xl transition-all duration-300 group-hover:shadow-2xl"
-                placeholder="Cari lokasi, status, atau kontak bandara ASEAN...">
+                placeholder="{{ __('messages.welcome_search_placeholder') }}">
             
             <button type="submit" class="absolute right-2 top-2 bottom-2 bg-[#FFE08A] hover:bg-[#FFF2B2] text-slate-700 font-bold px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">
-                Cari
+                {{ __('messages.welcome_search_btn') }}
             </button>
         </form>
 
         <!-- Sugesti / Kategori Pencarian yang Berfungsi -->
         <div class="flex flex-wrap justify-center gap-3 mt-6 text-sm items-center">
-            <span class="text-slate-500 font-medium py-1">Kategori Data:</span>
+            <span class="text-slate-500 font-medium py-1">{{ __('messages.welcome_cat_all') }}:</span>
             
             <a href="{{ route('category.location') }}" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">
-   Lokasi & Alamat
-        </a>
+                {{ __('messages.welcome_cat_location') }}
+            </a>
             
            <a href="{{ route('category.phone') }}" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">
-   Website Resmi
-        </a>
+                {{ __('messages.welcome_cat_contact') }}
+            </a>
             
             <a href="{{ route('category.operational') }}" class="bg-white/60 border border-[#A8C6E7] text-[#7FA8D6] px-4 py-1.5 rounded-full hover:bg-[#7FA8D6] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm hover:shadow-md">
-   Status Operasional
-</a>
+                {{ __('messages.welcome_cat_operational') }}
+            </a>
         </div>
     </main>
 
@@ -75,12 +75,12 @@ body::before {
     <section class="w-full max-w-6xl mx-auto px-6 py-10">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-                <h2 class="text-2xl font-bold text-[#7FA8D6]">Hasil Pencarian untuk: "{{ $search }}"</h2>
-                <p class="text-sm text-slate-500 mt-1">Ditemukan {{ count($airports) }} bandara</p>
+                <h2 class="text-2xl font-bold text-[#7FA8D6]">{!! __('messages.welcome_search_results_for', ['query' => e($search)]) !!}</h2>
+                <p class="text-sm text-slate-500 mt-1">{{ __('messages.welcome_found_airports', ['count' => count($airports)]) }}</p>
             </div>
             <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/80 hover:bg-white text-slate-600 rounded-xl text-sm font-semibold border border-slate-200 transition shadow-sm hover:shadow self-start sm:self-auto">
                 <span>&larr;</span>
-                <span>Hapus Pencarian</span>
+                <span>{{ __('messages.welcome_clear_search') }}</span>
             </a>
         </div>
         
@@ -110,13 +110,13 @@ body::before {
                     
                     <a href="{{ route('airports.show', $airport['ident'] ?? $airport['icao_code'] ?? $airport['iata_code'] ?? $airport['airport_id'] ?? $airport['id'] ?? 0) }}" 
                     class="px-4 py-3 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm inline-flex items-center gap-1.5 self-start">
-                        <span>Lihat Detail</span>
+                        <span>{{ __('messages.welcome_view_details') }}</span>
                         <span>&rarr;</span>
                         </a>
                 </div>
             @empty
                 <div class="col-span-2 text-center py-12 bg-white/60 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg">
-                    <p class="text-slate-500 text-lg">Tidak ada data bandara yang ditemukan.</p>
+                    <p class="text-slate-500 text-lg">{{ __('messages.welcome_no_airports_found') }}</p>
                 </div>
             @endforelse
         </div>
@@ -129,10 +129,10 @@ body::before {
     <section class="w-full max-w-6xl mx-auto px-4 md:px-8 -mt-6 mb-12">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             @foreach([
-                ['value' => $stats['total'],     'label' => 'Total Bandara'],
-                ['value' => $stats['countries'], 'label' => 'Negara ASEAN'],
-                ['value' => $stats['large'],     'label' => 'Bandara Besar'],
-                ['value' => $stats['website'],   'label' => 'Punya Website Resmi'],
+                ['value' => $stats['total'],     'label' => __('messages.welcome_stat_total')],
+                ['value' => $stats['countries'], 'label' => __('messages.welcome_stat_countries')],
+                ['value' => $stats['large'],     'label' => __('messages.welcome_stat_commercial')],
+                ['value' => $stats['website'],   'label' => __('messages.welcome_stat_coverage')],
             ] as $s)
                 <div class="bg-white/80 backdrop-blur-md rounded-2xl border-2 border-white shadow-lg p-5 text-center hover:-translate-y-1 hover:shadow-xl transition duration-300">
                     <p class="text-3xl font-bold text-[#7FA8D6]">{{ number_format($s['value']) }}</p>
@@ -145,8 +145,8 @@ body::before {
     <!-- FITUR UTAMA -->
     <section class="w-full max-w-6xl mx-auto px-4 md:px-8 py-8">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-[#7FA8D6] mb-2">Apa yang Bisa Kamu Lakukan?</h2>
-            <p class="text-slate-600">Semua kebutuhan informasi bandara ASEAN dalam satu tempat.</p>
+            <h2 class="text-3xl font-bold text-[#7FA8D6] mb-2">{{ __('messages.welcome_what_can_you_do') }}</h2>
+            <p class="text-slate-600">{{ __('messages.welcome_what_can_you_do_sub') }}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -155,32 +155,32 @@ body::before {
                 <div class="w-12 h-12 rounded-2xl bg-[#A8C6E7]/30 text-[#7FA8D6] flex items-center justify-center mb-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
                 </div>
-                <h3 class="font-bold text-slate-800 mb-1">Data Bandara</h3>
-                <p class="text-sm text-slate-500">Jelajahi katalog lengkap berdasarkan jenis, negara, dan elevasi.</p>
+                <h3 class="font-bold text-slate-800 mb-1">{{ __('messages.welcome_card_dir_title') }}</h3>
+                <p class="text-sm text-slate-500">{{ __('messages.welcome_card_dir_desc') }}</p>
             </a>
 
             <a href="#peta" class="group bg-white/80 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition duration-300">
                 <div class="w-12 h-12 rounded-2xl bg-[#A8C6E7]/30 text-[#7FA8D6] flex items-center justify-center mb-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
-                <h3 class="font-bold text-slate-800 mb-1">Bandara Terdekat</h3>
-                <p class="text-sm text-slate-500">Klik titik di peta dan dapatkan 5 bandara terdekat dari lokasimu.</p>
+                <h3 class="font-bold text-slate-800 mb-1">{{ __('messages.welcome_card_nearby_title') }}</h3>
+                <p class="text-sm text-slate-500">{{ __('messages.welcome_card_nearby_desc') }}</p>
             </a>
 
             <a href="{{ route('navigation.index') }}" class="group bg-white/80 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition duration-300">
                 <div class="w-12 h-12 rounded-2xl bg-[#FFE08A]/50 text-amber-600 flex items-center justify-center mb-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
                 </div>
-                <h3 class="font-bold text-slate-800 mb-1">Navigasi Rute</h3>
-                <p class="text-sm text-slate-500">Bandingkan waktu tempuh mobil, motor, sepeda, dan jalan kaki.</p>
+                <h3 class="font-bold text-slate-800 mb-1">{{ __('messages.welcome_card_nav_title') }}</h3>
+                <p class="text-sm text-slate-500">{{ __('messages.welcome_card_nav_desc') }}</p>
             </a>
 
             <a href="{{ route('chatbot') }}" class="group bg-white/80 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition duration-300">
                 <div class="w-12 h-12 rounded-2xl bg-[#FFE08A]/50 text-amber-600 flex items-center justify-center mb-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 </div>
-                <h3 class="font-bold text-slate-800 mb-1">Tanya AeroBot</h3>
-                <p class="text-sm text-slate-500">Cari informasi bandara dengan bahasa sehari-hari lewat chatbot.</p>
+                <h3 class="font-bold text-slate-800 mb-1">{{ __('messages.welcome_card_bot_title') }}</h3>
+                <p class="text-sm text-slate-500">{{ __('messages.welcome_card_bot_desc') }}</p>
             </a>
 
         </div>
@@ -191,11 +191,11 @@ body::before {
     <section class="w-full max-w-6xl mx-auto px-4 md:px-8 py-8">
         <div class="flex items-end justify-between mb-6">
             <div>
-                <h2 class="text-3xl font-bold text-[#7FA8D6] mb-1">Bandara Unggulan</h2>
-                <p class="text-slate-600">Hub penerbangan tersibuk di Asia Tenggara.</p>
+                <h2 class="text-3xl font-bold text-[#7FA8D6] mb-1">{{ __('messages.welcome_featured_title') }}</h2>
+                <p class="text-slate-600">{{ __('messages.welcome_featured_sub') }}</p>
             </div>
             <a href="{{ route('airports.directory', ['type' => 'large_airport']) }}" class="text-sm font-semibold text-[#7FA8D6] hover:underline hidden sm:inline">
-                Lihat semua &rarr;
+                {{ __('messages.welcome_view_all') }} &rarr;
             </a>
         </div>
 
@@ -228,11 +228,11 @@ body::before {
             <!-- Judul Peta -->
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-[#7FA8D6] mb-3">
-                    Peta Persebaran Bandara
+                    {{ __('messages.welcome_map_title') }}
                 </h2>
 
                 <p class="text-slate-600">
-                    Jelajahi lokasi bandara di seluruh Asia Tenggara.
+                    {{ __('messages.welcome_map_sub') }}
                 </p>
             </div>
 
@@ -243,12 +243,12 @@ body::before {
                 <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
 
                     <span class="font-semibold text-slate-700">
-                        Lokasi Bandara
+                        {{ __('messages.welcome_map_locations_title') }}
                     </span>
 
                     <span id="airport-count"
                         class="text-sm text-[#7FA8D6] font-semibold">
-                        Memuat data bandara...
+                        {{ __('messages.welcome_map_loading') }}
                     </span>
 
                 </div>
@@ -258,8 +258,7 @@ body::before {
                 </div>
 
                 <p class="text-xs text-slate-500 mt-3">
-                    Peta menggunakan OpenStreetMap dan Leaflet.
-                    Klik peta untuk menentukan lokasi pencarian.
+                    {{ __('messages.welcome_map_footnote') }}
                 </p>
 
             </div>
@@ -273,12 +272,12 @@ body::before {
                 <div class="mb-6">
 
                     <h2 class="text-2xl font-bold text-[#7FA8D6] mb-2">
-                        5 Rekomendasi Bandara Terdekat
+                        {{ __('messages.welcome_rec_title') }}
                     </h2>
 
                     <p id="recommendation-status"
                     class="text-sm text-slate-500">
-                        Klik peta untuk mencari 5 bandara terdekat.
+                        {{ __('messages.welcome_rec_click_hint') }}
                     </p>
 
                 </div>
@@ -303,7 +302,7 @@ body::before {
     <!-- Teks Sapaan Kenalan -->
     <div class="bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg border border-white text-slate-700 text-xs font-semibold opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 pointer-events-none flex items-center gap-1.5">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Halo aku AeroBot</span>
+        <span>{{ __('messages.welcome_bot_greeting_badge') }}</span>
     </div>
 
     <!-- Ikon Robot SVG Tanpa Lingkaran (Langsung Wujud Robot) -->
@@ -393,6 +392,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const navigationPageUrl = @json(route('navigation.index'));
 
+    const i18n = {
+        failedLeaflet: @json(__('messages.welcome_map_leaflet_fail')),
+        airportsFound: @json(__('messages.welcome_map_airports_found')),
+        yourLocation: @json(__('messages.welcome_js_your_location')),
+        outsideAsean: @json(__('messages.welcome_rec_outside')),
+        recEmpty: @json(__('messages.welcome_rec_empty')),
+        recFound: @json(__('messages.welcome_rec_found')),
+        recBadge: @json(__('messages.welcome_rec_badge')),
+        recDistance: @json(__('messages.welcome_rec_distance')),
+        recDistNa: @json(__('messages.welcome_rec_dist_na')),
+        viewProfile: @json(__('messages.welcome_rec_view_profile')),
+        navigateAirport: @json(__('messages.welcome_rec_navigate')),
+        searchingNearest: @json(__('messages.welcome_rec_searching')),
+        recError: @json(__('messages.welcome_rec_err_load')),
+        searchLocation: @json(__('messages.welcome_rec_search_loc')),
+        viewAirportProfile: @json(__('messages.welcome_rec_view_profile')),
+        airportNameNa: @json(__('messages.airport_not_found')),
+        clickMapHint: @json(__('messages.welcome_rec_click_hint'))
+    };
+
     const countElement =
         document.getElementById('airport-count');
 
@@ -412,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (typeof L === 'undefined') {
         if (countElement) {
-            countElement.textContent = 'Leaflet gagal dimuat.';
+            countElement.textContent = i18n.failedLeaflet;
         }
         return;
     }
@@ -503,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const title = document.createElement('strong');
         title.textContent =
-            airport.name ?? 'Nama bandara tidak tersedia';
+            airport.name ?? 'Airport name not available';
 
         const iata = document.createElement('p');
         iata.textContent =
@@ -541,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '/airports/' + encodeURIComponent(airportId);
 
             profileButton.textContent =
-                'Lihat Profil Bandara';
+                i18n.viewAirportProfile;
 
             profileButton.className =
                 'inline-block mt-3 px-4 py-2 ' +
@@ -568,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (countElement) {
 
         countElement.textContent =
-            markers.length + ' bandara ditemukan';
+            i18n.airportsFound.replace(':count', markers.length);
 
     }
 
@@ -596,7 +615,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }).addTo(map);
 
         userMarker.bindPopup(
-            '<strong>Lokasi Anda</strong>'
+            '<strong>' + i18n.yourLocation + '</strong>'
         );
 
         // Pastikan lokasi berada di dalam batas peta
@@ -611,7 +630,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (statusElement) {
                 statusElement.textContent =
-                    'Lokasi Anda berada di luar cakupan peta Asia Tenggara.';
+                    i18n.outsideAsean;
             }
 
         }
@@ -634,14 +653,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (recommendations.length === 0) {
 
             statusElement.textContent =
-                'Tidak ditemukan rekomendasi bandara.';
+                i18n.recEmpty;
 
             return;
         }
 
         statusElement.textContent =
-            'Ditemukan ' + recommendations.length +
-            ' rekomendasi bandara berdasarkan lokasi Anda.';
+            i18n.recFound.replace(':count', recommendations.length);
 
 
         recommendations.forEach(function (airport, index) {
@@ -682,8 +700,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 recommendationMarker.bindPopup(
                     '<strong>' +
-                    String(airport.name ?? 'Bandara') +
-                    '</strong><br>Rekomendasi #' +
+                    String(airport.name ?? 'Airport') +
+                    '</strong><br>' + i18n.recBadge +
                     (index + 1)
                 );
 
@@ -711,7 +729,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             heading.textContent =
                 (index + 1) + '. ' +
-                (airport.name ?? 'Nama bandara tidak tersedia');
+                (airport.name ?? 'Airport name not available');
 
 
             const details = document.createElement('p');
@@ -734,9 +752,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             distanceText.textContent =
                 Number.isFinite(distance)
-                    ? distance.toFixed(2) +
-                      ' km dari lokasi Anda'
-                    : 'Jarak tidak tersedia';
+                    ? i18n.recDistance.replace(':dist', distance.toFixed(2))
+                    : i18n.recDistNa;
 
 
             card.appendChild(heading);
@@ -755,7 +772,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     encodeURIComponent(airportId);
 
                 profileButton.textContent =
-                    'Lihat Profil';
+                    i18n.viewProfile;
 
                 profileButton.className =
                     'inline-block mt-3 mr-2 px-3 py-2 ' +
@@ -787,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 navigationUrl.searchParams.set('airport_id', airportId);
                 navigationUrl.searchParams.set(
                     'airport_name',
-                    airport.name ?? 'Bandara tujuan'
+                    airport.name ?? 'Destination airport'
                 );
 
                 navigationButton.href = navigationUrl.toString();
@@ -797,7 +814,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 navigationButton.rel = 'noopener noreferrer';
 
                 navigationButton.textContent =
-                    'Navigasi ke Bandara';
+                    i18n.navigateAirport;
 
                 navigationButton.className =
                     'inline-block mt-3 px-3 py-2 ' +
@@ -826,7 +843,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
 
             statusElement.textContent =
-                'Mencari 5 bandara terdekat...';
+                i18n.searchingNearest;
 
             const response = await fetch(
                 `/api/recommendations/nearest?latitude=${latitude}&longitude=${longitude}`,
@@ -850,7 +867,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!data.success) {
 
                 throw new Error(
-                    'Gagal mengambil rekomendasi bandara.'
+                    'Failed to retrieve airport recommendations.'
                 );
 
             }
@@ -864,12 +881,12 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (error) {
 
             console.error(
-                'Kesalahan rekomendasi:',
+                'Recommendation error:',
                 error
             );
 
             statusElement.textContent =
-                'Gagal memuat rekomendasi bandara.';
+                i18n.recError;
 
         }
 
@@ -882,7 +899,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ==========================================
 
     statusElement.textContent =
-        'Klik peta untuk mencari 5 bandara terdekat.';
+        i18n.clickMapHint;
 
     map.on('click', function (event) {
 
@@ -907,7 +924,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ).addTo(map);
 
         userMarker.bindPopup(
-            '<strong>Lokasi Pencarian Anda</strong><br>' +
+            '<strong>' + i18n.searchLocation + '</strong><br>' +
             'Latitude: ' + latitude.toFixed(6) + '<br>' +
             'Longitude: ' + longitude.toFixed(6)
         ).openPopup();

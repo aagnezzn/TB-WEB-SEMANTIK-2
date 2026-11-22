@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $airport['name'] ?? 'Detail Bandara' }} - AeroSearch</title>
+    <title>{{ $airport['name'] ?? __('messages.show_page_title') }} - AeroSearch</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     
     <!-- Open Graph Protocol (Meta Tags Media Sosial / Web Semantik) -->
-    <meta property="og:title" content="{{ $airport['name'] ?? 'Detail Bandara' }} - AeroSearch" />
+    <meta property="og:title" content="{{ $airport['name'] ?? 'Airport Details' }} - AeroSearch" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Informasi lengkap bandara {{ $airport['name'] ?? '' }} di {{ $airport['municipality'] ?? '-' }}, {{ $airport['iso_country'] ?? '-' }}. Kode ICAO: {{ $airport['ident'] ?? '-' }}." />
+    <meta property="og:description" content="Complete information on {{ $airport['name'] ?? '' }} in {{ $airport['municipality'] ?? '-' }}, {{ $airport['iso_country'] ?? '-' }}. ICAO Code: {{ $airport['ident'] ?? '-' }}." />
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:site_name" content="AeroSearch ASEAN" />
 
@@ -53,23 +53,23 @@
                         <span property="description">{{ $airport['type'] ?? 'Airport' }}</span>
                     </span>
                     <h1 class="text-3xl font-bold text-slate-800" property="name">
-                        {{ $airport['name'] ?? 'Nama Bandara Tidak Tersedia' }}
+                        {{ $airport['name'] ?? 'Airport Name Not Available' }}
                     </h1>
                 </div>
 
                 <!-- Status Layanan Berjadwal -->
                 @if(isset($airport['scheduled_service']))
                 <div class="bg-[#A8C6E7]/20 px-4 py-2.5 rounded-2xl border border-[#A8C6E7]/40 shrink-0">
-                    <p class="text-xs font-medium text-slate-500 mb-0.5">Layanan Berjadwal</p>
+                    <p class="text-xs font-medium text-slate-500 mb-0.5">{{ __('messages.show_scheduled_service') }}</p>
                     <p class="text-sm font-semibold text-slate-700 flex items-center gap-2">
                         <!-- SVG Jam -->
                         <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         @if($airport['scheduled_service'] == 'yes' || $airport['scheduled_service'] === true || $airport['scheduled_service'] == '1')
-                            <span class="text-emerald-600 font-bold">Ya (Komersial Rutin)</span>
+                            <span class="text-emerald-600 font-bold">{{ __('messages.show_scheduled_yes') }}</span>
                         @else
-                            <span class="text-slate-500">Tidak (Non-Komersial / Privat)</span>
+                            <span class="text-slate-500">{{ __('messages.show_scheduled_no') }}</span>
                         @endif
                     </p>
                 </div>
@@ -81,7 +81,7 @@
                 
                 <!-- Lokasi / Kota (RDFa Place & PostalAddress) -->
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/80" property="location" typeof="Place">
-                    <p class="text-xs font-medium text-slate-500 mb-1">Lokasi / Kota</p>
+                    <p class="text-xs font-medium text-slate-500 mb-1">{{ __('messages.show_label_city') }}</p>
                     <p class="text-base font-semibold text-slate-700 flex items-center gap-2" property="address" typeof="PostalAddress">
                         <!-- SVG Pin Lokasi -->
                         <svg class="w-4 h-4 text-rose-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@
 
                 <!-- Kode ICAO / IATA -->
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/80">
-                    <p class="text-xs font-medium text-slate-500 mb-1">Kode ICAO / IATA</p>
+                    <p class="text-xs font-medium text-slate-500 mb-1">{{ __('messages.show_label_codes') }}</p>
                     <p class="text-base font-semibold text-slate-700 flex items-center gap-2">
                         <!-- SVG Pesawat -->
                         <svg class="w-4 h-4 text-sky-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@
 
                 <!-- Koordinat (RDFa GeoCoordinates) -->
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/80" property="geo" typeof="GeoCoordinates">
-                    <p class="text-xs font-medium text-slate-500 mb-1">Koordinat (Lat, Long)</p>
+                    <p class="text-xs font-medium text-slate-500 mb-1">{{ __('messages.show_label_coordinates') }}</p>
                     <p class="text-base font-semibold text-slate-700 flex items-center gap-2">
                         <!-- SVG Globe / Koordinat -->
                         <svg class="w-4 h-4 text-blue-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@
 
                 <!-- Benua / Wilayah -->
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/80">
-                    <p class="text-xs font-medium text-slate-500 mb-1">Benua / Wilayah</p>
+                    <p class="text-xs font-medium text-slate-500 mb-1">{{ __('messages.show_label_region') }}</p>
                     <p class="text-base font-semibold text-slate-700 flex items-center gap-2">
                         <!-- SVG Globe Alt -->
                         <svg class="w-4 h-4 text-indigo-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -131,13 +131,13 @@
                 <!-- Situs Web Resmi (RDFa url) -->
                 @if(!empty($airport['home_link']) || !empty($airport['website']))
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/80">
-                    <p class="text-xs font-medium text-slate-500 mb-1">Situs Web Resmi</p>
+                    <p class="text-xs font-medium text-slate-500 mb-1">{{ __('messages.show_label_website') }}</p>
                     <a property="url" href="{{ $airport['home_link'] ?? $airport['website'] }}" target="_blank" rel="noopener noreferrer" class="text-base font-semibold text-[#7FA8D6] hover:underline break-all flex items-center gap-2">
                         <!-- SVG Link -->
                         <svg class="w-4 h-4 text-[#7FA8D6] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
                         </svg>
-                        <span>Kunjungi Website Bandara &rarr;</span>
+                        <span>{{ __('messages.show_btn_visit_website') }} &rarr;</span>
                     </a>
                 </div>
                 @endif
@@ -145,13 +145,13 @@
                 <!-- Referensi Wikipedia -->
                 @if(!empty($airport['wikipedia_link']))
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/80">
-                    <p class="text-xs font-medium text-slate-500 mb-1">Referensi Wikipedia</p>
+                    <p class="text-xs font-medium text-slate-500 mb-1">{{ __('messages.show_label_wikipedia') }}</p>
                     <a href="{{ $airport['wikipedia_link'] }}" target="_blank" rel="noopener noreferrer" class="text-base font-semibold text-[#7FA8D6] hover:underline break-all flex items-center gap-2">
                         <!-- SVG Buku / Wikipedia -->
                         <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                         </svg>
-                        <span>Buka Halaman Wikipedia &rarr;</span>
+                        <span>{{ __('messages.show_btn_open_article') }} &rarr;</span>
                     </a>
                 </div>
                 @endif
@@ -159,7 +159,7 @@
                 <!-- Kontak / Telepon (RDFa telephone) -->
                 @if(!empty($airport['phone']) || !empty($airport['contact']))
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/80 md:col-span-2">
-                    <p class="text-xs font-medium text-slate-500 mb-1">Kontak / Telepon</p>
+                    <p class="text-xs font-medium text-slate-500 mb-1">{{ __('messages.show_label_contact') }}</p>
                     <p class="text-base font-semibold text-slate-700 flex items-center gap-2">
                         <!-- SVG Telepon -->
                         <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -175,7 +175,7 @@
             <!-- Tombol Kembali di Kanan Bawah -->
             <div class="mt-8 pt-6 border-t border-slate-200/60 flex justify-end">
                 <a href="{{ url()->previous() }}" class="inline-flex items-center text-sm font-semibold bg-[#7FA8D6] hover:bg-[#6893c7] text-white px-5 py-2.5 rounded-xl transition shadow-sm gap-2">
-                    <span>&larr; Kembali ke Hasil Pencarian</span>
+                    <span>&larr; {{ __('messages.show_btn_back') }}</span>
                 </a>
             </div>
         </div>
