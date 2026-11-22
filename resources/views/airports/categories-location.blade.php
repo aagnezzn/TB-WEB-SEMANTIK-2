@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ __('messages.cat_location_title') }}</title>
+    @include('layouts.og', ['ogTitle' => __('messages.cat_location_title'), 'ogDescription' => 'AeroSearch ASEAN: data bandara semantik.'])
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>

@@ -357,6 +357,56 @@ class ChatbotNlpService
     }
 
     /**
+     * Mengenali nama pulau dari pesan pengguna. Alias terpanjang diprioritaskan.
+     *
+     * @param  list<string>  $dataIslands  Nama pulau yang ada di dataset
+     */
+    public function extractIslandEntity(string $rawMessage, string $normalizedMessage, array $dataIslands = []): ?string
+    {
+        $aliases = \App\Services\IslandResolver::aliasMap($dataIslands);
+        uksort($aliases, fn ($a, $b) => mb_strlen((string) $b) <=> mb_strlen((string) $a));
+
+        foreach ([mb_strtolower($rawMessage), $normalizedMessage] as $text) {
+            foreach ($aliases as $alias => $island) {
+                $pattern = '/(?<![\p{L}\p{N}])' . preg_quote((string) $alias, '/') . '(?![\p{L}\p{N}])/iu';
+                if (preg_match($pattern, $text)) {
+                    return $island;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Respon daftar bandara di sebuah pulau.
+     *
+     * @param  list<array{name: string, iata: ?string, icao: ?string, municipality: ?string}>  $airports
+     */
+    public function formatIslandAirports(string $island, array $airports, int $limit = 20): string
+    {
+        $total = count($airports);
+
+        if ($total === 0) {
+            return "Belum ada data bandara di {$island} pada dataset AeroFind.";
+        }
+
+        $reply = "BANDARA DI " . mb_strtoupper($island) . "\n\n";
+        $reply .= "Terdapat {$total} bandara di {$island}" . ($total > $limit ? ", berikut {$limit} pertama:" : ":") . "\n\n";
+
+        foreach (array_slice($airports, 0, $limit) as $index => $airport) {
+            $iata = $airport['iata'] ?: '-';
+            $loc = $airport['municipality'] ?: '-';
+            $reply .= ($index + 1) . ". {$airport['name']} (IATA: {$iata}) - {$loc}\n";
+        }
+
+        $reply .= "\nKamu dapat menanyakan profil salah satu bandara di atas, contohnya: 'Profil {$airports[0]['name']}'.\n";
+        $reply .= "Sumber data: Dataset RDF AeroFind (properti af:island) melalui Apache Jena Fuseki.";
+
+        return $reply;
+    }
+
+    /**
      * Ekstraksi filter tipe/ukuran fasilitas bandara dari pesan pengguna (large, medium, small).
      */
     public function extractAirportTypeEntity(string $normalizedMessage): ?string
@@ -810,7 +860,8 @@ class ChatbotNlpService
             "1. Rekomendasi Terdekat: Tanyakan 'bandara dekat Medan' atau 'mana bandara daerah Deli Serdang'.\n" .
             "2. Profil Bandara: Tanyakan 'profil Kualanamu' atau 'info bandara CGK'.\n" .
             "3. Data Nasional: Tanyakan 'berapa jumlah bandara di Indonesia' atau 'daftar bandara di Indonesia'.\n" .
-            "4. Peta Geospasial: Buka menu Peta Bandara untuk melihat persebaran bandara secara interaktif.\n\n" .
+            "4. Bandara per Pulau: Tanyakan 'bandara di pulau Bali', 'airport di Luzon', atau 'bandara pulau Kalimantan'.\n" .
+            "5. Peta Geospasial: Buka menu Peta Bandara untuk melihat persebaran bandara secara interaktif.\n\n" .
             "Silakan ketik pertanyaan yang kamu inginkan.";
     }
 

@@ -3,6 +3,7 @@
 use App\Services\FusekiService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\AirportLiveController;
 use App\Http\Controllers\AirportMapController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\AirportRecommendationController;
@@ -25,6 +26,14 @@ Route::get('/data-bandara', [AirportController::class, 'directory'])->name('airp
 
 // Rute Pencarian Bandara
 Route::get('/airports/map', [AirportMapController::class, 'map'])->name('airports.map');
+
+// API saran pencarian huruf per huruf (dashboard utama)
+Route::get('/api/airports/suggest', [AirportController::class, 'suggest'])->name('airports.suggest');
+
+// API operasi real-time bandara (cuaca METAR + pesawat sekitar)
+Route::get('/api/airports/{icao}/live', [AirportLiveController::class, 'show'])
+    ->middleware('throttle:60,1')
+    ->name('airports.live');
 
 // Rute Halaman Detail Bandara
 Route::get('/airports/{id}', [AirportController::class, 'show'])->name('airports.show');

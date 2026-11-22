@@ -25,6 +25,8 @@ if ($jsonContent === false) {
     die("ERROR: Gagal membaca file JSON.\n");
 }
 
+require __DIR__ . '/vendor/autoload.php';
+
 // Menghapus BOM jika ada
 $jsonContent = preg_replace('/^\xEF\xBB\xBF/', '', $jsonContent);
 
@@ -146,6 +148,7 @@ $stringProperties = [
     'keywords'         => 'keywords',
     'data_source'      => 'dataSource',
     'last_verified'    => 'lastVerified',
+    'island'           => 'island',
 ];
 
 // Kolom numerik JSON => Properti RDF
@@ -179,6 +182,9 @@ foreach ($airports as $airport) {
         $skipped++;
         continue;
     }
+
+    // Pulau ditentukan dari kode wilayah, nama pulau pada municipality, dan koordinat
+    $airport['island'] = \App\Services\IslandResolver::resolve($airport);
 
     $resourceId = ttlResourceId($airportId);
 

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Airport;
 use App\Models\Region;
 use App\Services\AirportRecommendationService;
 use App\Services\ChatbotNlpService;
 use App\Services\FusekiService;
+use App\Services\IslandResolver;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class ChatbotController extends Controller
@@ -53,6 +54,19 @@ class ChatbotController extends Controller
         };
 
         try {
+
+            /*
+            |--------------------------------------------------------------------------
+            | 0. BANDARA BERDASARKAN PULAU (seluruh ASEAN)
+            |--------------------------------------------------------------------------
+            */
+            $islandIndex = $this->islandIndex();
+            $island = $this->nlp->extractIslandEntity($message, $normalized, array_keys($islandIndex));
+            if ($island !== null && $this->isIslandQuestion($island, $lower, $normalized, $containsAny)) {
+                return response()->json([
+                    'reply' => $this->searchByIsland($island, $islandIndex)
+                ]);
+            }
 
             /*
             |--------------------------------------------------------------------------
@@ -204,6 +218,129 @@ class ChatbotController extends Controller
         }
     }
 
+    /**
+     * Indeks bandara per pulau dari dataset JSON (dipakai untuk mengenali nama pulau
+     * dan sebagai cadangan bila Fuseki tidak aktif).
+     *
+     * @return array<string, list<array{name: string, iata: ?string, icao: ?string, municipality: ?string}>>
+     */
+    private function islandIndex(): array
+    {
+        return Cache::remember('chatbot.island_index', now()->addHour(), function (): array {
+            $jsonPath = database_path('data/dataset_bandara_tubes.json');
+            if (!file_exists($jsonPath)) {
+                return [];
+            }
+
+            $content = preg_replace('/^\xEF\xBB\xBF/', '', (string) file_get_contents($jsonPath));
+            $data = json_decode($content, true);
+            $index = [];
+
+            foreach (is_array($data) ? $data : [] as $item) {
+                $island = IslandResolver::resolve($item);
+                if ($island === null) {
+                    continue;
+                }
+
+                $index[$island][] = [
+                    'name'         => (string) ($item['name'] ?? 'Bandara'),
+                    'iata'         => $item['iata_code'] ?? null,
+                    'icao'         => $item['icao_code'] ?? null,
+                    'municipality' => $item['municipality'] ?? null,
+                ];
+            }
+
+            foreach ($index as &$airports) {
+                usort($airports, fn ($a, $b) => strcasecmp($a['name'], $b['name']));
+            }
+            unset($airports);
+
+            return $index;
+        });
+    }
+
+    /**
+     * Menentukan apakah pesan benar-benar menanyakan bandara di sebuah pulau,
+     * bukan nama negara, kota, atau bandara tertentu.
+     */
+    private function isIslandQuestion(string $island, string $lower, string $normalized, callable $containsAny): bool
+    {
+        if ($containsAny(['pulau', 'island', 'kepulauan'])) {
+            return true;
+        }
+
+        if ($island === 'Singapura' || ($island === 'Timor' && str_contains($lower, 'timor leste'))) {
+            return false;
+        }
+
+        return $containsAny(['bandara', 'airport', 'bandar udara'])
+            && !$containsAny(['terdekat', 'dekat', 'deket', 'profil', 'profile'])
+            && $this->nlp->extractAirportEntity($normalized) === null;
+    }
+
+    private function searchByIsland(string $island, array $islandIndex): string
+    {
+        $safeIsland = addcslashes($island, "\"\\");
+
+        $query = "
+            PREFIX af: <https://aerofind.example/id/>
+            SELECT DISTINCT ?name ?iataCode ?icaoCode ?municipality WHERE {
+                ?airport a af:Airport ;
+                         af:name ?name ;
+                         af:island ?island .
+                FILTER(LCASE(STR(?island)) = LCASE(\"{$safeIsland}\"))
+                OPTIONAL { ?airport af:iataCode ?iataCode }
+                OPTIONAL { ?airport af:icaoCode ?icaoCode }
+                OPTIONAL { ?airport af:municipality ?municipality }
+            }
+            ORDER BY ?name
+        ";
+
+        $airports = [];
+
+        try {
+            foreach ($this->fuseki->select($query)['results']['bindings'] ?? [] as $row) {
+                $airports[] = [
+                    'name'         => $row['name']['value'],
+                    'iata'         => $row['iataCode']['value'] ?? null,
+                    'icao'         => $row['icaoCode']['value'] ?? null,
+                    'municipality' => $row['municipality']['value'] ?? null,
+                ];
+            }
+        } catch (\Throwable $e) {
+            report($e);
+        }
+
+        // Cadangan: dataset JSON bila Fuseki tidak aktif atau belum memuat af:island
+        if ($airports === []) {
+            $airports = $islandIndex[$island] ?? [];
+        }
+
+        return $this->nlp->formatIslandAirports($island, $airports);
+    }
+
+    /**
+     * Dataset bandara dari berkas JSON, dipakai sebagai cadangan bila Fuseki tidak aktif.
+     *
+     * @return Collection<int, object>
+     */
+    private function airportsFromJson(): Collection
+    {
+        $jsonPath = database_path('data/dataset_bandara_tubes.json');
+
+        if (!file_exists($jsonPath)) {
+            return collect();
+        }
+
+        $content = preg_replace('/^\xEF\xBB\xBF/', '', (string) file_get_contents($jsonPath));
+        $data = json_decode($content, true);
+
+        return collect(is_array($data) ? $data : [])
+            ->filter(fn ($item) => !empty($item['name']))
+            ->map(fn (array $item): object => (object) $item)
+            ->values();
+    }
+
     private function extractRegion(string $message): ?string
     {
         $region = $this->extractRegionModel($message);
@@ -260,13 +397,13 @@ class ChatbotController extends Controller
 
         if (empty($bindings)) {
             try {
-                $airports = Airport::where('type', $type)->whereNotNull('name')->limit(10)->get();
+                $airports = $this->airportsFromJson()->where('type', $type)->take(10)->values();
                 $bindings = $airports->map(fn ($a) => [
                     'name'         => ['value' => $a->name],
                     'iataCode'     => ['value' => $a->iata_code ?? '-'],
                     'icaoCode'     => ['value' => $a->icao_code ?? '-'],
                     'municipality' => ['value' => $a->municipality ?? '-'],
-                    'countryCode'  => ['value' => $a->iso_country ?? 'ID'],
+                    'countryCode'  => ['value' => strtoupper(substr((string) ($a->iso_region ?? 'ID'), 0, 2))],
                 ])->toArray();
             } catch (\Throwable $e) {
                 $bindings = [];
@@ -451,12 +588,6 @@ class ChatbotController extends Controller
 
         if (empty($bindings)) {
             $local = null;
-            try {
-                $local = Airport::whereRaw('LOWER(name) LIKE ?', ['%' . mb_strtolower($searchName) . '%'])
-                    ->orWhere('iata_code', $searchCode)
-                    ->orWhere('icao_code', $searchCode)
-                    ->first();
-            } catch (\Throwable $e) {}
 
             if (!$local) {
                 $local = $this->findAirportFromDataset($searchName, $searchCode);
@@ -599,7 +730,7 @@ class ChatbotController extends Controller
 
             if (!$total) {
                 try {
-                    $total = Airport::where('iso_country', $countryCode)->count();
+                    $total = $this->airportsFromJson()->filter(fn ($a) => str_starts_with((string) $a->iso_region, $countryCode . '-'))->count();
                 } catch (\Throwable $e) {
                     $total = null;
                 }
@@ -641,7 +772,7 @@ class ChatbotController extends Controller
 
         if (empty($bindings)) {
             try {
-                $airports = Airport::where('iso_country', $countryCode)->whereNotNull('name')->limit(10)->get();
+                $airports = $this->airportsFromJson()->filter(fn ($a) => str_starts_with((string) $a->iso_region, $countryCode . '-'))->take(10)->values();
                 $bindings = $airports->map(fn ($a) => [
                     'name' => ['value' => $a->name],
                     'iataCode' => ['value' => $a->iata_code ?? '-'],

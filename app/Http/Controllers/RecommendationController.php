@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Region;
 use App\Services\AirportRecommendationService;
+use App\Services\FusekiService;
 use Illuminate\Http\Request;
 
 class RecommendationController extends Controller
@@ -16,32 +17,45 @@ class RecommendationController extends Controller
         $this->recommendation = $recommendation;
     }
 
-    public function nearest(Request $request)
+    public function nearest(Request $request, FusekiService $fuseki)
     {
         $request->validate([
             'region_id' => ['required', 'string', 'max:50'],
         ]);
 
-        $region = Region::where(
-            'region_id',
-            $request->query('region_id')
-        )->first();
+        $regionId = (string) $request->query('region_id');
 
-        if (!$region) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Kota/Kabupaten tidak ditemukan.'
-            ], 404);
+        // Sumber utama: af:Region di Fuseki. Cadangan: tabel regions.
+        $region = $fuseki->region($regionId);
+
+        if ($region) {
+            $regionName = $region['region_name'];
+            $airports = $this->recommendation->nearestFromCoordinates(
+                $region['latitude'],
+                $region['longitude'],
+                5
+            );
+        } else {
+            try {
+                $model = Region::where('region_id', $regionId)->first();
+            } catch (\Throwable $e) {
+                $model = null;
+            }
+
+            if (!$model) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Kota/Kabupaten tidak ditemukan.'
+                ], 404);
+            }
+
+            $regionName = $model->region_name;
+            $airports = $this->recommendation->nearest($model, 5);
         }
-
-        $airports = $this->recommendation->nearest(
-            $region,
-            5
-        );
 
         return response()->json([
             'status' => 'success',
-            'region' => $region->region_name,
+            'region' => $regionName,
             'recommendations' => $airports
         ]);
     }

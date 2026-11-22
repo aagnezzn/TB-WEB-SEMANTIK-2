@@ -19,6 +19,7 @@ af:APT-0001
     af:gpsCode "WBSB" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Brunei_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26819 ;
     af:latitude 4.9442 ;
     af:longitude 114.928001 ;
@@ -42,6 +43,7 @@ af:APT-0002
     af:wikipediaLink "https://en.wikipedia.org/wiki/Haliwen_Airport" ;
     af:keywords "WRKA" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Timor" ;
     af:sourceId 41475 ;
     af:latitude -9.074841 ;
     af:longitude 124.903285 ;
@@ -65,6 +67,7 @@ af:APT-0003
     af:wikipediaLink "https://en.wikipedia.org/wiki/Abdul_Rachman_Saleh_Airport" ;
     af:keywords "WIAS, Malang, Singosari" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26785 ;
     af:latitude -7.929099 ;
     af:longitude 112.714233 ;
@@ -89,6 +92,7 @@ af:APT-0004
     af:wikipediaLink "https://en.wikipedia.org/wiki/Adisumarmo_Airport" ;
     af:keywords "WRSQ, WARQ, Adi Soemarmo, Adi Sumarmo" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26788 ;
     af:latitude -7.516044 ;
     af:longitude 110.757492 ;
@@ -113,6 +117,7 @@ af:APT-0005
     af:wikipediaLink "https://en.wikipedia.org/wiki/Adisutjipto_Airport" ;
     af:keywords "WIIJ, WARJ, Adisucipto" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26787 ;
     af:latitude -7.78818 ;
     af:longitude 110.431999 ;
@@ -136,6 +141,7 @@ af:APT-0006
     af:wikipediaLink "https://en.wikipedia.org/wiki/Aji_Pangeran_Tumenggung_Pranoto_International_Airport" ;
     af:keywords "Sungai Siring Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26763 ;
     af:latitude -0.374478 ;
     af:longitude 117.250128 ;
@@ -158,6 +164,7 @@ af:APT-0007
     af:gpsCode "WIMU" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Alas_Leuser_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 507992 ;
     af:latitude 3.391456 ;
     af:longitude 97.863726 ;
@@ -176,6 +183,7 @@ af:APT-0008
     af:municipality "Alemson" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350468 ;
     af:latitude -4.816571 ;
     af:longitude 140.222819 ;
@@ -198,6 +206,7 @@ af:APT-0009
     af:gpsCode "WATM" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Alor_Island_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Alor" ;
     af:sourceId 26799 ;
     af:latitude -8.13234 ;
     af:longitude 124.597 ;
@@ -218,6 +227,7 @@ af:APT-0010
     af:localCode "AWI" ;
     af:keywords "Awinbon" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 325386 ;
     af:latitude -5.165884 ;
     af:longitude 140.381568 ;
@@ -242,6 +252,7 @@ af:APT-0011
     af:wikipediaLink "https://en.wikipedia.org/wiki/Banyuwangi_Airport" ;
     af:keywords "Banyuwangi International Airport, Blimbing Sari, Blimbingsari, Kabat, Rogojampi, Sukojati, WARB" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 46587 ;
     af:latitude -8.31015 ;
     af:longitude 114.3401 ;
@@ -265,6 +276,7 @@ af:APT-0012
     af:wikipediaLink "http://id.wikipedia.org/wiki/Bandar_Udara_Bersujud" ;
     af:keywords "WRBC, Batulicin" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26775 ;
     af:latitude -3.41241 ;
     af:longitude 115.995003 ;
@@ -288,6 +300,7 @@ af:APT-0013
     af:homeLink "https://flightaware.com/live/airport/WAYB" ;
     af:keywords "WABV, Zugapa, Bilogai-Sugapa" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 29639 ;
     af:latitude -3.739503 ;
     af:longitude 137.031183 ;
@@ -310,6 +323,7 @@ af:APT-0014
     af:gpsCode "WIMB" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Binaka_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Nias" ;
     af:sourceId 26836 ;
     af:latitude 1.166275 ;
     af:longitude 97.705196 ;
@@ -328,6 +342,7 @@ af:APT-0015
     af:municipality "Binban" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350487 ;
     af:latitude -4.585309 ;
     af:longitude 140.533962 ;
@@ -351,6 +366,7 @@ af:APT-0016
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bokondini_Airport" ;
     af:keywords "WAJB" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 41423 ;
     af:latitude -3.68455 ;
     af:longitude 138.677437 ;
@@ -373,6 +389,7 @@ af:APT-0017
     af:gpsCode "WAMI" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Raja_Loloda_Mokoagow_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 526307 ;
     af:latitude 0.88855 ;
     af:longitude 124.033634 ;
@@ -391,6 +408,7 @@ af:APT-0018
     af:municipality "Bordamban" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350518 ;
     af:latitude -4.439924 ;
     af:longitude 140.484527 ;
@@ -414,6 +432,7 @@ af:APT-0019
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bua_Airport" ;
     af:keywords "Palopo Lagaligo" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 331735 ;
     af:latitude -3.08227 ;
     af:longitude 120.244823 ;
@@ -437,6 +456,7 @@ af:APT-0020
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pogogul_Airport" ;
     af:keywords "WAMY, Pangtiku Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 41405 ;
     af:latitude 1.102318 ;
     af:longitude 121.413358 ;
@@ -459,6 +479,7 @@ af:APT-0021
     af:gpsCode "WITC" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Cut_Nyak_Dhien_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 31889 ;
     af:latitude 4.040998 ;
     af:longitude 96.253312 ;
@@ -481,6 +502,7 @@ af:APT-0022
     af:gpsCode "WALJ" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Datadawai_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 35277 ;
     af:latitude 0.807028 ;
     af:longitude 114.529052 ;
@@ -505,6 +527,7 @@ af:APT-0023
     af:wikipediaLink "https://en.wikipedia.org/wiki/David_Constantijn_Saudale_Airport" ;
     af:keywords "WRKR, Roti Airport, Lekunik Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Rote" ;
     af:sourceId 41481 ;
     af:latitude -10.765834 ;
     af:longitude 123.076046 ;
@@ -529,6 +552,7 @@ af:APT-0024
     af:wikipediaLink "https://en.wikipedia.org/wiki/Ngurah_Rai_International_Airport" ;
     af:keywords "WRRR, Bali, Denpasar International Airport, Denpasar" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Bali" ;
     af:sourceId 26751 ;
     af:latitude -8.748409 ;
     af:longitude 115.167123 ;
@@ -552,6 +576,7 @@ af:APT-0025
     af:wikipediaLink "https://en.wikipedia.org/wiki/Depati_Parbo_Airport" ;
     af:keywords "WIPH, Kerinci" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 41379 ;
     af:latitude -2.094042 ;
     af:longitude 101.47025 ;
@@ -575,6 +600,7 @@ af:APT-0026
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pangkalpinang_Airport" ;
     af:keywords "WIPK" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Bangka" ;
     af:sourceId 26852 ;
     af:latitude -2.1622 ;
     af:longitude 106.139 ;
@@ -598,6 +624,7 @@ af:APT-0027
     af:wikipediaLink "https://en.wikipedia.org/wiki/Dewadaru_Airport" ;
     af:keywords "Karimun Jawa, Karimun Java" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Karimunjawa" ;
     af:sourceId 42250 ;
     af:latitude -5.80091 ;
     af:longitude 110.47838 ;
@@ -622,6 +649,7 @@ af:APT-0028
     af:wikipediaLink "https://en.wikipedia.org/wiki/Dhoho_International_Airport" ;
     af:keywords "Dhoho" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 507227 ;
     af:latitude -7.749527 ;
     af:longitude 111.946831 ;
@@ -641,6 +669,7 @@ af:APT-0029
     af:scheduledService "yes" ;
     af:keywords "WX43" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 310260 ;
     af:latitude -4.725525 ;
     af:longitude 140.792284 ;
@@ -664,6 +693,7 @@ af:APT-0030
     af:wikipediaLink "https://en.wikipedia.org/wiki/Domine_Eduard_Osok_Airport" ;
     af:keywords "WAXX" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 32634 ;
     af:latitude -0.894 ;
     af:longitude 131.287 ;
@@ -688,6 +718,7 @@ af:APT-0031
     af:wikipediaLink "https://en.wikipedia.org/wiki/Dortheys_Hiyo_Eluay_International_Airport" ;
     af:keywords "Bandar Udara Internasional Dortheys Hiyo Eluay, Sentani International Airport, Hollandia, Jayapura" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 26755 ;
     af:latitude -2.579627 ;
     af:longitude 140.519857 ;
@@ -711,6 +742,7 @@ af:APT-0032
     af:wikipediaLink "https://en.wikipedia.org/wiki/Ferdinand_Lumban_Tobing_Airport" ;
     af:keywords "Pinangsori Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26841 ;
     af:latitude 1.557127 ;
     af:longitude 98.887145 ;
@@ -729,6 +761,7 @@ af:APT-0033
     af:municipality "Dumpasik" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350517 ;
     af:latitude -4.455194 ;
     af:longitude 140.508871 ;
@@ -753,6 +786,7 @@ af:APT-0034
     af:wikipediaLink "https://en.wikipedia.org/wiki/El_Tari_Airport" ;
     af:keywords "WRKK, Kupang Airport, Penfui Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Timor" ;
     af:sourceId 26801 ;
     af:latitude -10.1716 ;
     af:longitude 123.670998 ;
@@ -776,6 +810,7 @@ af:APT-0035
     af:wikipediaLink "https://en.wikipedia.org/wiki/Fakfak_Airport" ;
     af:keywords "Iboru, Torea, Fak Fak" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 26791 ;
     af:latitude -2.920508 ;
     af:longitude 132.267011 ;
@@ -799,6 +834,7 @@ af:APT-0036
     af:wikipediaLink "https://en.wikipedia.org/wiki/Fatmawati_Soekarno_Airport" ;
     af:keywords "WIPL, Padang Kemiling Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26853 ;
     af:latitude -3.8637 ;
     af:longitude 102.338997 ;
@@ -821,6 +857,7 @@ af:APT-0037
     af:gpsCode "WABB" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Frans_Kaisiepo_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Biak" ;
     af:sourceId 26746 ;
     af:latitude -1.19002 ;
     af:longitude 136.108002 ;
@@ -844,6 +881,7 @@ af:APT-0038
     af:wikipediaLink "https://en.wikipedia.org/wiki/Frans_Sales_Lega_Airport" ;
     af:keywords "WRKG, Ruteng, Satar Tacik Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Flores" ;
     af:sourceId 26798 ;
     af:latitude -8.596171 ;
     af:longitude 120.478177 ;
@@ -867,6 +905,7 @@ af:APT-0039
     af:wikipediaLink "https://en.wikipedia.org/wiki/Frans_Xavier_Seda_Airport" ;
     af:keywords "WRKC, Fransiskus Xavierius Seda, Maumere, Wai Oti" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Flores" ;
     af:sourceId 26796 ;
     af:latitude -8.639514 ;
     af:longitude 122.238135 ;
@@ -890,6 +929,7 @@ af:APT-0040
     af:wikipediaLink "https://en.wikipedia.org/wiki/Gusti_Syamsir_Alam_Airport" ;
     af:keywords "WRBK, Stagen Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 31730 ;
     af:latitude -3.294796 ;
     af:longitude 116.163815 ;
@@ -913,6 +953,7 @@ af:APT-0041
     af:wikipediaLink "https://en.wikipedia.org/wiki/H.A.S._Hanandjoeddin_International_Airport" ;
     af:keywords "Buluh Tumbang Airport, WIKD, WIOD" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Belitung" ;
     af:sourceId 26842 ;
     af:latitude -2.744109 ;
     af:longitude 107.754535 ;
@@ -936,6 +977,7 @@ af:APT-0042
     af:wikipediaLink "https://en.wikipedia.org/wiki/Ende_Airport" ;
     af:keywords "WRKE, Isi" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Flores" ;
     af:sourceId 26797 ;
     af:latitude -8.849114 ;
     af:longitude 121.66101 ;
@@ -959,6 +1001,7 @@ af:APT-0043
     af:wikipediaLink "https://en.wikipedia.org/wiki/Haji_Muhammad_Sidik_Airport" ;
     af:keywords "Trinsing" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 344101 ;
     af:latitude -1.02581 ;
     af:longitude 114.92881 ;
@@ -983,6 +1026,7 @@ af:APT-0044
     af:wikipediaLink "https://en.wikipedia.org/wiki/Halim_Perdanakusuma_International_Airport" ;
     af:keywords "WIIH, WIIX, WIID" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26832 ;
     af:latitude -6.266989 ;
     af:longitude 106.890318 ;
@@ -1006,6 +1050,7 @@ af:APT-0045
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kendari_Airport" ;
     af:keywords "WAAU, Wolter Monginsidi Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 26806 ;
     af:latitude -4.08161 ;
     af:longitude 122.417999 ;
@@ -1029,6 +1074,7 @@ af:APT-0046
     af:wikipediaLink "https://en.wikipedia.org/wiki/Hang_Nadim_Airport" ;
     af:keywords "WIKB" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Batam" ;
     af:sourceId 26828 ;
     af:latitude 1.12103 ;
     af:longitude 104.119003 ;
@@ -1047,6 +1093,7 @@ af:APT-0047
     af:municipality "Hangmata" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350539 ;
     af:latitude -4.49226 ;
     af:longitude 140.657322 ;
@@ -1070,6 +1117,7 @@ af:APT-0048
     af:wikipediaLink "https://en.wikipedia.org/wiki/Husein_Sastranegara_International_Airport" ;
     af:keywords "WIIB" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26824 ;
     af:latitude -6.90063 ;
     af:longitude 107.575996 ;
@@ -1093,6 +1141,7 @@ af:APT-0049
     af:wikipediaLink "https://en.wikipedia.org/wiki/Iskandar_Airport" ;
     af:keywords "WRBI" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26777 ;
     af:latitude -2.7052 ;
     af:longitude 111.672997 ;
@@ -1115,6 +1164,7 @@ af:APT-0050
     af:localCode "IWR" ;
     af:keywords "WZ17" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 310416 ;
     af:latitude -5.139139 ;
     af:longitude 140.717638 ;
@@ -1137,6 +1187,7 @@ af:APT-0051
     af:gpsCode "WAMG" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Jalaluddin_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 26767 ;
     af:latitude 0.637119 ;
     af:longitude 122.849998 ;
@@ -1161,6 +1212,7 @@ af:APT-0052
     af:wikipediaLink "https://en.wikipedia.org/wiki/Achmad_Yani_Airport" ;
     af:keywords "WIIS, WARS" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26790 ;
     af:latitude -6.970732 ;
     af:longitude 110.373244 ;
@@ -1184,6 +1236,7 @@ af:APT-0053
     af:wikipediaLink "https://hubud.kemenhub.go.id/hubud/website/bandara/455" ;
     af:keywords "Moa Island, Leti Islands" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Maluku" ;
     af:sourceId 319816 ;
     af:latitude -8.140683 ;
     af:longitude 127.909669 ;
@@ -1208,6 +1261,7 @@ af:APT-0054
     af:wikipediaLink "https://en.wikipedia.org/wiki/Juanda_International_Airport" ;
     af:keywords "WRSJ, Sedati, Sidoarjo" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26789 ;
     af:latitude -7.37983 ;
     af:longitude 112.787003 ;
@@ -1233,6 +1287,7 @@ af:APT-0055
     af:wikipediaLink "https://en.wikipedia.org/wiki/Juwata_Airport" ;
     af:keywords "WRLR, WALR, WAQQ, TRK, JUWATA, TARAKAN" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26762 ;
     af:latitude 3.325145 ;
     af:longitude 117.564169 ;
@@ -1251,6 +1306,7 @@ af:APT-0056
     af:municipality "Kaklup" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350488 ;
     af:latitude -4.620771 ;
     af:longitude 140.531688 ;
@@ -1274,6 +1330,7 @@ af:APT-0057
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kalimarau_Airport" ;
     af:keywords "Berau Airport, WALK, WRLK" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26759 ;
     af:latitude 2.14776 ;
     af:longitude 117.430705 ;
@@ -1297,6 +1354,7 @@ af:APT-0058
     af:wikipediaLink "https://en.wikipedia.org/wiki/Karel_Sadsuitubun_Airport" ;
     af:keywords "Tual Baru" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Maluku" ;
     af:sourceId 333039 ;
     af:latitude -5.760278 ;
     af:longitude 132.759444 ;
@@ -1319,6 +1377,7 @@ af:APT-0059
     af:gpsCode "WICA" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kertajati_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 333068 ;
     af:latitude -6.647384 ;
     af:longitude 108.165561 ;
@@ -1337,6 +1396,7 @@ af:APT-0060
     af:municipality "Pegunungan Bintang Regency" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350520 ;
     af:latitude -4.464786 ;
     af:longitude 140.393016 ;
@@ -1357,6 +1417,7 @@ af:APT-0061
     af:gpsCode "WRGK" ;
     af:localCode "KIW" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 310463 ;
     af:latitude -4.697841 ;
     af:longitude 140.722425 ;
@@ -1377,6 +1438,7 @@ af:APT-0062
     af:icaoCode "WAJK" ;
     af:gpsCode "WAJK" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 310461 ;
     af:latitude -4.713481 ;
     af:longitude 140.740271 ;
@@ -1400,6 +1462,7 @@ af:APT-0063
     af:wikipediaLink "https://en.wikipedia.org/wiki/Komodo_Airport" ;
     af:keywords "Komodo Labuan Bajo International Airport, Mutiara II Airport, WRKO" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Flores" ;
     af:sourceId 26800 ;
     af:latitude -8.480694 ;
     af:longitude 119.888306 ;
@@ -1418,6 +1481,7 @@ af:APT-0064
     af:municipality "Pegunungan Bintang Regency" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350485 ;
     af:latitude -4.638376 ;
     af:longitude 140.654907 ;
@@ -1442,6 +1506,7 @@ af:APT-0065
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kualanamu_International_Airport" ;
     af:keywords "Medan" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 309577 ;
     af:latitude 3.637847 ;
     af:longitude 98.870566 ;
@@ -1461,6 +1526,7 @@ af:APT-0066
     af:scheduledService "yes" ;
     af:keywords "Kubipkop" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 348750 ;
     af:latitude -4.79436 ;
     af:longitude 140.69447 ;
@@ -1484,6 +1550,7 @@ af:APT-0067
     af:wikipediaLink "https://en.wikipedia.org/wiki/PT_Badak_Bontang_Airport" ;
     af:keywords "WRLC" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 30806 ;
     af:latitude 0.121656 ;
     af:longitude 117.476558 ;
@@ -1507,6 +1574,7 @@ af:APT-0068
     af:wikipediaLink "https://en.wikipedia.org/wiki/Gewayantana_Airport" ;
     af:keywords "WATL" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Flores" ;
     af:sourceId 41478 ;
     af:latitude -8.274424 ;
     af:longitude 123.002 ;
@@ -1529,6 +1597,7 @@ af:APT-0069
     af:gpsCode "WIML" ;
     af:keywords "WITG" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Simeulue" ;
     af:sourceId 32655 ;
     af:latitude 2.411328 ;
     af:longitude 96.327722 ;
@@ -1552,6 +1621,7 @@ af:APT-0070
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lasondre_Airport" ;
     af:keywords "Bandar Udara Lasondre" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 301955 ;
     af:latitude -0.01924 ;
     af:longitude 98.30097 ;
@@ -1574,6 +1644,7 @@ af:APT-0071
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lt.Col._Wisnu_Airfield" ;
     af:keywords "Bali International Flying Academy, BIFA, Buleleng Airport, Grokgak Airport, Letkol Wisnu" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Bali" ;
     af:sourceId 46589 ;
     af:latitude -8.139292 ;
     af:longitude 114.615367 ;
@@ -1598,6 +1669,7 @@ af:APT-0072
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lombok_International_Airport" ;
     af:keywords "Zainuddin Abdul Madjid, Praya" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Lombok" ;
     af:sourceId 299629 ;
     af:latitude -8.759962 ;
     af:longitude 116.278169 ;
@@ -1620,6 +1692,7 @@ af:APT-0073
     af:gpsCode "WAQL" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Long_Apung_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 35278 ;
     af:latitude 1.706932 ;
     af:longitude 114.969934 ;
@@ -1641,6 +1714,7 @@ af:APT-0074
     af:gpsCode "WAQH" ;
     af:keywords "WZ86, Long Rongan" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 310513 ;
     af:latitude 3.598904 ;
     af:longitude 115.840817 ;
@@ -1659,6 +1733,7 @@ af:APT-0075
     af:municipality "Pegunungan Bintang Regency" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350489 ;
     af:latitude -4.58066 ;
     af:longitude 140.515995 ;
@@ -1682,6 +1757,7 @@ af:APT-0076
     af:localCode "MOH" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Maleo_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 330319 ;
     af:latitude -2.201143 ;
     af:longitude 121.662884 ;
@@ -1705,6 +1781,7 @@ af:APT-0077
     af:wikipediaLink "https://en.wikipedia.org/wiki/Malikus_Saleh_Airport" ;
     af:keywords "WITM" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26861 ;
     af:latitude 5.22668 ;
     af:longitude 96.950302 ;
@@ -1727,6 +1804,7 @@ af:APT-0078
     af:gpsCode "WASN" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Marinda_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Waigeo" ;
     af:sourceId 333091 ;
     af:latitude -0.424969 ;
     af:longitude 130.773535 ;
@@ -1749,6 +1827,7 @@ af:APT-0079
     af:gpsCode "WAWD" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Matahora_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Wangi-wangi" ;
     af:sourceId 333072 ;
     af:latitude -5.292123 ;
     af:longitude 123.636233 ;
@@ -1771,6 +1850,7 @@ af:APT-0080
     af:gpsCode "WAPS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mathilda_Batlayeri_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Yamdena" ;
     af:sourceId 311018 ;
     af:latitude -7.848354 ;
     af:longitude 131.337068 ;
@@ -1794,6 +1874,7 @@ af:APT-0081
     af:localCode "RKO" ;
     af:keywords "WIBR, Rokot Sipora" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sipura" ;
     af:sourceId 41397 ;
     af:latitude -2.1001 ;
     af:longitude 99.7044 ;
@@ -1817,6 +1898,7 @@ af:APT-0082
     af:homeLink "https://minangkabau-airport.co.id/en/general/about-us" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Minangkabau_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26858 ;
     af:latitude -0.785964 ;
     af:longitude 100.280384 ;
@@ -1835,6 +1917,7 @@ af:APT-0083
     af:municipality "Pegunungan Bintang Regency" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350486 ;
     af:latitude -4.605771 ;
     af:longitude 140.634806 ;
@@ -1854,6 +1937,7 @@ af:APT-0084
     af:scheduledService "yes" ;
     af:keywords "Peper" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350463 ;
     af:latitude -4.891004 ;
     af:longitude 140.74213 ;
@@ -1876,6 +1960,7 @@ af:APT-0085
     af:gpsCode "WAKK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mopah_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 26757 ;
     af:latitude -8.523898 ;
     af:longitude 140.419693 ;
@@ -1899,6 +1984,7 @@ af:APT-0086
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mozes_Kilangin_Airport" ;
     af:keywords "WABP, Tembagapura" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 26748 ;
     af:latitude -4.52978 ;
     af:longitude 136.887388 ;
@@ -1923,6 +2009,7 @@ af:APT-0087
     af:wikipediaLink "https://en.wikipedia.org/wiki/Muara_Bungo_Airport" ;
     af:keywords "Pasir Mayang" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 310599 ;
     af:latitude -1.541635 ;
     af:longitude 102.181613 ;
@@ -1946,6 +2033,7 @@ af:APT-0088
     af:wikipediaLink "https://id.wikipedia.org/wiki/Bandar_Udara_Mukomuko" ;
     af:keywords "WIPU, Mukomuko, Muko-Muko" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 41468 ;
     af:latitude -2.541058 ;
     af:longitude 101.087651 ;
@@ -1969,6 +2057,7 @@ af:APT-0089
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mutiara_Airport" ;
     af:keywords "WAML" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 26769 ;
     af:latitude -0.916462 ;
     af:longitude 119.908647 ;
@@ -1992,6 +2081,7 @@ af:APT-0090
     af:wikipediaLink "https://en.wikipedia.org/wiki/Naha_Airport_(Indonesia)" ;
     af:keywords "Tahuna" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sangihe" ;
     af:sourceId 26768 ;
     af:latitude 3.68478 ;
     af:longitude 125.527162 ;
@@ -2013,6 +2103,7 @@ af:APT-0091
     af:iataCode "NAM" ;
     af:gpsCode "WAPN" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Maluku" ;
     af:sourceId 525059 ;
     af:latitude -3.143159 ;
     af:longitude 126.976469 ;
@@ -2036,6 +2127,7 @@ af:APT-0092
     af:wikipediaLink "https://en.wikipedia.org/wiki/Nanga_Pinoh_Airport" ;
     af:keywords "Nangapinoh" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26843 ;
     af:latitude -0.34864 ;
     af:longitude 111.746155 ;
@@ -2059,6 +2151,7 @@ af:APT-0093
     af:wikipediaLink "https://en.wikipedia.org/wiki/Nop_Goliat_Dekai_Airport" ;
     af:keywords "Nop Goliath" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 315622 ;
     af:latitude -4.8557 ;
     af:longitude 139.482006 ;
@@ -2082,6 +2175,7 @@ af:APT-0094
     af:wikipediaLink "https://en.wikipedia.org/wiki/Notohadinegoro_Airport" ;
     af:keywords "Jember, Jenggawah" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 46586 ;
     af:latitude -8.242494 ;
     af:longitude 113.693476 ;
@@ -2105,6 +2199,7 @@ af:APT-0095
     af:wikipediaLink "https://en.wikipedia.org/wiki/Cijulang_Nusawiru_Airport" ;
     af:keywords "WI1A" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 3272 ;
     af:latitude -7.719895 ;
     af:longitude 108.488995 ;
@@ -2123,6 +2218,7 @@ af:APT-0096
     af:municipality "Okbab" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350467 ;
     af:latitude -4.586015 ;
     af:longitude 140.499844 ;
@@ -2143,6 +2239,7 @@ af:APT-0097
     af:localCode "OKL" ;
     af:keywords "WW43" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 310606 ;
     af:latitude -4.762095 ;
     af:longitude 140.780554 ;
@@ -2161,6 +2258,7 @@ af:APT-0098
     af:municipality "Okpahik" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350462 ;
     af:latitude -4.697855 ;
     af:longitude 140.770547 ;
@@ -2184,6 +2282,7 @@ af:APT-0099
     af:wikipediaLink "https://id.wikipedia.org/wiki/Bandar_Udara_Oksibil" ;
     af:keywords "Gunung Bintang" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 41428 ;
     af:latitude -4.9071 ;
     af:longitude 140.6277 ;
@@ -2206,6 +2305,7 @@ af:APT-0100
     af:localCode "OKY" ;
     af:keywords "WW44, Okyop" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 310841 ;
     af:latitude -4.743448 ;
     af:longitude 140.848267 ;
@@ -2225,6 +2325,7 @@ af:APT-0101
     af:scheduledService "yes" ;
     af:keywords "NBX, WABI, Douw Aturure" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 26747 ;
     af:latitude -3.368586 ;
     af:longitude 135.496702 ;
@@ -2247,6 +2348,7 @@ af:APT-0102
     af:gpsCode "WIOP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pangsuma_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26848 ;
     af:latitude 0.834579 ;
     af:longitude 112.940217 ;
@@ -2269,6 +2371,7 @@ af:APT-0103
     af:gpsCode "WAPP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pattimura_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Maluku" ;
     af:sourceId 26784 ;
     af:latitude -3.71026 ;
     af:longitude 128.089005 ;
@@ -2287,6 +2390,7 @@ af:APT-0104
     af:municipality "Pegunungan Bintang Regency" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350498 ;
     af:latitude -4.539485 ;
     af:longitude 140.462018 ;
@@ -2308,6 +2412,7 @@ af:APT-0105
     af:iataCode "PDO" ;
     af:gpsCode "WIPQ" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26856 ;
     af:latitude -3.2860701084 ;
     af:longitude 103.8799972534 ;
@@ -2330,6 +2435,7 @@ af:APT-0106
     af:gpsCode "WIBD" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pinang_Kampai_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26822 ;
     af:latitude 1.609026 ;
     af:longitude 101.433493 ;
@@ -2353,6 +2459,7 @@ af:APT-0107
     af:wikipediaLink "https://en.wikipedia.org/wiki/Radin_Inten_II_International_Airport" ;
     af:keywords "WIIT, WICT" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26827 ;
     af:latitude -5.246803 ;
     af:longitude 105.182531 ;
@@ -2376,6 +2483,7 @@ af:APT-0108
     af:wikipediaLink "https://en.wikipedia.org/wiki/Rahadi_Osman_Airport" ;
     af:keywords "Rahadi Usman" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26844 ;
     af:latitude -1.817165 ;
     af:longitude 109.963469 ;
@@ -2399,6 +2507,7 @@ af:APT-0109
     af:wikipediaLink "https://en.wikipedia.org/wiki/Raja_Haji_Fisabilillah_Airport" ;
     af:keywords "WIKN" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Bintan" ;
     af:sourceId 26830 ;
     af:latitude 0.92397 ;
     af:longitude 104.53341 ;
@@ -2422,6 +2531,7 @@ af:APT-0110
     af:wikipediaLink "https://en.wikipedia.org/wiki/Ranai_Airport" ;
     af:keywords "WION, Natuna, Natuna-Ranai, Raden Sadjad" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Natuna Besar" ;
     af:sourceId 26846 ;
     af:latitude 3.90871 ;
     af:longitude 108.388 ;
@@ -2444,6 +2554,7 @@ af:APT-0111
     af:gpsCode "WITK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Rembele_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 333093 ;
     af:latitude 4.72113 ;
     af:longitude 96.851943 ;
@@ -2467,6 +2578,7 @@ af:APT-0112
     af:wikipediaLink "https://en.wikipedia.org/wiki/Rendani_Airport" ;
     af:keywords "WASR" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 26794 ;
     af:latitude -0.891833 ;
     af:longitude 134.048996 ;
@@ -2490,6 +2602,7 @@ af:APT-0113
     af:wikipediaLink "https://en.wikipedia.org/wiki/Robert_Atty_Bessing_Airport" ;
     af:keywords "WRLM, WALM" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 41486 ;
     af:latitude 3.575256 ;
     af:longitude 116.619769 ;
@@ -2512,6 +2625,7 @@ af:APT-0114
     af:gpsCode "WAMM" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sam_Ratulangi_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 26770 ;
     af:latitude 1.548591 ;
     af:longitude 124.92625 ;
@@ -2535,6 +2649,7 @@ af:APT-0115
     af:wikipediaLink "https://en.wikipedia.org/wiki/H._Asan_Airport" ;
     af:keywords "WRBS, WAOS" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26781 ;
     af:latitude -2.499198 ;
     af:longitude 112.974987 ;
@@ -2559,6 +2674,7 @@ af:APT-0116
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sangia_Nibandera_Airport" ;
     af:keywords "Kolaka, Pomala" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 505052 ;
     af:latitude -4.338158 ;
     af:longitude 121.524047 ;
@@ -2579,6 +2695,7 @@ af:APT-0117
     af:localCode "SAP" ;
     af:keywords "WW89" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 311005 ;
     af:latitude -4.7655 ;
     af:longitude 140.5054 ;
@@ -2602,6 +2719,7 @@ af:APT-0118
     af:wikipediaLink "https://en.wikipedia.org/wiki/H._Aroeppala_Airport" ;
     af:keywords "Lagaligo Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Selayar" ;
     af:sourceId 311020 ;
     af:latitude -6.17921 ;
     af:longitude 120.437479 ;
@@ -2625,6 +2743,7 @@ af:APT-0119
     af:wikipediaLink "https://en.wikipedia.org/wiki/Seruyan_Kuala_Pembuang_Airport" ;
     af:keywords "Kota Waringin Timur" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 343797 ;
     af:latitude -3.376062 ;
     af:longitude 112.536521 ;
@@ -2649,6 +2768,7 @@ af:APT-0120
     af:wikipediaLink "https://en.wikipedia.org/wiki/Silangit_Airport" ;
     af:keywords "Lake Toba, North Tapanuli" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26840 ;
     af:latitude 2.25973 ;
     af:longitude 98.991898 ;
@@ -2673,6 +2793,7 @@ af:APT-0121
     af:wikipediaLink "https://en.wikipedia.org/wiki/Soekarno-Hatta_International_Airport" ;
     af:keywords "JKT, Cengkareng, Java" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26835 ;
     af:latitude -6.12557 ;
     af:longitude 106.655998 ;
@@ -2697,6 +2818,7 @@ af:APT-0122
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Aji_Muhamad_Sulaiman_Airport" ;
     af:keywords "WRLL, Balikpapan Airport, Sepinggan Airport, Sepinggang Airfield" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26760 ;
     af:latitude -1.268342 ;
     af:longitude 116.89452 ;
@@ -2720,6 +2842,7 @@ af:APT-0123
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Babullah_Airport" ;
     af:keywords "Sango, Tafure" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Ternate" ;
     af:sourceId 26773 ;
     af:latitude 0.831012 ;
     af:longitude 127.381611 ;
@@ -2743,6 +2866,7 @@ af:APT-0124
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Bantilan_Airport" ;
     af:keywords "WAMI, Toli-Toli, Tolitoli, Lalos Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 41440 ;
     af:latitude 1.123428 ;
     af:longitude 120.793658 ;
@@ -2766,6 +2890,7 @@ af:APT-0125
     af:homeLink "http://www.hasanuddin-airport.co.id/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Hasanuddin_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 26745 ;
     af:latitude -5.075539 ;
     af:longitude 119.553702 ;
@@ -2789,6 +2914,7 @@ af:APT-0126
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Iskandar_Muda_International_Airport" ;
     af:keywords "WIAB" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26862 ;
     af:latitude 5.525087 ;
     af:longitude 95.41997 ;
@@ -2811,6 +2937,7 @@ af:APT-0127
     af:gpsCode "WIPP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Mahmud_Badaruddin_II_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26855 ;
     af:latitude -2.897653 ;
     af:longitude 104.698147 ;
@@ -2834,6 +2961,7 @@ af:APT-0128
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Muhammad_Kaharuddin_III_Airport" ;
     af:keywords "WRRS, Brang Bidji, Sumbawa" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumbawa" ;
     af:sourceId 26752 ;
     af:latitude -8.48904 ;
     af:longitude 117.412003 ;
@@ -2857,6 +2985,7 @@ af:APT-0129
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bima_Airport" ;
     af:keywords "WRRB, PBW, Palibelo Airport, Bima, Raba Airfield" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumbawa" ;
     af:sourceId 26750 ;
     af:latitude -8.537184 ;
     af:longitude 118.685002 ;
@@ -2880,6 +3009,7 @@ af:APT-0130
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Syarif_Qasim_II_International_Airport" ;
     af:keywords "Simpang Tiga" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26821 ;
     af:latitude 0.458647 ;
     af:longitude 101.444321 ;
@@ -2903,6 +3033,7 @@ af:APT-0131
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Thaha_Airport" ;
     af:keywords "WIPA, Palmerah" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26850 ;
     af:latitude -1.638685 ;
     af:longitude 103.645063 ;
@@ -2923,6 +3054,7 @@ af:APT-0132
     af:localCode "SMT" ;
     af:keywords "Sumtamon, WT23" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 311212 ;
     af:latitude -4.8083 ;
     af:longitude 140.1715 ;
@@ -2946,6 +3078,7 @@ af:APT-0133
     af:homeLink "http://www.supadio-airport.co.id/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Supadio_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26847 ;
     af:latitude -0.152258 ;
     af:longitude 109.404493 ;
@@ -2970,6 +3103,7 @@ af:APT-0134
     af:wikipediaLink "https://en.wikipedia.org/wiki/Syamsudin_Noor_Airport" ;
     af:keywords "WRBB, Banjarmasin, Banjarbaru" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26779 ;
     af:latitude -3.440112 ;
     af:longitude 114.761209 ;
@@ -2993,6 +3127,7 @@ af:APT-0135
     af:wikipediaLink "https://en.wikipedia.org/wiki/Syekh_Hamzah_Fansyuri_Airport" ;
     af:keywords "WT13" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 311154 ;
     af:latitude 2.269614 ;
     af:longitude 97.967863 ;
@@ -3013,6 +3148,7 @@ af:APT-0136
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tabing_Airport" ;
     af:keywords "WIMG" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumatra" ;
     af:sourceId 26838 ;
     af:latitude -0.874989 ;
     af:longitude 100.351997 ;
@@ -3036,6 +3172,7 @@ af:APT-0137
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tambolaka_Airport" ;
     af:keywords "WRRT, WADT" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumba" ;
     af:sourceId 26753 ;
     af:latitude -9.409224 ;
     af:longitude 119.242558 ;
@@ -3058,6 +3195,7 @@ af:APT-0138
     af:gpsCode "WAKT" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tanah_Merah_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 41437 ;
     af:latitude -6.09669 ;
     af:longitude 140.303521 ;
@@ -3081,6 +3219,7 @@ af:APT-0139
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tanjung_Api_Airport" ;
     af:keywords "Ampana" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 506525 ;
     af:latitude -0.865437 ;
     af:longitude 121.628625 ;
@@ -3103,6 +3242,7 @@ af:APT-0140
     af:gpsCode "WAQD" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tanjung_Harapan_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26758 ;
     af:latitude 2.838139 ;
     af:longitude 117.374584 ;
@@ -3121,6 +3261,7 @@ af:APT-0141
     af:municipality "Tarup" ;
     af:scheduledService "yes" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350464 ;
     af:latitude -5.097671 ;
     af:longitude 140.821627 ;
@@ -3143,6 +3284,7 @@ af:APT-0142
     af:gpsCode "WIOS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tebelian_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 525696 ;
     af:latitude -0.045214 ;
     af:longitude 111.458049 ;
@@ -3162,6 +3304,7 @@ af:APT-0143
     af:scheduledService "yes" ;
     af:keywords "Tin" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 350465 ;
     af:latitude -4.824475 ;
     af:longitude 140.87378 ;
@@ -3185,6 +3328,7 @@ af:APT-0144
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tjilik_Riwut_Airport" ;
     af:keywords "WRBP, WAOP" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26780 ;
     af:latitude -2.227146 ;
     af:longitude 113.943388 ;
@@ -3207,6 +3351,7 @@ af:APT-0145
     af:gpsCode "WAFB" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Toraja_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulawesi" ;
     af:sourceId 352892 ;
     af:latitude -3.184359 ;
     af:longitude 119.919104 ;
@@ -3230,6 +3375,7 @@ af:APT-0146
     af:wikipediaLink "http://id.wikipedia.org/wiki/Bandar_Udara_Tumbang_Samba" ;
     af:keywords "WRBW, WAOW" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 41402 ;
     af:latitude -1.469024 ;
     af:longitude 113.080984 ;
@@ -3253,6 +3399,7 @@ af:APT-0147
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tunggul_Wulung_Airport" ;
     af:keywords "WIIL, WIHL" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 26833 ;
     af:latitude -7.64506 ;
     af:longitude 109.033997 ;
@@ -3276,6 +3423,7 @@ af:APT-0148
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mau_Hau_Airport" ;
     af:keywords "WRRW, WADW, Mau Hau Airport, Waingapu Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sumba" ;
     af:sourceId 26754 ;
     af:latitude -9.66922 ;
     af:longitude 120.302002 ;
@@ -3298,6 +3446,7 @@ af:APT-0149
     af:gpsCode "WASK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kaimana_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 26792 ;
     af:latitude -3.6446 ;
     af:longitude 133.695116 ;
@@ -3321,6 +3470,7 @@ af:APT-0150
     af:wikipediaLink "https://en.wikipedia.org/wiki/Wamena_Airport" ;
     af:keywords "WAJW" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 26756 ;
     af:latitude -4.097324 ;
     af:longitude 138.952417 ;
@@ -3344,6 +3494,7 @@ af:APT-0151
     af:wikipediaLink "http://id.wikipedia.org/wiki/Bandar_Udara_Warukin" ;
     af:keywords "WRBN" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26778 ;
     af:latitude -2.21656 ;
     af:longitude 115.435997 ;
@@ -3365,6 +3516,7 @@ af:APT-0152
     af:localCode "YAP" ;
     af:keywords "WT73" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Papua" ;
     af:sourceId 311645 ;
     af:latitude -4.540447 ;
     af:longitude 140.565691 ;
@@ -3389,6 +3541,7 @@ af:APT-0153
     af:wikipediaLink "https://en.wikipedia.org/wiki/Yogyakarta_International_Airport" ;
     af:keywords "Kulon Progo" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Jawa" ;
     af:sourceId 332202 ;
     af:latitude -7.905338 ;
     af:longitude 110.057264 ;
@@ -3412,6 +3565,7 @@ af:APT-0154
     af:wikipediaLink "https://en.wikipedia.org/wiki/Juvai_Semaring_Airport" ;
     af:keywords "WRLB, Juvai Semaring Airport, Yuvai Semaring, Long Bawang" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 35279 ;
     af:latitude 3.900495 ;
     af:longitude 115.690089 ;
@@ -3434,6 +3588,7 @@ af:APT-0155
     af:gpsCode "VDBG" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Battambang_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26473 ;
     af:latitude 13.0956 ;
     af:longitude 103.223999 ;
@@ -3458,6 +3613,7 @@ af:APT-0156
     af:wikipediaLink "https://en.wikipedia.org/wiki/Dara_Sakor_International_Airport" ;
     af:keywords "Krong Khemara Phoumin, អាកាសយានដ្ឋានអន្តរជាតិតារាសាគរ" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 339963 ;
     af:latitude 10.914244 ;
     af:longitude 103.226652 ;
@@ -3481,6 +3637,7 @@ af:APT-0157
     af:homeLink "http://english.sai-airport.com/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Siem_Reap–Angkor_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 513482 ;
     af:latitude 13.36974 ;
     af:longitude 104.223831 ;
@@ -3505,6 +3662,7 @@ af:APT-0158
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sihanoukville_International_Airport" ;
     af:keywords "Kompong Som, Sihanoukville International Airport, Kang Keng Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26478 ;
     af:latitude 10.570557 ;
     af:longitude 103.632067 ;
@@ -3528,6 +3686,7 @@ af:APT-0159
     af:homeLink "https://www.techoairport.com.kh/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Techo_International_Airport_(Cambodia)" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 342098 ;
     af:latitude 11.359987 ;
     af:longitude 104.921272 ;
@@ -3550,6 +3709,7 @@ af:APT-0160
     af:gpsCode "VLBK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bokeo_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 430434 ;
     af:latitude 20.323986 ;
     af:longitude 100.165392 ;
@@ -3572,6 +3732,7 @@ af:APT-0161
     af:gpsCode "VLLN" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Louang_Namtha_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 31868 ;
     af:latitude 20.966999 ;
     af:longitude 101.400002 ;
@@ -3595,6 +3756,7 @@ af:APT-0162
     af:homeLink "https://www.luangprabangairport.com/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Luang_Prabang_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26583 ;
     af:latitude 19.904273 ;
     af:longitude 102.167191 ;
@@ -3617,6 +3779,7 @@ af:APT-0163
     af:gpsCode "VLOS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Oudomsay_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 32582 ;
     af:latitude 20.6826992035 ;
     af:longitude 101.9940032959 ;
@@ -3639,6 +3802,7 @@ af:APT-0164
     af:gpsCode "VLPS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pakse_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26584 ;
     af:latitude 15.133973 ;
     af:longitude 105.779871 ;
@@ -3662,6 +3826,7 @@ af:APT-0165
     af:homeLink "http://www.vientianeairport.com/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Wattay_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26588 ;
     af:latitude 17.985052 ;
     af:longitude 102.566692 ;
@@ -3684,6 +3849,7 @@ af:APT-0166
     af:gpsCode "VLXK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Xieng_Khouang_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 32703 ;
     af:latitude 19.450001 ;
     af:longitude 103.157997 ;
@@ -3706,6 +3872,7 @@ af:APT-0167
     af:gpsCode "VYBG" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Nyaung_U_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26712 ;
     af:latitude 21.1788005829 ;
     af:longitude 94.9301986694 ;
@@ -3729,6 +3896,7 @@ af:APT-0168
     af:wikipediaLink "https://en.wikipedia.org/wiki/Banmaw_Airport" ;
     af:keywords "Banmaws, Bhamo" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26713 ;
     af:latitude 24.27044 ;
     af:longitude 97.2476 ;
@@ -3752,6 +3920,7 @@ af:APT-0169
     af:wikipediaLink "https://en.wikipedia.org/wiki/Dawei_Airport" ;
     af:keywords "Tavoy, Tavoy Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26716 ;
     af:latitude 14.1039 ;
     af:longitude 98.203598 ;
@@ -3774,6 +3943,7 @@ af:APT-0170
     af:gpsCode "VYHH" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Heho_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 509451 ;
     af:latitude 20.74714 ;
     af:longitude 96.792029 ;
@@ -3796,6 +3966,7 @@ af:APT-0171
     af:gpsCode "VYKI" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Khamti_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 31749 ;
     af:latitude 25.9883 ;
     af:longitude 95.6744 ;
@@ -3818,6 +3989,7 @@ af:APT-0172
     af:gpsCode "VYKT" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kawthaung_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26723 ;
     af:latitude 10.0493001938 ;
     af:longitude 98.5380020142 ;
@@ -3840,6 +4012,7 @@ af:APT-0173
     af:gpsCode "VYKG" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kengtung_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26720 ;
     af:latitude 21.3015995026 ;
     af:longitude 99.6360015869 ;
@@ -3862,6 +4035,7 @@ af:APT-0174
     af:gpsCode "VYKP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kyaukpyu_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26722 ;
     af:latitude 19.426399231 ;
     af:longitude 93.5347976685 ;
@@ -3884,6 +4058,7 @@ af:APT-0175
     af:gpsCode "VYLS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lashio_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26725 ;
     af:latitude 22.9778995514 ;
     af:longitude 97.7521972656 ;
@@ -3906,6 +4081,7 @@ af:APT-0176
     af:gpsCode "VYLK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Loikaw_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26724 ;
     af:latitude 19.6914997101 ;
     af:longitude 97.2147979736 ;
@@ -3928,6 +4104,7 @@ af:APT-0177
     af:gpsCode "VYMW" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Magway_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 30101 ;
     af:latitude 20.1656 ;
     af:longitude 94.941399 ;
@@ -3950,6 +4127,7 @@ af:APT-0178
     af:gpsCode "VYMD" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mandalay_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26727 ;
     af:latitude 21.7021999359 ;
     af:longitude 95.977897644 ;
@@ -3972,6 +4150,7 @@ af:APT-0179
     af:gpsCode "VYMM" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mawlamyaing_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26730 ;
     af:latitude 16.4447002411 ;
     af:longitude 97.660697937 ;
@@ -3995,6 +4174,7 @@ af:APT-0180
     af:wikipediaLink "https://en.wikipedia.org/wiki/Monghsat_Airport" ;
     af:keywords "Monghsat Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26732 ;
     af:latitude 20.5167999268 ;
     af:longitude 99.2567977905 ;
@@ -4017,6 +4197,7 @@ af:APT-0181
     af:gpsCode "VYME" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Myeik_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26728 ;
     af:latitude 12.4398002625 ;
     af:longitude 98.6214981079 ;
@@ -4039,6 +4220,7 @@ af:APT-0182
     af:gpsCode "VYMK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Myitkyina_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26729 ;
     af:latitude 25.3836 ;
     af:longitude 97.351898 ;
@@ -4062,6 +4244,7 @@ af:APT-0183
     af:wikipediaLink "https://en.wikipedia.org/wiki/Nay_Pyi_Taw_International_Airport" ;
     af:keywords "VYEL, Ela, Nay Pyi Taw International" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26717 ;
     af:latitude 19.623501 ;
     af:longitude 96.200996 ;
@@ -4085,6 +4268,7 @@ af:APT-0184
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pathein_Airport" ;
     af:keywords "Bassein" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26736 ;
     af:latitude 16.815201 ;
     af:longitude 94.7799 ;
@@ -4107,6 +4291,7 @@ af:APT-0185
     af:gpsCode "VYPT" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Putao_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26737 ;
     af:latitude 27.3299007416 ;
     af:longitude 97.4263000488 ;
@@ -4129,6 +4314,7 @@ af:APT-0186
     af:gpsCode "VYSW" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sittwe_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26740 ;
     af:latitude 20.133165 ;
     af:longitude 92.870693 ;
@@ -4151,6 +4337,7 @@ af:APT-0187
     af:gpsCode "VYTL" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tachilek_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26742 ;
     af:latitude 20.4838008881 ;
     af:longitude 99.9354019165 ;
@@ -4173,6 +4360,7 @@ af:APT-0188
     af:gpsCode "VYTD" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Thandwe_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26741 ;
     af:latitude 18.4606990814 ;
     af:longitude 94.3001022339 ;
@@ -4197,6 +4385,7 @@ af:APT-0189
     af:wikipediaLink "https://en.wikipedia.org/wiki/Yangon_International_Airport" ;
     af:keywords "Rangoon" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26744 ;
     af:latitude 16.9073009491 ;
     af:longitude 96.1332015991 ;
@@ -4219,6 +4408,7 @@ af:APT-0190
     af:gpsCode "WBGQ" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Ba%27kelalan_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 30764 ;
     af:latitude 3.974 ;
     af:longitude 115.617996 ;
@@ -4241,6 +4431,7 @@ af:APT-0191
     af:gpsCode "WBGZ" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bario_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 30682 ;
     af:latitude 3.734648 ;
     af:longitude 115.478548 ;
@@ -4263,6 +4454,7 @@ af:APT-0192
     af:gpsCode "WBGB" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bintulu_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26807 ;
     af:latitude 3.1238501072 ;
     af:longitude 113.019996643 ;
@@ -4286,6 +4478,7 @@ af:APT-0193
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kota_Kinabalu_International_Airport" ;
     af:keywords "Lapangan Terbang Antarabangsa Kota Kinabalu, Jesselton Airfield" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26814 ;
     af:latitude 5.932743 ;
     af:longitude 116.049324 ;
@@ -4309,6 +4502,7 @@ af:APT-0194
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kuala_Lumpur_International_Airport" ;
     af:keywords "KLIA" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26874 ;
     af:latitude 2.74558 ;
     af:longitude 101.709999 ;
@@ -4331,6 +4525,7 @@ af:APT-0195
     af:gpsCode "WMKD" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Haji_Ahmad_Shah_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26869 ;
     af:latitude 3.7753899097 ;
     af:longitude 103.2089996338 ;
@@ -4353,6 +4548,7 @@ af:APT-0196
     af:gpsCode "WBGG" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kuching_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26808 ;
     af:latitude 1.487364 ;
     af:longitude 110.352859 ;
@@ -4375,6 +4571,7 @@ af:APT-0197
     af:gpsCode "WBKT" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kudat_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 31785 ;
     af:latitude 6.924111 ;
     af:longitude 116.837068 ;
@@ -4397,6 +4594,7 @@ af:APT-0198
     af:gpsCode "WBKL" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Labuan_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Labuan" ;
     af:sourceId 26815 ;
     af:latitude 5.301667 ;
     af:longitude 115.248333 ;
@@ -4419,6 +4617,7 @@ af:APT-0199
     af:gpsCode "WBKD" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lahad_Datu_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26813 ;
     af:latitude 5.03241 ;
     af:longitude 118.32376 ;
@@ -4441,6 +4640,7 @@ af:APT-0200
     af:gpsCode "WMKL" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Langkawi_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Langkawi" ;
     af:sourceId 26875 ;
     af:latitude 6.32973 ;
     af:longitude 99.728699 ;
@@ -4463,6 +4663,7 @@ af:APT-0201
     af:gpsCode "WBGW" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lawas_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 31866 ;
     af:latitude 4.84917 ;
     af:longitude 115.407997 ;
@@ -4485,6 +4686,7 @@ af:APT-0202
     af:gpsCode "WBGJ" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Limbang_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26809 ;
     af:latitude 4.8083000183 ;
     af:longitude 115.0100021362 ;
@@ -4505,6 +4707,7 @@ af:APT-0203
     af:iataCode "LBP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Long_Banga_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 35208 ;
     af:latitude 3.202138 ;
     af:longitude 115.401811 ;
@@ -4527,6 +4730,7 @@ af:APT-0204
     af:gpsCode "WBGF" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Long_Lellang_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 31816 ;
     af:latitude 3.4210000038 ;
     af:longitude 115.153999329 ;
@@ -4549,6 +4753,7 @@ af:APT-0205
     af:gpsCode "WBGI" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Long_Seridan_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 32086 ;
     af:latitude 3.976087 ;
     af:longitude 115.067303 ;
@@ -4572,6 +4777,7 @@ af:APT-0206
     af:wikipediaLink "https://en.wikipedia.org/wiki/Malacca_International_Airport" ;
     af:keywords "Batu Berendam" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26876 ;
     af:latitude 2.265613 ;
     af:longitude 102.252778 ;
@@ -4594,6 +4800,7 @@ af:APT-0207
     af:gpsCode "WBGM" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Marudi_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26810 ;
     af:latitude 4.178734 ;
     af:longitude 114.330318 ;
@@ -4616,6 +4823,7 @@ af:APT-0208
     af:gpsCode "WBGR" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Miri_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26811 ;
     af:latitude 4.32201 ;
     af:longitude 113.987 ;
@@ -4638,6 +4846,7 @@ af:APT-0209
     af:gpsCode "WBGK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mukah_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 350992 ;
     af:latitude 2.881944 ;
     af:longitude 112.043333 ;
@@ -4660,6 +4869,7 @@ af:APT-0210
     af:gpsCode "WBMU" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mulu_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26818 ;
     af:latitude 4.0483298302 ;
     af:longitude 114.8050003052 ;
@@ -4682,6 +4892,7 @@ af:APT-0211
     af:gpsCode "WMKP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Penang_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Penang" ;
     af:sourceId 26878 ;
     af:latitude 5.296303 ;
     af:longitude 100.276185 ;
@@ -4704,6 +4915,7 @@ af:APT-0212
     af:gpsCode "WMPA" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pangkor_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Pangkor" ;
     af:sourceId 35209 ;
     af:latitude 4.2447199821 ;
     af:longitude 100.5530014038 ;
@@ -4726,6 +4938,7 @@ af:APT-0213
     af:gpsCode "WBKS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sandakan_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26816 ;
     af:latitude 5.9008998871 ;
     af:longitude 118.0589981079 ;
@@ -4750,6 +4963,7 @@ af:APT-0214
     af:wikipediaLink "https://en.wikipedia.org/wiki/Senai_International_Airport" ;
     af:keywords "Sultan Ismail International Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26873 ;
     af:latitude 1.64131 ;
     af:longitude 103.669998 ;
@@ -4772,6 +4986,7 @@ af:APT-0215
     af:gpsCode "WBGS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sibu_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26812 ;
     af:latitude 2.2616 ;
     af:longitude 111.985001 ;
@@ -4796,6 +5011,7 @@ af:APT-0216
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Abdul_Aziz_Shah_Airport" ;
     af:keywords "Subang SkyPark, Subang Airport, Subang International Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26879 ;
     af:latitude 3.13058 ;
     af:longitude 101.549004 ;
@@ -4818,6 +5034,7 @@ af:APT-0217
     af:gpsCode "WMKA" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Abdul_Halim_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26866 ;
     af:latitude 6.1896700859 ;
     af:longitude 100.3980026245 ;
@@ -4840,6 +5057,7 @@ af:APT-0218
     af:gpsCode "WMKI" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Azlan_Shah_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26872 ;
     af:latitude 4.56733 ;
     af:longitude 101.091643 ;
@@ -4862,6 +5080,7 @@ af:APT-0219
     af:gpsCode "WMKC" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Ismail_Petra_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26868 ;
     af:latitude 6.16685009 ;
     af:longitude 102.2929992676 ;
@@ -4884,6 +5103,7 @@ af:APT-0220
     af:gpsCode "WMKN" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sultan_Mahmud_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Semenanjung Malaya" ;
     af:sourceId 26877 ;
     af:latitude 5.3826398849 ;
     af:longitude 103.1029968262 ;
@@ -4906,6 +5126,7 @@ af:APT-0221
     af:gpsCode "WBKW" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tawau_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 26817 ;
     af:latitude 4.31338 ;
     af:longitude 118.12152 ;
@@ -4929,6 +5150,7 @@ af:APT-0222
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tioman_Airport" ;
     af:keywords "Kampung Tekek, Sultan Ahmad Shah" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Tioman" ;
     af:sourceId 26864 ;
     af:latitude 2.81818 ;
     af:longitude 104.160004 ;
@@ -4951,6 +5173,7 @@ af:APT-0223
     af:gpsCode "WBKM" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tommanggong_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Borneo" ;
     af:sourceId 32462 ;
     af:latitude 5.40257 ;
     af:longitude 118.65763 ;
@@ -4974,6 +5197,7 @@ af:APT-0224
     af:homeLink "https://www.bacolod-silayairport.com/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bacolod%E2%80%93Silay_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Negros" ;
     af:sourceId 35178 ;
     af:latitude 10.776237 ;
     af:longitude 123.018879 ;
@@ -4996,6 +5220,7 @@ af:APT-0225
     af:gpsCode "RPME" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bancasi_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5698 ;
     af:latitude 8.9515 ;
     af:longitude 125.4788 ;
@@ -5019,6 +5244,7 @@ af:APT-0226
     af:wikipediaLink "https://en.wikipedia.org/wiki/Basco_Airport" ;
     af:keywords "Irport nu Basco, Paliparang Basco, Pagtayaban ti Basco" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Batanes" ;
     af:sourceId 5723 ;
     af:latitude 20.4513 ;
     af:longitude 121.980003 ;
@@ -5043,6 +5269,7 @@ af:APT-0227
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bicol_International_Airport" ;
     af:keywords "Daraga, Southern Luzon International Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 336104 ;
     af:latitude 13.111915 ;
     af:longitude 123.676829 ;
@@ -5065,6 +5292,7 @@ af:APT-0228
     af:gpsCode "RPSP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Bohol%E2%80%93Panglao_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Bohol" ;
     af:sourceId 336116 ;
     af:latitude 9.573045 ;
     af:longitude 123.770143 ;
@@ -5087,6 +5315,7 @@ af:APT-0229
     af:gpsCode "RPVC" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Calbayog_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Samar" ;
     af:sourceId 5734 ;
     af:latitude 12.072574 ;
     af:longitude 124.54508 ;
@@ -5109,6 +5338,7 @@ af:APT-0230
     af:gpsCode "RPMH" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Camiguin_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Camiguin" ;
     af:sourceId 5701 ;
     af:latitude 9.253894 ;
     af:longitude 124.709115 ;
@@ -5131,6 +5361,7 @@ af:APT-0231
     af:gpsCode "RPVF" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Catarman_National_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Samar" ;
     af:sourceId 5737 ;
     af:latitude 12.50161 ;
     af:longitude 124.635258 ;
@@ -5153,6 +5384,7 @@ af:APT-0232
     af:gpsCode "RPUY" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Cauayan_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 5730 ;
     af:latitude 16.9298992157 ;
     af:longitude 121.752998352 ;
@@ -5177,6 +5409,7 @@ af:APT-0233
     af:wikipediaLink "https://en.wikipedia.org/wiki/Clark_International_Airport" ;
     af:keywords "Diosdado Macapagal International Airport, Paliparang Pandaigdig ng Diosdado Macapagal, Pangyatung Sulapawan ning Clark, Paliparang Pandaigdig ng Clark" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 5687 ;
     af:latitude 15.186 ;
     af:longitude 120.559998 ;
@@ -5200,6 +5433,7 @@ af:APT-0234
     af:wikipediaLink "https://en.wikipedia.org/wiki/Cotabato_Airport" ;
     af:keywords "Awang, Kutawatu" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5696 ;
     af:latitude 7.164753 ;
     af:longitude 124.209938 ;
@@ -5222,6 +5456,7 @@ af:APT-0235
     af:gpsCode "RPLO" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Cuyo_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Palawan" ;
     af:sourceId 30869 ;
     af:latitude 10.8581 ;
     af:longitude 121.069 .
@@ -5245,6 +5480,7 @@ af:APT-0236
     af:wikipediaLink "https://en.wikipedia.org/wiki/Daniel_Z._Romualdez_Airport" ;
     af:keywords "Tacloban, Daniel Z. Romualdez, Naval Station Dioscoro Papa" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Leyte" ;
     af:sourceId 5732 ;
     af:latitude 11.227761 ;
     af:longitude 125.027783 ;
@@ -5268,6 +5504,7 @@ af:APT-0237
     af:homeLink "http://www.dipologcity.com/AccommodationsDipolog%20Airport.htm" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Dipolog_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5700 ;
     af:latitude 8.601983 ;
     af:longitude 123.341875 ;
@@ -5291,6 +5528,7 @@ af:APT-0238
     af:wikipediaLink "https://en.wikipedia.org/wiki/El_Nido_Airport" ;
     af:keywords "El Nido" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Palawan" ;
     af:sourceId 31007 ;
     af:latitude 11.202399 ;
     af:longitude 119.416087 .
@@ -5313,6 +5551,7 @@ af:APT-0239
     af:wikipediaLink "https://en.wikipedia.org/wiki/Busuanga_Airport" ;
     af:keywords "Busuanga Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Palawan" ;
     af:sourceId 5749 ;
     af:latitude 12.121865 ;
     af:longitude 120.100801 ;
@@ -5336,6 +5575,7 @@ af:APT-0240
     af:wikipediaLink "https://en.wikipedia.org/wiki/Francisco_Bangoy_International_Airport" ;
     af:keywords "Davao International Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5697 ;
     af:latitude 7.12552 ;
     af:longitude 125.646004 ;
@@ -5359,6 +5599,7 @@ af:APT-0241
     af:wikipediaLink "https://en.wikipedia.org/wiki/General_Santos_International_Airport" ;
     af:keywords "Tambler Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5709 ;
     af:latitude 6.057208 ;
     af:longitude 125.096243 ;
@@ -5382,6 +5623,7 @@ af:APT-0242
     af:wikipediaLink "https://en.wikipedia.org/wiki/Godofredo_P._Ramos_Airport" ;
     af:keywords "Godofredo P. Ramos Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Panay" ;
     af:sourceId 5736 ;
     af:latitude 11.9245 ;
     af:longitude 121.954002 ;
@@ -5406,6 +5648,7 @@ af:APT-0243
     af:wikipediaLink "https://en.wikipedia.org/wiki/Iloilo_International_Airport" ;
     af:keywords "Iloilo City" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Panay" ;
     af:sourceId 5739 ;
     af:latitude 10.833017 ;
     af:longitude 122.493358 ;
@@ -5428,6 +5671,7 @@ af:APT-0244
     af:wikipediaLink "https://en.wikipedia.org/wiki/Jorge_Abad_Airport" ;
     af:keywords "Irport nu Jorge Abad, Paliparang Jorge Abad, Pagtayaban ti Jorge Abad" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Batanes" ;
     af:sourceId 32221 ;
     af:latitude 20.722521 ;
     af:longitude 121.809969 ;
@@ -5450,6 +5694,7 @@ af:APT-0245
     af:gpsCode "RPMJ" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Jolo_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Sulu" ;
     af:sourceId 5703 ;
     af:latitude 6.05367 ;
     af:longitude 121.011002 ;
@@ -5472,6 +5717,7 @@ af:APT-0246
     af:gpsCode "RPVK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Kalibo_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Panay" ;
     af:sourceId 5741 ;
     af:latitude 11.6794 ;
     af:longitude 122.375999 ;
@@ -5495,6 +5741,7 @@ af:APT-0247
     af:wikipediaLink "https://en.wikipedia.org/wiki/Labo_Airport" ;
     af:keywords "Barangay Labo, Ozamiz, Misamis Airfield" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5706 ;
     af:latitude 8.17851 ;
     af:longitude 123.842003 ;
@@ -5519,6 +5766,7 @@ af:APT-0248
     af:wikipediaLink "https://en.wikipedia.org/wiki/Laguindingan_International_Airport" ;
     af:keywords "IGN, RPML, Cagayan de Oro" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 308633 ;
     af:latitude 8.612203 ;
     af:longitude 124.456496 ;
@@ -5542,6 +5790,7 @@ af:APT-0249
     af:wikipediaLink "https://en.wikipedia.org/wiki/Laoag_International_Airport" ;
     af:keywords "Gabu Airfield, Laoag Airfield" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 5688 ;
     af:latitude 18.175089 ;
     af:longitude 120.531006 ;
@@ -5566,6 +5815,7 @@ af:APT-0250
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mactan-Cebu_International_Airport" ;
     af:keywords "Mactan Air Base, Opon Airfield" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Cebu" ;
     af:sourceId 5742 ;
     af:latitude 10.309261 ;
     af:longitude 123.97974 ;
@@ -5589,6 +5839,7 @@ af:APT-0251
     af:wikipediaLink "https://en.wikipedia.org/wiki/Masbate_Airport" ;
     af:keywords "Masbate, Moises R. Espinoza" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Masbate" ;
     af:sourceId 5740 ;
     af:latitude 12.369682 ;
     af:longitude 123.630095 ;
@@ -5611,6 +5862,7 @@ af:APT-0252
     af:gpsCode "RPUN" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Naga_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 5722 ;
     af:latitude 13.5848999023 ;
     af:longitude 123.2699966431 ;
@@ -5635,6 +5887,7 @@ af:APT-0253
     af:wikipediaLink "https://en.wikipedia.org/wiki/Ninoy_Aquino_International_Airport" ;
     af:keywords "Manila International Airport, Jesus Villamor Air Base" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 5689 ;
     af:latitude 14.5086 ;
     af:longitude 121.019997 ;
@@ -5657,6 +5910,7 @@ af:APT-0254
     af:gpsCode "RPMP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pagadian_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5707 ;
     af:latitude 7.825632 ;
     af:longitude 123.459635 ;
@@ -5679,6 +5933,7 @@ af:APT-0255
     af:wikipediaLink "https://en.wikipedia.org/wiki/Palanan_Airport" ;
     af:keywords "RPPA, Palanan" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 46514 ;
     af:latitude 17.065667 ;
     af:longitude 122.427671 ;
@@ -5701,6 +5956,7 @@ af:APT-0256
     af:gpsCode "RPVP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Puerto_Princesa_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Palawan" ;
     af:sourceId 5744 ;
     af:latitude 9.742044 ;
     af:longitude 118.75911 ;
@@ -5723,6 +5979,7 @@ af:APT-0257
     af:gpsCode "RPVR" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Roxas_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Panay" ;
     af:sourceId 5745 ;
     af:latitude 11.597700119 ;
     af:longitude 122.7519989014 ;
@@ -5746,6 +6003,7 @@ af:APT-0258
     af:wikipediaLink "https://en.wikipedia.org/wiki/McGuire_Field" ;
     af:keywords "McGuire Field" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindoro" ;
     af:sourceId 5719 ;
     af:latitude 12.3614997864 ;
     af:longitude 121.04699707 ;
@@ -5768,6 +6026,7 @@ af:APT-0259
     af:gpsCode "RPSV" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/San_Vicente_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Palawan" ;
     af:sourceId 333098 ;
     af:latitude 10.524298 ;
     af:longitude 119.272899 ;
@@ -5791,6 +6050,7 @@ af:APT-0260
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sanga-Sanga_Airport" ;
     af:keywords "SGS" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Tawi-Tawi" ;
     af:sourceId 5705 ;
     af:latitude 5.048196 ;
     af:longitude 119.743338 ;
@@ -5814,6 +6074,7 @@ af:APT-0261
     af:wikipediaLink "https://en.wikipedia.org/wiki/Siargao_Airport" ;
     af:keywords "Sayak Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Siargao" ;
     af:sourceId 5713 ;
     af:latitude 9.8591 ;
     af:longitude 126.014 ;
@@ -5837,6 +6098,7 @@ af:APT-0262
     af:homeLink "https://dumaguete.com/dumaguete-airport-sibulan/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sibulan_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Negros" ;
     af:sourceId 5735 ;
     af:latitude 9.334183 ;
     af:longitude 123.30191 ;
@@ -5860,6 +6122,7 @@ af:APT-0263
     af:wikipediaLink "https://en.wikipedia.org/wiki/Subic_Bay_International_Airport" ;
     af:keywords "Paliparang Pandaigdig ng Look ng Subic, Naval Air Station Cubi Point" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 5686 ;
     af:latitude 14.794833 ;
     af:longitude 120.271883 ;
@@ -5882,6 +6145,7 @@ af:APT-0264
     af:gpsCode "RPMS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Surigao_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5710 ;
     af:latitude 9.7558383256 ;
     af:longitude 125.480947495 ;
@@ -5905,6 +6169,7 @@ af:APT-0265
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tugdan_Airport" ;
     af:keywords "Romblon Airport, Alcantara, Barangay Tugdan, Tablas Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Tablas" ;
     af:sourceId 5748 ;
     af:latitude 12.3109998703 ;
     af:longitude 122.084999084 ;
@@ -5928,6 +6193,7 @@ af:APT-0266
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tuguegarao_Airport" ;
     af:keywords "Tugegarao" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Luzon" ;
     af:sourceId 5727 ;
     af:latitude 17.6433676823 ;
     af:longitude 121.733150482 ;
@@ -5950,6 +6216,7 @@ af:APT-0267
     af:gpsCode "RPUV" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Virac_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Catanduanes" ;
     af:sourceId 5728 ;
     af:latitude 13.5763998032 ;
     af:longitude 124.2060012817 ;
@@ -5973,6 +6240,7 @@ af:APT-0268
     af:homeLink "https://www.zamboanga.net/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Zamboanga_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Mindanao" ;
     af:sourceId 5712 ;
     af:latitude 6.92242 ;
     af:longitude 122.059998 ;
@@ -5995,6 +6263,7 @@ af:APT-0269
     af:gpsCode "WSSL" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Seletar_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Singapura" ;
     af:sourceId 26886 ;
     af:latitude 1.41555 ;
     af:longitude 103.86673 ;
@@ -6019,6 +6288,7 @@ af:APT-0270
     af:wikipediaLink "https://en.wikipedia.org/wiki/Singapore_Changi_Airport" ;
     af:keywords "RAF Changi" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Singapura" ;
     af:sourceId 26887 ;
     af:latitude 1.35019 ;
     af:longitude 103.994003 ;
@@ -6041,6 +6311,7 @@ af:APT-0271
     af:gpsCode "VTUO" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Buriram_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26684 ;
     af:latitude 15.2295 ;
     af:longitude 103.252998 ;
@@ -6063,6 +6334,7 @@ af:APT-0272
     af:gpsCode "VTCC" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Chiang_Mai_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26647 ;
     af:latitude 18.7667999268 ;
     af:longitude 98.962600708 ;
@@ -6085,6 +6357,7 @@ af:APT-0273
     af:gpsCode "VTSE" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Chumphon_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26667 ;
     af:latitude 10.7112 ;
     af:longitude 99.361702 ;
@@ -6109,6 +6382,7 @@ af:APT-0274
     af:wikipediaLink "https://en.wikipedia.org/wiki/Don_Mueang_International_Airport" ;
     af:keywords "Old Bangkok International Airport, Don Muang Royal Thai Air Force Base" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26638 ;
     af:latitude 13.9126 ;
     af:longitude 100.607002 ;
@@ -6131,6 +6405,7 @@ af:APT-0275
     af:gpsCode "VTSS" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Hat_Yai_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26676 ;
     af:latitude 6.93321 ;
     af:longitude 100.392998 ;
@@ -6153,6 +6428,7 @@ af:APT-0276
     af:gpsCode "VTPH" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Hua_Hin_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26655 ;
     af:latitude 12.6361999512 ;
     af:longitude 99.951499939 ;
@@ -6175,6 +6451,7 @@ af:APT-0277
     af:gpsCode "VTUK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Khon_Kaen_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26681 ;
     af:latitude 16.4666004181 ;
     af:longitude 102.783996582 ;
@@ -6197,6 +6474,7 @@ af:APT-0278
     af:gpsCode "VTSG" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Krabi_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26669 ;
     af:latitude 8.095591 ;
     af:longitude 98.988955 ;
@@ -6218,6 +6496,7 @@ af:APT-0279
     af:gpsCode "VTCL" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lampang_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26649 ;
     af:latitude 18.2709007263 ;
     af:longitude 99.5042037964 ;
@@ -6238,6 +6517,7 @@ af:APT-0280
     af:gpsCode "VTCO" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lamphun_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 302310 ;
     af:latitude 18.548986 ;
     af:longitude 99.012426 ;
@@ -6259,6 +6539,7 @@ af:APT-0281
     af:gpsCode "VTUL" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Loei_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26682 ;
     af:latitude 17.4391002655 ;
     af:longitude 101.7220001221 ;
@@ -6282,6 +6563,7 @@ af:APT-0282
     af:homeLink "https://chiangrai.airportthai.co.th/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Chiang_Rai_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26653 ;
     af:latitude 19.952299 ;
     af:longitude 99.882896 ;
@@ -6304,6 +6586,7 @@ af:APT-0283
     af:gpsCode "VTCH" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mae_Hong_Son_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26648 ;
     af:latitude 19.3013 ;
     af:longitude 97.9758 ;
@@ -6325,6 +6608,7 @@ af:APT-0284
     af:gpsCode "VTPM" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Mae_Sot_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26658 ;
     af:latitude 16.6998996735 ;
     af:longitude 98.5450973511 ;
@@ -6347,6 +6631,7 @@ af:APT-0285
     af:gpsCode "VTUW" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Nakhon_Phanom_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26689 ;
     af:latitude 17.383801 ;
     af:longitude 104.642998 ;
@@ -6370,6 +6655,7 @@ af:APT-0286
     af:wikipediaLink "https://en.wikipedia.org/wiki/Nakhon_Si_Thammarat_Airport" ;
     af:keywords "ท่าอากาศยานนครศรีธรรมราช" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26668 ;
     af:latitude 8.5396203995 ;
     af:longitude 99.9447021484 ;
@@ -6391,6 +6677,7 @@ af:APT-0287
     af:gpsCode "VTCN" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Nan_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26650 ;
     af:latitude 18.8078994751 ;
     af:longitude 100.7829971313 ;
@@ -6412,6 +6699,7 @@ af:APT-0288
     af:gpsCode "VTSC" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Narathiwat_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26666 ;
     af:latitude 6.5199198723 ;
     af:longitude 101.7429962158 ;
@@ -6433,6 +6721,7 @@ af:APT-0289
     af:gpsCode "VTPB" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Phetchabun_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26654 ;
     af:latitude 16.6760005951 ;
     af:longitude 101.194999695 ;
@@ -6455,6 +6744,7 @@ af:APT-0290
     af:gpsCode "VTPP" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Phitsanulok_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26661 ;
     af:latitude 16.7829 ;
     af:longitude 100.278999 ;
@@ -6478,6 +6768,7 @@ af:APT-0291
     af:homeLink "https://phuket.airportthai.co.th/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Phuket_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Phuket" ;
     af:sourceId 26674 ;
     af:latitude 8.113257 ;
     af:longitude 98.3174 ;
@@ -6500,6 +6791,7 @@ af:APT-0292
     af:gpsCode "VTSR" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Ranong_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26675 ;
     af:latitude 9.77762 ;
     af:longitude 98.585503 ;
@@ -6522,6 +6814,7 @@ af:APT-0293
     af:gpsCode "VTUV" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Roi_Et_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26688 ;
     af:latitude 16.1168 ;
     af:longitude 103.774002 ;
@@ -6543,6 +6836,7 @@ af:APT-0294
     af:gpsCode "VTUI" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sakon_Nakhon_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26679 ;
     af:latitude 17.1951007843 ;
     af:longitude 104.1190032959 ;
@@ -6566,6 +6860,7 @@ af:APT-0295
     af:homeLink "http://www.samuiairportonline.com" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Samui_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Ko Samui" ;
     af:sourceId 26672 ;
     af:latitude 9.54779 ;
     af:longitude 100.061996 ;
@@ -6587,6 +6882,7 @@ af:APT-0296
     af:gpsCode "VTPO" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Sukhothai_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26660 ;
     af:latitude 17.2380008698 ;
     af:longitude 99.8181991577 ;
@@ -6609,6 +6905,7 @@ af:APT-0297
     af:gpsCode "VTSB" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Surat_Thani_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26665 ;
     af:latitude 9.1325998306 ;
     af:longitude 99.135597229 ;
@@ -6632,6 +6929,7 @@ af:APT-0298
     af:wikipediaLink "https://en.wikipedia.org/wiki/Surin_Airport" ;
     af:keywords "Surin Bhakdi Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26680 ;
     af:latitude 14.8683004379 ;
     af:longitude 103.4980010986 ;
@@ -6655,6 +6953,7 @@ af:APT-0299
     af:homeLink "https://suvarnabhumi.airportthai.co.th/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Suvarnabhumi_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 28118 ;
     af:latitude 13.6811 ;
     af:longitude 100.747002 ;
@@ -6677,6 +6976,7 @@ af:APT-0300
     af:gpsCode "VTST" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Trang_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26677 ;
     af:latitude 7.50874 ;
     af:longitude 99.6166 ;
@@ -6699,6 +6999,7 @@ af:APT-0301
     af:gpsCode "VTBO" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Trat_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26643 ;
     af:latitude 12.2746 ;
     af:longitude 102.319 ;
@@ -6723,6 +7024,7 @@ af:APT-0302
     af:wikipediaLink "https://en.wikipedia.org/wiki/U-Tapao_International_Airport" ;
     af:keywords "Utapao, U-Taphao, U-Tapao Royal Thai Navy Airfield, ท่าอากาศยานอู่ตะเภา ระยอง–พัทยา" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26645 ;
     af:latitude 12.6799 ;
     af:longitude 101.004997 ;
@@ -6745,6 +7047,7 @@ af:APT-0303
     af:gpsCode "VTUU" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Ubon_Ratchathani_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26687 ;
     af:latitude 15.2512998581 ;
     af:longitude 104.870002747 ;
@@ -6768,6 +7071,7 @@ af:APT-0304
     af:homeLink "http://www.udonthaniairport.com/" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Udon_Thani_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26678 ;
     af:latitude 17.386186 ;
     af:longitude 102.788577 ;
@@ -6791,6 +7095,7 @@ af:APT-0305
     af:wikipediaLink "https://en.wikipedia.org/wiki/Cakung_Airport" ;
     af:keywords "English Madeira airport, Cakung Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Timor" ;
     af:sourceId 26882 ;
     af:latitude -8.486479 ;
     af:longitude 126.399981 ;
@@ -6814,6 +7119,7 @@ af:APT-0306
     af:wikipediaLink "https://en.wikipedia.org/wiki/Suai_Airport" ;
     af:keywords "Covalima Airport, Suai Airport, Xanana Gusmao International Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Timor" ;
     af:sourceId 26880 ;
     af:latitude -9.301856 ;
     af:longitude 125.286302 ;
@@ -6837,6 +7143,7 @@ af:APT-0307
     af:wikipediaLink "https://en.wikipedia.org/wiki/Oecussi_Airport" ;
     af:keywords "Oe-Kusi Ambenu, Ocussi, Oekussi, Oekusi, Okusi, Oé-Cusse" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Timor" ;
     af:sourceId 35138 ;
     af:latitude -9.198419 ;
     af:longitude 124.337873 .
@@ -6859,6 +7166,7 @@ af:APT-0308
     af:wikipediaLink "https://en.wikipedia.org/wiki/Presidente_Nicolau_Lobato_International_Airport" ;
     af:keywords "Komoro, Comoro Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Timor" ;
     af:sourceId 26881 ;
     af:latitude -8.546562 ;
     af:longitude 125.524507 ;
@@ -6881,6 +7189,7 @@ af:APT-0309
     af:gpsCode "VVBM" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Buon_Ma_Thuot_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26690 ;
     af:latitude 12.668299675 ;
     af:longitude 108.120002747 ;
@@ -6904,6 +7213,7 @@ af:APT-0310
     af:homeLink "https://camranh.aero" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Cam_Ranh_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26693 ;
     af:latitude 11.9982 ;
     af:longitude 109.219002 ;
@@ -6927,6 +7237,7 @@ af:APT-0311
     af:wikipediaLink "https://en.wikipedia.org/wiki/Can_Tho_International_Airport" ;
     af:keywords "Binh Thuy Air Base, Trà Nóc Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26695 ;
     af:latitude 10.083397 ;
     af:longitude 105.709371 ;
@@ -6950,6 +7261,7 @@ af:APT-0312
     af:wikipediaLink "https://en.wikipedia.org/wiki/Cat_Bi_Airport" ;
     af:keywords "Catbi Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26692 ;
     af:latitude 20.817428 ;
     af:longitude 106.724315 ;
@@ -6973,6 +7285,7 @@ af:APT-0313
     af:wikipediaLink "https://en.wikipedia.org/wiki/Chu_Lai_Airport" ;
     af:keywords "chu lai air base" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26691 ;
     af:latitude 15.4033 ;
     af:longitude 108.706001 ;
@@ -6996,6 +7309,7 @@ af:APT-0314
     af:wikipediaLink "https://en.wikipedia.org/wiki/Con_Dao_Airport" ;
     af:keywords "Conson Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Con Dao" ;
     af:sourceId 26694 ;
     af:latitude 8.73183 ;
     af:longitude 106.633003 ;
@@ -7019,6 +7333,7 @@ af:APT-0315
     af:wikipediaLink "https://en.wikipedia.org/wiki/C%C3%A0_Mau_Airport" ;
     af:keywords "Moranc Airfield, Quan Long Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 301824 ;
     af:latitude 9.177667 ;
     af:longitude 105.177778 ;
@@ -7042,6 +7357,7 @@ af:APT-0316
     af:wikipediaLink "https://en.wikipedia.org/wiki/Da_Nang_International_Airport" ;
     af:keywords "Danang, Cảng Hàng không Quốc tế Đà Nẵng" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26697 ;
     af:latitude 16.0439 ;
     af:longitude 108.198997 ;
@@ -7064,6 +7380,7 @@ af:APT-0317
     af:gpsCode "VVDB" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Dien_Bien_Phu_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26696 ;
     af:latitude 21.3974990845 ;
     af:longitude 103.008003235 ;
@@ -7086,6 +7403,7 @@ af:APT-0318
     af:gpsCode "VVDH" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Dong_Hoi_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 35144 ;
     af:latitude 17.515 ;
     af:longitude 106.590556 ;
@@ -7108,6 +7426,7 @@ af:APT-0319
     af:gpsCode "VVTH" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/%C4%90%C3%B4ng_T%C3%A1c_(Tuy_Hoa)_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26707 ;
     af:latitude 13.0496 ;
     af:longitude 109.334 ;
@@ -7131,6 +7450,7 @@ af:APT-0320
     af:wikipediaLink "https://en.wikipedia.org/wiki/Lien_Khuong_Airport" ;
     af:keywords "Lienkhang" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 30923 ;
     af:latitude 11.750556 ;
     af:longitude 108.366997 ;
@@ -7154,6 +7474,7 @@ af:APT-0321
     af:wikipediaLink "https://en.wikipedia.org/wiki/Noi_Bai_International_Airport" ;
     af:keywords "Noibai Airport, Sân bay Quốc tế Nội Bài" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26700 ;
     af:latitude 21.221201 ;
     af:longitude 105.806999 ;
@@ -7177,6 +7498,7 @@ af:APT-0322
     af:wikipediaLink "https://en.wikipedia.org/wiki/Phu_Bai_International_Airport" ;
     af:keywords "Phubai" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26702 ;
     af:latitude 16.400581 ;
     af:longitude 107.704094 ;
@@ -7201,6 +7523,7 @@ af:APT-0323
     af:wikipediaLink "https://en.wikipedia.org/wiki/Phu_Cat_Airport" ;
     af:keywords "Phucat" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26703 ;
     af:latitude 13.955 ;
     af:longitude 109.042 ;
@@ -7224,6 +7547,7 @@ af:APT-0324
     af:homeLink "https://sunwairport.vn" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Phu_Quoc_International_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Phu Quoc" ;
     af:sourceId 26705 ;
     af:latitude 10.169783 ;
     af:longitude 103.99353 ;
@@ -7246,6 +7570,7 @@ af:APT-0325
     af:gpsCode "VVPK" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Pleiku_Air_Base" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26704 ;
     af:latitude 14.0045003891 ;
     af:longitude 108.016998291 ;
@@ -7268,6 +7593,7 @@ af:APT-0326
     af:gpsCode "VVRG" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Rach_Gia_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 32580 ;
     af:latitude 9.9580299723 ;
     af:longitude 105.132379532 ;
@@ -7292,6 +7618,7 @@ af:APT-0327
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tan_Son_Nhat_International_Airport" ;
     af:keywords "Tansonnhat, Sài Gòn, Saigon, Sân bay Quốc tế Tân Sơn Nhất, Tan Son Nhut Air Base, Tan Son Nhut Airfield" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26708 ;
     af:latitude 10.8188 ;
     af:longitude 106.652 ;
@@ -7315,6 +7642,7 @@ af:APT-0328
     af:wikipediaLink "https://en.wikipedia.org/wiki/Tho_Xuan_Airport" ;
     af:keywords "Bai Thuong" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 327354 ;
     af:latitude 19.901667 ;
     af:longitude 105.467778 ;
@@ -7339,6 +7667,7 @@ af:APT-0329
     af:wikipediaLink "https://en.wikipedia.org/wiki/Van_Don_International_Airport" ;
     af:keywords "Cẩm Phả, Sân bay Quốc tế Vân Đồn" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 332254 ;
     af:latitude 21.120693 ;
     af:longitude 107.41539 ;
@@ -7361,6 +7690,7 @@ af:APT-0330
     af:gpsCode "VVVH" ;
     af:wikipediaLink "https://en.wikipedia.org/wiki/Vinh_Airport" ;
     af:dataSource "airports_southeast_asia.csv (source dataset)" ;
+    af:island "Daratan Asia Tenggara" ;
     af:sourceId 26709 ;
     af:latitude 18.7376003265 ;
     af:longitude 105.67099762 ;

@@ -8,6 +8,10 @@ use Illuminate\Support\Collection;
 
 class AirportRecommendationService
 {
+    public function __construct(private FusekiService $fuseki)
+    {
+    }
+
     /**
      * Mengambil rekomendasi bandara berdasarkan koordinat pengguna.
      */
@@ -17,6 +21,14 @@ class AirportRecommendationService
         int $limit = 5
     ): Collection {
 
+        // Sumber utama: kueri SPARQL ke Fuseki (jarak Haversine dihitung di SPARQL)
+        $fromFuseki = $this->fuseki->nearestAirports($lat, $lng, $limit);
+
+        if ($fromFuseki !== []) {
+            return collect($fromFuseki)->map(fn (array $airport): object => (object) $airport);
+        }
+
+        // Cadangan bila Fuseki tidak aktif: tabel airports di database
         $distanceFormula = '
             (
                 6371 * 2 * ASIN(

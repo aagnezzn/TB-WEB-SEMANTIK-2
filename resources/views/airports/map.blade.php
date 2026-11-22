@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airport Map - AeroFind</title>
+    @include('layouts.og', ['ogTitle' => 'Airport Map - AeroFind', 'ogDescription' => 'Peta interaktif bandara ASEAN dengan OpenStreetMap, data dari SPARQL endpoint Fuseki.'])
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
 
     <!-- 1. Tambahkan CSS Leaflet -->

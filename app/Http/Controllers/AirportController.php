@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
+use App\Services\ExternalSparqlService;
+use App\Services\FusekiService;
 
 class AirportController extends Controller
 {
     /** Cache data JSON supaya file tidak dibaca berulang dalam satu request. */
     private ?array $airportsCache = null;
+
+    public function __construct(
+        private FusekiService $fuseki,
+        private ExternalSparqlService $external,
+    ) {
+    }
 
     /** Pemetaan nama negara ke kode ISO dan alias untuk fitur pencarian. */
     private const ISO_MAPPING = [
@@ -56,6 +63,13 @@ class AirportController extends Controller
             return $this->airportsCache;
         }
 
+        // Sumber utama: dataset RDF di Apache Jena Fuseki (via SPARQL)
+        $fromFuseki = $this->fuseki->airports();
+        if ($fromFuseki !== []) {
+            return $this->airportsCache = $fromFuseki;
+        }
+
+        // Cadangan bila Fuseki tidak aktif: berkas JSON lokal
         $possiblePaths = [
             database_path('data/dataset_bandara_tubes.json'),
             database_path('data/dataset_bandara_tubes'),
@@ -144,46 +158,10 @@ class AirportController extends Controller
             $searchLower = mb_strtolower($search);
             $mappedTerms = self::ISO_MAPPING[$searchLower] ?? [];
 
-            $airports = array_values(array_filter($airports, function ($airport) use ($searchLower, $mappedTerms) {
-                $name         = mb_strtolower($airport['name'] ?? '');
-                $municipality = mb_strtolower($airport['municipality'] ?? '');
-                $isoCountry   = mb_strtolower($airport['iso_country'] ?? '');
-                $isoRegion    = mb_strtolower($airport['iso_region'] ?? '');
-                $ident        = mb_strtolower($airport['ident'] ?? '');
-                $iata         = mb_strtolower($airport['iata_code'] ?? '');
-                $icao         = mb_strtolower($airport['icao_code'] ?? '');
-                $keywords     = mb_strtolower($airport['keywords'] ?? '');
-                $airportId    = mb_strtolower($airport['airport_id'] ?? '');
-
-                // Partial / substring match pada nama, kota, ident, IATA, ICAO, kata kunci, ID bandara
-                if (
-                    str_contains($name, $searchLower)
-                    || str_contains($municipality, $searchLower)
-                    || str_contains($ident, $searchLower)
-                    || str_contains($iata, $searchLower)
-                    || str_contains($icao, $searchLower)
-                    || str_contains($keywords, $searchLower)
-                    || str_contains($airportId, $searchLower)
-                    || str_contains($isoCountry, $searchLower)
-                    || str_contains($isoRegion, $searchLower)
-                ) {
-                    return true;
-                }
-
-                // Pencarian berdasarkan kode ISO atau alias negara
-                foreach ($mappedTerms as $term) {
-                    if (
-                        $isoCountry === $term
-                        || str_contains($isoCountry, $term)
-                        || str_starts_with($isoRegion, $term . '-')
-                        || $isoRegion === $term
-                    ) {
-                        return true;
-                    }
-                }
-
-                return false;
-            }));
+            $airports = array_values(array_filter(
+                $airports,
+                fn ($airport) => $this->matchesSearch($airport, $searchLower, $mappedTerms)
+            ));
 
             // Deteksi saran typo jika pencarian persis/substring tidak menghasilkan data
             if (empty($airports)) {
@@ -224,6 +202,119 @@ class AirportController extends Controller
         }
 
         return view('welcome', compact('airports', 'search', 'mapAirports', 'stats', 'featured', 'suggestion', 'suggestedAirports'));
+    }
+
+    /**
+     * Apakah sebuah bandara cocok dengan kata kunci pencarian (nama, kota, kode, negara, alias).
+     *
+     * @param  array<string, mixed>  $airport
+     * @param  list<string>  $mappedTerms
+     */
+    private function matchesSearch(array $airport, string $searchLower, array $mappedTerms): bool
+    {
+        $name         = mb_strtolower($airport['name'] ?? '');
+        $municipality = mb_strtolower($airport['municipality'] ?? '');
+        $isoCountry   = mb_strtolower($airport['iso_country'] ?? '');
+        $isoRegion    = mb_strtolower($airport['iso_region'] ?? '');
+        $ident        = mb_strtolower($airport['ident'] ?? '');
+        $iata         = mb_strtolower($airport['iata_code'] ?? '');
+        $icao         = mb_strtolower($airport['icao_code'] ?? '');
+        $keywords     = mb_strtolower($airport['keywords'] ?? '');
+        $airportId    = mb_strtolower($airport['airport_id'] ?? '');
+
+        // Partial / substring match pada nama, kota, ident, IATA, ICAO, kata kunci, ID bandara
+        if (
+            str_contains($name, $searchLower)
+            || str_contains($municipality, $searchLower)
+            || str_contains($ident, $searchLower)
+            || str_contains($iata, $searchLower)
+            || str_contains($icao, $searchLower)
+            || str_contains($keywords, $searchLower)
+            || str_contains($airportId, $searchLower)
+            || str_contains($isoCountry, $searchLower)
+            || str_contains($isoRegion, $searchLower)
+        ) {
+            return true;
+        }
+
+        // Pencarian berdasarkan kode ISO atau alias negara
+        foreach ($mappedTerms as $term) {
+            if (
+                $isoCountry === $term
+                || str_contains($isoCountry, $term)
+                || str_starts_with($isoRegion, $term . '-')
+                || $isoRegion === $term
+            ) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Saran pencarian huruf per huruf untuk dashboard utama.
+     */
+    public function suggest(Request $request)
+    {
+        $rawQuery = $request->query('q');
+        $query = is_string($rawQuery) ? trim($rawQuery) : '';
+
+        if (mb_strlen($query) < 1) {
+            return response()->json(['query' => '', 'results' => [], 'total' => 0, 'suggestion' => null]);
+        }
+
+        $queryLower = mb_strtolower($query);
+        $mappedTerms = self::ISO_MAPPING[$queryLower] ?? [];
+        $airports = $this->getAirportsData();
+
+        $matches = array_values(array_filter(
+            $airports,
+            fn ($airport) => $this->matchesSearch($airport, $queryLower, $mappedTerms)
+        ));
+
+        // Urutkan: awalan nama/kode lebih dulu, lalu urut abjad
+        $rank = function (array $airport) use ($queryLower): int {
+            $name = mb_strtolower($airport['name'] ?? '');
+            $codes = [
+                mb_strtolower($airport['iata_code'] ?? ''),
+                mb_strtolower($airport['icao_code'] ?? ''),
+                mb_strtolower($airport['ident'] ?? ''),
+            ];
+
+            return match (true) {
+                in_array($queryLower, $codes, true) => 0,
+                str_starts_with($name, $queryLower) => 1,
+                str_contains($name, $queryLower) => 2,
+                default => 3,
+            };
+        };
+
+        usort($matches, fn ($a, $b) => [$rank($a), mb_strtolower($a['name'] ?? '')]
+            <=> [$rank($b), mb_strtolower($b['name'] ?? '')]);
+
+        $suggestion = null;
+        if ($matches === []) {
+            $typo = $this->findTypoSuggestion($query, $airports);
+            $suggestion = $typo['term'] ?? null;
+        }
+
+        $results = array_map(fn ($airport) => [
+            'name' => $airport['name'] ?? '',
+            'iata' => $airport['iata_code'] ?? null,
+            'icao' => $airport['icao_code'] ?? $airport['ident'] ?? null,
+            'municipality' => $airport['municipality'] ?? null,
+            'country' => $airport['iso_country'] ?? null,
+            'type' => $airport['type'] ?? null,
+            'url' => route('airports.show', $airport['ident'] ?? $airport['icao_code'] ?? $airport['iata_code'] ?? $airport['airport_id'] ?? 0),
+        ], array_slice($matches, 0, 8));
+
+        return response()->json([
+            'query' => $query,
+            'results' => $results,
+            'total' => count($matches),
+            'suggestion' => $suggestion,
+        ]);
     }
 
     /**
@@ -344,30 +435,49 @@ class AirportController extends Controller
             }
         }
 
-        // 2) Fallback ke database (untuk hasil rekomendasi terdekat)
-        if (!$airport) {
-            $query = DB::table('airports')
-                ->whereRaw('LOWER(icao_code) = ?', [strtolower($id)])
-                ->orWhereRaw('LOWER(iata_code) = ?', [strtolower($id)]);
-
-            if (ctype_digit($id)) {
-                $query->orWhere('airport_id', (int) $id);
-            }
-
-            $row = $query->first();
-
-            if ($row) {
-                $airport = (array) $row;
-                // show.blade.php membaca kode ICAO dari field 'ident'
-                $airport['ident'] = $airport['icao_code'] ?? null;
-            }
-        }
-
         if (!$airport) {
             abort(404, 'Airport not found');
         }
 
-        return view('airports.show', compact('airport'));
+        $semantic = $this->semanticEnrichment($airport);
+
+        return view('airports.show', compact('airport', 'semantic'));
+    }
+
+    /**
+     * Data tambahan dari DBpedia. Lebih dulu lewat kueri federasi Fuseki (SERVICE),
+     * lalu langsung ke endpoint DBpedia bila federasi tidak tersedia.
+     *
+     * @param  array<string, mixed>  $airport
+     * @return array<string, mixed>|null
+     */
+    private function semanticEnrichment(array $airport): ?array
+    {
+        $icao = (string) ($airport['icao_code'] ?? $airport['ident'] ?? '');
+        $wikipedia = $airport['wikipedia_link'] ?? null;
+
+        if ($wikipedia === null && $icao !== '') {
+            foreach ($this->getAirportsData() as $item) {
+                if (strcasecmp((string) ($item['icao_code'] ?? ''), $icao) === 0) {
+                    $wikipedia = $item['wikipedia_link'] ?? null;
+                    break;
+                }
+            }
+        }
+
+        if ($wikipedia === null) {
+            return null;
+        }
+
+        $result = $icao !== '' ? $this->fuseki->federatedEnrichment($icao) : null;
+        $source = 'Fuseki SERVICE → DBpedia';
+
+        if ($result === null) {
+            $result = $this->external->enrichmentForWikipediaLink($wikipedia, $icao !== '' ? $icao : null);
+            $source = 'DBpedia';
+        }
+
+        return $result === null ? null : $result + ['source' => $source, 'wikipedia' => $wikipedia];
     }
 
     // ------------------------------------------------------------------

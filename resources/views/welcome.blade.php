@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ __('messages.welcome_page_title') }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
+    @include('layouts.og', ['ogTitle' => __('messages.welcome_page_title'), 'ogDescription' => 'Cari dan jelajahi bandara se-ASEAN berbasis data semantik (RDF, SPARQL, DBpedia).'])
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
@@ -40,16 +41,27 @@ body::before {
             {{ __('messages.welcome_hero_subtitle') }}
         </p>
 
-       <form action="{{ route('home') }}" method="GET" class="w-full max-w-3xl relative group">
-            <input type="text" 
+       <form id="search-form" action="{{ route('home') }}" method="GET" class="w-full max-w-3xl relative group" role="search">
+            <input type="text"
+                id="search-input"
                 name="search"
                 value="{{ $search ?? '' }}"
-                class="w-full px-6 py-4 rounded-full border-2 border-white/60 bg-white/80 backdrop-blur-sm focus:outline-none focus:border-[#7FA8D6] focus:ring-4 focus:ring-[#A8C6E7]/50 text-lg shadow-xl transition-all duration-300 group-hover:shadow-2xl"
+                autocomplete="off"
+                role="combobox"
+                aria-expanded="false"
+                aria-controls="search-suggestions"
+                aria-autocomplete="list"
+                class="w-full px-6 py-4 pr-36 rounded-full border-2 border-white/60 bg-white/80 backdrop-blur-sm focus:outline-none focus:border-[#7FA8D6] focus:ring-4 focus:ring-[#A8C6E7]/50 text-lg shadow-xl transition-all duration-300 group-hover:shadow-2xl"
                 placeholder="{{ __('messages.welcome_search_placeholder') }}">
-            
+
             <button type="submit" class="absolute right-2 top-2 bottom-2 bg-[#FFE08A] hover:bg-[#FFF2B2] text-slate-700 font-bold px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95">
                 {{ __('messages.welcome_search_btn') }}
             </button>
+
+            <!-- Saran pencarian huruf per huruf -->
+            <div id="search-suggestions" role="listbox"
+                class="hidden absolute left-0 right-0 top-full mt-2 bg-white border border-[#A8C6E7] rounded-2xl shadow-2xl max-h-96 overflow-y-auto z-[1000] text-left">
+            </div>
         </form>
 
         <!-- Pesan Saran Typo di Bawah Search Form -->
@@ -1012,6 +1024,215 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+</script>
+
+<script>
+// ==========================================
+// PENCARIAN HURUF PER HURUF (AUTOCOMPLETE)
+// ==========================================
+(function () {
+    const form = document.getElementById('search-form');
+    const input = document.getElementById('search-input');
+    const box = document.getElementById('search-suggestions');
+
+    if (!form || !input || !box) return;
+
+    const SUGGEST_URL = @json(route('airports.suggest'));
+    const HOME_URL = @json(route('home'));
+    const t = {
+        noResults: @json(__('messages.welcome_suggest_none')),
+        didYouMean: @json(__('messages.search_did_you_mean')),
+        seeAll: @json(__('messages.welcome_suggest_see_all')),
+        failed: @json(__('messages.welcome_suggest_failed'))
+    };
+
+    let timer = null;
+    let controller = null;
+    let activeIndex = -1;
+    let items = [];
+    let lastRequest = 0;
+
+    function closeBox() {
+        box.classList.add('hidden');
+        box.innerHTML = '';
+        input.setAttribute('aria-expanded', 'false');
+        activeIndex = -1;
+        items = [];
+    }
+
+    function setMessage(text) {
+        box.innerHTML = '';
+        const message = document.createElement('div');
+        message.className = 'p-4 text-sm text-slate-500 text-center';
+        message.textContent = text;
+        box.appendChild(message);
+        box.classList.remove('hidden');
+        input.setAttribute('aria-expanded', 'true');
+        items = [];
+    }
+
+    // Tebalkan potongan teks yang cocok dengan huruf yang diketik
+    function highlight(text, query) {
+        const fragment = document.createDocumentFragment();
+        const index = text.toLowerCase().indexOf(query.toLowerCase());
+
+        if (index < 0 || !query) {
+            fragment.appendChild(document.createTextNode(text));
+            return fragment;
+        }
+
+        fragment.appendChild(document.createTextNode(text.slice(0, index)));
+        const mark = document.createElement('strong');
+        mark.className = 'text-[#4A7FB5] bg-[#FFE08A]/50 rounded px-0.5';
+        mark.textContent = text.slice(index, index + query.length);
+        fragment.appendChild(mark);
+        fragment.appendChild(document.createTextNode(text.slice(index + query.length)));
+
+        return fragment;
+    }
+
+    function setActive(index) {
+        items.forEach(function (item, i) {
+            item.classList.toggle('bg-[#A8C6E7]/30', i === index);
+            item.setAttribute('aria-selected', i === index ? 'true' : 'false');
+        });
+        activeIndex = index;
+
+        if (items[index]) {
+            items[index].scrollIntoView({ block: 'nearest' });
+        }
+    }
+
+    function render(data) {
+        const query = data.query;
+        box.innerHTML = '';
+        items = [];
+
+        if (!data.results.length) {
+            const empty = document.createElement('div');
+            empty.className = 'p-4 text-sm text-slate-500 text-center';
+            empty.textContent = t.noResults;
+
+            if (data.suggestion) {
+                const link = document.createElement('a');
+                link.href = HOME_URL + '?search=' + encodeURIComponent(data.suggestion);
+                link.className = 'block mt-2 font-semibold text-[#7FA8D6] underline';
+                link.textContent = t.didYouMean + ' ' + data.suggestion;
+                empty.appendChild(link);
+            }
+
+            box.appendChild(empty);
+            box.classList.remove('hidden');
+            input.setAttribute('aria-expanded', 'true');
+            return;
+        }
+
+        data.results.forEach(function (airport) {
+            const link = document.createElement('a');
+            link.href = airport.url;
+            link.setAttribute('role', 'option');
+            link.className = 'block px-5 py-3 border-b border-slate-100 hover:bg-[#A8C6E7]/30 transition';
+
+            const name = document.createElement('p');
+            name.className = 'font-semibold text-sm text-slate-800';
+            name.appendChild(highlight(airport.name, query));
+
+            const detail = document.createElement('p');
+            detail.className = 'text-xs text-slate-500 mt-0.5';
+            detail.appendChild(highlight(
+                [airport.iata || '-', airport.icao || '-', airport.municipality || '-', airport.country || '-'].join(' • '),
+                query
+            ));
+
+            link.appendChild(name);
+            link.appendChild(detail);
+            box.appendChild(link);
+            items.push(link);
+        });
+
+        // Tautan ke hasil lengkap (submit form biasa)
+        const all = document.createElement('a');
+        all.href = HOME_URL + '?search=' + encodeURIComponent(query);
+        all.setAttribute('role', 'option');
+        all.className = 'block px-5 py-3 text-sm font-semibold text-[#7FA8D6] hover:bg-[#A8C6E7]/30 transition';
+        all.textContent = t.seeAll.replace(':count', data.total).replace(':query', query);
+        box.appendChild(all);
+        items.push(all);
+
+        activeIndex = -1;
+        box.classList.remove('hidden');
+        input.setAttribute('aria-expanded', 'true');
+    }
+
+    async function fetchSuggestions(query) {
+        if (controller) controller.abort();
+        controller = new AbortController();
+        const requestId = ++lastRequest;
+
+        try {
+            const response = await fetch(SUGGEST_URL + '?q=' + encodeURIComponent(query), {
+                signal: controller.signal,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+
+            const data = await response.json();
+
+            // Abaikan respons lama bila pengguna sudah mengetik lagi
+            if (requestId !== lastRequest || input.value.trim() !== query) return;
+
+            render(data);
+        } catch (error) {
+            if (error.name === 'AbortError') return;
+            setMessage(t.failed);
+        }
+    }
+
+    input.addEventListener('input', function () {
+        clearTimeout(timer);
+        const query = input.value.trim();
+
+        if (!query) {
+            lastRequest++;
+            closeBox();
+            return;
+        }
+
+        timer = setTimeout(function () { fetchSuggestions(query); }, 150);
+    });
+
+    input.addEventListener('keydown', function (event) {
+        if (box.classList.contains('hidden') || !items.length) return;
+
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            setActive((activeIndex + 1) % items.length);
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            setActive((activeIndex - 1 + items.length) % items.length);
+        } else if (event.key === 'Enter' && activeIndex >= 0) {
+            event.preventDefault();
+            window.location.href = items[activeIndex].href;
+        } else if (event.key === 'Escape') {
+            closeBox();
+        }
+    });
+
+    input.addEventListener('focus', function () {
+        if (input.value.trim() && !box.children.length) {
+            fetchSuggestions(input.value.trim());
+        } else if (box.children.length) {
+            box.classList.remove('hidden');
+        }
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!form.contains(event.target)) {
+            box.classList.add('hidden');
+        }
+    });
+})();
 </script>
 
 </body>

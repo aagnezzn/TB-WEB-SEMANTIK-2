@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{{ __('messages.nav_page_title') }}</title>
+    @include('layouts.og', ['ogTitle' => __('messages.nav_page_title'), 'ogDescription' => 'AeroSearch ASEAN: data bandara semantik.'])
 
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
 
@@ -30,6 +31,11 @@
             border-color: #7FA8D6;
             box-shadow: 0 0 0 2px rgba(127, 168, 214, .35);
         }
+
+        .dir-step { transition: background .15s ease; }
+        .dir-step:hover { background: rgba(168, 198, 231, .25); }
+        .route-chip.active { background: #7FA8D6; color: #fff; border-color: #7FA8D6; }
+        .leaflet-marker-draggable { cursor: grab; }
 
         .skeleton {
             background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
@@ -74,14 +80,33 @@
         <div class="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-5 items-start">
 
             <!-- PANEL KIRI -->
-            <aside class="bg-white/90 backdrop-blur-md rounded-3xl border-2 border-white shadow-xl p-5 h-fit">
+            <aside class="bg-white/90 backdrop-blur-md rounded-3xl border-2 border-white shadow-xl p-5 h-fit lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto">
 
                 <h2 class="text-xl font-bold text-[#7FA8D6] mb-5">{{ __('messages.nav_route_settings') }}</h2>
 
                 <!-- LOKASI AWAL -->
-                <div class="mb-5">
-                    <label class="block text-sm font-semibold mb-2">{{ __('messages.nav_origin_location') }}</label>
-                    <div class="bg-[#A8C6E7]/20 border border-[#A8C6E7] rounded-xl p-3">
+                <div class="mb-5 relative">
+                    <label for="origin-search" class="block text-sm font-semibold mb-2">{{ __('messages.nav_origin_location') }}</label>
+
+                    <div class="flex gap-2">
+                        <input type="text" id="origin-search" autocomplete="off"
+                            placeholder="{{ __('messages.nav_origin_search_placeholder') }}"
+                            class="flex-1 min-w-0 p-3 rounded-xl border border-[#A8C6E7] bg-white focus:outline-none focus:ring-2 focus:ring-[#7FA8D6]">
+                        <button type="button" id="use-my-location"
+                            title="{{ __('messages.nav_use_my_location') }}" aria-label="{{ __('messages.nav_use_my_location') }}"
+                            class="shrink-0 w-12 rounded-xl border border-[#A8C6E7] bg-white text-[#4285F4] hover:bg-[#A8C6E7]/20 flex items-center justify-center transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/>
+                                <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="origin-results"
+                        class="hidden absolute left-0 right-0 top-full mt-2 bg-white border border-[#A8C6E7] rounded-xl shadow-xl max-h-64 overflow-y-auto z-[1000]">
+                    </div>
+
+                    <div class="bg-[#A8C6E7]/20 border border-[#A8C6E7] rounded-xl p-3 mt-3">
                         <p id="origin-label" class="text-sm text-slate-600">{{ __('messages.nav_not_specified') }}</p>
                         <p id="origin-coordinates" class="text-xs text-slate-400 mt-1">
                             {{ __('messages.nav_click_map_origin') }}
@@ -148,12 +173,30 @@
                     <div class="bg-[#FFE08A]/40 rounded-xl p-3">
                         <p class="text-xs text-slate-500">{{ __('messages.nav_label_duration') }}</p>
                         <p id="route-duration" class="text-lg font-bold text-slate-700">-</p>
+                        <p id="route-arrival" class="text-xs text-slate-500 mt-0.5"></p>
                     </div>
                 </div>
 
                 <p id="route-status" class="text-sm text-slate-500 mt-4">
                     {{ __('messages.nav_prompt_set_locations') }}
                 </p>
+
+                <!-- PILIHAN RUTE ALTERNATIF -->
+                <div id="route-alts-wrap" class="hidden mt-4">
+                    <p class="text-xs font-semibold text-slate-500 mb-2">{{ __('messages.nav_alt_routes') }}</p>
+                    <div id="route-alts" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- PETUNJUK ARAH BELOK DEMI BELOK -->
+                <div id="directions-wrap" class="hidden mt-5">
+                    <h3 class="font-bold text-slate-700 mb-2">{{ __('messages.nav_directions') }}</h3>
+                    <ol id="directions-list" class="space-y-1 max-h-80 overflow-y-auto pr-1"></ol>
+                </div>
+
+                <button type="button" id="copy-link"
+                    class="hidden mt-4 w-full text-sm font-semibold text-[#7FA8D6] border border-[#A8C6E7] rounded-xl py-2 hover:bg-[#A8C6E7]/20 transition">
+                    {{ __('messages.nav_copy_link') }}
+                </button>
 
                 <a id="transit-link" href="#" target="_blank" rel="noopener"
                 class="hidden mt-3 text-sm font-semibold text-[#7FA8D6] hover:underline items-center gap-1">
@@ -245,6 +288,16 @@
         const modeListElement = document.getElementById('mode-list');
         const transitLink = document.getElementById('transit-link');
 
+        const originSearch = document.getElementById('origin-search');
+        const originResults = document.getElementById('origin-results');
+        const useMyLocationButton = document.getElementById('use-my-location');
+        const arrivalElement = document.getElementById('route-arrival');
+        const altsWrap = document.getElementById('route-alts-wrap');
+        const altsElement = document.getElementById('route-alts');
+        const directionsWrap = document.getElementById('directions-wrap');
+        const directionsList = document.getElementById('directions-list');
+        const copyLinkButton = document.getElementById('copy-link');
+
 
         const navI18n = {
             min: @json(__('messages.nav_unit_min')),
@@ -272,8 +325,38 @@
             notSpecified: @json(__('messages.nav_not_specified')),
             clickMapOrigin: @json(__('messages.nav_click_map_origin')),
             promptSetLocations: @json(__('messages.nav_prompt_set_locations')),
-            destinationFallback: @json(__('messages.nav_destination_fallback'))
+            destinationFallback: @json(__('messages.nav_destination_fallback')),
+            myLocation: @json(__('messages.nav_my_location')),
+            locating: @json(__('messages.nav_locating')),
+            geolocationFailed: @json(__('messages.nav_geolocation_failed')),
+            geocodeFailed: @json(__('messages.nav_geocode_failed')),
+            noPlaces: @json(__('messages.nav_no_places')),
+            arriveAt: @json(__('messages.nav_arrive_at')),
+            routeN: @json(__('messages.nav_route_n')),
+            linkCopied: @json(__('messages.nav_link_copied')),
+            copyLink: @json(__('messages.nav_copy_link')),
+            dirStart: @json(__('messages.nav_dir_start')),
+            dirStartOn: @json(__('messages.nav_dir_start_on')),
+            dirArrive: @json(__('messages.nav_dir_arrive')),
+            dirContinue: @json(__('messages.nav_dir_continue')),
+            dirOnto: @json(__('messages.nav_dir_onto')),
+            dirRoundabout: @json(__('messages.nav_dir_roundabout')),
+            dirExitRoundabout: @json(__('messages.nav_dir_exit_roundabout')),
+            dirFerry: @json(__('messages.nav_dir_ferry')),
+            dirMod: {
+                'left': @json(__('messages.nav_dir_left')),
+                'right': @json(__('messages.nav_dir_right')),
+                'slight left': @json(__('messages.nav_dir_slight_left')),
+                'slight right': @json(__('messages.nav_dir_slight_right')),
+                'sharp left': @json(__('messages.nav_dir_sharp_left')),
+                'sharp right': @json(__('messages.nav_dir_sharp_right')),
+                'straight': @json(__('messages.nav_dir_straight')),
+                'uturn': @json(__('messages.nav_dir_uturn'))
+            }
         };
+
+        const PHOTON_URL = 'https://photon.komoot.io/';
+        const ASEAN_BBOX = '90,-13,142,28';   // minLon,minLat,maxLon,maxLat
 
         // =====================================
         // 3. KONFIGURASI MODA TRANSPORTASI
@@ -326,8 +409,12 @@ function svgIcon(name, sizeClass) {
         let results = {};              // hasil per moda
         let selectedMode = 'best';
         let requestId = 0;             // mencegah hasil lama menimpa hasil baru
+        let routeIndex = 0;            // rute alternatif yang sedang dipilih
+        let destinationAirport = null; // objek bandara tujuan (untuk tautan yang bisa dibagikan)
+        let initializing = true;       // hindari hitung rute berulang saat membaca parameter URL
 
         const routeLayer = L.layerGroup().addTo(map);
+        const stepLayer = L.layerGroup().addTo(map);
 
 
         // =====================================
@@ -380,15 +467,27 @@ function svgIcon(name, sizeClass) {
             return selectedMode === 'best' ? getBestKey() : selectedMode;
         }
 
+        function normalizeRoute(route) {
+            const leg = route.legs && route.legs[0] ? route.legs[0] : null;
+
+            return {
+                distance: route.distance,
+                duration: route.duration,
+                geometry: route.geometry,
+                steps: leg ? leg.steps : []
+            };
+        }
+
         async function fetchRoute(profile, from, to) {
 
             const url = ROUTING_BASE + profile +
                 '/route/v1/driving/' +
                 from.lng + ',' + from.lat + ';' + to.lng + ',' + to.lat +
-                '?overview=full&geometries=geojson';
+                '?overview=full&geometries=geojson&steps=true' +
+                (profile === 'car' ? '&alternatives=true' : '');
 
             const controller = new AbortController();
-            const timer = setTimeout(function () { controller.abort(); }, 20000);
+            const timer = setTimeout(function () { controller.abort(); }, 25000);
 
             try {
                 const response = await fetch(url, { signal: controller.signal });
@@ -403,17 +502,41 @@ function svgIcon(name, sizeClass) {
                     throw new Error(data.code || 'NoRoute');
                 }
 
-                const route = data.routes[0];
+                const routes = data.routes.slice(0, 3).map(normalizeRoute);
 
-                return {
-                    distance: route.distance,
-                    duration: route.duration,
-                    geometry: route.geometry
-                };
+                return Object.assign({}, routes[0], { routes: routes });
 
             } finally {
                 clearTimeout(timer);
             }
+        }
+
+        // Moda perkiraan (motor, transportasi umum) diturunkan dari rute mobil.
+        function deriveFromCar(car, durationFn, extra) {
+            const routes = car.routes.map(function (r) {
+                return Object.assign({}, r, { duration: durationFn(r) }, extra || {});
+            });
+
+            return Object.assign({}, routes[0], { routes: routes, estimated: true });
+        }
+
+        function currentRoute(key) {
+            const data = results[key];
+            if (!data) return null;
+            return data.routes[Math.min(routeIndex, data.routes.length - 1)];
+        }
+
+        function formatArrival(seconds) {
+            const arrival = new Date(Date.now() + seconds * 1000);
+            return navI18n.arriveAt + ' ' +
+                arrival.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function formatStepDistance(meters) {
+            if (meters < 1000) {
+                return Math.max(10, Math.round(meters / 10) * 10) + ' m';
+            }
+            return formatDistance(meters);
         }
 
 
@@ -532,14 +655,15 @@ function svgIcon(name, sizeClass) {
         // 7. MENGGAMBAR RUTE DI PETA
         // =====================================
 
-        function drawRoutes() {
+        function drawRoutes(fit) {
 
             routeLayer.clearLayers();
+            stepLayer.clearLayers();
 
             const activeKey = resolveActiveKey();
             if (!activeKey || !results[activeKey]) return;
 
-            // Rute alternatif (abu-abu), hanya moda dengan rute asli
+            // Rute moda lain (abu-abu), hanya moda dengan rute asli
             MODES.forEach(function (mode) {
 
                 const data = results[mode.key];
@@ -547,7 +671,7 @@ function svgIcon(name, sizeClass) {
                 if (!data || mode.derived || mode.key === activeKey) return;
 
                 const line = L.geoJSON(data.geometry, {
-                    style: { color: '#94A3B8', weight: 5, opacity: 0.65 }
+                    style: { color: '#94A3B8', weight: 5, opacity: 0.55 }
                 });
 
                 line.on('click', function () { selectMode(mode.key); });
@@ -555,37 +679,195 @@ function svgIcon(name, sizeClass) {
                 line.addTo(routeLayer);
             });
 
-            // Rute aktif
             const activeMode = getMode(activeKey);
             const activeData = results[activeKey];
+            const activeIndex = Math.min(routeIndex, activeData.routes.length - 1);
 
-            const activeLine = L.geoJSON(activeData.geometry, {
+            // Rute alternatif pada moda aktif
+            activeData.routes.forEach(function (route, index) {
+
+                if (index === activeIndex) return;
+
+                const line = L.geoJSON(route.geometry, {
+                    style: { color: '#94A3B8', weight: 7, opacity: 0.85 }
+                });
+
+                line.on('click', function () { selectRouteIndex(index); });
+                line.bindTooltip(
+                    navI18n.routeN + ' ' + (index + 1) + ' • ' + formatDuration(route.duration),
+                    { sticky: true }
+                );
+                line.addTo(routeLayer);
+            });
+
+            // Rute aktif
+            const activeLine = L.geoJSON(activeData.routes[activeIndex].geometry, {
                 style: {
                     color: activeMode.color,
-                    weight: activeMode.dashed ? 6 : 7,
+                    weight: activeMode.dashed ? 6 : 8,
                     opacity: 0.95,
                     dashArray: activeMode.dashed ? '1, 12' : null,
                     lineCap: 'round'
                 }
             }).addTo(routeLayer);
 
-            map.fitBounds(activeLine.getBounds(), { padding: [50, 50] });
+            if (fit !== false) {
+                map.fitBounds(activeLine.getBounds(), { padding: [50, 50] });
+            }
+        }
+
+        // ---- Petunjuk arah belok demi belok ----
+
+        const ARROW_ROTATION = {
+            'straight': 0, 'slight right': 45, 'right': 90, 'sharp right': 135,
+            'uturn': 180, 'sharp left': -135, 'left': -90, 'slight left': -45
+        };
+
+        function stepText(step) {
+            const maneuver = step.maneuver || {};
+            const road = step.name || '';
+            const onto = road ? ' ' + navI18n.dirOnto.replace(':road', road) : '';
+
+            if (step.mode === 'ferry' && maneuver.type !== 'arrive') {
+                return navI18n.dirFerry + (road ? ' (' + road + ')' : '');
+            }
+
+            switch (maneuver.type) {
+                case 'depart':
+                    return road ? navI18n.dirStartOn.replace(':road', road) : navI18n.dirStart;
+                case 'arrive':
+                    return navI18n.dirArrive;
+                case 'roundabout':
+                case 'rotary':
+                case 'roundabout turn':
+                    return navI18n.dirRoundabout.replace(':n', maneuver.exit || '') + onto;
+                case 'exit roundabout':
+                case 'exit rotary':
+                    return navI18n.dirExitRoundabout + onto;
+                default:
+                    return (navI18n.dirMod[maneuver.modifier] || navI18n.dirContinue) + onto;
+            }
+        }
+
+        function stepIcon(step) {
+            const maneuver = step.maneuver || {};
+
+            if (maneuver.type === 'depart') return '<span class="text-[#4285F4]">&#9679;</span>';
+            if (maneuver.type === 'arrive') return '<span class="text-red-500">&#9873;</span>';
+            if (/roundabout|rotary/.test(maneuver.type || '')) return '<span>&#10227;</span>';
+
+            const rotation = ARROW_ROTATION[maneuver.modifier] || 0;
+
+            return '<svg class="w-4 h-4" style="transform: rotate(' + rotation + 'deg)" fill="none" ' +
+                'stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" ' +
+                'viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>';
+        }
+
+        function renderDirections(route, key) {
+
+            directionsList.innerHTML = '';
+
+            // Transportasi umum hanya perkiraan, tidak punya petunjuk belokan
+            if (!route || !route.steps || !route.steps.length || key === 'transit') {
+                directionsWrap.classList.add('hidden');
+                return;
+            }
+
+            route.steps.forEach(function (step) {
+
+                const maneuver = step.maneuver || {};
+                const item = document.createElement('li');
+                const button = document.createElement('button');
+
+                button.type = 'button';
+                button.className = 'dir-step w-full flex items-start gap-3 text-left p-2 rounded-lg';
+
+                const icon = document.createElement('span');
+                icon.className = 'w-7 h-7 shrink-0 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 text-sm';
+                icon.innerHTML = stepIcon(step);
+
+                const text = document.createElement('span');
+                text.className = 'flex-1 min-w-0 text-sm text-slate-700';
+                text.textContent = stepText(step);
+
+                button.appendChild(icon);
+                button.appendChild(text);
+
+                if (maneuver.type !== 'arrive' && step.distance > 0) {
+                    const distance = document.createElement('span');
+                    distance.className = 'shrink-0 text-xs text-slate-400 mt-1';
+                    distance.textContent = formatStepDistance(step.distance);
+                    button.appendChild(distance);
+                }
+
+                button.addEventListener('click', function () {
+                    if (!maneuver.location) return;
+
+                    const point = L.latLng(maneuver.location[1], maneuver.location[0]);
+
+                    stepLayer.clearLayers();
+                    L.circleMarker(point, {
+                        radius: 9, color: '#fff', weight: 3, fillColor: '#4285F4', fillOpacity: 1
+                    }).addTo(stepLayer);
+
+                    map.setView(point, 17);
+                });
+
+                item.appendChild(button);
+                directionsList.appendChild(item);
+            });
+
+            directionsWrap.classList.remove('hidden');
+        }
+
+        function renderAlternatives(activeKey) {
+
+            altsElement.innerHTML = '';
+
+            const data = results[activeKey];
+
+            if (!data || data.routes.length < 2) {
+                altsWrap.classList.add('hidden');
+                return;
+            }
+
+            const activeIndex = Math.min(routeIndex, data.routes.length - 1);
+
+            data.routes.forEach(function (route, index) {
+
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'route-chip text-xs font-semibold px-3 py-1.5 rounded-full border border-slate-300 bg-white ' +
+                    'hover:border-[#7FA8D6] transition' + (index === activeIndex ? ' active' : '');
+                chip.textContent = navI18n.routeN + ' ' + (index + 1) + ' • ' +
+                    formatDuration(route.duration) + ' • ' + formatDistance(route.distance);
+
+                chip.addEventListener('click', function () { selectRouteIndex(index); });
+                altsElement.appendChild(chip);
+            });
+
+            altsWrap.classList.remove('hidden');
         }
 
         function updateSummary() {
 
             const activeKey = resolveActiveKey();
             const data = activeKey ? results[activeKey] : null;
+            const route = activeKey ? currentRoute(activeKey) : null;
 
-            if (!data) {
+            if (!data || !route) {
                 distanceElement.textContent = '- km';
                 durationElement.textContent = '-';
+                arrivalElement.textContent = '';
                 transitLink.classList.add('hidden');
+                altsWrap.classList.add('hidden');
+                directionsWrap.classList.add('hidden');
                 return;
             }
 
-            distanceElement.textContent = formatDistance(data.distance);
-            durationElement.textContent = formatDuration(data.duration);
+            distanceElement.textContent = formatDistance(route.distance);
+            durationElement.textContent = formatDuration(route.duration);
+            arrivalElement.textContent = formatArrival(route.duration);
 
             // Tautan jadwal transportasi umum
             if (activeKey === 'transit' && origin && destination) {
@@ -605,12 +887,22 @@ function svgIcon(name, sizeClass) {
                 (selectedMode === 'best' ? navI18n.bestModePrefix : navI18n.modePrefix) + mode.label +
                 (data.estimated ? ' (' + navI18n.estimated + '). ' : '. ') +
                 navI18n.safeTrip;
+
+            renderAlternatives(activeKey);
+            renderDirections(route, activeKey);
         }
 
         function selectMode(key) {
             selectedMode = key;
+            routeIndex = 0;
             renderModeList(false);
             drawRoutes();
+            updateSummary();
+        }
+
+        function selectRouteIndex(index) {
+            routeIndex = index;
+            drawRoutes(false);
             updateSummary();
         }
 
@@ -618,10 +910,15 @@ function svgIcon(name, sizeClass) {
             requestId++;   // batalkan permintaan yang sedang berjalan
             results = {};
             selectedMode = 'best';
+            routeIndex = 0;
             routeLayer.clearLayers();
+            stepLayer.clearLayers();
             distanceElement.textContent = '- km';
             durationElement.textContent = '-';
+            arrivalElement.textContent = '';
             transitLink.classList.add('hidden');
+            altsWrap.classList.add('hidden');
+            directionsWrap.classList.add('hidden');
             modeListElement.innerHTML =
                 '<p class="text-sm text-slate-400">' + navI18n.emptyComparison + '</p>';
         }
@@ -631,7 +928,7 @@ function svgIcon(name, sizeClass) {
         // 8. MENGATUR LOKASI AWAL
         // =====================================
 
-        function setOrigin(lat, lng) {
+        function setOrigin(lat, lng, label) {
 
             origin = L.latLng(lat, lng);
 
@@ -639,9 +936,15 @@ function svgIcon(name, sizeClass) {
                 map.removeLayer(originMarker);
             }
 
-            originMarker = L.marker(origin).addTo(map).bindPopup(navI18n.originPopup).openPopup();
+            originMarker = L.marker(origin, { draggable: true }).addTo(map).bindPopup(navI18n.originPopup);
 
-            originLabel.textContent = navI18n.originSelected;
+            originMarker.on('dragend', function () {
+                const position = originMarker.getLatLng();
+                originSearch.value = '';
+                setOrigin(position.lat, position.lng);
+            });
+
+            originLabel.textContent = label || navI18n.originSelected;
             originCoordinates.textContent = lat.toFixed(6) + ', ' + lng.toFixed(6);
 
             resetResults();
@@ -649,10 +952,179 @@ function svgIcon(name, sizeClass) {
             statusElement.textContent = destination
                 ? navI18n.originUpdated
                 : navI18n.originSet;
+
+            // Nama tempat dari koordinat (geocoding balik), kecuali label sudah diberikan
+            if (!label) {
+                reverseGeocode(lat, lng);
+            }
+
+            // Hitung rute otomatis bila kedua titik sudah ada
+            if (!initializing && destination) {
+                findRoute();
+            }
+        }
+
+        async function reverseGeocode(lat, lng) {
+            try {
+                const response = await fetch(
+                    PHOTON_URL + 'reverse?lat=' + lat + '&lon=' + lng + '&lang=en'
+                );
+                const data = await response.json();
+                const feature = data.features && data.features[0];
+
+                // Abaikan jika titik awal sudah berpindah
+                if (!feature || !origin || origin.lat !== lat || origin.lng !== lng) return;
+
+                const text = placeLabel(feature.properties);
+
+                if (text) {
+                    originLabel.textContent = text;
+                }
+            } catch (error) {
+                // Nama tempat opsional, abaikan kegagalan
+            }
+        }
+
+        function placeLabel(properties) {
+            return [
+                properties.name, properties.street, properties.district,
+                properties.city, properties.state, properties.country
+            ].filter(function (part, index, all) {
+                return part && all.indexOf(part) === index;
+            }).join(', ');
         }
 
         map.on('click', function (event) {
+            originSearch.value = '';
             setOrigin(event.latlng.lat, event.latlng.lng);
+        });
+
+
+        // ---- Pencarian alamat / tempat (geocoding) ----
+
+        let geocodeTimer = null;
+        let geocodeController = null;
+
+        function renderPlaceMessage(text) {
+            originResults.innerHTML = '<div class="p-4 text-sm text-slate-500 text-center"></div>';
+            originResults.firstChild.textContent = text;
+            originResults.classList.remove('hidden');
+        }
+
+        async function searchPlaces(query) {
+
+            if (geocodeController) {
+                geocodeController.abort();
+            }
+
+            geocodeController = new AbortController();
+
+            try {
+                const response = await fetch(
+                    PHOTON_URL + 'api/?q=' + encodeURIComponent(query) +
+                    '&limit=6&lang=en&bbox=' + ASEAN_BBOX,
+                    { signal: geocodeController.signal }
+                );
+
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+
+                const data = await response.json();
+                const features = data.features || [];
+
+                if (!features.length) {
+                    renderPlaceMessage(navI18n.noPlaces);
+                    return;
+                }
+
+                originResults.innerHTML = '';
+
+                features.forEach(function (feature) {
+
+                    const properties = feature.properties;
+                    const label = placeLabel(properties);
+
+                    const item = document.createElement('button');
+                    item.type = 'button';
+                    item.className = 'w-full text-left p-3 border-b border-slate-100 hover:bg-[#A8C6E7]/20 transition';
+
+                    const title = document.createElement('p');
+                    title.className = 'font-semibold text-sm text-slate-800';
+                    title.textContent = properties.name || properties.street || label;
+
+                    const subtitle = document.createElement('p');
+                    subtitle.className = 'text-xs text-slate-500 mt-1';
+                    subtitle.textContent = label;
+
+                    item.appendChild(title);
+                    item.appendChild(subtitle);
+
+                    item.addEventListener('click', function () {
+                        const lng = feature.geometry.coordinates[0];
+                        const lat = feature.geometry.coordinates[1];
+
+                        originSearch.value = label;
+                        originResults.classList.add('hidden');
+                        setOrigin(lat, lng, label);
+
+                        if (!destination) {
+                            map.setView(origin, 13);
+                        }
+                    });
+
+                    originResults.appendChild(item);
+                });
+
+                originResults.classList.remove('hidden');
+
+            } catch (error) {
+                if (error.name === 'AbortError') return;
+                renderPlaceMessage(navI18n.geocodeFailed);
+            }
+        }
+
+        originSearch.addEventListener('input', function () {
+
+            clearTimeout(geocodeTimer);
+
+            const query = this.value.trim();
+
+            if (query.length < 3) {
+                originResults.classList.add('hidden');
+                return;
+            }
+
+            geocodeTimer = setTimeout(function () { searchPlaces(query); }, 350);
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!originSearch.contains(event.target) && !originResults.contains(event.target)) {
+                originResults.classList.add('hidden');
+            }
+        });
+
+        // ---- Lokasi saya (geolocation browser) ----
+
+        useMyLocationButton.addEventListener('click', function () {
+
+            if (!navigator.geolocation) {
+                statusElement.textContent = navI18n.geolocationFailed;
+                return;
+            }
+
+            statusElement.textContent = navI18n.locating;
+
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                originSearch.value = navI18n.myLocation;
+                setOrigin(position.coords.latitude, position.coords.longitude, navI18n.myLocation);
+
+                if (!destination) {
+                    map.setView(origin, 13);
+                }
+
+            }, function () {
+                statusElement.textContent = navI18n.geolocationFailed;
+            }, { enableHighAccuracy: true, timeout: 10000 });
         });
 
 
@@ -729,6 +1201,7 @@ function svgIcon(name, sizeClass) {
             }
 
             destination = L.latLng(lat, lng);
+            destinationAirport = airport;
 
             if (destinationMarker) {
                 map.removeLayer(destinationMarker);
@@ -744,15 +1217,21 @@ function svgIcon(name, sizeClass) {
 
             resetResults();
 
-            map.setView(destination, 10);
-
             statusElement.textContent =
                 navI18n.destinationSelected;
+
+            // Hitung rute otomatis bila lokasi awal sudah ada
+            if (!initializing && origin) {
+                findRoute();
+            } else if (!origin) {
+                map.setView(destination, 10);
+            }
         }
 
         airportSearch.addEventListener('input', function () {
 
             destination = null;
+            destinationAirport = null;
 
             if (destinationMarker) {
                 map.removeLayer(destinationMarker);
@@ -773,6 +1252,7 @@ function svgIcon(name, sizeClass) {
         clearAirportButton.addEventListener('click', function () {
 
             destination = null;
+            destinationAirport = null;
 
             if (destinationMarker) {
                 map.removeLayer(destinationMarker);
@@ -808,11 +1288,16 @@ function svgIcon(name, sizeClass) {
 
             results = {};
             selectedMode = 'best';
+            routeIndex = 0;
             routeLayer.clearLayers();
+            stepLayer.clearLayers();
 
             distanceElement.textContent = '- km';
             durationElement.textContent = '-';
+            arrivalElement.textContent = '';
             transitLink.classList.add('hidden');
+            altsWrap.classList.add('hidden');
+            directionsWrap.classList.add('hidden');
 
             statusElement.textContent = navI18n.calculating;
             renderModeList(true);
@@ -838,21 +1323,13 @@ function svgIcon(name, sizeClass) {
             const car = results.driving;
 
             if (car) {
-                results.motor = {
-                    distance: car.distance,
-                    duration: car.duration * MOTOR_TIME_FACTOR,
-                    geometry: car.geometry,
-                    estimated: true
-                };
+                results.motor = deriveFromCar(car, function (r) {
+                    return r.duration * MOTOR_TIME_FACTOR;
+                });
 
-                results.transit = {
-                    distance: car.distance,
-                    duration:
-                        (car.distance / 1000 / TRANSIT_AVG_SPEED_KMH) * 3600 +
-                        TRANSIT_OVERHEAD_MIN * 60,
-                    geometry: car.geometry,
-                    estimated: true
-                };
+                results.transit = deriveFromCar(car, function (r) {
+                    return (r.distance / 1000 / TRANSIT_AVG_SPEED_KMH) * 3600 + TRANSIT_OVERHEAD_MIN * 60;
+                }, { steps: [] });
             } else {
                 results.motor = null;
                 results.transit = null;
@@ -866,7 +1343,45 @@ function svgIcon(name, sizeClass) {
             }
 
             selectMode('best');
+            syncUrl();
         }
+
+        // Simpan rute ke URL agar bisa dibagikan atau dimuat ulang
+        function syncUrl() {
+
+            if (!origin || !destination) return;
+
+            const query = new URLSearchParams({
+                origin_lat: origin.lat.toFixed(6),
+                origin_lng: origin.lng.toFixed(6),
+                destination_lat: destination.lat.toFixed(6),
+                destination_lng: destination.lng.toFixed(6)
+            });
+
+            if (destinationAirport) {
+                query.set('airport_id', destinationAirport.id);
+                query.set('airport_name', destinationAirport.name);
+            }
+
+            try {
+                history.replaceState(null, '', window.location.pathname + '?' + query.toString());
+            } catch (error) {
+                // URL tidak bisa diubah (mis. konteks terbatas), abaikan
+            }
+
+            copyLinkButton.classList.remove('hidden');
+        }
+
+        copyLinkButton.addEventListener('click', async function () {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                copyLinkButton.textContent = navI18n.linkCopied;
+            } catch (error) {
+                window.prompt(navI18n.copyLink, window.location.href);
+            }
+
+            setTimeout(function () { copyLinkButton.textContent = navI18n.copyLink; }, 2000);
+        });
 
         document.getElementById('find-route').addEventListener('click', findRoute);
 
@@ -879,6 +1394,17 @@ function svgIcon(name, sizeClass) {
 
             origin = null;
             destination = null;
+            destinationAirport = null;
+
+            originSearch.value = '';
+            originResults.classList.add('hidden');
+            copyLinkButton.classList.add('hidden');
+
+            try {
+                history.replaceState(null, '', window.location.pathname);
+            } catch (error) {
+                // abaikan
+            }
 
             airportSearch.value = '';
             airportResults.classList.add('hidden');
@@ -943,6 +1469,7 @@ function svgIcon(name, sizeClass) {
                 const airportName = params.get('airport_name') || navI18n.destinationFallback;
 
                 destination = L.latLng(destinationLat, destinationLng);
+                destinationAirport = null;
 
                 destinationMarker = L.marker(destination).addTo(map).bindPopup(airportName);
 
@@ -951,11 +1478,13 @@ function svgIcon(name, sizeClass) {
                 airportSelected.classList.remove('hidden');
             }
 
-            // Jika dibuka dari tombol rekomendasi, langsung hitung rute.
+            // Jika dibuka dari tombol rekomendasi atau tautan bersama, langsung hitung rute.
             if (origin && destination) {
                 findRoute();
             }
         }
+
+        initializing = false;
 
     });
     </script>

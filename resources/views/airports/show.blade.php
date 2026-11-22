@@ -7,13 +7,15 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
     
     <!-- Open Graph Protocol (Meta Tags Media Sosial / Web Semantik) -->
-    <meta property="og:title" content="{{ $airport['name'] ?? 'Airport Details' }} - AeroSearch" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="Complete information on {{ $airport['name'] ?? '' }} in {{ $airport['municipality'] ?? '-' }}, {{ $airport['iso_country'] ?? '-' }}. ICAO Code: {{ $airport['ident'] ?? '-' }}." />
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:site_name" content="AeroSearch ASEAN" />
+    @include('layouts.og', [
+        'ogTitle' => ($airport['name'] ?? 'Airport Details') . ' - AeroSearch',
+        'ogDescription' => 'Complete information on ' . ($airport['name'] ?? '') . ' in ' . ($airport['municipality'] ?? '-') . ', ' . ($airport['iso_country'] ?? '-') . '. ICAO Code: ' . ($airport['ident'] ?? '-') . '.',
+        'ogType' => 'place',
+        'ogImage' => $semantic['thumbnail'] ?? null,
+    ])
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
@@ -170,6 +172,28 @@
                 </div>
                 @endif
 
+                <!-- Data tambahan dari DBpedia (SPARQL endpoint eksternal) -->
+                @if(!empty($semantic) && (!empty($semantic['abstract']) || !empty($semantic['operator']) || !empty($semantic['opened'])))
+                <div class="bg-white/50 p-4 rounded-2xl border border-white/80 md:col-span-2">
+                    <p class="text-xs font-medium text-slate-500 mb-2">DBpedia &middot; {{ $semantic['source'] }}</p>
+                    @if(!empty($semantic['thumbnail']))
+                        <img src="{{ $semantic['thumbnail'] }}" alt="{{ $airport['name'] ?? '' }}" class="rounded-xl mb-3 max-h-48 object-cover" loading="lazy">
+                    @endif
+                    @if(!empty($semantic['operator']))
+                        <p class="text-sm text-slate-700"><span class="font-semibold">Operator:</span> {{ $semantic['operator'] }}</p>
+                    @endif
+                    @if(!empty($semantic['opened']))
+                        <p class="text-sm text-slate-700"><span class="font-semibold">Opened:</span> {{ $semantic['opened'] }}</p>
+                    @endif
+                    @if(!empty($semantic['abstract']))
+                        <p class="text-sm text-slate-600 mt-2" property="description">{{ \Illuminate\Support\Str::limit($semantic['abstract'], 700) }}</p>
+                    @endif
+                    @if(!empty($semantic['dbpedia']))
+                        <a href="{{ $semantic['dbpedia'] }}" property="sameAs" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-[#7FA8D6] hover:underline mt-2 inline-block">{{ $semantic['dbpedia'] }}</a>
+                    @endif
+                </div>
+                @endif
+
             </div>
 
             <!-- Tombol Kembali di Kanan Bawah -->
@@ -179,10 +203,291 @@
                 </a>
             </div>
         </div>
+
+        <!-- Operasi Real-time: cuaca METAR + pesawat di sekitar bandara -->
+        @php
+            $liveIcao = strtoupper((string) ($airport['icao_code'] ?? $airport['ident'] ?? ''));
+            $liveEnabled = preg_match('/^[A-Z0-9]{3,8}$/', $liveIcao) === 1
+                && is_numeric($airport['latitude_deg'] ?? null)
+                && is_numeric($airport['longitude_deg'] ?? null);
+        @endphp
+
+        @if($liveEnabled)
+        <section id="live-ops" class="mt-8 bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-3xl border-2 border-white shadow-xl">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-xl font-bold text-slate-800">{{ __('messages.live_title') }}</h2>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        LIVE
+                    </span>
+                </div>
+                <p id="live-updated" class="text-xs text-slate-500">{{ __('messages.live_loading') }}</p>
+            </div>
+
+            <!-- Cuaca bandara -->
+            <h3 class="text-sm font-semibold text-slate-500 mb-2">{{ __('messages.live_weather') }}</h3>
+            <div id="live-weather" class="mb-6">
+                <p class="text-sm text-slate-400">{{ __('messages.live_loading') }}</p>
+            </div>
+
+            <!-- Lalu lintas pesawat -->
+            <h3 class="text-sm font-semibold text-slate-500 mb-2">{{ __('messages.live_traffic') }}</h3>
+            <div id="live-counts" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4"></div>
+
+            <div id="live-map" class="rounded-2xl overflow-hidden border border-white/80" style="height: 340px; z-index: 0;"></div>
+
+            <ul id="live-aircraft" class="mt-4 divide-y divide-slate-100 text-sm"></ul>
+            <p id="live-traffic-note" class="text-xs text-slate-400 mt-3"></p>
+
+            <p class="text-xs text-slate-400 mt-4">{{ __('messages.live_sources') }}</p>
+        </section>
+        @endif
     </main>
 
     <!-- Footer -->
     @include('layouts.footer')
+
+    @if($liveEnabled)
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+    (function () {
+        const LIVE_URL = @json(route('airports.live', ['icao' => $liveIcao]));
+        const AIRPORT = { lat: @json((float) $airport['latitude_deg']), lng: @json((float) $airport['longitude_deg']), name: @json($airport['name'] ?? '') };
+        const REFRESH_MS = 30000;
+
+        const t = {
+            updated: @json(__('messages.live_updated')),
+            unavailable: @json(__('messages.live_weather_unavailable')),
+            trafficUnavailable: @json(__('messages.live_traffic_unavailable')),
+            noAircraft: @json(__('messages.live_no_aircraft')),
+            wind: @json(__('messages.live_wind')),
+            calm: @json(__('messages.live_calm')),
+            visibility: @json(__('messages.live_visibility')),
+            clouds: @json(__('messages.live_clouds')),
+            clear: @json(__('messages.live_clear')),
+            temperature: @json(__('messages.live_temperature')),
+            pressure: @json(__('messages.live_pressure')),
+            observed: @json(__('messages.live_observed')),
+            rawMetar: @json(__('messages.live_raw_metar')),
+            ground: @json(__('messages.live_ground')),
+            arriving: @json(__('messages.live_arriving')),
+            departing: @json(__('messages.live_departing')),
+            overflight: @json(__('messages.live_overflight')),
+            total: @json(__('messages.live_total')),
+            altitude: @json(__('messages.live_altitude')),
+            note: @json(__('messages.live_traffic_note')),
+            cat: {
+                VFR: @json(__('messages.live_cat_vfr')),
+                MVFR: @json(__('messages.live_cat_mvfr')),
+                IFR: @json(__('messages.live_cat_ifr')),
+                LIFR: @json(__('messages.live_cat_lifr'))
+            }
+        };
+
+        const CAT_COLORS = { VFR: '#16a34a', MVFR: '#2563eb', IFR: '#dc2626', LIFR: '#9333ea' };
+        const PHASE_COLORS = { ground: '#64748b', arriving: '#f59e0b', departing: '#0ea5e9', overflight: '#7FA8D6' };
+        const COVER = { FEW: 'Few', SCT: 'Scattered', BKN: 'Broken', OVC: 'Overcast', CLR: 'Clear', SKC: 'Clear', NSC: 'Clear', CAVOK: 'CAVOK', VV: 'Vertical vis.' };
+
+        const weatherBox = document.getElementById('live-weather');
+        const countsBox = document.getElementById('live-counts');
+        const listBox = document.getElementById('live-aircraft');
+        const noteBox = document.getElementById('live-traffic-note');
+        const updatedBox = document.getElementById('live-updated');
+
+        // ---- Peta pesawat ----
+        const map = L.map('live-map', { scrollWheelZoom: false }).setView([AIRPORT.lat, AIRPORT.lng], 9);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors', maxZoom: 18
+        }).addTo(map);
+
+        L.marker([AIRPORT.lat, AIRPORT.lng]).addTo(map).bindPopup(AIRPORT.name);
+        L.circle([AIRPORT.lat, AIRPORT.lng], { radius: 40000, color: '#7FA8D6', weight: 1, fill: false, dashArray: '4 6' }).addTo(map);
+
+        const planeLayer = L.layerGroup().addTo(map);
+
+        function planeIcon(plane) {
+            const color = PHASE_COLORS[plane.phase] || PHASE_COLORS.overflight;
+            // Pesawat menghadap ke atas (utara) lalu diputar sesuai arah terbang
+            return L.divIcon({
+                className: '',
+                iconSize: [26, 26],
+                iconAnchor: [13, 13],
+                html: '<svg width="26" height="26" viewBox="0 0 24 24" style="transform: rotate(' + (plane.heading || 0) + 'deg); filter: drop-shadow(0 1px 2px rgba(0,0,0,.45))">' +
+                    '<path fill="' + color + '" stroke="#fff" stroke-width="1" d="M12 2c.8 0 1.4.9 1.4 2v5.2l8.1 4.8v2.2l-8.1-2.3v4.6l2.1 1.6V22L12 20.8 8.5 22v-1.9l2.1-1.6v-4.6L2.5 16.2V14l8.1-4.8V4c0-1.1.6-2 1.4-2z"/></svg>'
+            });
+        }
+
+        // ---- Utilitas tampilan ----
+        function el(tag, className, text) {
+            const node = document.createElement(tag);
+            if (className) node.className = className;
+            if (text !== undefined) node.textContent = text;
+            return node;
+        }
+
+        function tile(label, value, sub) {
+            const box = el('div', 'bg-white/60 border border-white/80 rounded-2xl p-3');
+            box.appendChild(el('p', 'text-xs text-slate-500', label));
+            box.appendChild(el('p', 'text-lg font-bold text-slate-800 mt-0.5', value));
+            if (sub) box.appendChild(el('p', 'text-xs text-slate-400 mt-0.5', sub));
+            return box;
+        }
+
+        function formatCardinal(deg) {
+            const names = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+            return names[Math.round(deg / 45) % 8];
+        }
+
+        function renderWeather(weather) {
+            weatherBox.innerHTML = '';
+
+            if (!weather) {
+                weatherBox.appendChild(el('p', 'text-sm text-slate-400', t.unavailable));
+                return;
+            }
+
+            const category = weather.flight_category;
+            const grid = el('div', 'grid grid-cols-2 md:grid-cols-4 gap-3');
+
+            const catBox = el('div', 'rounded-2xl p-3 text-white');
+            catBox.style.backgroundColor = CAT_COLORS[category] || '#64748b';
+            catBox.appendChild(el('p', 'text-xs opacity-90', 'Flight category'));
+            catBox.appendChild(el('p', 'text-lg font-bold mt-0.5', category || '-'));
+            catBox.appendChild(el('p', 'text-xs opacity-90 mt-0.5', t.cat[category] || ''));
+            grid.appendChild(catBox);
+
+            const windText = weather.wind_speed_kt === null || weather.wind_speed_kt === 0
+                ? t.calm
+                : (weather.wind_direction !== null ? formatCardinal(weather.wind_direction) + ' ' + weather.wind_direction + '\u00b0 ' : '') +
+                  weather.wind_speed_kt + ' kt';
+            const windSub = weather.wind_speed_kt
+                ? '\u2248 ' + Math.round(weather.wind_speed_kt * 1.852) + ' km/j' + (weather.wind_gust_kt ? ' \u2022 gust ' + weather.wind_gust_kt + ' kt' : '')
+                : '';
+            grid.appendChild(tile(t.wind, windText, windSub));
+
+            grid.appendChild(tile(
+                t.visibility,
+                weather.visibility_km === null ? '-' : (weather.visibility_is_min ? '\u2265 ' : '') + weather.visibility_km + ' km'
+            ));
+
+            grid.appendChild(tile(
+                t.temperature,
+                weather.temperature_c === null ? '-' : weather.temperature_c + '\u00b0C',
+                weather.dewpoint_c === null ? '' : 'Dew point ' + weather.dewpoint_c + '\u00b0C'
+            ));
+
+            const cloudText = weather.clouds && weather.clouds.length
+                ? weather.clouds.map(function (layer) {
+                    return (COVER[layer.cover] || layer.cover) + (layer.base_ft ? ' ' + layer.base_ft.toLocaleString() + ' ft' : '');
+                }).join(', ')
+                : t.clear;
+            const cloudBox = tile(t.clouds, cloudText, weather.ceiling_ft ? 'Ceiling ' + weather.ceiling_ft.toLocaleString() + ' ft' : '');
+            cloudBox.className += ' col-span-2';
+            grid.appendChild(cloudBox);
+
+            grid.appendChild(tile(t.pressure, weather.pressure_hpa === null ? '-' : weather.pressure_hpa + ' hPa'));
+
+            const observed = weather.observed_at
+                ? new Date(weather.observed_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                : '-';
+            grid.appendChild(tile(t.observed, observed));
+
+            weatherBox.appendChild(grid);
+
+            if (weather.raw) {
+                const details = el('details', 'mt-3');
+                details.appendChild(el('summary', 'text-xs text-slate-500 cursor-pointer', t.rawMetar));
+                details.appendChild(el('code', 'block mt-2 text-xs bg-slate-800 text-emerald-300 rounded-xl p-3 break-words', weather.raw));
+                weatherBox.appendChild(details);
+            }
+        }
+
+        function renderTraffic(traffic) {
+            countsBox.innerHTML = '';
+            listBox.innerHTML = '';
+            planeLayer.clearLayers();
+
+            if (!traffic) {
+                noteBox.textContent = t.trafficUnavailable;
+                return;
+            }
+
+            const counts = traffic.counts;
+            [['total', t.total, '#334155'], ['arriving', t.arriving, PHASE_COLORS.arriving],
+             ['departing', t.departing, PHASE_COLORS.departing], ['ground', t.ground, PHASE_COLORS.ground]]
+                .forEach(function (item) {
+                    const box = tile(item[1], String(counts[item[0]]));
+                    box.firstChild.style.color = item[2];
+                    box.firstChild.style.fontWeight = '600';
+                    countsBox.appendChild(box);
+                });
+
+            if (!traffic.aircraft.length) {
+                listBox.appendChild(el('li', 'py-3 text-slate-400', t.noAircraft));
+            }
+
+            traffic.aircraft.forEach(function (plane, index) {
+                const label = plane.callsign + ' \u2022 ' + t[plane.phase] +
+                    (plane.altitude_m !== null ? ' \u2022 ' + plane.altitude_m.toLocaleString() + ' m' : '') +
+                    (plane.speed_kmh !== null ? ' \u2022 ' + plane.speed_kmh + ' km/j' : '');
+
+                L.marker([plane.lat, plane.lng], { icon: planeIcon(plane), zIndexOffset: 500 })
+                    .bindTooltip(label)
+                    .addTo(planeLayer);
+
+                if (index < 8) {
+                    const row = el('li', 'py-2 flex items-center justify-between gap-3');
+                    const left = el('div', 'flex items-center gap-2 min-w-0');
+                    const dot = el('span', 'w-2.5 h-2.5 rounded-full shrink-0');
+                    dot.style.backgroundColor = PHASE_COLORS[plane.phase];
+                    left.appendChild(dot);
+                    left.appendChild(el('span', 'font-semibold text-slate-700 truncate', plane.callsign));
+                    left.appendChild(el('span', 'text-xs text-slate-400 truncate', plane.country || ''));
+
+                    const right = el('span', 'text-xs text-slate-500 shrink-0',
+                        t[plane.phase] + (plane.altitude_m !== null ? ' \u2022 ' + plane.altitude_m.toLocaleString() + ' m' : '') +
+                        ' \u2022 ' + plane.distance_km + ' km');
+
+                    row.appendChild(left);
+                    row.appendChild(right);
+                    listBox.appendChild(row);
+                }
+            });
+
+            noteBox.textContent = t.note;
+        }
+
+        async function refresh() {
+            try {
+                const response = await fetch(LIVE_URL, { headers: { 'Accept': 'application/json' } });
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+
+                const data = await response.json();
+
+                renderWeather(data.weather);
+                renderTraffic(data.traffic);
+                updatedBox.textContent = t.updated + ' ' +
+                    new Date(data.updated_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            } catch (error) {
+                updatedBox.textContent = t.unavailable;
+            }
+        }
+
+        refresh();
+        setInterval(function () {
+            if (!document.hidden) refresh();
+        }, REFRESH_MS);
+
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden) refresh();
+        });
+    })();
+    </script>
+    @endif
 
 </body>
 </html>
