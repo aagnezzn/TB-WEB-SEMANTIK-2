@@ -144,4 +144,44 @@ class AirportSearchTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Kualanamu International Airport');
     }
+
+    /**
+     * Memastikan typo seperti "kualamanu" terdeteksi kemiripannya dan menampilkan saran "Kualanamu".
+     */
+    public function test_search_typo_suggests_kualanamu(): void
+    {
+        $response = $this->get('/?search=kualamanu');
+
+        $response->assertStatus(200);
+        $response->assertSee('Apakah maksud Anda:');
+        $response->assertSee('Kualanamu');
+        $response->assertSee('search=Kualanamu');
+        $response->assertSee('Kualanamu International Airport');
+    }
+
+    /**
+     * Memastikan pesan saran typo mendukung mode bilingual Bahasa Inggris.
+     */
+    public function test_search_typo_suggests_bilingual_english(): void
+    {
+        $response = $this->withSession(['locale' => 'en'])->get('/?search=kualamanu');
+
+        $response->assertStatus(200);
+        $response->assertSee('Did you mean:');
+        $response->assertSee('Kualanamu');
+        $response->assertSee('search=Kualanamu');
+        $response->assertSee('Kualanamu International Airport');
+    }
+
+    /**
+     * Memastikan tampilan hasil deteksi typo bebas dari emotikon / emoji.
+     */
+    public function test_no_emojis_in_typo_suggestion_view(): void
+    {
+        $response = $this->get('/?search=kualamanu');
+        $content = $response->getContent();
+
+        $hasEmoji = preg_match('/[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{1F1E0}-\x{1F1FF}]/u', $content);
+        $this->assertEquals(0, $hasEmoji, 'View saran typo tidak boleh mengandung emoji.');
+    }
 }

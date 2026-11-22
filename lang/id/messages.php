@@ -299,4 +299,8 @@ return [
     'directory_showing_count' => 'Menampilkan :count bandara',
     'directory_filter_type' => 'tipe',
     'directory_filter_country' => 'negara',
+
+    // Saran Typo Pencarian
+    'search_did_you_mean' => 'Apakah maksud Anda:',
+    'search_suggested_results' => 'Rekomendasi bandara yang mungkin Anda cari:',
 ];

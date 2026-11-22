@@ -137,6 +137,9 @@ class AirportController extends Controller
                 && $airport['longitude_deg'] <= 180;
         }));
 
+        $suggestion = null;
+        $suggestedAirports = [];
+
         if ($search !== null) {
             $searchLower = mb_strtolower($search);
             $mappedTerms = self::ISO_MAPPING[$searchLower] ?? [];
@@ -181,9 +184,144 @@ class AirportController extends Controller
 
                 return false;
             }));
+
+            // Deteksi saran typo jika pencarian persis/substring tidak menghasilkan data
+            if (empty($airports)) {
+                $suggestion = $this->findTypoSuggestion($search, $all->all());
+
+                if ($suggestion !== null) {
+                    $suggLower = mb_strtolower($suggestion['term']);
+                    $suggTerms = self::ISO_MAPPING[$suggLower] ?? [];
+
+                    $suggestedAirports = array_values(array_filter($all->all(), function ($airport) use ($suggLower, $suggTerms) {
+                        $name         = mb_strtolower($airport['name'] ?? '');
+                        $municipality = mb_strtolower($airport['municipality'] ?? '');
+                        $isoCountry   = mb_strtolower($airport['iso_country'] ?? '');
+                        $ident        = mb_strtolower($airport['ident'] ?? '');
+                        $iata         = mb_strtolower($airport['iata_code'] ?? '');
+                        $icao         = mb_strtolower($airport['icao_code'] ?? '');
+
+                        if (
+                            str_contains($name, $suggLower)
+                            || str_contains($municipality, $suggLower)
+                            || str_contains($ident, $suggLower)
+                            || str_contains($iata, $suggLower)
+                            || str_contains($icao, $suggLower)
+                        ) {
+                            return true;
+                        }
+
+                        foreach ($suggTerms as $term) {
+                            if ($isoCountry === $term || str_contains($isoCountry, $term)) {
+                                return true;
+                            }
+                        }
+
+                        return false;
+                    }));
+                }
+            }
         }
 
-        return view('welcome', compact('airports', 'search', 'mapAirports', 'stats', 'featured'));
+        return view('welcome', compact('airports', 'search', 'mapAirports', 'stats', 'featured', 'suggestion', 'suggestedAirports'));
+    }
+
+    /**
+     * Mendeteksi saran koreksi typo berdasarkan nama bandara, kota/municipality, atau negara.
+     * Menggunakan algoritma levenshtein() dan similar_text().
+     */
+    private function findTypoSuggestion(string $search, array $allAirports): ?array
+    {
+        $query = mb_strtolower(trim($search));
+        $queryLen = mb_strlen($query);
+
+        if ($queryLen < 3) {
+            return null;
+        }
+
+        // Kumpulan kandidat kata unik dari nama bandara, kota, dan negara
+        $candidates = [];
+
+        // 1. Nama negara dan variasinya
+        foreach (self::ISO_MAPPING as $countryKey => $aliases) {
+            if (is_string($countryKey) && strlen($countryKey) >= 3) {
+                $candidates[$countryKey] = ucwords($countryKey);
+            }
+            foreach ($aliases as $alias) {
+                if (strlen($alias) >= 3) {
+                    $candidates[$alias] = ucwords($alias);
+                }
+            }
+        }
+
+        // 2. Kota / municipality dan kata signifikan dari nama bandara
+        $stopWords = [
+            'airport', 'international', 'bandara', 'internasional',
+            'aerodrome', 'airfield', 'domestic', 'the', 'and', 'of',
+            'dan', 'lapangan', 'terbang'
+        ];
+
+        foreach ($allAirports as $airport) {
+            if (!empty($airport['municipality'])) {
+                $muni = trim($airport['municipality']);
+                $candidates[mb_strtolower($muni)] = $muni;
+            }
+
+            if (!empty($airport['name'])) {
+                $words = preg_split('/[\s,\.\-\(\)\/]+/u', $airport['name'], -1, PREG_SPLIT_NO_EMPTY);
+                foreach ($words as $word) {
+                    $wLower = mb_strtolower($word);
+                    if (mb_strlen($wLower) >= 3 && !in_array($wLower, $stopWords, true)) {
+                        $candidates[$wLower] = $word;
+                    }
+                }
+            }
+        }
+
+        $bestDisplay = null;
+        $bestDist    = 999;
+        $bestSim     = 0;
+
+        foreach ($candidates as $termLower => $display) {
+            if ($termLower === $query) {
+                continue;
+            }
+
+            $dist = levenshtein($query, $termLower);
+            similar_text($query, $termLower, $percent);
+
+            // Toleransi jarak edit berdasarkan panjang karakter
+            $maxAllowedDist = match (true) {
+                $queryLen <= 4 => 1,
+                $queryLen <= 7 => 2,
+                default        => 3,
+            };
+
+            $minAllowedSim = match (true) {
+                $queryLen <= 4 => 75.0,
+                $queryLen <= 7 => 68.0,
+                default        => 65.0,
+            };
+
+            if ($dist <= $maxAllowedDist && $percent >= $minAllowedSim) {
+                if ($dist < $bestDist || ($dist === $bestDist && $percent > $bestSim)) {
+                    $bestDist    = $dist;
+                    $bestSim     = $percent;
+                    $bestDisplay = $display;
+                }
+            }
+        }
+
+        if ($bestDisplay !== null) {
+            return [
+                'term'       => $bestDisplay,
+                'display'    => $bestDisplay,
+                'distance'   => $bestDist,
+                'similarity' => round($bestSim, 1),
+            ];
+        }
+
+        return null;
     }
 
     // ------------------------------------------------------------------

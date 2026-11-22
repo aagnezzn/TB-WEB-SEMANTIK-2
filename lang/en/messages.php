@@ -299,4 +299,8 @@ return [
     'directory_showing_count' => 'Showing :count airports',
     'directory_filter_type' => 'type',
     'directory_filter_country' => 'country',
+
+    // Search Typo Suggestion
+    'search_did_you_mean' => 'Did you mean:',
+    'search_suggested_results' => 'Recommended airports you might be looking for:',
 ];

@@ -52,6 +52,21 @@ body::before {
             </button>
         </form>
 
+        <!-- Pesan Saran Typo di Bawah Search Form -->
+        @if(!empty($suggestion))
+            <div class="mt-4 px-5 py-3 bg-white/95 backdrop-blur-md border border-amber-300 rounded-2xl shadow-md text-sm text-slate-700 flex items-center gap-2 max-w-3xl w-full justify-center transition-all">
+                <svg class="w-5 h-5 text-amber-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>
+                    {{ __('messages.search_did_you_mean') }}
+                    <a href="{{ route('home', ['search' => $suggestion['term']]) }}" class="font-bold text-[#7FA8D6] hover:text-sky-700 underline ml-1">
+                        {{ $suggestion['display'] }}
+                    </a>?
+                </span>
+            </div>
+        @endif
+
         <!-- Sugesti / Kategori Pencarian yang Berfungsi -->
         <div class="flex flex-wrap justify-center gap-3 mt-6 text-sm items-center">
             <span class="text-slate-500 font-medium py-1">{{ __('messages.welcome_cat_all') }}:</span>
@@ -115,10 +130,72 @@ body::before {
                         </a>
                 </div>
             @empty
-                <div class="col-span-2 text-center py-12 bg-white/60 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg">
-                    <p class="text-slate-500 text-lg">{{ __('messages.welcome_no_airports_found') }}</p>
+                <div class="col-span-2 text-center py-12 bg-white/60 backdrop-blur-md rounded-3xl border-2 border-white shadow-lg px-6">
+                    <p class="text-slate-600 text-lg font-medium mb-2">{{ __('messages.welcome_no_airports_found') }}</p>
+
+                    @if(!empty($suggestion))
+                        <div class="inline-flex items-center gap-2 mt-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-xl text-slate-700 text-sm">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>{{ __('messages.search_did_you_mean') }}</span>
+                            <a href="{{ route('home', ['search' => $suggestion['term']]) }}" class="font-bold text-[#7FA8D6] hover:text-sky-700 underline">
+                                {{ $suggestion['display'] }}
+                            </a>?
+                        </div>
+                    @else
+                        <p class="text-xs text-slate-400 mt-1">{{ __('messages.welcome_try_other_keywords') }}</p>
+                    @endif
                 </div>
             @endforelse
+        </div>
+
+        @if(count($airports) === 0 && !empty($suggestedAirports))
+        <div class="mt-10">
+            <div class="mb-4">
+                <h3 class="text-lg font-bold text-slate-700 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    <span>{{ __('messages.search_suggested_results') }}</span>
+                    <a href="{{ route('home', ['search' => $suggestion['term']]) }}" class="text-[#7FA8D6] underline text-sm font-semibold hover:text-sky-700 ml-1">
+                        "{{ $suggestion['display'] }}"
+                    </a>
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                @foreach($suggestedAirports as $airport)
+                    <div class="bg-white/80 backdrop-blur-md p-6 rounded-3xl border-2 border-amber-200/60 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-amber-100 text-amber-700 rounded-full mb-3 inline-block">
+                                {{ $airport['type'] ?? 'Airport' }}
+                            </span>
+                            <h4 class="text-xl font-bold text-slate-800 mb-2">{{ $airport['name'] }}</h4>
+                            <p class="text-sm text-slate-600 mb-1 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-rose-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>{{ $airport['municipality'] ?? '-' }}, {{ $airport['iso_country'] ?? '-' }}</span>
+                            </p>
+                            <p class="text-sm text-slate-500 mb-4 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-sky-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                                <span>ICAO / IATA: {{ $airport['ident'] ?? $airport['icao_code'] ?? '-' }} / {{ $airport['iata_code'] ?? '-' }}</span>
+                            </p>
+                        </div>
+                        <a href="{{ route('airports.show', $airport['ident'] ?? $airport['icao_code'] ?? $airport['iata_code'] ?? $airport['airport_id'] ?? $airport['id'] ?? 0) }}" 
+                           class="px-4 py-3 bg-[#7FA8D6] text-white text-xs font-semibold rounded-xl hover:bg-sky-600 transition-colors shadow-sm inline-flex items-center gap-1.5 self-start">
+                            <span>{{ __('messages.welcome_view_details') }}</span>
+                            <span>&rarr;</span>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        @endif
         </div>
     </section>
     @endif
