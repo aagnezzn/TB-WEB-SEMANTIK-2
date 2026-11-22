@@ -386,13 +386,20 @@ class ChatbotNlpService
     public function formatIslandAirports(string $island, array $airports, int $limit = 20): string
     {
         $total = count($airports);
+        $isEn = $this->isEnglish();
 
         if ($total === 0) {
-            return "Belum ada data bandara di {$island} pada dataset AeroFind.";
+            return $isEn
+                ? "No airport data found in {$island} in the AeroFind dataset."
+                : "Belum ada data bandara di {$island} pada dataset AeroFind.";
         }
 
-        $reply = "BANDARA DI " . mb_strtoupper($island) . "\n\n";
-        $reply .= "Terdapat {$total} bandara di {$island}" . ($total > $limit ? ", berikut {$limit} pertama:" : ":") . "\n\n";
+        $reply = ($isEn ? "AIRPORTS IN " : "BANDARA DI ") . mb_strtoupper($island) . "\n\n";
+        if ($isEn) {
+            $reply .= "There are {$total} airports in {$island}" . ($total > $limit ? ", here are the first {$limit}:" : ":") . "\n\n";
+        } else {
+            $reply .= "Terdapat {$total} bandara di {$island}" . ($total > $limit ? ", berikut {$limit} pertama:" : ":") . "\n\n";
+        }
 
         foreach (array_slice($airports, 0, $limit) as $index => $airport) {
             $iata = $airport['iata'] ?: '-';
@@ -400,8 +407,13 @@ class ChatbotNlpService
             $reply .= ($index + 1) . ". {$airport['name']} (IATA: {$iata}) - {$loc}\n";
         }
 
-        $reply .= "\nKamu dapat menanyakan profil salah satu bandara di atas, contohnya: 'Profil {$airports[0]['name']}'.\n";
-        $reply .= "Sumber data: Dataset RDF AeroFind (properti af:island) melalui Apache Jena Fuseki.";
+        if ($isEn) {
+            $reply .= "\nYou can ask about the profile of one of the airports above, for example: 'Profile {$airports[0]['name']}'.\n";
+            $reply .= "Data source: AeroFind RDF Dataset (af:island property) via Apache Jena Fuseki.";
+        } else {
+            $reply .= "\nKamu dapat menanyakan profil salah satu bandara di atas, contohnya: 'Profil {$airports[0]['name']}'.\n";
+            $reply .= "Sumber data: Dataset RDF AeroFind (properti af:island) melalui Apache Jena Fuseki.";
+        }
 
         return $reply;
     }
@@ -620,31 +632,37 @@ class ChatbotNlpService
         $hasNearbyKeyword = $this->containsAny($normalizedMessage, [
             'dekat', 'terdekat', 'paling dekat', 'rekomendasi', 'rekomendasikan',
             'mana bandara', 'ada bandara apa', 'bandara daerah', 'bandara sekitar',
-            'bandara di', 'bandara dekat', 'yang dekat', 'yang terdekat'
+            'bandara di', 'bandara dekat', 'yang dekat', 'yang terdekat',
+            'near', 'nearest', 'closest', 'nearby', 'recommendation', 'recommended', 'airports near'
         ]);
 
         $hasProfileKeyword = $this->containsAny($normalizedMessage, [
             'profil', 'profile', 'informasi', 'info', 'detail', 'data', 'tentang',
             'spesifikasi', 'kode iata', 'kode icao', 'operator', 'elevasi', 'landasan',
-            'fasilitas', 'panjang runaway', 'runway', 'layanan terjadwal', 'status layanan'
+            'fasilitas', 'panjang runaway', 'runway', 'layanan terjadwal', 'status layanan',
+            'tell me about', 'details about', 'information about', 'info about', 'elevation', 'scheduled service'
         ]);
 
         $hasCountKeyword = $this->containsAny($normalizedMessage, [
-            'berapa jumlah', 'berapa banyak', 'total bandara', 'jumlah bandara'
+            'berapa jumlah', 'berapa banyak', 'total bandara', 'jumlah bandara',
+            'how many', 'total airports', 'number of airports', 'count of airports'
         ]);
 
         $hasListKeyword = $this->containsAny($normalizedMessage, [
             'daftar bandara', 'semua bandara', 'seluruh bandara', 'list bandara',
-            'bandara di indonesia', 'bandara indonesia'
+            'bandara di indonesia', 'bandara indonesia',
+            'airport list', 'airports list', 'all airports', 'airports in'
         ]);
 
         $hasGreetingKeyword = $this->containsAny($normalizedMessage, [
             'halo', 'hai', 'hello', 'selamat pagi', 'selamat siang', 'selamat sore',
-            'selamat malam', 'siapa kamu', 'apa itu aerofind', 'apa itu aerobot', 'kamu siapa'
+            'selamat malam', 'siapa kamu', 'apa itu aerofind', 'apa itu aerobot', 'kamu siapa',
+            'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'who are you'
         ]);
 
         $hasHelpKeyword = $this->containsAny($normalizedMessage, [
-            'bisa apa', 'fitur', 'fungsi', 'cara pakai', 'cara kerja', 'bantuan', 'help'
+            'bisa apa', 'fitur', 'fungsi', 'cara pakai', 'cara kerja', 'bantuan', 'help',
+            'what can you do', 'how to use', 'features'
         ]);
 
         $hasTypeKeyword = $this->extractAirportTypeEntity($normalizedMessage) !== null;
@@ -724,43 +742,52 @@ class ChatbotNlpService
      */
     public function formatNearestAirports(Region $region, Collection $airports): string
     {
+        $isEn = $this->isEnglish();
+
         if ($airports->isEmpty()) {
-            return "Maaf, belum ditemukan data bandara dengan koordinat aktif di sekitar wilayah {$region->region_name}. Kamu dapat mencoba mencari nama kota atau kabupaten lain.";
+            return $isEn
+                ? "Sorry, no active airport data with coordinates found around {$region->region_name}. You can try searching for another city or municipality."
+                : "Maaf, belum ditemukan data bandara dengan koordinat aktif di sekitar wilayah {$region->region_name}. Kamu dapat mencoba mencari nama kota atau kabupaten lain.";
         }
 
         $regionTitle = $region->region_name;
         $lat = number_format((float) $region->latitude, 4);
         $lng = number_format((float) $region->longitude, 4);
 
-        $reply = "Berikut 5 bandara terdekat dari wilayah {$regionTitle} (koordinat: {$lat}, {$lng}):\n\n";
+        $reply = $isEn
+            ? "Here are 5 nearest airports from {$regionTitle} (coordinates: {$lat}, {$lng}):\n\n"
+            : "Berikut 5 bandara terdekat dari wilayah {$regionTitle} (koordinat: {$lat}, {$lng}):\n\n";
 
         foreach ($airports as $index => $airport) {
             $num = $index + 1;
             $dist = number_format((float) $airport->distance_km, 2, ',', '.');
             $iata = $airport->iata_code ?: '-';
             $icao = $airport->icao_code ?: '-';
-            $loc = $airport->municipality ?: 'Sekitar wilayah';
+            $loc = $airport->municipality ?: ($isEn ? 'Around region' : 'Sekitar wilayah');
 
             $reply .= "{$num}. {$airport->name}\n";
-            $reply .= "   - Lokasi: {$loc}\n";
-            $reply .= "   - Kode IATA / ICAO: {$iata} / {$icao}\n";
-            $reply .= "   - Jarak perkiraan: {$dist} km\n\n";
+            $reply .= $isEn ? "   - Location: {$loc}\n" : "   - Lokasi: {$loc}\n";
+            $reply .= $isEn ? "   - IATA / ICAO Code: {$iata} / {$icao}\n" : "   - Kode IATA / ICAO: {$iata} / {$icao}\n";
+            $reply .= $isEn ? "   - Estimated distance: {$dist} km\n\n" : "   - Jarak perkiraan: {$dist} km\n\n";
         }
 
-        $reply .= "Catatan: Jarak dihitung garis lurus menggunakan rumus Haversine dari titik pusat wilayah {$regionTitle}.\n\n";
-        $reply .= "Apakah kamu ingin melihat profil lengkap salah satu bandara di atas?";
+        $reply .= $isEn
+            ? "Note: Distance is calculated straight-line using the Haversine formula from {$regionTitle} center point.\n\nWould you like to see the complete profile of one of the airports above?"
+            : "Catatan: Jarak dihitung garis lurus menggunakan rumus Haversine dari titik pusat wilayah {$regionTitle}.\n\nApakah kamu ingin melihat profil lengkap salah satu bandara di atas?";
 
         return $reply;
     }
 
     /**
-- Format respon profil bandara dari Fuseki RDF / DBpedia.
+     * - Format respon profil bandara dari Fuseki RDF / DBpedia.
      *
-- @param array<string, mixed> $airport
+     * @param array<string, mixed> $airport
      */
     public function formatAirportProfile(array $airport): string
     {
-        $get = fn ($key) => $airport[$key]['value'] ?? ($airport[$key] ?? 'Tidak tersedia');
+        $isEn = $this->isEnglish();
+        $notAvail = $isEn ? 'Not available' : 'Tidak tersedia';
+        $get = fn ($key) => $airport[$key]['value'] ?? ($airport[$key] ?? $notAvail);
 
         $name = $get('name');
         $iata = $get('iataCode') ?: '-';
@@ -773,53 +800,70 @@ class ChatbotNlpService
         $operator = $get('operator');
         $service = $get('scheduledService');
 
-        $reply = "Berikut informasi detail mengenai bandara {$name} dari dataset RDF AeroFind:\n\n";
-        $reply .= "- Nama Resmi: {$name}\n";
-        $reply .= "- Kode IATA: {$iata}\n";
-        $reply .= "- Kode ICAO: {$icao}\n";
-        $reply .= "- Kota/Kabupaten: {$city} ({$country})\n";
+        $reply = $isEn
+            ? "Here is detailed information regarding {$name} airport from the AeroFind RDF dataset:\n\n"
+            : "Berikut informasi detail mengenai bandara {$name} dari dataset RDF AeroFind:\n\n";
 
-        if ($lat !== 'Tidak tersedia' && $lng !== 'Tidak tersedia') {
-            $reply .= "- Koordinat: {$lat}, {$lng}\n";
+        $reply .= ($isEn ? "- Official Name: " : "- Nama Resmi: ") . "{$name}\n";
+        $reply .= ($isEn ? "- IATA Code: " : "- Kode IATA: ") . "{$iata}\n";
+        $reply .= ($isEn ? "- ICAO Code: " : "- Kode ICAO: ") . "{$icao}\n";
+        $reply .= ($isEn ? "- City/Municipality: " : "- Kota/Kabupaten: ") . "{$city} ({$country})\n";
+
+        if ($lat !== $notAvail && $lng !== $notAvail) {
+            $reply .= ($isEn ? "- Coordinates: " : "- Koordinat: ") . "{$lat}, {$lng}\n";
         }
 
-        if ($elevation !== 'Tidak tersedia') {
-            $reply .= "- Elevasi: {$elevation} kaki dpl\n";
+        if ($elevation !== $notAvail) {
+            $reply .= ($isEn ? "- Elevation: {$elevation} ft ASL\n" : "- Elevasi: {$elevation} kaki dpl\n");
         }
 
-        if ($operator !== 'Tidak tersedia') {
+        if ($operator !== $notAvail) {
             $reply .= "- Operator (DBpedia): {$operator}\n";
         }
 
-        $statusLayanan = ($service === 'yes' || $service === 'Yes') ? 'Aktif melayani penerbangan berjadwal' : 'Non-terjadwal / charter';
-        $reply .= "- Layanan Terjadwal: {$statusLayanan}\n\n";
-
-        $reply .= "Sumber data: Dataset RDF AeroFind melalui Apache Jena Fuseki dan DBpedia.\n";
-        $reply .= "Ada informasi lain tentang bandara ini yang ingin kamu ketahui?";
+        if ($isEn) {
+            $statusLayanan = ($service === 'yes' || $service === 'Yes') ? 'Active scheduled flights' : 'Non-scheduled / charter';
+            $reply .= "- Scheduled Service: {$statusLayanan}\n\n";
+            $reply .= "Data source: AeroFind RDF dataset via Apache Jena Fuseki and DBpedia.\n";
+            $reply .= "Is there any other information about this airport you would like to know?";
+        } else {
+            $statusLayanan = ($service === 'yes' || $service === 'Yes') ? 'Aktif melayani penerbangan berjadwal' : 'Non-terjadwal / charter';
+            $reply .= "- Layanan Terjadwal: {$statusLayanan}\n\n";
+            $reply .= "Sumber data: Dataset RDF AeroFind melalui Apache Jena Fuseki dan DBpedia.\n";
+            $reply .= "Ada informasi lain tentang bandara ini yang ingin kamu ketahui?";
+        }
 
         return $reply;
     }
 
     /**
-- Respon jumlah bandara di Indonesia.
+     * - Respon jumlah bandara di Indonesia.
      */
     public function formatIndonesiaCount(string $total): string
     {
-        return "Berdasarkan dataset RDF AeroFind, terdapat {$total} data bandara di Indonesia.\n\nKamu dapat menanyakan bandara terdekat dari kotamu atau melihat profil salah satu bandara.";
+        $isEn = $this->isEnglish();
+        return $isEn
+            ? "Based on the AeroFind RDF dataset, there are {$total} airports in Indonesia.\n\nYou can ask for the nearest airport from your city or view a profile of an airport."
+            : "Berdasarkan dataset RDF AeroFind, terdapat {$total} data bandara di Indonesia.\n\nKamu dapat menanyakan bandara terdekat dari kotamu atau melihat profil salah satu bandara.";
     }
 
     /**
-- Respon daftar contoh bandara di Indonesia.
+     * - Respon daftar contoh bandara di Indonesia.
      *
-- @param array<int, mixed> $bindings
+     * @param array<int, mixed> $bindings
      */
     public function formatIndonesiaList(array $bindings): string
     {
+        $isEn = $this->isEnglish();
         if (empty($bindings)) {
-            return "Belum ditemukan data bandara Indonesia pada dataset RDF AeroFind.";
+            return $isEn
+                ? "No Indonesian airport data found in the AeroFind RDF dataset."
+                : "Belum ditemukan data bandara Indonesia pada dataset RDF AeroFind.";
         }
 
-        $reply = "Berikut beberapa bandara di Indonesia berdasarkan dataset RDF AeroFind:\n\n";
+        $reply = $isEn
+            ? "Here are some airports in Indonesia based on the AeroFind RDF dataset:\n\n"
+            : "Berikut beberapa bandara di Indonesia berdasarkan dataset RDF AeroFind:\n\n";
 
         foreach ($bindings as $index => $item) {
             $num = $index + 1;
@@ -827,35 +871,56 @@ class ChatbotNlpService
             $iata = $item['iataCode']['value'] ?? '-';
             $loc = $item['municipality']['value'] ?? '-';
 
-            $reply .= "{$num}. {$name} (IATA: {$iata}) - Lokasi: {$loc}\n";
+            $reply .= $isEn
+                ? "{$num}. {$name} (IATA: {$iata}) - Location: {$loc}\n"
+                : "{$num}. {$name} (IATA: {$iata}) - Lokasi: {$loc}\n";
         }
 
-        $reply .= "\nKamu dapat menanyakan profil bandara di atas, contohnya: 'Profil {$bindings[0]['name']['value']}' atau 'Bandara terdekat dari Medan'.";
+        $reply .= $isEn
+            ? "\nYou can ask for the profile of the airports above, for example: 'Profile {$bindings[0]['name']['value']}' or 'Airports near Medan'."
+            : "\nKamu dapat menanyakan profil bandara di atas, contohnya: 'Profil {$bindings[0]['name']['value']}' atau 'Bandara terdekat dari Medan'.";
 
         return $reply;
     }
 
     /**
-- Respon ramah jika wilayah tidak terdeteksi dari kalimat pengguna.
+     * - Respon ramah jika wilayah tidak terdeteksi dari kalimat pengguna.
      */
     public function formatMissingRegionPrompt(): string
     {
-        return "Kamu ingin mencari bandara di daerah mana? Silakan sebutkan nama kota atau kabupaten yang kamu tuju, contohnya:\n- 'Bandara dekat Medan'\n- 'Bandara yang dekat Deli Serdang'\n- 'Rekomendasi bandara di Bandung'";
+        $isEn = app()->getLocale() === 'en';
+        return $isEn
+            ? "Which region are you looking for airports in? Please specify the name of the city or municipality, for example:\n- 'Airports near Medan'\n- 'Airports near Deli Serdang'\n- 'Recommended airports in Bandung'"
+            : "Kamu ingin mencari bandara di daerah mana? Silakan sebutkan nama kota atau kabupaten yang kamu tuju, contohnya:\n- 'Bandara dekat Medan'\n- 'Bandara yang dekat Deli Serdang'\n- 'Rekomendasi bandara di Bandung'";
     }
 
     /**
-- Respon sapaan bersahabat dan on-point.
+     * - Respon sapaan bersahabat dan on-point.
      */
     public function formatGreeting(): string
     {
-        return "Halo! Saya AeroBot, asisten virtual AeroFind. Saya dapat membantu kamu mencari informasi profil bandara, daftar bandara, dan rekomendasi bandara terdekat berdasarkan kota atau kabupaten di Asia Tenggara.\n\nKamu bisa bertanya dengan bahasa sehari-hari, misalnya:\n- 'Bandara yang dekat Medan apa saja?'\n- 'Profil bandara Kualanamu'\n- 'Berapa jumlah bandara di Indonesia?'\n\nAda yang bisa saya bantu untuk kamu hari ini?";
+        $isEn = app()->getLocale() === 'en';
+        return $isEn
+            ? "Hello! I am AeroBot, virtual assistant of AeroFind. I can help you find airport profile information, airport lists, and nearby airport recommendations based on cities or municipalities in Southeast Asia.\n\nYou can ask using everyday language, for example:\n- 'What are the airports near Medan?'\n- 'Kualanamu airport profile'\n- 'How many airports in Indonesia?'\n\nHow can I help you today?"
+            : "Halo! Saya AeroBot, asisten virtual AeroFind. Saya dapat membantu kamu mencari informasi profil bandara, daftar bandara, dan rekomendasi bandara terdekat berdasarkan kota atau kabupaten di Asia Tenggara.\n\nKamu bisa bertanya dengan bahasa sehari-hari, misalnya:\n- 'Bandara yang dekat Medan apa saja?'\n- 'Profil bandara Kualanamu'\n- 'Berapa jumlah bandara di Indonesia?'\n\nAda yang bisa saya bantu untuk kamu hari ini?";
     }
 
     /**
-- Respon bantuan fitur aplikasi.
+     * - Respon bantuan fitur aplikasi.
      */
     public function formatHelp(): string
     {
+        $isEn = app()->getLocale() === 'en';
+        if ($isEn) {
+            return "AeroFind is a Semantic Web-based airport search and directory application. Features you can ask directly:\n\n" .
+                "1. Nearby Recommendations: Ask 'airports near Medan' or 'which airports in Deli Serdang'.\n" .
+                "2. Airport Profile: Ask 'Kualanamu profile' or 'CGK airport info'.\n" .
+                "3. National Data: Ask 'how many airports in Indonesia' or 'list of airports in Indonesia'.\n" .
+                "4. Airports by Island: Ask 'airports in Bali island', 'airports in Luzon', or 'Kalimantan island airports'.\n" .
+                "5. Geospatial Map: Open the Airport Map menu to explore airport distributions interactively.\n\n" .
+                "Feel free to type your question.";
+        }
+
         return "AeroFind adalah aplikasi pencarian dan direktori bandara berbasis Web Semantik. Fitur yang bisa kamu tanyakan langsung:\n\n" .
             "1. Rekomendasi Terdekat: Tanyakan 'bandara dekat Medan' atau 'mana bandara daerah Deli Serdang'.\n" .
             "2. Profil Bandara: Tanyakan 'profil Kualanamu' atau 'info bandara CGK'.\n" .
@@ -866,10 +931,13 @@ class ChatbotNlpService
     }
 
     /**
-- Respon fallback jika pesan belum dikenali.
+     * - Respon fallback jika pesan belum dikenali.
      */
     public function formatFallback(): string
     {
-        return "Maaf, saya belum memahami pertanyaan tersebut. Kamu dapat mencoba bertanya seperti:\n- 'Bandara terdekat dari Kota Medan'\n- 'Profil Bandara Kualanamu'\n- 'Bandara apa saja di Kabupaten Deli Serdang?'\n- 'Berapa jumlah bandara di Indonesia?'";
+        $isEn = app()->getLocale() === 'en';
+        return $isEn
+            ? "Sorry, I did not understand that question. You can try asking things like:\n- 'Nearest airport to Medan City'\n- 'Kualanamu Airport profile'\n- 'What airports are in Deli Serdang Regency?'\n- 'How many airports in Indonesia?'"
+            : "Maaf, saya belum memahami pertanyaan tersebut. Kamu dapat mencoba bertanya seperti:\n- 'Bandara terdekat dari Kota Medan'\n- 'Profil Bandara Kualanamu'\n- 'Bandara apa saja di Kabupaten Deli Serdang?'\n- 'Berapa jumlah bandara di Indonesia?'";
     }
 }

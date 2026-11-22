@@ -60,16 +60,16 @@
             <!-- Sugesti Cepat Pertanyaan -->
             <div class="flex flex-wrap gap-2 mt-3 pt-2 text-xs items-center">
                 <span class="text-slate-500 font-medium">{{ __('messages.chatbot_example_label') }}</span>
-                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Bandara yang dekat Medan apa saja?">
+                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="{{ __('messages.chatbot_prompt_medan') }}">
                     {{ __('messages.chatbot_chip_medan') }}
                 </button>
-                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Profil bandara Kualanamu">
+                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="{{ __('messages.chatbot_prompt_kno') }}">
                     {{ __('messages.chatbot_chip_kno') }}
                 </button>
-                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Bandara daerah Deli Serdang">
+                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="{{ __('messages.chatbot_prompt_deli') }}">
                     {{ __('messages.chatbot_chip_deli') }}
                 </button>
-                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="Berapa jumlah bandara di Indonesia?">
+                <button type="button" class="suggestion-chip bg-white/90 hover:bg-[#FFE08A] border border-[#A8C6E7]/70 text-slate-700 px-3 py-1 rounded-full transition-all duration-200 shadow-sm hover:scale-105 active:scale-95" data-prompt="{{ __('messages.chatbot_prompt_total') }}">
                     {{ __('messages.chatbot_chip_total') }}
                 </button>
             </div>
@@ -285,7 +285,7 @@
             );
 
             const loadingMessage = appendBotMessage(
-                'Please wait a moment, I am searching for airport information...'
+                @json(__('messages.chatbot_loading_msg'))
             );
 
             try {
@@ -303,7 +303,8 @@
                     },
 
                     body: JSON.stringify({
-                        message: text
+                        message: text,
+                        locale: @json(app()->getLocale())
                     })
 
                 });
@@ -317,13 +318,13 @@
                     const errorMessage =
                         data.message ||
                         Object.values(data.errors || {}).flat().join(' ') ||
-                        'An error occurred on the server.';
+                        @json(__('messages.chatbot_server_error'));
 
                     throw new Error(errorMessage);
                 }
 
                 if (!data.reply) {
-                    throw new Error('Server did not return a response.');
+                    throw new Error(@json(__('messages.chatbot_no_reply_error')));
                 }
 
                 loadingMessage.remove();
@@ -337,7 +338,7 @@
                 loadingMessage.remove();
 
                 appendBotMessage(
-                    'Sorry, an error occurred: ' + error.message
+                    @json(__('messages.chatbot_sorry_error')) + error.message
                 );
 
             } finally {

@@ -35,8 +35,15 @@ class ChatbotController extends Controller
     public function chat(Request $request): JsonResponse
     {
         $request->validate([
-            'message' => ['required', 'string', 'max:500']
+            'message' => ['required', 'string', 'max:500'],
+            'locale'  => ['nullable', 'string', 'in:id,en'],
         ]);
+
+        $locale = $request->input('locale', session('locale', app()->getLocale()));
+        if (in_array($locale, ['id', 'en'], true)) {
+            app()->setLocale($locale);
+        }
+        $isEn = app()->getLocale() === 'en';
 
         $message = trim($request->input('message'));
         $lower = mb_strtolower($message);
@@ -74,7 +81,7 @@ class ChatbotController extends Controller
             |--------------------------------------------------------------------------
             */
             $airportType = $this->nlp->extractAirportTypeEntity($normalized);
-            if ($airportType !== null || $containsAny(['fasilitas', 'tipe bandara', 'ukuran bandara', 'besar', 'sedang', 'kecil'])) {
+            if ($airportType !== null || $containsAny(['fasilitas', 'tipe bandara', 'ukuran bandara', 'besar', 'sedang', 'kecil', 'facility', 'facilities', 'type', 'large', 'medium', 'small'])) {
                 if ($airportType) {
                     return response()->json([
                         'reply' => $this->searchAirportsByType($airportType)
@@ -91,7 +98,9 @@ class ChatbotController extends Controller
                 'terdekat', 'paling dekat', 'bandara terdekat', 'rekomendasi bandara',
                 'bandara yang direkomendasikan', 'bandara terdekat dari', 'dekat',
                 'dkat', 'dket', 'deket', 'plg dkt', 'yg dkat', 'yg deket',
-                'yang dekat', 'paling dkt', 'sekitarnya'
+                'yang dekat', 'paling dkt', 'sekitarnya',
+                'nearest', 'closest', 'near', 'nearby', 'recommendation', 'recommended',
+                'around', 'airports near'
             ])) {
                 return response()->json([
                     'reply' => $this->nearestAirport($message)
@@ -108,7 +117,9 @@ class ChatbotController extends Controller
                 'informasi dari', 'detail bandara', 'data bandara', 'tentang bandara',
                 'deskripsi bandara', 'spesifikasi bandara', 'berikan informasi mengenai',
                 'apa itu bandara', 'berikan informasi tentang', 'kode iata',
-                'kode icao', 'operator bandara', 'elevasi bandara'
+                'kode icao', 'operator bandara', 'elevasi bandara',
+                'tell me about', 'information about', 'info about', 'details about',
+                'about airport', 'iata code', 'icao code', 'airport operator', 'elevation'
             ]) || $this->nlp->extractAirportEntity($normalized) !== null) {
                 return response()->json([
                     'reply' => $this->searchAirportProfile($message)
@@ -127,7 +138,9 @@ class ChatbotController extends Controller
                 'bandara singapura', 'bandara di singapura', 'bandara filipina',
                 'bandara vietnam', 'bandara brunei', 'bandara kamboja',
                 'bandara laos', 'bandara myanmar', 'berapa jumlah bandara',
-                'berapa banyak bandara', 'total bandara', 'jumlah bandara', 'ada berapa bandara'
+                'berapa banyak bandara', 'total bandara', 'jumlah bandara', 'ada berapa bandara',
+                'airport list', 'airports list', 'all airports', 'airports in',
+                'how many airports', 'total airports', 'number of airports', 'count of airports'
             ])) {
                 return response()->json([
                     'reply' => $this->searchAirportsByCountry($message)
@@ -142,7 +155,8 @@ class ChatbotController extends Controller
             if ($containsAny([
                 'operasional', 'layanan penerbangan', 'penerbangan terjadwal',
                 'scheduled service', 'status layanan', 'jenis bandara',
-                'tipe bandara', 'koordinat bandara', 'latitude', 'longitude'
+                'tipe bandara', 'koordinat bandara', 'latitude', 'longitude',
+                'operational', 'flight service', 'airport type', 'coordinates'
             ])) {
                 return response()->json([
                     'reply' => $this->searchAirportProfile($message)
@@ -161,6 +175,11 @@ class ChatbotController extends Controller
                 str_contains($lower, 'wilayah') ||
                 str_contains($lower, 'daerah') ||
                 str_contains($lower, 'di ') ||
+                str_contains($lower, 'airport') ||
+                str_contains($lower, 'city') ||
+                str_contains($lower, 'region') ||
+                str_contains($lower, 'municipality') ||
+                str_contains($lower, 'in ') ||
                 $this->extractRegionModel($message) !== null
             ) {
                 $regionModel = $this->extractRegionModel($message);
@@ -179,10 +198,14 @@ class ChatbotController extends Controller
             if ($containsAny([
                 'halo', 'hai', 'hello', 'selamat pagi', 'selamat siang',
                 'selamat sore', 'selamat malam', 'siapa kamu', 'kamu siapa',
-                'apa itu aerofind', 'apa itu aerobot'
+                'apa itu aerofind', 'apa itu aerobot',
+                'hi', 'hey', 'good morning', 'good afternoon', 'good evening',
+                'who are you', 'what is aerofind', 'what is aerobot'
             ])) {
                 return response()->json([
-                    'reply' => 'Halo! Saya AeroBot, asisten virtual AeroFind. Saya dapat membantu kamu mencari profil bandara, daftar bandara, informasi lokasi, dan rekomendasi bandara terdekat berdasarkan kota atau kabupaten di Asia Tenggara. Ada yang ingin kamu tanyakan?'
+                    'reply' => $isEn
+                        ? 'Hello! I am AeroBot, virtual assistant of AeroFind. I can help you search for airport profiles, airport lists, location information, and nearby airport recommendations based on cities or municipalities in Southeast Asia. How may I assist you today?'
+                        : 'Halo! Saya AeroBot, asisten virtual AeroFind. Saya dapat membantu kamu mencari profil bandara, daftar bandara, informasi lokasi, dan rekomendasi bandara terdekat berdasarkan kota atau kabupaten di Asia Tenggara. Ada yang ingin kamu tanyakan?'
                 ]);
             }
 
@@ -193,10 +216,13 @@ class ChatbotController extends Controller
             */
             if ($containsAny([
                 'fitur', 'fungsi aerofind', 'kegunaan aerofind',
-                'cara menggunakan', 'cara kerja aerofind', 'bisa apa saja', 'bantuan'
+                'cara menggunakan', 'cara kerja aerofind', 'bisa apa saja', 'bantuan',
+                'feature', 'features', 'help', 'how to use', 'what can you do'
             ])) {
                 return response()->json([
-                    'reply' => 'AeroFind merupakan aplikasi pencarian dan rekomendasi bandara berbasis Web Semantik. Kamu dapat menanyakan beberapa hal seperti mencari bandara terdekat berdasarkan nama kota, melihat profil bandara, memeriksa kode IATA/ICAO, serta melihat persebaran bandara melalui peta.'
+                    'reply' => $isEn
+                        ? 'AeroFind is a Semantic Web-based airport search and recommendation application. You can ask for things like finding nearby airports based on city name, viewing airport profiles, checking IATA/ICAO codes, and exploring airport distributions on the map.'
+                        : 'AeroFind merupakan aplikasi pencarian dan rekomendasi bandara berbasis Web Semantik. Kamu dapat menanyakan beberapa hal seperti mencari bandara terdekat berdasarkan nama kota, melihat profil bandara, memeriksa kode IATA/ICAO, serta melihat persebaran bandara melalui peta.'
                 ]);
             }
 
@@ -206,14 +232,18 @@ class ChatbotController extends Controller
             |--------------------------------------------------------------------------
             */
             return response()->json([
-                'reply' => 'Maaf, saya belum memahami pertanyaan tersebut. Kamu dapat mencoba bertanya seperti: "Berikan profil Bandara Kualanamu", "Bandara apa saja di Deli Serdang?", "Apa bandara terdekat dari Medan?", atau "Berapa jumlah bandara di Indonesia?".'
+                'reply' => $isEn
+                    ? 'Sorry, I did not understand that question. You can try asking things like: "Provide Kualanamu Airport profile", "What airports are in Deli Serdang?", "What is the nearest airport to Medan?", or "How many airports in Indonesia?".'
+                    : 'Maaf, saya belum memahami pertanyaan tersebut. Kamu dapat mencoba bertanya seperti: "Berikan profil Bandara Kualanamu", "Bandara apa saja di Deli Serdang?", "Apa bandara terdekat dari Medan?", atau "Berapa jumlah bandara di Indonesia?".'
             ]);
 
         } catch (\Throwable $e) {
             report($e);
 
             return response()->json([
-                'reply' => 'Maaf, terjadi kendala ketika mengambil data bandara. Silakan coba kembali dengan pertanyaan nama kota atau bandara yang lebih spesifik.'
+                'reply' => (app()->getLocale() === 'en')
+                    ? 'Sorry, an issue occurred while retrieving airport data. Please try again with a more specific city or airport name.'
+                    : 'Maaf, terjadi kendala ketika mengambil data bandara. Silakan coba kembali dengan pertanyaan nama kota atau bandara yang lebih spesifik.'
             ], 200);
         }
     }
@@ -358,7 +388,13 @@ class ChatbotController extends Controller
      */
     private function searchAirportsByType(string $type): string
     {
-        $typeNameMap = [
+        $isEn = app()->getLocale() === 'en';
+
+        $typeNameMap = $isEn ? [
+            'large_airport'  => 'Large (International)',
+            'medium_airport' => 'Medium (Regional)',
+            'small_airport'  => 'Small (Local/Pioneer)',
+        ] : [
             'large_airport'  => 'Large (Besar / Internasional)',
             'medium_airport' => 'Medium (Sedang)',
             'small_airport'  => 'Small (Kecil)',
@@ -411,10 +447,14 @@ class ChatbotController extends Controller
         }
 
         if (empty($bindings)) {
-            return "Belum ditemukan data bandara dengan tipe fasilitas {$displayTypeName} pada dataset RDF AeroFind.";
+            return $isEn
+                ? "No airport data found with facility type {$displayTypeName} in the AeroFind RDF dataset."
+                : "Belum ditemukan data bandara dengan tipe fasilitas {$displayTypeName} pada dataset RDF AeroFind.";
         }
 
-        $reply = "Berikut beberapa rekomendasi bandara dengan fasilitas tipe {$displayTypeName}:\n\n";
+        $reply = $isEn
+            ? "Here are some recommended airports with {$displayTypeName} facility type:\n\n"
+            : "Berikut beberapa rekomendasi bandara dengan fasilitas tipe {$displayTypeName}:\n\n";
 
         foreach ($bindings as $index => $item) {
             $name = $item['name']['value'] ?? '-';
@@ -424,21 +464,26 @@ class ChatbotController extends Controller
             $country = $item['countryCode']['value'] ?? '-';
 
             $reply .= ($index + 1) . ". {$name}\n";
-            $reply .= "   Kode IATA / ICAO: {$iata} / {$icao}\n";
-            $reply .= "   Lokasi: {$municipality} ({$country})\n\n";
+            $reply .= $isEn ? "   IATA / ICAO Code: {$iata} / {$icao}\n" : "   Kode IATA / ICAO: {$iata} / {$icao}\n";
+            $reply .= $isEn ? "   Location: {$municipality} ({$country})\n\n" : "   Lokasi: {$municipality} ({$country})\n\n";
         }
 
-        $reply .= 'Menampilkan maksimal 10 data. Sumber data: Apache Jena Fuseki dan direktori AeroFind.';
+        $reply .= $isEn
+            ? 'Showing up to 10 results. Data source: Apache Jena Fuseki and AeroFind directory.'
+            : 'Menampilkan maksimal 10 data. Sumber data: Apache Jena Fuseki dan direktori AeroFind.';
 
         return $reply;
     }
 
     private function nearestAirport(string $message): string
     {
+        $isEn = app()->getLocale() === 'en';
         $region = $this->extractRegionModel($message);
 
         if (!$region) {
-            return 'Silakan sebutkan nama kota atau kabupaten yang kamu cari. Contoh: "Bandara terdekat dari Medan" atau "Bandara yang dekat Deli Serdang".';
+            return $isEn
+                ? 'Please specify the city or municipality name you are looking for. Example: "Nearest airports to Medan" or "Airports near Deli Serdang".'
+                : 'Silakan sebutkan nama kota atau kabupaten yang kamu cari. Contoh: "Bandara terdekat dari Medan" atau "Bandara yang dekat Deli Serdang".';
         }
 
         $regionName = $region->region_name;
@@ -448,10 +493,14 @@ class ChatbotController extends Controller
         $airports = $this->getNearestAirportsFromJena($latitude, $longitude, 5);
 
         if ($airports->isEmpty()) {
-            return "Belum ditemukan data bandara dengan koordinat yang valid di sekitar wilayah {$regionName}.";
+            return $isEn
+                ? "No airport data with valid coordinates found around {$regionName}."
+                : "Belum ditemukan data bandara dengan koordinat yang valid di sekitar wilayah {$regionName}.";
         }
 
-        $reply = "Berikut 5 rekomendasi bandara terdekat dari {$regionName}:\n\n";
+        $reply = $isEn
+            ? "Here are 5 recommended airports nearest to {$regionName}:\n\n"
+            : "Berikut 5 rekomendasi bandara terdekat dari {$regionName}:\n\n";
 
         foreach ($airports as $index => $airport) {
             $distance = number_format((float) $airport->distance_km, 2, ',', '.');
@@ -460,33 +509,43 @@ class ChatbotController extends Controller
             $loc = $airport->municipality ?: '-';
 
             $reply .= ($index + 1) . ". {$airport->name}\n";
-            $reply .= "   Kode IATA: {$iata}\n";
-            $reply .= "   Kode ICAO: {$icao}\n";
-            $reply .= "   Lokasi: {$loc}\n";
-            $reply .= "   Jarak: {$distance} km\n\n";
+            $reply .= $isEn ? "   IATA Code: {$iata}\n" : "   Kode IATA: {$iata}\n";
+            $reply .= $isEn ? "   ICAO Code: {$icao}\n" : "   Kode ICAO: {$icao}\n";
+            $reply .= $isEn ? "   Location: {$loc}\n" : "   Lokasi: {$loc}\n";
+            $reply .= $isEn ? "   Distance: {$distance} km\n\n" : "   Jarak: {$distance} km\n\n";
         }
 
-        $reply .= "Rekomendasi dihitung berdasarkan koordinat pusat wilayah {$regionName} ({$latitude}, {$longitude}) dan koordinat bandara menggunakan rumus Haversine.\n\n";
-        $reply .= "Sumber data: Triple store Jena dan direktori bandara AeroFind.";
+        if ($isEn) {
+            $reply .= "Recommendations are calculated from the central coordinates of {$regionName} ({$latitude}, {$longitude}) and airport coordinates using the Haversine formula.\n\n";
+            $reply .= "Data source: Jena triple store and AeroFind airport directory.";
+        } else {
+            $reply .= "Rekomendasi dihitung berdasarkan koordinat pusat wilayah {$regionName} ({$latitude}, {$longitude}) dan koordinat bandara menggunakan rumus Haversine.\n\n";
+            $reply .= "Sumber data: Triple store Jena dan direktori bandara AeroFind.";
+        }
 
         return $reply;
     }
 
     private function searchByRegion(string $message): string
     {
+        $isEn = app()->getLocale() === 'en';
         $normalizedMessage = $this->nlp->normalize($message);
 
         if (
             preg_match('/\bbali\b/u', $normalizedMessage) &&
             !preg_match('/\b(denpasar|badung|tabanan|jembrana|buleleng|bangli|gianyar|klungkung|karangasem)\b/u', $normalizedMessage)
         ) {
-            return "Bali adalah nama provinsi, bukan kota atau kabupaten. Silakan sebutkan nama kota atau kabupaten di Bali, seperti Denpasar, Badung, Tabanan, Jembrana, Buleleng, Bangli, Gianyar, Klungkung, atau Karangasem.";
+            return $isEn
+                ? "Bali is a province, not a city or municipality. Please specify a city or municipality in Bali, such as Denpasar, Badung, Tabanan, Jembrana, Buleleng, Bangli, Gianyar, Klungkung, or Karangasem."
+                : "Bali adalah nama provinsi, bukan kota atau kabupaten. Silakan sebutkan nama kota atau kabupaten di Bali, seperti Denpasar, Badung, Tabanan, Jembrana, Buleleng, Bangli, Gianyar, Klungkung, atau Karangasem.";
         }
 
         $matchedRegion = $this->extractRegionModel($message);
 
         if (!$matchedRegion) {
-            return 'Maaf, saya belum dapat mengenali nama kota atau kabupaten yang kamu maksud. Silakan gunakan wilayah yang terdaftar di database AeroFind.';
+            return $isEn
+                ? 'Sorry, I could not recognize the city or municipality you meant. Please use a region registered in the AeroFind database.'
+                : 'Maaf, saya belum dapat mengenali nama kota atau kabupaten yang kamu maksud. Silakan gunakan wilayah yang terdaftar di database AeroFind.';
         }
 
         $regionName = $matchedRegion->region_name;
@@ -496,40 +555,53 @@ class ChatbotController extends Controller
         $airports = $this->getNearestAirportsFromJena($latitude, $longitude, 5);
 
         if ($airports->isEmpty()) {
-            return "Maaf, belum ada data bandara dengan koordinat yang dapat digunakan untuk wilayah {$regionName}.";
+            return $isEn
+                ? "Sorry, there is no airport data with usable coordinates for {$regionName}."
+                : "Maaf, belum ada data bandara dengan koordinat yang dapat digunakan untuk wilayah {$regionName}.";
         }
 
-        $reply = "REKOMENDASI BANDARA UNTUK " . strtoupper($regionName) . "\n\n";
-        $reply .= "Berikut 5 bandara terdekat berdasarkan koordinat wilayah:\n\n";
+        $notAvail = $isEn ? 'Not available' : 'Tidak tersedia';
+
+        $reply = $isEn ? "AIRPORT RECOMMENDATIONS FOR " . strtoupper($regionName) . "\n\n" : "REKOMENDASI BANDARA UNTUK " . strtoupper($regionName) . "\n\n";
+        $reply .= $isEn ? "Here are 5 nearest airports based on regional coordinates:\n\n" : "Berikut 5 bandara terdekat berdasarkan koordinat wilayah:\n\n";
 
         foreach ($airports as $index => $airport) {
             $distance = number_format((float) $airport->distance_km, 2, ',', '.');
-            $iata = $airport->iata_code ?: 'Tidak tersedia';
-            $icao = $airport->icao_code ?: 'Tidak tersedia';
-            $loc = $airport->municipality ?: 'Tidak tersedia';
+            $iata = $airport->iata_code ?: $notAvail;
+            $icao = $airport->icao_code ?: $notAvail;
+            $loc = $airport->municipality ?: $notAvail;
 
             $reply .= ($index + 1) . ". {$airport->name}\n";
-            $reply .= "   Jarak perkiraan: {$distance} km\n";
+            $reply .= $isEn ? "   Estimated distance: {$distance} km\n" : "   Jarak perkiraan: {$distance} km\n";
             $reply .= "   IATA: {$iata}\n";
             $reply .= "   ICAO: {$icao}\n";
-            $reply .= "   Lokasi: {$loc}\n\n";
+            $reply .= $isEn ? "   Location: {$loc}\n\n" : "   Lokasi: {$loc}\n\n";
         }
 
-        $reply .= "Catatan: Jarak dihitung dari titik koordinat wilayah {$regionName} ke titik koordinat bandara menggunakan rumus Haversine.\n\n";
-        $reply .= "Data diperoleh dari triple store Apache Jena dan database AeroFind.";
+        if ($isEn) {
+            $reply .= "Note: Distance is calculated from regional coordinates of {$regionName} to airport coordinates using the Haversine formula.\n\n";
+            $reply .= "Data obtained from Apache Jena triple store and AeroFind database.";
+        } else {
+            $reply .= "Catatan: Jarak dihitung dari titik koordinat wilayah {$regionName} ke titik koordinat bandara menggunakan rumus Haversine.\n\n";
+            $reply .= "Data diperoleh dari triple store Apache Jena dan database AeroFind.";
+        }
 
         return $reply;
     }
 
     private function searchAirportProfile(string $message): string
     {
+        $isEn = app()->getLocale() === 'en';
+        $notAvail = $isEn ? 'Not available' : 'Tidak tersedia';
         $normalized = $this->nlp->normalize($message);
         $airportEntity = $this->nlp->extractAirportEntity($normalized);
 
         $searchName = $airportEntity['name'] ?? $airportEntity['iata'] ?? $this->cleanSearchName($message);
 
         if ($searchName === '') {
-            return 'Silakan sebutkan nama atau kode bandara yang ingin kamu cari. Contoh: "Profil Bandara Kualanamu" atau "Info bandara CGK".';
+            return $isEn
+                ? 'Please specify the airport name or code you want to search. Example: "Kualanamu Airport profile" or "CGK airport info".'
+                : 'Silakan sebutkan nama atau kode bandara yang ingin kamu cari. Contoh: "Profil Bandara Kualanamu" atau "Info bandara CGK".';
         }
 
         $searchLiteral = json_encode(mb_strtolower($searchName), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -596,17 +668,35 @@ class ChatbotController extends Controller
             if ($local) {
                 $name = $local->name ?? 'Bandara';
                 $airportId = $local->airport_id ?? '-';
-                $iata = $local->iata_code ?: 'Tidak tersedia';
-                $icao = $local->icao_code ?: 'Tidak tersedia';
+                $iata = $local->iata_code ?: $notAvail;
+                $icao = $local->icao_code ?: $notAvail;
                 $ident = $local->ident ?? $icao;
-                $type = $local->type ?: 'Tidak tersedia';
-                $city = $local->municipality ?: 'Tidak tersedia';
+                $type = $local->type ?: $notAvail;
+                $city = $local->municipality ?: $notAvail;
                 $country = $local->iso_country ?? 'ID';
-                $regionCode = $local->iso_region ?? 'Tidak tersedia';
-                $lat = $local->latitude_deg ?? 'Tidak tersedia';
-                $lng = $local->longitude_deg ?? 'Tidak tersedia';
-                $elev = $local->elevation_ft ?? 'Tidak tersedia';
-                $service = $local->scheduled_service ?? 'Tidak tersedia';
+                $regionCode = $local->iso_region ?? $notAvail;
+                $lat = $local->latitude_deg ?? $notAvail;
+                $lng = $local->longitude_deg ?? $notAvail;
+                $elev = $local->elevation_ft ?? $notAvail;
+                $service = $local->scheduled_service ?? $notAvail;
+
+                if ($isEn) {
+                    return "Here is the information for {$name} airport:\n\n" .
+                        "Airport ID: {$airportId}\n" .
+                        "Name: {$name}\n" .
+                        "IATA Code: {$iata}\n" .
+                        "ICAO Code: {$icao}\n" .
+                        "Identification: {$ident}\n" .
+                        "Type: {$type}\n" .
+                        "City/Municipality: {$city}\n" .
+                        "Country: {$country}\n" .
+                        "Region Code: {$regionCode}\n" .
+                        "Latitude: {$lat}\n" .
+                        "Longitude: {$lng}\n" .
+                        "Elevation (ft): {$elev}\n" .
+                        "Scheduled service: {$service}\n\n" .
+                        "Data source: AeroFind airport directory.";
+                }
 
                 return "Berikut adalah informasi tentang bandara {$name}:\n\n" .
                     "ID Bandara: {$airportId}\n" .
@@ -625,11 +715,15 @@ class ChatbotController extends Controller
                     "Sumber data: Direktori bandara AeroFind.";
             }
 
-            return "Maaf, saya tidak menemukan bandara dengan kata kunci {$searchName} di dataset RDF AeroFind.";
+            return $isEn
+                ? "Sorry, I did not find any airport matching keyword {$searchName} in the AeroFind RDF dataset."
+                : "Maaf, saya tidak menemukan bandara dengan kata kunci {$searchName} di dataset RDF AeroFind.";
         }
 
         if (count($bindings) > 1) {
-            $reply = "Saya menemukan beberapa bandara yang cocok:\n\n";
+            $reply = $isEn
+                ? "I found several matching airports:\n\n"
+                : "Saya menemukan beberapa bandara yang cocok:\n\n";
 
             foreach ($bindings as $index => $item) {
                 $name = $item['name']['value'] ?? '-';
@@ -637,21 +731,41 @@ class ChatbotController extends Controller
                 $municipality = $item['municipality']['value'] ?? '';
 
                 $reply .= ($index + 1) . ". {$name}\n";
-                $reply .= "   Kode IATA: {$iata}\n";
+                $reply .= $isEn ? "   IATA Code: {$iata}\n" : "   Kode IATA: {$iata}\n";
                 if ($municipality) {
-                    $reply .= "   Lokasi: {$municipality}\n";
+                    $reply .= $isEn ? "   Location: {$municipality}\n" : "   Lokasi: {$municipality}\n";
                 }
                 $reply .= "\n";
             }
 
-            $reply .= 'Silakan gunakan nama bandara atau kode IATA yang lebih spesifik.';
+            $reply .= $isEn
+                ? 'Please use a more specific airport name or IATA code.'
+                : 'Silakan gunakan nama bandara atau kode IATA yang lebih spesifik.';
             return $reply;
         }
 
         $airport = $bindings[0];
-        $getValue = function ($key) use ($airport) {
-            return $airport[$key]['value'] ?? 'Tidak tersedia';
+        $getValue = function ($key) use ($airport, $notAvail) {
+            return $airport[$key]['value'] ?? $notAvail;
         };
+
+        if ($isEn) {
+            return "Here is the information for {$getValue('name')} airport:\n\n" .
+                "Airport ID: {$getValue('airportId')}\n" .
+                "Name: {$getValue('name')}\n" .
+                "IATA Code: {$getValue('iataCode')}\n" .
+                "ICAO Code: {$getValue('icaoCode')}\n" .
+                "Identification: {$getValue('ident')}\n" .
+                "Type: {$getValue('airportType')}\n" .
+                "City/Municipality: {$getValue('municipality')}\n" .
+                "Country: {$getValue('countryCode')}\n" .
+                "Region Code: {$getValue('regionCode')}\n" .
+                "Latitude: {$getValue('latitude')}\n" .
+                "Longitude: {$getValue('longitude')}\n" .
+                "Elevation (ft): {$getValue('elevationFt')}\n" .
+                "Scheduled service: {$getValue('scheduledService')}\n\n" .
+                "Data source: AeroFind RDF dataset via Apache Jena Fuseki.";
+        }
 
         return "Berikut adalah informasi tentang bandara {$getValue('name')}:\n\n" .
             "ID Bandara: {$getValue('airportId')}\n" .
@@ -672,32 +786,33 @@ class ChatbotController extends Controller
 
     private function searchAirportsByCountry(string $message): string
     {
+        $isEn = app()->getLocale() === 'en';
         $normalized = $this->nlp->normalize($message);
         
         $countryMap = [
-            'indonesia'  => ['code' => 'ID', 'name' => 'Indonesia'],
-            'malaysia'   => ['code' => 'MY', 'name' => 'Malaysia'],
-            'thailand'   => ['code' => 'TH', 'name' => 'Thailand'],
-            'singapura'  => ['code' => 'SG', 'name' => 'Singapura'],
-            'singapore'  => ['code' => 'SG', 'name' => 'Singapura'],
-            'filipina'   => ['code' => 'PH', 'name' => 'Filipina'],
-            'philippines'=> ['code' => 'PH', 'name' => 'Filipina'],
-            'vietnam'    => ['code' => 'VN', 'name' => 'Vietnam'],
-            'brunei'     => ['code' => 'BN', 'name' => 'Brunei Darussalam'],
-            'kamboja'    => ['code' => 'KH', 'name' => 'Kamboja'],
-            'cambodia'   => ['code' => 'KH', 'name' => 'Kamboja'],
-            'laos'       => ['code' => 'LA', 'name' => 'Laos'],
-            'myanmar'    => ['code' => 'MM', 'name' => 'Myanmar'],
-            'burma'      => ['code' => 'MM', 'name' => 'Myanmar'],
+            'indonesia'   => ['code' => 'ID', 'name' => 'Indonesia', 'name_en' => 'Indonesia'],
+            'malaysia'    => ['code' => 'MY', 'name' => 'Malaysia', 'name_en' => 'Malaysia'],
+            'thailand'    => ['code' => 'TH', 'name' => 'Thailand', 'name_en' => 'Thailand'],
+            'singapura'   => ['code' => 'SG', 'name' => 'Singapura', 'name_en' => 'Singapore'],
+            'singapore'   => ['code' => 'SG', 'name' => 'Singapura', 'name_en' => 'Singapore'],
+            'filipina'    => ['code' => 'PH', 'name' => 'Filipina', 'name_en' => 'Philippines'],
+            'philippines' => ['code' => 'PH', 'name' => 'Filipina', 'name_en' => 'Philippines'],
+            'vietnam'     => ['code' => 'VN', 'name' => 'Vietnam', 'name_en' => 'Vietnam'],
+            'brunei'      => ['code' => 'BN', 'name' => 'Brunei Darussalam', 'name_en' => 'Brunei Darussalam'],
+            'kamboja'     => ['code' => 'KH', 'name' => 'Kamboja', 'name_en' => 'Cambodia'],
+            'cambodia'    => ['code' => 'KH', 'name' => 'Kamboja', 'name_en' => 'Cambodia'],
+            'laos'        => ['code' => 'LA', 'name' => 'Laos', 'name_en' => 'Laos'],
+            'myanmar'     => ['code' => 'MM', 'name' => 'Myanmar', 'name_en' => 'Myanmar'],
+            'burma'       => ['code' => 'MM', 'name' => 'Myanmar', 'name_en' => 'Myanmar'],
         ];
 
         $countryCode = 'ID';
-        $countryName = 'Indonesia';
+        $countryName = $isEn ? 'Indonesia' : 'Indonesia';
 
         foreach ($countryMap as $key => $info) {
             if (str_contains($normalized, $key)) {
                 $countryCode = $info['code'];
-                $countryName = $info['name'];
+                $countryName = $isEn ? $info['name_en'] : $info['name'];
                 break;
             }
         }
@@ -705,7 +820,11 @@ class ChatbotController extends Controller
         $isCountQuestion = str_contains($normalized, 'berapa jumlah') ||
                            str_contains($normalized, 'berapa banyak') ||
                            str_contains($normalized, 'total bandara') ||
-                           str_contains($normalized, 'jumlah bandara');
+                           str_contains($normalized, 'jumlah bandara') ||
+                           str_contains($normalized, 'how many') ||
+                           str_contains($normalized, 'total airports') ||
+                           str_contains($normalized, 'number of airports') ||
+                           str_contains($normalized, 'count of airports');
 
         if ($isCountQuestion) {
             $query = "
@@ -737,10 +856,14 @@ class ChatbotController extends Controller
             }
 
             if (!$total) {
-                return "Maaf, data bandara untuk {$countryName} belum tersedia di dataset RDF AeroFind.";
+                return $isEn
+                    ? "Sorry, airport data for {$countryName} is not yet available in the AeroFind RDF dataset."
+                    : "Maaf, data bandara untuk {$countryName} belum tersedia di dataset RDF AeroFind.";
             }
 
-            return "Berdasarkan dataset RDF AeroFind, terdapat {$total} data bandara di {$countryName}.";
+            return $isEn
+                ? "Based on the AeroFind RDF dataset, there are {$total} airports in {$countryName}."
+                : "Berdasarkan dataset RDF AeroFind, terdapat {$total} data bandara di {$countryName}.";
         }
 
         $query = "
@@ -784,10 +907,14 @@ class ChatbotController extends Controller
         }
 
         if (empty($bindings)) {
-            return "Belum ditemukan data bandara {$countryName} pada dataset RDF AeroFind.";
+            return $isEn
+                ? "No airport data found for {$countryName} in the AeroFind RDF dataset."
+                : "Belum ditemukan data bandara {$countryName} pada dataset RDF AeroFind.";
         }
 
-        $reply = "Berikut beberapa bandara di {$countryName} berdasarkan dataset RDF AeroFind:\n\n";
+        $reply = $isEn
+            ? "Here are some airports in {$countryName} based on the AeroFind RDF dataset:\n\n"
+            : "Berikut beberapa bandara di {$countryName} berdasarkan dataset RDF AeroFind:\n\n";
 
         foreach ($bindings as $index => $airport) {
             $name = $airport['name']['value'] ?? '-';
@@ -795,11 +922,13 @@ class ChatbotController extends Controller
             $municipality = $airport['municipality']['value'] ?? '-';
 
             $reply .= ($index + 1) . ". {$name}\n";
-            $reply .= "   Kode IATA: {$iata}\n";
-            $reply .= "   Lokasi: {$municipality}\n\n";
+            $reply .= $isEn ? "   IATA Code: {$iata}\n" : "   Kode IATA: {$iata}\n";
+            $reply .= $isEn ? "   Location: {$municipality}\n\n" : "   Lokasi: {$municipality}\n\n";
         }
 
-        $reply .= 'Menampilkan maksimal 10 bandara. Data diperoleh dari Apache Jena Fuseki.';
+        $reply .= $isEn
+            ? 'Showing up to 10 airports. Data obtained from Apache Jena Fuseki.'
+            : 'Menampilkan maksimal 10 bandara. Data diperoleh dari Apache Jena Fuseki.';
 
         return $reply;
     }
