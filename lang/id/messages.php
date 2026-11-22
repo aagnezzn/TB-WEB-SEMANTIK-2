@@ -4,7 +4,7 @@ return [
     // ------------------------------------------------------------------
     // Navbar
     // ------------------------------------------------------------------
-    'navbar_brand_sub' => 'Search',
+    'navbar_brand_sub' => 'Find',
     'navbar_back_home' => 'Kembali ke Beranda',
     'navbar_home' => 'Beranda',
     'navbar_map' => 'Peta Interaktif',
@@ -13,7 +13,7 @@ return [
     // ------------------------------------------------------------------
     // Footer
     // ------------------------------------------------------------------
-    'footer_desc' => 'AeroSearch — Platform pencarian dan informasi bandara se-Asia Tenggara berbasis Web Semantik.',
+    'footer_desc' => 'AeroFind — Platform pencarian dan informasi bandara se-Asia Tenggara berbasis Web Semantik.',
     'footer_rights' => 'Semua hak dilindungi undang-undang.',
 
     // ------------------------------------------------------------------
@@ -138,7 +138,7 @@ return [
     // ------------------------------------------------------------------
     // Detail Bandara (Show)
     // ------------------------------------------------------------------
-    'show_page_title' => 'Detail Bandara — AeroSearch',
+    'show_page_title' => 'Detail Bandara — AeroFind',
     'show_heading' => 'Profil & Informasi Bandara',
     'show_subtitle' => 'Informasi detail data semantik bandara di kawasan Asia Tenggara.',
     'show_scheduled_service' => 'Layanan Terjadwal:',
@@ -200,7 +200,7 @@ return [
     // ------------------------------------------------------------------
     // Navigasi (Navigation)
     // ------------------------------------------------------------------
-    'nav_page_title' => 'Navigasi Bandara - AeroSearch',
+    'nav_page_title' => 'Navigasi Bandara - AeroFind',
     'nav_heading' => 'Navigasi Bandara',
     'nav_sub' => 'Temukan rute perjalanan menuju bandara tujuan Anda.',
     'nav_route_settings' => 'Pengaturan Rute',
@@ -255,7 +255,7 @@ return [
     // ------------------------------------------------------------------
     // Chatbot
     // ------------------------------------------------------------------
-    'chatbot_page_title' => 'Chatbot Asisten — AeroSearch',
+    'chatbot_page_title' => 'Chatbot Asisten — AeroFind',
     'chatbot_heading' => 'Asisten AI Bandara ASEAN',
     'chatbot_sub' => 'Tanyakan informasi seputar profil, lokasi, kontak, atau data semantik bandara menggunakan bahasa alami.',
     'chatbot_example_label' => 'Contoh pertanyaan:',
@@ -265,7 +265,7 @@ return [
     'chatbot_chip_total' => 'Total Bandara Indonesia',
     'chatbot_input_placeholder' => 'Ketik pertanyaan atau pencarian bandara di sini...',
     'chatbot_btn_send' => 'Kirim',
-    'chatbot_welcome_msg' => 'Halo! Saya AeroBot, asisten virtual AeroSearch. Saya dapat membantu kamu mencari informasi bandara, profil lengkap, hingga rekomendasi bandara terdekat berdasarkan lokasi kota atau kabupaten. Ada yang ingin kamu tanyakan?',
+    'chatbot_welcome_msg' => 'Halo! Saya AeroBot, asisten virtual AeroFind. Saya dapat membantu kamu mencari informasi bandara, profil lengkap, hingga rekomendasi bandara terdekat berdasarkan lokasi kota atau kabupaten. Ada yang ingin kamu tanyakan?',
     'chatbot_loading_msg' => 'Sebentar ya, saya sedang mencari informasi bandara...',
     'chatbot_server_error' => 'Terjadi kesalahan pada server.',
     'chatbot_no_reply_error' => 'Server tidak mengirimkan jawaban chatbot.',

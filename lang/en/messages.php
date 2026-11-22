@@ -4,7 +4,7 @@ return [
     // ------------------------------------------------------------------
     // Navbar
     // ------------------------------------------------------------------
-    'navbar_brand_sub' => 'Search',
+    'navbar_brand_sub' => 'Find',
     'navbar_back_home' => 'Back to Home',
     'navbar_home' => 'Home',
     'navbar_map' => 'Interactive Map',
@@ -13,7 +13,7 @@ return [
     // ------------------------------------------------------------------
     // Footer
     // ------------------------------------------------------------------
-    'footer_desc' => 'AeroSearch — Southeast Asian airport search and information platform powered by Semantic Web.',
+    'footer_desc' => 'AeroFind — Southeast Asian airport search and information platform powered by Semantic Web.',
     'footer_rights' => 'All rights reserved.',
 
     // ------------------------------------------------------------------
@@ -138,7 +138,7 @@ return [
     // ------------------------------------------------------------------
     // Airport Details (Show)
     // ------------------------------------------------------------------
-    'show_page_title' => 'Airport Details — AeroSearch',
+    'show_page_title' => 'Airport Details — AeroFind',
     'show_heading' => 'Airport Profile & Information',
     'show_subtitle' => 'Detailed semantic airport data across the Southeast Asian region.',
     'show_scheduled_service' => 'Scheduled Service:',
@@ -200,7 +200,7 @@ return [
     // ------------------------------------------------------------------
     // Navigation
     // ------------------------------------------------------------------
-    'nav_page_title' => 'Airport Navigation - AeroSearch',
+    'nav_page_title' => 'Airport Navigation - AeroFind',
     'nav_heading' => 'Airport Navigation',
     'nav_sub' => 'Find travel routes and travel times to your destination airport.',
     'nav_route_settings' => 'Route Settings',
@@ -255,7 +255,7 @@ return [
     // ------------------------------------------------------------------
     // Chatbot
     // ------------------------------------------------------------------
-    'chatbot_page_title' => 'AI Assistant Chatbot — AeroSearch',
+    'chatbot_page_title' => 'AI Assistant Chatbot — AeroFind',
     'chatbot_heading' => 'ASEAN Airport AI Assistant',
     'chatbot_sub' => 'Ask questions about airport profiles, locations, contacts, or semantic data using natural language.',
     'chatbot_example_label' => 'Example questions:',
@@ -265,7 +265,7 @@ return [
     'chatbot_chip_total' => 'Total Indonesia Airports',
     'chatbot_input_placeholder' => 'Type your question or airport search here...',
     'chatbot_btn_send' => 'Send',
-    'chatbot_welcome_msg' => 'Hello! I am AeroBot, virtual assistant of AeroSearch. I can help you search for airport information, view complete profiles, and get recommendations for nearby airports based on city or municipality. How may I assist you today?',
+    'chatbot_welcome_msg' => 'Hello! I am AeroBot, virtual assistant of AeroFind. I can help you search for airport information, view complete profiles, and get recommendations for nearby airports based on city or municipality. How may I assist you today?',
     'chatbot_loading_msg' => 'Please wait a moment, I am searching for airport information...',
     'chatbot_server_error' => 'An error occurred on the server.',
     'chatbot_no_reply_error' => 'Server did not return a response.',
