@@ -1,0 +1,1065 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix wikipedia-en: <http://en.wikipedia.org/wiki/> .
+
+# ===== KELOMPOK 1 =====
+<http://dbpedia.org/resource/H.A.S._Hanandjoeddin_Airport> dbo:elevation "50.0"^^xsd:double , "49.9872"^^xsd:double ;
+ dbo:iataLocationIdentifier "TJQ" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/H.A.S._Hanandjoeddin_International_Airport_terminal.jpg?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/H.A.S._Hanandjoeddin_International_Airport> .
+dbr:Cut_Nyak_Dhien_Airport dbo:elevation "1.8288"^^xsd:double ;
+ dbo:iataLocationIdentifier "MEQ" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bandara_Cut_Nyak_Dhien.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Cut_Nyak_Dhien_Airport .
+dbr:Abdul_Rachman_Saleh_Airport dbo:elevation "526.0848"^^xsd:double , "526.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "MLG" ;
+ dbo:operator <http://dbpedia.org/resource/Directorate_General_of_Civil_Aviation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Abdul_Rachman_Saleh_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Abdul_Rachman_Saleh_Airport .
+dbr:Aji_Pangeran_Tumenggung_Pranoto_International_Airport dbo:elevation "25.0"^^xsd:double , "24.9936"^^xsd:double ;
+ dbo:iataLocationIdentifier "AAP" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/SamarindaAirportlogo.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Aji_Pangeran_Tumenggung_Pranoto_International_Airport .
+dbr:Alas_Leuser_Airport dbo:elevation "4.0"^^xsd:double , "3.9624"^^xsd:double ;
+ dbo:iataLocationIdentifier "LSR" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Airplane_silhouette.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Alas_Leuser_Airport .
+dbr:Raja_Loloda_Mokoagow_Airport dbo:iataLocationIdentifier "LKM" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bolaangterminal.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Raja_Loloda_Mokoagow_Airport .
+dbr:Adisutjipto_Airport dbo:elevation "115.5192"^^xsd:double ;
+ dbo:iataLocationIdentifier "JOG" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Adisuciptoairportlogo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Adisutjipto_Airport .
+dbr:Alor_Island_Airport dbo:elevation "11.8872"^^xsd:double ;
+ dbo:iataLocationIdentifier "ARD" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Alor-airport.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Alor_Island_Airport .
+dbr:Depati_Parbo_Airport dbo:elevation "1.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "KRC" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Depati_Parbo_171124_095504.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Depati_Parbo_Airport .
+dbr:Ngurah_Rai_International_Airport dbo:elevation "4.2672"^^xsd:double , "4.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "DPS" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Igustingurahraiairportlogo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Ngurah_Rai_International_Airport .
+dbr:El_Tari_Airport dbo:elevation "105.0"^^xsd:double , "105.156"^^xsd:double ;
+ dbo:iataLocationIdentifier "KOE" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Eltariairportlogo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:El_Tari_Airport .
+dbr:Bokondini_Airport dbo:elevation "1399.9464"^^xsd:double ;
+ dbo:iataLocationIdentifier "BUI" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Bokondini_Airport .
+dbr:Frans_Kaisiepo_Airport dbo:elevation "14.0"^^xsd:double , "14.0208"^^xsd:double ;
+ dbo:iataLocationIdentifier "BIK" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Beechcraft_1900D_Kaisiepo.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Frans_Kaisiepo_Airport .
+dbr:Haji_Muhammad_Sidik_Airport dbo:elevation "25.0"^^xsd:double , "24.9936"^^xsd:double ;
+ dbo:iataLocationIdentifier "HMS" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Kalimantan_Locator.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Haji_Muhammad_Sidik_Airport .
+dbr:Pogogul_Airport dbo:elevation "5.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "UOL" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Pogogul_Airport .
+dbr:Brunei_International_Airport dbo:elevation "22.0"^^xsd:double , "22.2504"^^xsd:double ;
+ dbo:iataLocationIdentifier "BWN" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bandar_Seri_Begawan_25_October_2023_02.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Brunei_International_Airport .
+dbr:Domine_Eduard_Osok_Airport foaf:isPrimaryTopicOf wikipedia-en:Domine_Eduard_Osok_Airport .
+dbr:Ferdinand_Lumban_Tobing_Airport dbo:elevation "10.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "FLZ" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Ferdinand_Lumban_Tobing_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Ferdinand_Lumban_Tobing_Airport .
+dbr:Gusti_Syamsir_Alam_Airport dbo:elevation "1.2"^^xsd:double ;
+ dbo:iataLocationIdentifier "KBU" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/IndonesiaSouthKalimantan.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Gusti_Syamsir_Alam_Airport .
+dbr:Banyuwangi_Airport dbo:elevation "37.8"^^xsd:double ;
+ dbo:iataLocationIdentifier "BWX" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Banyuwangi_International_Airport_2019.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Banyuwangi_Airport .
+dbr:Binaka_Airport dbo:elevation "6.0"^^xsd:double , "6.096"^^xsd:double ;
+ dbo:iataLocationIdentifier "GNS" ;
+ dbo:operator <http://dbpedia.org/resource/Directorate_General_of_Civil_Aviation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/GunungsitoliAirport2.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Binaka_Airport .
+dbr:David_Constantijn_Saudale_Airport dbo:elevation "141.1224"^^xsd:double , "141.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "RTI" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ foaf:isPrimaryTopicOf wikipedia-en:David_Constantijn_Saudale_Airport .
+dbr:Dewadaru_Airport dbo:elevation "4.572"^^xsd:double ;
+ dbo:iataLocationIdentifier "KWB" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Dewadaru_Airport_runway_Karimun_Jawa.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Dewadaru_Airport .
+dbr:Frans_Sales_Lega_Airport dbo:iataLocationIdentifier "RTG" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Rutengairportlogo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Frans_Sales_Lega_Airport .
+dbr:Adisumarmo_Airport dbo:elevation "127.7112"^^xsd:double , "128.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "SOC" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Adisumarmoairportlogo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Adisumarmo_Airport .
+dbr:Halim_Perdanakusuma_International_Airport dbo:elevation "25.0"^^xsd:double , "24.9936"^^xsd:double ;
+ dbo:iataLocationIdentifier "HLP" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/8woe9K4J_400x400-Picsart-AiImageEnhancer_Nero_AI_Background_Remover.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Halim_Perdanakusuma_International_Airport .
+dbr:Dortheys_Hiyo_Eluay_International_Airport dbo:elevation "88.0872"^^xsd:double , "88.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "DJJ" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Aerial_view_of_Sentani_Airport_20130412.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Dortheys_Hiyo_Eluay_International_Airport .
+dbr:Fatmawati_Soekarno_Airport dbo:elevation "15.24"^^xsd:double , "15.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "BKS" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Image_2025-05-25_103831431_Nero_AI_Background_Remover.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Fatmawati_Soekarno_Airport .
+dbr:Frans_Xavier_Seda_Airport dbo:elevation "35.052"^^xsd:double ;
+ dbo:iataLocationIdentifier "MOF" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Maumereairportlogo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Frans_Xavier_Seda_Airport .
+dbr:Bua_Airport dbo:elevation "4.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LLO" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Buaairportpalopo.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Bua_Airport .
+
+# ===== KELOMPOK 2 =====
+dbr:Pattimura_Airport foaf:isPrimaryTopicOf wikipedia-en:Pattimura_Airport .
+dbr:Mopah_International_Airport foaf:isPrimaryTopicOf wikipedia-en:Mopah_International_Airport .
+dbr:Pangsuma_Airport dbo:elevation "91.0"^^xsd:double , "90.5256"^^xsd:double ;
+ dbo:iataLocationIdentifier "PSU" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Pangsuma_Airport .
+dbr:Kalimarau_Airport dbo:elevation "18.0"^^xsd:double , "17.9832"^^xsd:double ;
+ dbo:iataLocationIdentifier "BEJ" ;
+ dbo:operator <http://dbpedia.org/resource/Directorate_General_of_Civil_Aviation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bandar_Udara_Kalimarau_Berau.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kalimarau_Airport .
+dbr:Nanga_Pinoh_Airport dbo:elevation "37.0"^^xsd:double , "37.4904"^^xsd:double ;
+ dbo:iataLocationIdentifier "NPO" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Nanga_Pinoh_Airport .
+dbr:Karel_Sadsuitubun_Airport dbo:elevation "10.0584"^^xsd:double , "24.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LUV" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bandara_Dumatubun_Baru_-_Langgur_v.udara.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Karel_Sadsuitubun_Airport .
+dbr:Long_Apung_Airport dbo:elevation "640.08"^^xsd:double , "640.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LPU" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Long_Apung_Airfield_Kalimantan_2020.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Long_Apung_Airport .
+dbr:Matahora_Airport dbo:elevation "0.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "WNI" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bandar_Udara_Matahora_Wakatobi.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Matahora_Airport .
+dbr:Lasondre_Airport dbo:elevation "0.0"^^xsd:double ;
+ dbo:operator dbr:Government_of_Indonesia ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/LocationSumatra.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Lasondre_Airport .
+dbr:Marinda_Airport dbo:elevation "2.7432"^^xsd:double ;
+ dbo:iataLocationIdentifier "RJM" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Marinda_Airport .
+dbr:Cijulang_Nusawiru_Airport dbo:elevation "5.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "CJN" ;
+ dbo:operator dbr:Government_of_Indonesia ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/PKVVKnusawiru.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Cijulang_Nusawiru_Airport .
+dbr:Juanda_International_Airport dbo:elevation "2.7432"^^xsd:double , "3.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "SUB" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Juandaairportlogo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Juanda_International_Airport .
+dbr:Juwata_Airport dbo:elevation "6.0"^^xsd:double , "6.096"^^xsd:double ;
+ dbo:iataLocationIdentifier "TRK" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/JuwataAirport1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Juwata_Airport .
+dbr:Minangkabau_International_Airport dbo:elevation "5.4864"^^xsd:double , "5.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "PDG" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Image_2025-05-08_010510867_Nero_AI_Background_Remover.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Minangkabau_International_Airport .
+dbr:Mozes_Kilangin_Airport dbo:elevation "27.5"^^xsd:double , "27.52344"^^xsd:double ;
+ dbo:iataLocationIdentifier "TIM" ;
+ dbo:operator dbr:Freeport-McMoRan , <http://dbpedia.org/resource/Directorate_General_of_Civil_Aviation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/MozesKilanginAirportTerminal.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Mozes_Kilangin_Airport .
+dbr:Jalaluddin_Airport dbo:elevation "17.9832"^^xsd:double , "18.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "GTO" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/DjalaluddinAirport2.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Jalaluddin_Airport .
+dbr:Lombok_International_Airport dbo:elevation "97.2312"^^xsd:double , "97.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LOP" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Lombok_International_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Lombok_International_Airport .
+dbr:Malikus_Saleh_Airport dbo:elevation "27.0"^^xsd:double , "27.432"^^xsd:double ;
+ dbo:iataLocationIdentifier "LSW" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Malikus_Saleh_Airport .
+dbr:Notohadinegoro_Airport dbo:elevation "85.64879999999999"^^xsd:double , "85.65000000000001"^^xsd:double ;
+ dbo:iataLocationIdentifier "JBB" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Notohadinegoro_Airport .
+dbr:Mathilda_Batlayeri_Airport dbo:elevation "125.0"^^xsd:double , "124.968"^^xsd:double ;
+ dbo:iataLocationIdentifier "SXK" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Mathilda_Batlayeri_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Mathilda_Batlayeri_Airport .
+dbr:Nop_Goliat_Dekai_Airport dbo:elevation "100.0"^^xsd:double , "100.2792"^^xsd:double ;
+ dbo:iataLocationIdentifier "DEX" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/NopGoliatDekaiAirport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Nop_Goliat_Dekai_Airport .
+dbr:Kertajati_International_Airport dbo:elevation "40.8432"^^xsd:double ;
+ dbo:iataLocationIdentifier "KJT" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Logo_of_Kertajati_International_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kertajati_International_Airport .
+dbr:Pinang_Kampai_Airport dbo:elevation "16.764"^^xsd:double , "17.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "DUM" ;
+ dbo:operator dbr:Pelita_Air ;
+ foaf:isPrimaryTopicOf wikipedia-en:Pinang_Kampai_Airport .
+dbr:Iskandar_Airport dbo:elevation "22.86"^^xsd:double , "23.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "PKN" ;
+ dbo:operator <http://dbpedia.org/resource/Directorate_General_of_Civil_Aviation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/IskandarAirport1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Iskandar_Airport .
+dbr:Kualanamu_International_Airport dbo:elevation "7.0104"^^xsd:double , "7.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "KNO" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Kualanamusym.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kualanamu_International_Airport .
+dbr:Morowali_Airport dbo:iataLocationIdentifier "MOH" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Maleo_Airport .
+dbr:Muara_Bungo_Airport dbo:iataLocationIdentifier "BUU" ;
+ dbo:operator dbr:Bungo_Regency ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/BAe_146-200_Aviastar_at_Muara_Bungo.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Muara_Bungo_Airport .
+dbr:Gewayantana_Airport dbo:elevation "9.144"^^xsd:double , "9.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LKA" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Gewayantana_Airport .
+<http://dbpedia.org/resource/Naha_Airport_(Indonesia)> dbo:elevation "5.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "NAH" ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Naha_Airport_(Indonesia)> .
+dbr:PT_Badak_Bontang_Airport dbo:elevation "14.9352"^^xsd:double , "14.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "BXT" ;
+ dbo:operator dbr:Badak_LNG ;
+ foaf:isPrimaryTopicOf wikipedia-en:PT_Badak_Bontang_Airport .
+
+# ===== KELOMPOK 3 =====
+dbr:Sultan_Mahmud_Badaruddin_II_Airport dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/SMBIILogo_Nero_AI_Background_Remover.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Mahmud_Badaruddin_II_Airport .
+<http://dbpedia.org/resource/H._Asan_Airport> dbo:elevation "15.24"^^xsd:double , "15.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "SMQ" ;
+ dbo:operator <http://dbpedia.org/resource/Directorate_General_of_Civil_Aviation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/SampitAirport5.jpg?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/H._Asan_Airport> .
+dbr:Robert_Atty_Bessing_Airport dbo:elevation "8.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LNU" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bandar_Udara_R.A._Bessing.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Robert_Atty_Bessing_Airport .
+dbr:Tanjung_Api_Airport dbo:elevation "15.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "OJU" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tanjung_Api_Airport .
+dbr:Tebelian_Airport dbo:elevation "9.144"^^xsd:double ;
+ dbo:iataLocationIdentifier "SQG" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Tebelian_Airport_Sintang.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tebelian_Airport .
+dbr:Tunggul_Wulung_Airport dbo:elevation "21.0"^^xsd:double , "21.0312"^^xsd:double ;
+ dbo:iataLocationIdentifier "CXP" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Tunggul_wulung.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tunggul_Wulung_Airport .
+dbr:Sultan_Hasanuddin_International_Airport dbo:elevation "14.3256"^^xsd:double , "14.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "UPG" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/SultanHasanuddinAirport.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Hasanuddin_International_Airport .
+dbr:Raja_Haji_Fisabilillah_Airport dbo:elevation "16.0"^^xsd:double , "15.8496"^^xsd:double ;
+ dbo:iataLocationIdentifier "TNJ" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Raja_Haji_Fisabilillah_Airport.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Raja_Haji_Fisabilillah_Airport .
+dbr:Tjilik_Riwut_Airport dbo:elevation "24.9936"^^xsd:double , "25.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "PKY" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/TjilikRiwutAirportLogo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tjilik_Riwut_Airport .
+dbr:Toraja_Airport dbo:elevation "879.0"^^xsd:double , "879.000528"^^xsd:double ;
+ dbo:iataLocationIdentifier "TRT" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Toraja_Airport,_South_Sulawesi,_Indonesia.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Toraja_Airport .
+dbr:Seruyan_Kuala_Pembuang_Airport dbo:elevation "4.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "KLP" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Airplane_silhouette.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Seruyan_Kuala_Pembuang_Airport .
+dbr:Tanjung_Harapan_Airport dbo:elevation "3.0"^^xsd:double , "3.048"^^xsd:double ;
+ dbo:iataLocationIdentifier "TJS" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Terminal_Penumpang_Bandar_Udara_Tanjung_Harapan.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tanjung_Harapan_Airport .
+dbr:Sultan_Bantilan_Airport dbo:elevation "5.0"^^xsd:double , "4.8768"^^xsd:double ;
+ dbo:iataLocationIdentifier "TLI" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Bantilan_Airport .
+dbr:Supadio_Airport foaf:isPrimaryTopicOf wikipedia-en:Supadio_Airport .
+<http://dbpedia.org/resource/H._Aroeppala_Airport> dbo:elevation "4.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "KSR" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Logo_of_the_Ministry_of_Transportation_of_the_Republic_of_Indonesia.svg?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/H._Aroeppala_Airport> .
+dbr:Tanah_Merah_Airport dbo:elevation "25.4"^^xsd:double ;
+ dbo:iataLocationIdentifier "TMH" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bandara_Tanah_Merah.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tanah_Merah_Airport .
+dbr:Rembele_Airport dbo:elevation "1416.7104"^^xsd:double , "1418.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "TXE" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/RembeleAirport1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Rembele_Airport .
+dbr:Rendani_Airport dbo:elevation "4.572"^^xsd:double , "4.6"^^xsd:double ;
+ dbo:iataLocationIdentifier "MKW" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Rendai_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Rendani_Airport .
+dbr:Sultan_Iskandar_Muda_International_Airport dbo:elevation "20.0"^^xsd:double , "19.812"^^xsd:double ;
+ dbo:iataLocationIdentifier "BTJ" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Image_2025-05-09_232746780_Nero_AI_Background_Remover.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Iskandar_Muda_International_Airport .
+dbr:Syekh_Hamzah_Fansyuri_Airport dbo:elevation "0.0"^^xsd:double ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Airplane_silhouette.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Syekh_Hamzah_Fansyuri_Airport .
+dbr:Sangia_Nibandera_Airport dbo:elevation "12.192"^^xsd:double ;
+ dbo:iataLocationIdentifier "KXB" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bangunan_Luar_Bandar_Udara_Sangia_Nibandera.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sangia_Nibandera_Airport .
+dbr:Sultan_Babullah_Airport dbo:elevation "14.9352"^^xsd:double , "15.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "TTE" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bandara_sultan_babullah.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Babullah_Airport .
+dbr:Sultan_Thaha_Airport dbo:elevation "25.0"^^xsd:double , "24.9936"^^xsd:double ;
+ dbo:iataLocationIdentifier "DJB" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Image_2025-05-08_012008288_Nero_AI_Background_Remover.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Thaha_Airport .
+dbr:Sultan_Muhammad_Kaharuddin_III_Airport dbo:elevation "5.7912"^^xsd:double , "5.79"^^xsd:double ;
+ dbo:iataLocationIdentifier "SWQ" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/SultanmuhammadkaharuddinIIIairport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Muhammad_Kaharuddin_III_Airport .
+dbr:Syamsudin_Noor_Airport foaf:isPrimaryTopicOf wikipedia-en:Syamsudin_Noor_Airport .
+
+# ===== KELOMPOK 4 =====
+dbr:Bokeo_International_Airport dbo:elevation "358.0"^^xsd:double , "358.14"^^xsd:double ;
+ dbo:iataLocationIdentifier "BOR" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/\u535A\u80F6\u56FD\u9645\u673A\u573A.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Bokeo_International_Airport .
+dbr:Magway_Airport dbo:elevation "90.8304"^^xsd:double ;
+ dbo:iataLocationIdentifier "MWQ" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Magway_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Magway_Airport .
+dbr:Yogyakarta_International_Airport dbo:elevation "7.0"^^xsd:double , "7.3152"^^xsd:double ;
+ dbo:iataLocationIdentifier "YIA" ;
+ dbo:operator dbr:Angkasa_Pura ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Wordmark_of_Yogyakarta_International_Airport.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Yogyakarta_International_Airport .
+dbr:Sittwe_Airport dbo:elevation "11.8872"^^xsd:double ;
+ dbo:iataLocationIdentifier "AKY" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Sittwe_Airport_Terminal_2017_September.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sittwe_Airport .
+dbr:Tachilek_Airport dbo:elevation "388.62"^^xsd:double ;
+ dbo:iataLocationIdentifier "THL" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tachilek_Airport .
+dbr:Monghsat_Airport dbo:elevation "571.5"^^xsd:double , "572.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "MOG" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Monghsat_Airport .
+dbr:Loikaw_Airport dbo:elevation "896.112"^^xsd:double , "896.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LIW" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Loikaw_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Loikaw_Airport .
+dbr:Kengtung_Airport dbo:elevation "824.484"^^xsd:double ;
+ dbo:iataLocationIdentifier "KET" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Kengtung_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kengtung_Airport .
+dbr:Oudomsay_Airport dbo:elevation "549.8592"^^xsd:double , "550.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "ODY" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Oudomsay_Airport .
+dbr:Xieng_Khouang_Airport dbo:iataLocationIdentifier "XKH" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Xieng_Khouang_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Xieng_Khouang_Airport .
+dbr:Mandalay_International_Airport dbo:elevation "91.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "MDL" ;
+ dbo:operator dbr:Mitsubishi_Corporation ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Mandalay_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Mandalay_International_Airport .
+dbr:Wattay_International_Airport dbo:elevation "171.9072"^^xsd:double , "172.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "VTE" ;
+ dbo:operator <http://dbpedia.org/resource/Lao_People\u0027s_Armed_Forces> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Tour-Wattay-Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Wattay_International_Airport .
+dbr:Pathein_Airport dbo:elevation "3.9624"^^xsd:double ;
+ dbo:iataLocationIdentifier "BSX" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Pathein_Airport .
+dbr:Battambang_Airport dbo:elevation "18.0"^^xsd:double , "17.9832"^^xsd:double ;
+ dbo:iataLocationIdentifier "BBM" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Airplane_silhouette.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Battambang_Airport .
+dbr:Nay_Pyi_Taw_International_Airport dbo:elevation "33.2232"^^xsd:double , "33.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "NYT" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transport_(Myanmar)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Naypyidiaw_Airport_-_panoramio.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Nay_Pyi_Taw_International_Airport .
+dbr:Dawei_Airport dbo:elevation "25.6032"^^xsd:double , "26.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "TVY" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Daweiairport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Dawei_Airport .
+dbr:Heho_Airport dbo:elevation "1175.9184"^^xsd:double , "1176.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "HEH" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Airport,_Heho,_Myanmar.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Heho_Airport .
+dbr:Kawthaung_Airport dbo:elevation "12.4968"^^xsd:double , "12.5"^^xsd:double ;
+ dbo:iataLocationIdentifier "KAW" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kawthaung_Airport .
+dbr:Lashio_Airport dbo:elevation "766.8768"^^xsd:double ;
+ dbo:iataLocationIdentifier "LSH" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Lashio_airport_checkin_counter_-_panoramio.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Lashio_Airport .
+dbr:Nyaung_U_Airport dbo:elevation "95.0976"^^xsd:double , "95.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "NYU" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Nyaung_U_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Nyaung_U_Airport .
+dbr:Thandwe_Airport dbo:elevation "14.3256"^^xsd:double ;
+ dbo:iataLocationIdentifier "SNW" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Thandwe_Airport .
+dbr:Juvai_Semaring_Airport dbo:elevation "762.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LBW" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Long_Bawan_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Juvai_Semaring_Airport .
+dbr:Wamena_Airport dbo:elevation "1656.0"^^xsd:double , "1656.588"^^xsd:double ;
+ dbo:iataLocationIdentifier "WMX" ;
+ dbo:operator <http://dbpedia.org/resource/Ministry_of_Transportation_(Indonesia)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Terminal_belakang_samping_kanan1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Wamena_Airport .
+dbr:Kyaukpyu_Airport dbo:elevation "6.0"^^xsd:double , "6.096"^^xsd:double ;
+ dbo:iataLocationIdentifier "KYP" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Kyaukphyu_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kyaukpyu_Airport .
+dbr:Louang_Namtha_Airport dbo:elevation "599.8464"^^xsd:double , "600.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LXG" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/LuangNamtha_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Louang_Namtha_Airport .
+dbr:Putao_Airport dbo:elevation "464.5152"^^xsd:double ;
+ dbo:iataLocationIdentifier "PBU" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Putao_Airport .
+<http://dbpedia.org/resource/Siem_Reap\u2013Angkor_International_Airport> dbo:iataLocationIdentifier "SAI" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/SAI_Airport_Logo.png?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Siem_Reap\u2013Angkor_International_Airport> .
+dbr:Luang_Prabang_International_Airport dbo:elevation "291.0"^^xsd:double , "291.084"^^xsd:double ;
+ dbo:iataLocationIdentifier "LPQ" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/LP_april_2014.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Luang_Prabang_International_Airport .
+dbr:Myeik_Airport dbo:elevation "18.8976"^^xsd:double , "18.9"^^xsd:double ;
+ dbo:iataLocationIdentifier "MGZ" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Myeik_Airport .
+dbr:Myitkyina_Airport dbo:elevation "174.5"^^xsd:double , "147.5232"^^xsd:double ;
+ dbo:iataLocationIdentifier "MYT" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Myitkyina_Airport_new_terminal_building_(28140370102).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Myitkyina_Airport .
+dbr:Khamti_Airport dbo:elevation "1809.0"^^xsd:double , "1828.8"^^xsd:double ;
+ dbo:iataLocationIdentifier "KHM" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Khamti_Airport .
+<http://dbpedia.org/resource/Techo_International_Airport_(Cambodia)> dbo:iataLocationIdentifier "KTI" ;
+ dbo:operator dbr:Vinci_SA ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Techo_International_Airport.svg?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Techo_International_Airport_(Cambodia)> .
+dbr:Dara_Sakor_International_Airport dbo:iataLocationIdentifier "DSY" ;
+ dbo:operator dbr:Vinci_Airports ;
+ foaf:isPrimaryTopicOf wikipedia-en:Dara_Sakor_International_Airport .
+
+# ===== KELOMPOK 5 =====
+dbr:Bancasi_Airport dbo:elevation "43.0"^^xsd:double , "42.9768"^^xsd:double ;
+ dbo:iataLocationIdentifier "BXU" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Butuan_Airport_(Bancasi,_Butuan,_Agusan_Del_Norte;_08-24-2023).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Bancasi_Airport .
+dbr:Bario_Airport dbo:elevation "1051.56"^^xsd:double ;
+ dbo:iataLocationIdentifier "BBN" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bario_airport_terminal_building.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Bario_Airport .
+dbr:Lawas_Airport dbo:elevation "1.524"^^xsd:double ;
+ dbo:iataLocationIdentifier "LWY" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Twin_Otter_Lawas_Runway.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Lawas_Airport .
+dbr:Long_Lellang_Airport dbo:elevation "426.72"^^xsd:double ;
+ dbo:iataLocationIdentifier "LGL" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ foaf:isPrimaryTopicOf wikipedia-en:Long_Lellang_Airport .
+dbr:Long_Seridan_Airport dbo:elevation "185.0136"^^xsd:double ;
+ dbo:iataLocationIdentifier "ODN" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ foaf:isPrimaryTopicOf wikipedia-en:Long_Seridan_Airport .
+dbr:Tommanggong_Airport dbo:elevation "7.9248"^^xsd:double ;
+ dbo:iataLocationIdentifier "TMG" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tommanggong_Airport .
+dbr:Kota_Kinabalu_International_Airport dbo:elevation "3.048"^^xsd:double ;
+ dbo:iataLocationIdentifier "BKI" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/KotaKinabalu_Sabah_KKIA-01.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kota_Kinabalu_International_Airport .
+dbr:Marudi_Airport dbo:elevation "31.3944"^^xsd:double ;
+ dbo:iataLocationIdentifier "MUR" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Marudi_Airport_terminal_building.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Marudi_Airport .
+dbr:Kuching_International_Airport dbo:elevation "27.1272"^^xsd:double ;
+ dbo:iataLocationIdentifier "KCH" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Kuching_International_Airport_at_Night.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kuching_International_Airport .
+dbr:Malacca_International_Airport dbo:elevation "12.192"^^xsd:double ;
+ dbo:iataLocationIdentifier "MKZ" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/New_Malacca_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Malacca_International_Airport .
+dbr:Kuala_Lumpur_International_Airport dbo:elevation "21.336"^^xsd:double , "21.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "KUL" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Kuala_Lumpur_International_Airport_Logo.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kuala_Lumpur_International_Airport .
+dbr:Miri_Airport dbo:elevation "17.9832"^^xsd:double ;
+ dbo:iataLocationIdentifier "MYY" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Miri_Airport_MRD.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Miri_Airport .
+dbr:Kudat_Airport dbo:elevation "3.048"^^xsd:double ;
+ dbo:iataLocationIdentifier "KUD" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Kudat_Sabah_LapanganTerbang-1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kudat_Airport .
+dbr:Lahad_Datu_Airport dbo:elevation "14.6304"^^xsd:double ;
+ dbo:iataLocationIdentifier "LDU" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/LahadDatu_Sabah_LapanganTerbang-7.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Lahad_Datu_Airport .
+dbr:Langkawi_International_Airport dbo:elevation "5.0"^^xsd:double , "4.8768"^^xsd:double ;
+ dbo:iataLocationIdentifier "LGK" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Langkawi_airport.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Langkawi_International_Airport .
+dbr:Sandakan_Airport dbo:elevation "14.0208"^^xsd:double ;
+ dbo:iataLocationIdentifier "SDK" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Lapangan_Terbang_Sandakan.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sandakan_Airport .
+dbr:Sultan_Ismail_Petra_Airport dbo:elevation "4.8768"^^xsd:double ;
+ dbo:iataLocationIdentifier "KBR" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Flughafen_kota_bharu_1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Ismail_Petra_Airport .
+dbr:Tawau_Airport dbo:elevation "17.3736"^^xsd:double ;
+ dbo:iataLocationIdentifier "TWU" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/The_passanger_terminal_building_at_the_new_Tawau_airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tawau_Airport .
+dbr:Senai_International_Airport dbo:elevation "38.7096"^^xsd:double ;
+ dbo:iataLocationIdentifier "JHB" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Senai_Airport_logo.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Senai_International_Airport .
+dbr:Sultan_Abdul_Halim_Airport dbo:elevation "4.572"^^xsd:double ;
+ dbo:iataLocationIdentifier "AOR" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/AOR_Terminal.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Abdul_Halim_Airport .
+dbr:Sultan_Azlan_Shah_Airport dbo:elevation "39.624"^^xsd:double ;
+ dbo:iataLocationIdentifier "IPH" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Sultan_Azlan_Shah_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Azlan_Shah_Airport .
+dbr:Sultan_Haji_Ahmad_Shah_Airport dbo:elevation "16.764"^^xsd:double ;
+ dbo:iataLocationIdentifier "KUA" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Sultan_Ahmad_Shah_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Haji_Ahmad_Shah_Airport .
+dbr:Penang_International_Airport dbo:elevation "3.3528"^^xsd:double ;
+ dbo:iataLocationIdentifier "PEN" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Penang_airport_view.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Penang_International_Airport .
+dbr:Yangon_International_Airport dbo:elevation "33.2232"^^xsd:double , "33.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "RGN" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Yangon_Airport_T1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Yangon_International_Airport .
+dbr:Sultan_Abdul_Aziz_Shah_Airport dbo:elevation "27.1272"^^xsd:double ;
+ dbo:iataLocationIdentifier "SZB" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Subang_airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Abdul_Aziz_Shah_Airport .
+dbr:Pangkor_Airport dbo:elevation "5.7912"^^xsd:double ;
+ dbo:iataLocationIdentifier "PKG" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Pangkor_Airport_Terminal.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Pangkor_Airport .
+dbr:Sultan_Mahmud_Airport dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Sultan_Mahmud_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sultan_Mahmud_Airport .
+dbr:Long_Banga_Airport dbo:elevation "228.6"^^xsd:double ;
+ dbo:iataLocationIdentifier "LBP" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ foaf:isPrimaryTopicOf wikipedia-en:Long_Banga_Airport .
+dbr:Bintulu_Airport dbo:elevation "22.5552"^^xsd:double ;
+ dbo:iataLocationIdentifier "BTU" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/BintuluAirport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Bintulu_Airport .
+dbr:Tioman_Airport dbo:elevation "3.9624"^^xsd:double ;
+ dbo:iataLocationIdentifier "TOD" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Tioman_runway_01.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tioman_Airport .
+dbr:Labuan_Airport dbo:elevation "30.7848"^^xsd:double ;
+ dbo:iataLocationIdentifier "LBU" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Labuan_Malaysia_Airport-01.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Labuan_Airport .
+dbr:Limbang_Airport dbo:elevation "2.7432"^^xsd:double ;
+ dbo:iataLocationIdentifier "LMN" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ foaf:isPrimaryTopicOf wikipedia-en:Limbang_Airport .
+dbr:Sibu_Airport dbo:elevation "37.1856"^^xsd:double ;
+ dbo:iataLocationIdentifier "SBW" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Upgraded_Sibu_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sibu_Airport .
+dbr:Mukah_Airport dbo:elevation "5.999988"^^xsd:double ;
+ dbo:iataLocationIdentifier "MKM" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Mukah_New_Airport_Terminal.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Mukah_Airport .
+dbr:Mulu_Airport dbo:elevation "24.384"^^xsd:double ;
+ dbo:iataLocationIdentifier "MZV" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Mulu_Airport_arrival_hall.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Mulu_Airport .
+
+# ===== KELOMPOK 6 =====
+dbr:Cuyo_Airport dbo:elevation "4.0"^^xsd:double , "3.9624"^^xsd:double ;
+ dbo:iataLocationIdentifier "CYU" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ foaf:isPrimaryTopicOf wikipedia-en:Cuyo_Airport .
+dbr:Dipolog_Airport dbo:elevation "4.0"^^xsd:double , "3.6576"^^xsd:double ;
+ dbo:iataLocationIdentifier "DPL" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Dipolog_Airport,_2022_(81d5d8ed961188273d08a44fe09fa416).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Dipolog_Airport .
+dbr:Catarman_National_Airport dbo:elevation "1.8288"^^xsd:double , "2.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "CRM" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Catarman_Airport_Building.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Catarman_National_Airport .
+dbr:Cauayan_Airport dbo:elevation "61.0"^^xsd:double , "60.96"^^xsd:double ;
+ dbo:iataLocationIdentifier "CYZ" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Cauayan_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Cauayan_Airport .
+dbr:Sibulan_Airport dbo:elevation "5.0"^^xsd:double , "4.572"^^xsd:double ;
+ dbo:iataLocationIdentifier "DGT" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/File_Dumaguete_airport_-_2.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sibulan_Airport .
+dbr:Pagadian_Airport dbo:elevation "2.0"^^xsd:double , "1.524"^^xsd:double ;
+ dbo:iataLocationIdentifier "PAG" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Pagadian_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Pagadian_Airport .
+dbr:Palanan_Airport foaf:isPrimaryTopicOf wikipedia-en:Palanan_Airport .
+dbr:El_Nido_Airport dbo:iataLocationIdentifier "ENI" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/El_Nido_Airport,_Philippines_(36286185703).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:El_Nido_Airport .
+dbr:Labo_Airport dbo:elevation "4.8768"^^xsd:double , "5.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "OZC" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/ozamizAirport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Labo_Airport .
+dbr:General_Santos_International_Airport dbo:elevation "153.924"^^xsd:double , "154.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "GES" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/General_Santos_City_Airport_back_(Fatima,_General_Santos_City;_08-11-2023).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:General_Santos_International_Airport .
+dbr:Ninoy_Aquino_International_Airport dbo:elevation "22.86"^^xsd:double , "23.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "MNL" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/NAIA_Logo_2024.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Ninoy_Aquino_International_Airport .
+dbr:Basco_Airport dbo:elevation "88.6968"^^xsd:double , "89.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "BSO" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Sea_air_plane.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Basco_Airport .
+dbr:Cotabato_Airport dbo:elevation "55.7784"^^xsd:double ;
+ dbo:iataLocationIdentifier "CBO" ;
+ dbo:operator dbr:Bangsamoro_Airport_Authority , dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Cotabato_Airport_1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Cotabato_Airport .
+dbr:Jolo_Airport dbo:elevation "35.9664"^^xsd:double , "36.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "JOL" ;
+ dbo:operator dbr:Bangsamoro_Airport_Authority , dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Jolo_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Jolo_Airport .
+dbr:Jorge_Abad_Airport dbo:elevation "100.0"^^xsd:double , "99.9744"^^xsd:double ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ foaf:isPrimaryTopicOf wikipedia-en:Jorge_Abad_Airport .
+dbr:Bicol_International_Airport dbo:elevation "95.4024"^^xsd:double , "95.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "DRP" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bicol_International_Airport_Terminal,_7_Aug_2023.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Bicol_International_Airport .
+dbr:San_Vicente_Airport dbo:iataLocationIdentifier "SWL" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/San_Vicente_Airport_exterior.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:San_Vicente_Airport .
+dbr:Francisco_Bangoy_International_Airport dbo:elevation "29.2608"^^xsd:double , "29.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "DVO" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Davao_Air_Traffic.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Francisco_Bangoy_International_Airport .
+<http://dbpedia.org/resource/Godofredo_P._Ramos_Airport> dbo:elevation "4.8768"^^xsd:double , "5.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "MPH" ;
+ dbo:operator dbr:San_Miguel_Corporation ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Caticlan_(Boracay)_Airport_logo.png?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Godofredo_P._Ramos_Airport> .
+dbr:Roxas_Airport dbo:elevation "3.0"^^xsd:double , "3.048"^^xsd:double ;
+ dbo:iataLocationIdentifier "RXS" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Roxas_Airport_back_(Baybay,_Roxas,_Capiz;_04-07-2024).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Roxas_Airport .
+dbr:Sanga-Sanga_Airport dbo:elevation "2.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "TWT" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Sanga-Sanga_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sanga-Sanga_Airport .
+dbr:Laoag_International_Airport dbo:elevation "7.62"^^xsd:double , "8.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LAO" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Laoag_International_Airport_terminal_exterior.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Laoag_International_Airport .
+dbr:Clark_International_Airport dbo:elevation "148.0"^^xsd:double , "147.5232"^^xsd:double ;
+ dbo:iataLocationIdentifier "CRK" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/CRK_InterAir_logo.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Clark_International_Airport .
+dbr:Camiguin_Airport dbo:elevation "16.1544"^^xsd:double , "16.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "CGM" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ foaf:isPrimaryTopicOf wikipedia-en:Camiguin_Airport .
+dbr:Iloilo_International_Airport dbo:elevation "46.64"^^xsd:double , "46.6344"^^xsd:double ;
+ dbo:iataLocationIdentifier "ILO" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Iloilo_Airport_(Cabatuan,_Iloilo;_10-20-2022).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Iloilo_International_Airport .
+dbr:Kalibo_International_Airport dbo:elevation "4.0"^^xsd:double , "4.2672"^^xsd:double ;
+ dbo:iataLocationIdentifier "KLO" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Kalibo_airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Kalibo_International_Airport .
+dbr:Naga_Airport dbo:elevation "43.2816"^^xsd:double , "43.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "WNP" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Naga_Airport_(WNP).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Naga_Airport .
+dbr:Calbayog_Airport dbo:elevation "3.6576"^^xsd:double , "4.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "CYP" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/CYPoutside.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Calbayog_Airport .
+<http://dbpedia.org/resource/Daniel_Z._Romualdez_Airport> dbo:elevation "3.048"^^xsd:double , "3.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "TAC" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Tacloban_DZR_Airport_Terminal_2023-11-17.jpg?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Daniel_Z._Romualdez_Airport> .
+dbr:McGuire_Field foaf:isPrimaryTopicOf wikipedia-en:McGuire_Field .
+
+# ===== KELOMPOK 7 =====
+dbr:Chiang_Mai_International_Airport dbo:elevation "315.7728"^^xsd:double ;
+ dbo:iataLocationIdentifier "CNX" ;
+ dbo:operator dbr:Airports_of_Thailand ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Chiang_Mai_Intl_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Chiang_Mai_International_Airport .
+dbr:Don_Mueang_International_Airport dbo:elevation "2.7432"^^xsd:double ;
+ dbo:iataLocationIdentifier "DMK" ;
+ dbo:operator dbr:Airports_of_Thailand ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Runway_Dmk.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Don_Mueang_International_Airport .
+dbr:Lampang_Airport dbo:elevation "247.0"^^xsd:double , "247.1928"^^xsd:double ;
+ dbo:iataLocationIdentifier "LPT" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/LampangAirport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Lampang_Airport .
+dbr:Tuguegarao_Airport dbo:elevation "21.336"^^xsd:double , "21.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "TUG" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Tuguegarao_Airport_(Tuguegarao,_Cagayan;_11-19-2022).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tuguegarao_Airport .
+dbr:Virac_Airport dbo:elevation "37.0"^^xsd:double , "36.8808"^^xsd:double ;
+ dbo:iataLocationIdentifier "VRC" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Virac_Airport_runway_(San_Isidro_Village,_Virac,_Catanduanes;_04-09-2024).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Virac_Airport .
+dbr:Phuket_International_Airport dbo:elevation "24.9936"^^xsd:double ;
+ dbo:iataLocationIdentifier "HKT" ;
+ dbo:operator dbr:Airports_of_Thailand ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/VTSP_Phase1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Phuket_International_Airport .
+dbr:Zamboanga_International_Airport dbo:elevation "10.0"^^xsd:double , "10.0584"^^xsd:double ;
+ dbo:iataLocationIdentifier "ZAM" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/ZIA_logo.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Zamboanga_International_Airport .
+dbr:Buriram_Airport dbo:elevation "179.832"^^xsd:double ;
+ dbo:iataLocationIdentifier "BFV" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Buriram_Airport_2020.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Buriram_Airport .
+dbr:Hua_Hin_Airport dbo:elevation "19.0"^^xsd:double , "18.8976"^^xsd:double ;
+ dbo:iataLocationIdentifier "HHQ" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/HHQ_front_sign.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Hua_Hin_Airport .
+dbr:Khon_Kaen_Airport dbo:elevation "204.216"^^xsd:double , "204.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "KKC" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Khon_Kaen_Airport_Terminal_After_Renovation.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Khon_Kaen_Airport .
+dbr:Mae_Hong_Son_Airport dbo:elevation "283.1592"^^xsd:double , "283.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "HGN" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Mae_Hong_Son_airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Mae_Hong_Son_Airport .
+dbr:Mae_Sot_Airport dbo:elevation "210.0"^^xsd:double , "210.312"^^xsd:double ;
+ dbo:iataLocationIdentifier "MAQ" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Mae_Sot_Airport .
+dbr:Narathiwat_Airport dbo:elevation "4.8768"^^xsd:double , "5.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "NAW" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/NAW-Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Narathiwat_Airport .
+dbr:Phetchabun_Airport dbo:elevation "137.16"^^xsd:double , "137.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "PHY" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Airplane_silhouette.svg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Phetchabun_Airport .
+dbr:Roi_Et_Airport dbo:elevation "137.0"^^xsd:double , "137.4648"^^xsd:double ;
+ dbo:iataLocationIdentifier "ROI" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Airport_ROI.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Roi_Et_Airport .
+dbr:Sakon_Nakhon_Airport dbo:elevation "161.0"^^xsd:double , "161.2392"^^xsd:double ;
+ dbo:iataLocationIdentifier "SNO" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Sakon_Nakhon_Airport_main_building_exterior.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sakon_Nakhon_Airport .
+dbr:Seletar_Airport dbo:elevation "11.0"^^xsd:double , "10.9728"^^xsd:double ;
+ dbo:iataLocationIdentifier "XSP" ;
+ dbo:operator dbr:Changi_Airport_Group ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Seletar_Airport_logo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Seletar_Airport .
+dbr:Sukhothai_Airport dbo:elevation "55.0"^^xsd:double , "54.5592"^^xsd:double ;
+ dbo:iataLocationIdentifier "THS" ;
+ dbo:operator dbr:Bangkok_Airways ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Sukhothai_Airport_at_take-off_(2025-09)_-_img_07.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Sukhothai_Airport .
+dbr:Lamphun_Airport dbo:elevation "281.94"^^xsd:double ;
+ foaf:isPrimaryTopicOf wikipedia-en:Lamphun_Airport .
+dbr:Surigao_Airport dbo:elevation "6.096"^^xsd:double , "6.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "SUG" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Surigao_Airport_Mindanao_Philippines.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Surigao_Airport .
+dbr:Samui_Airport dbo:elevation "19.5072"^^xsd:double , "20.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "USM" ;
+ dbo:operator dbr:Bangkok_Airways ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/202402_Check-in_Drop-Off_Area_of_USM.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Samui_Airport .
+dbr:Hat_Yai_International_Airport dbo:elevation "27.0"^^xsd:double , "27.432"^^xsd:double ;
+ dbo:iataLocationIdentifier "HDY" ;
+ dbo:operator dbr:Airports_of_Thailand ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Hat_Yai_Bay_6-4.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Hat_Yai_International_Airport .
+dbr:Loei_Airport dbo:elevation "262.128"^^xsd:double , "262.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "LOE" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Loei_Airport_Terminal.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Loei_Airport .
+dbr:Surin_Airport dbo:iataLocationIdentifier "PXR" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Surin_Airport .
+dbr:Nakhon_Phanom_Airport dbo:elevation "179.0"^^xsd:double , "178.9176"^^xsd:double ;
+ dbo:iataLocationIdentifier "KOP" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Nakhon_Phanom_Airport .
+dbr:Phitsanulok_Airport dbo:elevation "46.9392"^^xsd:double , "47.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "PHS" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Phitsanulok_Airport_(March_2022)_\u0E17\u0E48\u0E32\u0E2D\u0E32\u0E01\u0E32\u0E28\u0E22\u0E32\u0E19\u0E1E\u0E34\u0E29\u0E13\u0E38\u0E42\u0E25\u0E01_-_IMG_02.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Phitsanulok_Airport .
+dbr:Suvarnabhumi_Airport dbo:elevation "1.524"^^xsd:double ;
+ dbo:iataLocationIdentifier "BKK" ;
+ dbo:operator dbr:Airports_of_Thailand ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bangkok_-_Suvarnabhumi_International_(BKK_-_VTBS)_AN1822384.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Suvarnabhumi_Airport .
+dbr:Tugdan_Airport dbo:elevation "3.0"^^xsd:double , "3.048"^^xsd:double ;
+ dbo:iataLocationIdentifier "TBH" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tugdan_Airport .
+dbr:Ranong_Airport dbo:elevation "17.0"^^xsd:double , "17.3736"^^xsd:double ;
+ dbo:iataLocationIdentifier "UNN" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Ranong_Airport .
+dbr:Chumphon_Airport dbo:elevation "5.4864"^^xsd:double ;
+ dbo:iataLocationIdentifier "CJM" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Chumphon_Airport .
+dbr:Krabi_International_Airport dbo:elevation "24.9936"^^xsd:double , "25.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "KBV" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Krabi_Airport_Pano1.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Krabi_International_Airport .
+dbr:Chiang_Rai_International_Airport dbo:elevation "390.0"^^xsd:double , "390.144"^^xsd:double ;
+ dbo:iataLocationIdentifier "CEI" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Mae_Fah_Luang_Chiang_Rai_International_Airport_Chiang_Rai.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Chiang_Rai_International_Airport .
+dbr:Subic_Bay_International_Airport dbo:elevation "20.0"^^xsd:double , "19.5072"^^xsd:double ;
+ dbo:iataLocationIdentifier "SFS" ;
+ dbo:operator dbr:Subic_Bay_Metropolitan_Authority ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Aerial_view_of_the_U.S._Naval_Air_Station_Cubi_Point,_Philippines,_on_6_February_1988_(6482943).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Subic_Bay_International_Airport .
+dbr:Nakhon_Si_Thammarat_Airport dbo:elevation "3.9624"^^xsd:double , "4.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "NST" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/NSTairport2024.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Nakhon_Si_Thammarat_Airport .
+
+# ===== KELOMPOK 8 =====
+dbr:Phu_Quoc_International_Airport dbo:elevation "11.0"^^xsd:double , "11.2776"^^xsd:double ;
+ dbo:iataLocationIdentifier "PQC" ;
+ dbo:operator dbr:Airports_Corporation_of_Vietnam ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Phu_Quoc_International_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Phu_Quoc_International_Airport .
+dbr:Presidente_Nicolau_Lobato_International_Airport dbo:elevation "8.0"^^xsd:double , "7.62"^^xsd:double ;
+ dbo:iataLocationIdentifier "DIL" ;
+ dbo:operator dbr:Air_Navigation_Administration_Timor_Leste ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Presidente_Nicolau_Lobato_International_Airport_terminal,_2023_(01).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Presidente_Nicolau_Lobato_International_Airport .
+<http://dbpedia.org/resource/R\u1EA1ch_Gi\u00E1_Airport> dbo:elevation "2.1336"^^xsd:double ;
+ dbo:iataLocationIdentifier "VKG" ;
+ foaf:isPrimaryTopicOf wikipedia-en:Rach_Gia_Airport .
+dbr:Pleiku_Air_Base dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Fatherland_-_Space.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Pleiku_Air_Base .
+dbr:Suai_Airport dbo:elevation "29.0"^^xsd:double , "29.2608"^^xsd:double ;
+ dbo:iataLocationIdentifier "UAI" ;
+ dbo:operator dbr:Politics_of_East_Timor ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/2020-08-02_Antonino_Armindo_am_Flughafen_Suai.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Suai_Airport .
+dbr:Dong_Hoi_Airport dbo:elevation "18.0"^^xsd:double , "17.9832"^^xsd:double ;
+ dbo:iataLocationIdentifier "VDH" ;
+ dbo:operator dbr:Airports_Corporation_of_Vietnam ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/DHAirport3.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Dong_Hoi_Airport .
+dbr:Da_Nang_International_Airport dbo:elevation "10.0"^^xsd:double , "10.0584"^^xsd:double ;
+ dbo:iataLocationIdentifier "DAD" ;
+ dbo:operator dbr:Airports_Corporation_of_Vietnam ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/DAD_new_terminal_2012_01.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Da_Nang_International_Airport .
+dbr:Cam_Ranh_International_Airport dbo:elevation "12.192"^^xsd:double , "12.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "CXR" ;
+ dbo:operator dbr:Airports_Corporation_of_Vietnam ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Logo-main_cxr.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Cam_Ranh_International_Airport .
+dbr:Can_Tho_International_Airport dbo:elevation "2.7432"^^xsd:double , "3.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "VCA" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Nha_Ga_HK_CHKQT_Can_Tho_2.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Can_Tho_International_Airport .
+dbr:Lien_Khuong_Airport dbo:elevation "961.9488"^^xsd:double , "962.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "DLI" ;
+ dbo:operator dbr:Airports_Corporation_of_Vietnam ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Lien_Khuong_Airport_01.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Lien_Khuong_Airport .
+dbr:Phu_Bai_International_Airport dbo:elevation "14.9352"^^xsd:double , "15.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "HUI" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Phu_Bai_International_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Phu_Bai_International_Airport .
+dbr:Trat_Airport dbo:elevation "32.004"^^xsd:double , "32.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "TDX" ;
+ dbo:operator dbr:Bangkok_Airways ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Trat_Airport_in_Thailand.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Trat_Airport .
+dbr:Ubon_Ratchathani_Airport dbo:elevation "124.0"^^xsd:double , "123.7488"^^xsd:double ;
+ dbo:iataLocationIdentifier "UBP" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Ubonratchatani_International_Airport_,_\u0E17\u0E48\u0E32\u0E2D\u0E32\u0E01\u0E32\u0E28\u0E22\u0E32\u0E19\u0E19\u0E32\u0E19\u0E32\u0E0A\u0E32\u0E15\u0E34\u0E2D\u0E38\u0E1A\u0E25\u0E23\u0E32\u0E0A\u0E18\u0E32\u0E19\u0E35_-_panoramio.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Ubon_Ratchathani_Airport .
+dbr:Con_Dao_Airport dbo:elevation "6.0"^^xsd:double , "6.096"^^xsd:double ;
+ dbo:iataLocationIdentifier "VCS" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/C\u1EA3ng_h\u00E0ng_kh\u00F4ng_c\u00F4n_\u0111\u1EA3o.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Con_Dao_Airport .
+dbr:Chu_Lai_Airport dbo:iataLocationIdentifier "VCL" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Chu_Lai_New_Airport_arrival_hall.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Chu_Lai_Airport .
+dbr:Tho_Xuan_Airport dbo:elevation "17.9832"^^xsd:double ;
+ dbo:iataLocationIdentifier "THD" ;
+ dbo:operator <http://dbpedia.org/resource/Vietnam_People\u0027s_Air_Force> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Tho_Xuan_airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tho_Xuan_Airport .
+dbr:Trang_Airport dbo:elevation "20.4216"^^xsd:double , "20.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "TST" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Trang_Airport_2023.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Trang_Airport .
+dbr:Tan_Son_Nhat_International_Airport dbo:elevation "10.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "SGN" ;
+ dbo:operator dbr:Airports_Corporation_of_Vietnam ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/TIA-logo.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Tan_Son_Nhat_International_Airport .
+dbr:Phu_Cat_Airport dbo:elevation "24.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "UIH" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/PhuCatAirport_newterminal.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Phu_Cat_Airport .
+dbr:Van_Don_International_Airport dbo:iataLocationIdentifier "VDO" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/VVDO_Official_logo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Van_Don_International_Airport .
+dbr:Buon_Ma_Thuot_Airport dbo:elevation "529.1328"^^xsd:double ;
+ dbo:iataLocationIdentifier "BMV" ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Buon_Ma_Thuot_airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Buon_Ma_Thuot_Airport .
+dbr:Udon_Thani_International_Airport dbo:elevation "176.4792"^^xsd:double , "176.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "UTH" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Udon_Thani_terminal,Thailand_(27412478245).jpg?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Udon_Thani_International_Airport .
+dbr:Noi_Bai_International_Airport dbo:elevation "12.0"^^xsd:double , "11.8872"^^xsd:double ;
+ dbo:iataLocationIdentifier "HAN" ;
+ dbo:operator dbr:Airports_Corporation_of_Vietnam ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/ACV_Noibai_logo.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:Noi_Bai_International_Airport .
+dbr:U-Tapao_International_Airport dbo:elevation "12.8016"^^xsd:double , "13.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "UTP" ;
+ dbo:operator <http://dbpedia.org/resource/Department_of_Airports_(Thailand)> ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/U-Tapao\u2013Rayong\u2013Pattaya_International_Airport.png?width=300> ;
+ foaf:isPrimaryTopicOf wikipedia-en:U-Tapao_International_Airport .
+
+# ===== KELOMPOK 9 =====
+<http://dbpedia.org/resource/Ba\u0027kelalan_Airport> dbo:elevation "883.92"^^xsd:double ;
+ dbo:iataLocationIdentifier "BKM" ;
+ dbo:operator dbr:Malaysia_Airports ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Ba\u0027kelalan_Airport> .
+<http://dbpedia.org/resource/Bohol\u2013Panglao_International_Airport> dbo:elevation "13.0"^^xsd:double , "12.8016"^^xsd:double ;
+ dbo:iataLocationIdentifier "TAG" ;
+ dbo:operator dbr:Aboitiz_Equity_Ventures ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Photo_shows_the_exterior_of_the_Bohol-Panglao_International_Airport.jpg?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Bohol\u2013Panglao_International_Airport> .
+<http://dbpedia.org/resource/Bacolod\u2013Silay_Airport> dbo:elevation "26.2128"^^xsd:double , "26.0"^^xsd:double ;
+ dbo:iataLocationIdentifier "BCD" ;
+ dbo:operator dbr:Civil_Aviation_Authority_of_the_Philippines ;
+ dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Bacolod-Silay_City_International_Airport_exterior.jpg?width=300> ;
+ foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Bacolod\u2013Silay_Airport> .
