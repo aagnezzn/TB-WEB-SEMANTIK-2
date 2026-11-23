@@ -42,10 +42,10 @@ class LiveAirportService
      *
      * @return array<string, mixed>|null
      */
-    public function weather(string $icao): ?array
+   public function weather(string $icao): ?array
     {
         return $this->cached('live.metar.'.strtoupper($icao), 300, function () use ($icao): ?array {
-            $response = Http::timeout(8)->acceptJson()->get(self::METAR_URL, [
+            $response = Http::timeout(8)->withoutVerifying()->acceptJson()->get(self::METAR_URL, [
                 'ids' => strtoupper($icao),
                 'format' => 'json',
             ]);
@@ -56,11 +56,6 @@ class LiveAirportService
         });
     }
 
-    /**
-     * Pesawat yang sedang terdeteksi di sekitar bandara.
-     *
-     * @return array{aircraft: list<array<string, mixed>>, counts: array<string, int>}|null
-     */
     public function traffic(float $lat, float $lng, float $elevationFt = 0.0, float $radiusKm = 40.0): ?array
     {
         $key = sprintf('live.traffic.%.2f.%.2f', $lat, $lng);
@@ -69,7 +64,7 @@ class LiveAirportService
             $latDelta = $radiusKm / 111.0;
             $lngDelta = $radiusKm / (111.0 * max(0.2, cos(deg2rad($lat))));
 
-            $response = Http::timeout(10)->acceptJson()->get(self::OPENSKY_URL, [
+            $response = Http::timeout(10)->withoutVerifying()->acceptJson()->get(self::OPENSKY_URL, [
                 'lamin' => $lat - $latDelta,
                 'lamax' => $lat + $latDelta,
                 'lomin' => $lng - $lngDelta,

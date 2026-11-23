@@ -241,9 +241,6 @@
             <div id="live-map" class="rounded-2xl overflow-hidden border border-white/80" style="height: 340px; z-index: 0;"></div>
 
             <ul id="live-aircraft" class="mt-4 divide-y divide-slate-100 text-sm"></ul>
-            <p id="live-traffic-note" class="text-xs text-slate-400 mt-3"></p>
-
-            <p class="text-xs text-slate-400 mt-4">{{ __('messages.live_sources') }}</p>
         </section>
         @endif
     </main>
@@ -397,13 +394,6 @@
             grid.appendChild(tile(t.observed, observed));
 
             weatherBox.appendChild(grid);
-
-            if (weather.raw) {
-                const details = el('details', 'mt-3');
-                details.appendChild(el('summary', 'text-xs text-slate-500 cursor-pointer', t.rawMetar));
-                details.appendChild(el('code', 'block mt-2 text-xs bg-slate-800 text-emerald-300 rounded-xl p-3 break-words', weather.raw));
-                weatherBox.appendChild(details);
-            }
         }
 
         function renderTraffic(traffic) {
@@ -412,7 +402,7 @@
             planeLayer.clearLayers();
 
             if (!traffic) {
-                noteBox.textContent = t.trafficUnavailable;
+                if (noteBox) noteBox.textContent = t.trafficUnavailable;
                 return;
             }
 
@@ -425,10 +415,6 @@
                     box.firstChild.style.fontWeight = '600';
                     countsBox.appendChild(box);
                 });
-
-            if (!traffic.aircraft.length) {
-                listBox.appendChild(el('li', 'py-3 text-slate-400', t.noAircraft));
-            }
 
             traffic.aircraft.forEach(function (plane, index) {
                 const label = plane.callsign + ' \u2022 ' + t[plane.phase] +
@@ -457,8 +443,6 @@
                     listBox.appendChild(row);
                 }
             });
-
-            noteBox.textContent = t.note;
         }
 
         async function refresh() {
