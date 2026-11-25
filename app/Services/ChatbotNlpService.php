@@ -379,6 +379,14 @@ class ChatbotNlpService
     }
 
     /**
+     * Apakah bahasa aktif aplikasi adalah Inggris.
+     */
+    protected function isEnglish(): bool
+    {
+        return app()->getLocale() === 'en';
+    }
+
+    /**
      * Respon daftar bandara di sebuah pulau.
      *
      * @param  list<array{name: string, iata: ?string, icao: ?string, municipality: ?string}>  $airports
